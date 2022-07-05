@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".feature.main.MainActivity"/>
+        <activity android:name=".feature.auth.PwLockActivity"/>
     </application>
 
 </manifest>
