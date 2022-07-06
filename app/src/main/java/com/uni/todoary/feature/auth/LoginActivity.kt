@@ -16,7 +16,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
         }
         binding.loginBtnSignInTv.setOnClickListener {
-
+            val mIntent = Intent(this, SignupActivity::class.java)
+            mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(mIntent)
         }
     }
 }

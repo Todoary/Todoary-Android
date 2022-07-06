@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".feature.main.MainActivity"/>
         <activity android:name=".feature.auth.PwLockActivity"/>
+        <activity android:name=".feature.auth.SignupActivity"/>
+        <activity android:name=".feature.auth.TermscheckActivity"/>
     </application>
 
 </manifest>

@@ -39,24 +39,28 @@
         app:layout_constraintBottom_toTopOf="@id/pw_lock_keypad_layout">
 
         <View
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/bg_login_solid_btn"/>
-
-        <View
+            android:id="@+id/pw_lock_key_1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:background="@drawable/bg_login_stroke_btn"/>
 
         <View
+            android:id="@+id/pw_lock_key_2"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:background="@drawable/bg_login_stroke_btn"/>
 
         <View
+            android:id="@+id/pw_lock_key_3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_login_stroke_btn"/>
+
+        <View
+            android:id="@+id/pw_lock_key_4"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"

@@ -79,8 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:buttonTint="@color/navycheck" />
+                android:layout_marginStart="20dp" />
             <TextView
                 android:layout_width="228dp"
                 android:layout_height="147dp"
@@ -100,8 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="3dp"
-                android:buttonTint="@color/navycheck" />
+                android:layout_marginTop="3dp" />
             <TextView
                 android:layout_width="228dp"
                 android:layout_height="147dp"
@@ -121,8 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:layout_marginStart="20.5dp"
-                android:buttonTint="@color/navycheck" />
+                android:layout_marginStart="20.5dp" />
             <TextView
                 android:layout_width="228dp"
                 android:layout_height="125dp"
@@ -141,7 +138,6 @@
         android:layout_height="19dp"
         android:layout_marginStart="54.88dp"
         android:layout_marginTop="14dp"
-        android:buttonTint="@color/navycheck"
         android:fontFamily="@font/applesdgothicneolar2"
         android:text="전체동의"
         android:textSize="@dimen/font_mid_size" />
@@ -156,7 +152,7 @@
         android:fontFamily="@font/applesdgothicneomainbtn"
         android:background="@drawable/round_button_lar"
         android:textColor="@color/white"
-        android:backgroundTint="@color/navy"
+        android:backgroundTint="@color/color_primary"
         android:layout_marginBottom="20dp"/>
 </LinearLayout>
 </ScrollView>
