@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth
+package com.uni.todoary.feature.auth.ui
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +10,8 @@ class PwLockViewModel : ViewModel() {
     }
     val passwardList = ArrayList<Int>()
 
+    // LiveData에 리스트를 넣으면 add, remove 등이 Notify가 안되기 때문에
+    // 지역변수에 리스트 선언해두고 바꾸면서 LiveData에 그대로 복사해서 업데이트
     fun addPw(number : Int){
         Log.d("pwpwpwpw", passward.value.toString())
         if(passward.value?.size == 4){

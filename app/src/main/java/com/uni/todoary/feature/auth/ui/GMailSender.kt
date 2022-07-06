@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth
+package com.uni.todoary.feature.auth.ui
 
 import com.uni.todoary.ApplicationClass.Companion.mSharedPreferences
 import kotlinx.coroutines.CoroutineScope

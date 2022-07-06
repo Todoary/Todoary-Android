@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth
+package com.uni.todoary.feature.auth.ui
 
 import android.content.Context
 import android.content.Intent
@@ -13,7 +13,6 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
-import com.uni.todoary.feature.auth.TermscheckActivity
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivitySignupBinding
 import com.uni.todoary.feature.main.MainActivity
