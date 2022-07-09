@@ -62,6 +62,7 @@ class GMailSender : Authenticator(){
             message.subject = "Todoary 인증메일입니다."                                              // 이메일 제목
             message.setText("$random_number"+" 을 인증번호란에 입력해주세요.")                                               // 이메일 내용
 
+
             // 전송
             Transport.send(message)
             init()
