@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register.TermscheckActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/termscheck_back_btn"
+            android:layout_width="9dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/backbtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/termscheck_title_tv"
+            android:layout_width="63dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toEndOf="@id/termscheck_back_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="약관동의"
+            android:fontFamily="@font/applesdgothicneosb"
+            android:fontWeight="600"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="279dp"
+        android:layout_height="19dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_text_size"
+        android:text="Todoary 서비스 이용약관에 동의해 주세요"
+        android:layout_marginTop="63dp"
+        android:fontFamily="@font/applesdgothicneob"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:background="@drawable/terms_layout_border">
+
+            <CheckBox
+                android:id="@+id/termscheck_1_check"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="15.5dp"
+                android:layout_marginStart="2.5dp"
+                android:buttonTint="@color/navycheck"/>
+            <TextView
+                android:id="@+id/termscheck_1_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="7.5dp"
+                android:fontFamily="@font/applesdgothicneom"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:text=" 동의 (필수)"
+                android:fontFamily="@font/applesdgothicneom"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:background="@drawable/terms_layout_border">
+
+            <CheckBox
+                android:id="@+id/termscheck_2_check"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="15.5dp"
+                android:layout_marginStart="2.5dp"
+                android:buttonTint="@color/navycheck"/>
+            <TextView
+                android:id="@+id/termscheck_2_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="7.5dp"
+                android:fontFamily="@font/applesdgothicneom"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:text=" 동의 (필수)"
+                android:fontFamily="@font/applesdgothicneom"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:background="@drawable/terms_layout_border">
+
+            <CheckBox
+                android:id="@+id/termscheck_3_check"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="15.5dp"
+                android:layout_marginStart="2.5dp"
+                android:buttonTint="@color/navycheck"/>
+            <TextView
+                android:id="@+id/termscheck_3_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="7.5dp"
+                android:fontFamily="@font/applesdgothicneom"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:text=" 동의 (선택)"
+                android:fontFamily="@font/applesdgothicneom"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:background="@drawable/terms_layout_border">
+
+            <CheckBox
+                android:id="@+id/termscheck_4_check"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="15.5dp"
+                android:layout_marginStart="2.5dp"
+                android:buttonTint="@color/navycheck"/>
+            <TextView
+                android:id="@+id/termscheck_4_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="7.5dp"
+                android:fontFamily="@font/applesdgothicneom"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:text=" 동의 (선택)"
+                android:fontFamily="@font/applesdgothicneom"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:background="@drawable/terms_layout_border">
+            <CheckBox
+                android:id="@+id/termscheck_all_check"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="15.5dp"
+                android:layout_marginStart="2.5dp"
+                android:buttonTint="@color/navycheck"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="7.5dp"
+                android:text="전체 동의"
+                android:fontFamily="@font/applesdgothicneob"/>
+        </LinearLayout>
+
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/termscheck_next_btn"
+        android:layout_width="304dp"
+        android:layout_height="52dp"
+        android:layout_marginVertical="200dp"
+        android:layout_gravity="center"
+        android:text="확인"
+        android:textSize="@dimen/font_mainbtn_size"
+        android:fontFamily="@font/applesdgothicneosb"
+        android:background="@drawable/round_button_lar"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/color_primary"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>
+</ScrollView>
