@@ -72,7 +72,7 @@
                 android:fontWeight="600"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_text_size"/>
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/signup_code_btn"
                 android:layout_width="@dimen/signup_btn_width"
                 android:layout_height="@dimen/signup_btn_height"
@@ -128,7 +128,7 @@
                 android:fontFamily="@font/applesdgothicneob"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_text_size"/>
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/sigunup_confirm_btn"
                 android:layout_width="@dimen/signup_btn_width"
                 android:layout_height="@dimen/signup_btn_height"
@@ -259,7 +259,7 @@
             android:layout_marginStart="@dimen/signup_marginstart"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/applesdgothicneom"/>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signup_fin_btn"
             android:layout_width="304dp"
             android:layout_height="52dp"

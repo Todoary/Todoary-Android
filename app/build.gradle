@@ -5,10 +5,11 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
-    task wrapper(type: Wrapper) {
-        gradleVersion = '7.0'
-    }
+
     compileSdk 31
 
     viewBinding {
@@ -19,6 +20,7 @@ android {
         dataBinding = true
     }
 
+
     defaultConfig {
         applicationId "com.uni.todoary"
         minSdk 21
@@ -27,6 +29,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        buildConfigField "String", "fromEmail", properties['fromEmail']
+//        buildConfigField "String", "password", properties['password']
+//
+//        manifestPlaceholders = [fromEmail: fromEmail]
+//        manifestPlaceholders = [password: password]
     }
 
     buildTypes {

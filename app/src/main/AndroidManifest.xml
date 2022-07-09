@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Todoary">
         <activity
+            android:name=".feature.auth.ui.TermsDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.auth.ui.LoginActivity"
             android:exported="true">
             <intent-filter>
