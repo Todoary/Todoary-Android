@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/find_pw_toolbar"
+        layout="@layout/toolbar_back" />
+
+    <TextView
+        android:id="@+id/find_pw_id_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="65dp"
+        android:layout_marginStart="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_toolbar"/>
+
+    <TextView
+        android:id="@+id/find_pw_id_check_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증하기"
+        android:textSize="10sp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_login_solid_btn"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="5dp"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/find_pw_id_tv"
+        app:layout_constraintBottom_toBottomOf="@id/find_pw_id_tv"/>
+
+    <EditText
+        android:id="@+id/find_pw_email_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="이메일"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@id/find_pw_id_tv"
+        app:layout_constraintEnd_toEndOf="@id/find_pw_id_check_tv"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_id_tv"/>
+
+    <TextView
+        android:id="@+id/find_pw_id_hint_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*가입시 등록했던 이메일을 입력해 주세요."
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@id/find_pw_email_et"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_email_et"/>
+
+    <TextView
+        android:id="@+id/find_pw_verification_code_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증코드 입력"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_id_hint_tv"/>
+
+    <TextView
+        android:id="@+id/find_pw_verification_code_check_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증하기"
+        android:textSize="10sp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_login_solid_btn"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="5dp"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/find_pw_verification_code_tv"
+        app:layout_constraintBottom_toBottomOf="@id/find_pw_verification_code_tv"/>
+
+    <EditText
+        android:id="@+id/find_pw_verification_code_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="인증 코드"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@id/find_pw_id_tv"
+        app:layout_constraintEnd_toEndOf="@id/find_pw_id_check_tv"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_verification_code_tv"/>
+
+    <TextView
+        android:id="@+id/find_pw_rebuild_pw_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 재설정"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_verification_code_et"/>
+
+    <EditText
+        android:id="@+id/find_pw_rebuild_pw_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="영문, 숫자 포함 8자리 이상"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@id/find_pw_id_tv"
+        app:layout_constraintEnd_toEndOf="@id/find_pw_id_check_tv"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_rebuild_pw_tv"/>
+
+    <EditText
+        android:id="@+id/find_pw_rebuild_pw_check_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호 재입력"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@id/find_pw_id_tv"
+        app:layout_constraintEnd_toEndOf="@id/find_pw_id_check_tv"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_rebuild_pw_et"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:paddingVertical="15dp"
+        android:background="@drawable/bg_login_solid_btn"
+        android:layout_marginBottom="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/find_pw_rebuild_pw_check_et"
+        app:layout_constraintStart_toStartOf="@id/find_pw_rebuild_pw_check_et"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
