@@ -196,7 +196,7 @@
 
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/termscheck_next_btn"
             android:layout_width="304dp"
             android:layout_height="52dp"

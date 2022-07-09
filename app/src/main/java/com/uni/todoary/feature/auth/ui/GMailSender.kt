@@ -14,8 +14,10 @@ import javax.mail.internet.MimeMessage
 class GMailSender : Authenticator(){
     // 보내는 사람 이메일과 비밀번호
     // 추후 수정필요
-    val fromEmail = "kulendar16@gmail.com"
-    val password = "noihuhktysrtpgmc"
+    //val fromEmail = "kulendar16@gmail.com"
+    val fromEmail = "todoary.app@gmail.com"
+    //val password = "noihuhktysrtpgmc"
+    val password = "cprknwdarqtsvkgl"
 
 
 
@@ -27,7 +29,6 @@ class GMailSender : Authenticator(){
 
     //난수발생
     var random_number = (1000..9999).random()
-    //var random_number = 1000
 
 
     //난수 저장해놓기
