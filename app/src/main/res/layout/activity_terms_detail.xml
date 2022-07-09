@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".Register.TermsDetailActivity"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/termsdetail_back_btn"
+                android:layout_width="9dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/backbtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/termsdetail_title_tv"
+                android:layout_width="63dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="115dp"
+                android:layout_marginTop="2dp"
+                app:layout_constraintStart_toEndOf="@id/termscheck_back_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="제목"
+                android:fontFamily="@font/applesdgothicneosb"
+                android:fontWeight="600"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="290dp"
+            android:layout_height="606dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="30dp"
+            android:textSize="@dimen/font_text_size"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper odio montes, adipiscing viverra. Urna cursus et, arcu nulla rhoncus, leo nec urna sit. Tortor vulputate sed aliquet vivamus porttitor lorem quis. Mi aliquet consequat massa mauris vitae amet. Tortor, eget massa faucibus risus faucibus sed sed nulla. Nunc ac tellus purus diam nisl sit ornare. Diam turpis enim faucibus a, nibh fermentum, facilisis maecenas. Nunc nec euismod hac sit vestibulum nisl magnis urna quam.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper odio montes, adipiscing viverra. Urna cursus et, arcu nulla rhoncus, leo nec urna sit. Tortor vulputate sed aliquet vivamus porttitor lorem quis. Mi aliquet consequat massa mauris vitae amet. Tortor, eget massa faucibus risus faucibus sed sed nulla. Nunc ac tellus purus diam nisl sit ornare. Diam turpis enim faucibus a, nibh fermentum, facilisis maecenas. Nunc nec euismod hac sit vestibulum nisl magnis urna quam.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper odio montes, adipiscing viverra. Urna cursus et, arcu nulla rhoncus, leo nec urna sit. Tortor vulputate sed aliquet vivamus porttitor lorem quis. Mi aliquet consequat massa mauris vitae amet. Tortor, eget massa faucibus risus faucibus sed sed
+ "
+
+            android:layout_marginHorizontal="35dp"
+            android:fontFamily="@font/applesdgothicneom"
+            android:gravity="center"
+            />
+    </LinearLayout>
+</ScrollView>

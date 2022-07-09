@@ -2,9 +2,13 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id "kotlin-parcelize"
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
+    task wrapper(type: Wrapper) {
+        gradleVersion = '7.0'
+    }
     compileSdk 31
 
     viewBinding {

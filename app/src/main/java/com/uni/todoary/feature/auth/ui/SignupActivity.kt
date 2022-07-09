@@ -11,11 +11,9 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivitySignupBinding
-import com.uni.todoary.feature.main.MainActivity
 
 class SignupActivity : AppCompatActivity() {
     lateinit var binding : ActivitySignupBinding
@@ -25,15 +23,40 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val backbtn = findViewById<ImageView>(R.id.signup_backbtn_iv)
-        val intent = Intent(this, MainActivity::class.java)
+//        //툴바
+//        setSupportActionBar(binding.signupToolbarTb)
+//        supportActionBar?.setDisplayShowTitleEnabled(false)
+//        supportActionBar?.setTitle("회원 가입")
+//        //supportActionBar!!.setHomeAsUpIndicator(R.drawable.backbtn)
 
+        val backbtn = findViewById<ImageView>(R.id.signup_backbtn_iv)
+        val intent = Intent(this, LoginActivity::class.java)
+
+        // TODO: 회원가입 기능 추가 필요
         signUpCheck()
         backbtn.setOnClickListener {
             startActivity(intent)
         }
 
     }
+
+//    /////////툴바 액션////////
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.toolbar,menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when(item?.itemId){
+//            R.id.toolbar_backbtn_btn -> {
+//                val intent = Intent(this, LoginActivity::class.java)
+//                startActivity(intent)
+//                return true
+//            }
+//            else -> return super.onOptionsItemSelected(item)
+//        }
+//    }
+
     /////////유효성 체크////////
     private fun signUpCheck(){
 
@@ -77,7 +100,7 @@ class SignupActivity : AppCompatActivity() {
         }
         fun GmailSend(){
             val sendbtn = findViewById<Button>(R.id.signup_code_btn)
-            val codebuilder = AlertDialog.Builder(this)
+            val codebuilder = android.app.AlertDialog.Builder(this)
             sendbtn.setOnClickListener {
                 if(emailcheck.isVisible){
                     var email = binding.signupEmailEt.text.toString()
@@ -93,7 +116,7 @@ class SignupActivity : AppCompatActivity() {
 
         codecheckbtn.setOnClickListener {
             var value = sharedPreference.getString("key", "데이터 없음")
-            val checkbuilder = AlertDialog.Builder(this)
+            val checkbuilder = android.app.AlertDialog.Builder(this)
             editor.commit()
             Log.d("key", "value: $value")
             if (randomnum.text.toString() == "$value") {

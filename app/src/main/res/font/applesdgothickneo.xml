@@ -3,30 +3,14 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="700"
-        android:font="@font/applesdgothicneosub1"/>
+        android:font="@font/applesdgothicneob"/>
 
     <font
         android:fontStyle="normal"
         android:fontWeight="600"
-        android:font="@font/applesdgothicneohead"/>
+        android:font="@font/applesdgothicneosb"/>
     <font
         android:fontStyle="normal"
         android:fontWeight="500"
-        android:font="@font/applesdgothicneolar1"/>
-    <font
-        android:fontStyle="normal"
-        android:fontWeight="600"
-        android:font="@font/applesdgothicneolar2"/>
-    <font
-        android:fontStyle="normal"
-        android:fontWeight="600"
-        android:font="@font/applesdgothicneosubbtn"/>
-    <font
-        android:fontStyle="normal"
-        android:fontWeight="600"
-        android:font="@font/applesdgothicneohea"/>
-    <font
-        android:fontStyle="normal"
-        android:fontWeight="600"
-        android:font="@font/applesdgothicneomainbtn"/>
+        android:font="@font/applesdgothicneom"/>
 </font-family>
