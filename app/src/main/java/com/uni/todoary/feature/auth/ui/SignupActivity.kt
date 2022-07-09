@@ -14,6 +14,7 @@ import android.widget.*
 import androidx.core.view.isVisible
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivitySignupBinding
+import com.uni.todoary.ApplicationClass.Companion.mSharedPreferences
 
 class SignupActivity : AppCompatActivity() {
     lateinit var binding : ActivitySignupBinding
@@ -65,8 +66,7 @@ class SignupActivity : AppCompatActivity() {
         val emailcheck=findViewById<TextView>(R.id.signup_emailcheck_tv)
         var emailet= findViewById<EditText>(R.id.signup_email_et)
         val codecheckbtn=findViewById<Button>(R.id.sigunup_confirm_btn)
-        val sharedPreference = getSharedPreferences("key", Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPreference.edit()
+        var editor = mSharedPreferences.edit()
         val randomnum = findViewById<EditText>(R.id.signup_code_et)
         var pwet = findViewById<EditText>(R.id.signup_pw_et)
         val nextbtn = findViewById<Button>(R.id.signup_fin_btn)
@@ -115,10 +115,10 @@ class SignupActivity : AppCompatActivity() {
         }
 
         codecheckbtn.setOnClickListener {
-            var value = sharedPreference.getString("key", "데이터 없음")
+            var value = mSharedPreferences.getString("key", "데이터 없음")
             val checkbuilder = android.app.AlertDialog.Builder(this)
             editor.commit()
-            Log.d("key", "value: $value")
+            //Log.d("key", "value: $value")
             if (randomnum.text.toString() == "$value") {
                 //Toast.makeText(applicationContext, "인증되었습니다.", Toast.LENGTH_SHORT).show()
                 checkbuilder.setTitle("알림")
@@ -242,7 +242,5 @@ class SignupActivity : AppCompatActivity() {
             }
         }
 
-
     }
-
 }
