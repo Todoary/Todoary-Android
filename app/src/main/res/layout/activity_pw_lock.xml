@@ -219,7 +219,6 @@
             android:paddingHorizontal="45dp"
             android:paddingVertical="25dp" />
 
-
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
