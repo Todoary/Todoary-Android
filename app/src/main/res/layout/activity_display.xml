@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/setting_display"
+        layout="@layout/toolbar_back" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="43dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/setting_layout_border">
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="19dp"
+            android:text="글꼴"/>
+        <ImageView
+            android:id="@+id/display_font_btn"
+            android:layout_width="6dp"
+            android:layout_height="13dp"
+            android:background="@drawable/nextbtn"
+            android:layout_marginStart="161dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/setting_layout_border">
+        <TextView
+            android:layout_width="167dp"
+            android:layout_height="19dp"
+            android:text="화면테마"/>
+        <ImageView
+            android:id="@+id/display_theme_btn"
+            android:layout_width="6dp"
+            android:layout_height="13dp"
+            android:background="@drawable/nextbtn"
+            android:layout_marginStart="124dp"/>
+    </LinearLayout>
+
+</LinearLayout>
