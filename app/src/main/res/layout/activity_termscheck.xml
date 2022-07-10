@@ -37,21 +37,16 @@
                 app:layout_constraintStart_toEndOf="@id/termscheck_back_btn"
                 app:layout_constraintTop_toTopOf="parent"
                 android:text="약관동의"
-                android:fontFamily="@font/applesdgothicneosb"
-                android:fontWeight="600"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                style="@style/head_line"
                 android:gravity="center"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="279dp"
             android:layout_height="19dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_text_size"
             android:text="Todoary 서비스 이용약관에 동의해 주세요"
             android:layout_marginTop="63dp"
-            android:fontFamily="@font/applesdgothicneob"
+            style="@style/sub_title_1"
             android:layout_gravity="center"/>
 
         <LinearLayout
@@ -80,13 +75,13 @@
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="7.5dp"
-                    android:fontFamily="@font/applesdgothicneom"/>
+                    style="@style/main_1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:text=" 동의 (필수)"
-                    android:fontFamily="@font/applesdgothicneom"/>
+                    style="@style/main_1"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="290dp"
@@ -108,13 +103,13 @@
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="7.5dp"
-                    android:fontFamily="@font/applesdgothicneom"/>
+                    style="@style/main_1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:text=" 동의 (필수)"
-                    android:fontFamily="@font/applesdgothicneom"/>
+                    style="@style/main_1"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="290dp"
@@ -136,13 +131,13 @@
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="7.5dp"
-                    android:fontFamily="@font/applesdgothicneom"/>
+                    style="@style/main_1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:text=" 동의 (선택)"
-                    android:fontFamily="@font/applesdgothicneom"/>
+                    style="@style/main_1"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="290dp"
@@ -164,13 +159,13 @@
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="7.5dp"
-                    android:fontFamily="@font/applesdgothicneom"/>
+                    style="@style/main_1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:text=" 동의 (선택)"
-                    android:fontFamily="@font/applesdgothicneom"/>
+                    style="@style/main_1"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="290dp"
@@ -191,7 +186,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="7.5dp"
                     android:text="전체 동의"
-                    android:fontFamily="@font/applesdgothicneob"/>
+                    style="@style/sub_title_1"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -203,10 +198,8 @@
             android:layout_marginVertical="200dp"
             android:layout_gravity="center"
             android:text="확인"
-            android:textSize="@dimen/font_mainbtn_size"
-            android:fontFamily="@font/applesdgothicneosb"
+            style="@style/main_btn_1"
             android:background="@drawable/round_button_lar"
-            android:textColor="@color/white"
             android:backgroundTint="@color/color_primary"
             android:layout_marginBottom="20dp"/>
     </LinearLayout>

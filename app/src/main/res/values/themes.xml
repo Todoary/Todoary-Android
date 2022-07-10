@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="android:textColor">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -16,8 +15,64 @@
         <!-- Customize your theme here. -->
     </style>
 
-<!--    &lt;!&ndash; Edit Text Theme &ndash;&gt;-->
-<!--    <style name="EditTextTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
-<!--        <item name="colorAccent">@color/color_primary</item>-->
-<!--    </style>-->
+    <!-- Font Style -->
+    <style name="head_line" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneosb</item>
+        <item name="android:lineSpacingExtra">3.6sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="sub_title_1" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneob</item>
+        <item name="android:lineSpacingExtra">3.2sp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="main_1" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneom</item>
+        <item name="android:lineSpacingExtra">2.8sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="main_2" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneosb</item>
+        <item name="android:lineSpacingExtra">2.8sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">#8D8D8D</item>
+    </style>
+
+    <style name="sub_1" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneom</item>
+        <item name="android:lineSpacingExtra">2.4sp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:textColor">#8D8D8D</item>
+    </style>
+
+    <style name="main_btn_1" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneosb</item>
+        <item name="android:lineSpacingExtra">3.6sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="main_btn_2" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneosb</item>
+        <item name="android:lineSpacingExtra">3.6sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#8D8D8D</item>
+    </style>
+
+    <style name="sub_btn" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneom</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

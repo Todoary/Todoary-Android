@@ -9,8 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="암호입력"
-        android:textStyle="bold"
-        android:textSize="18sp"
+        style="@style/head_line"
         app:layout_constraintVertical_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="암호를 입력해 주세요"
         android:layout_marginTop="16dp"
-        android:textSize="18sp"
+        style="@style/main_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pw_lock_main_tv"/>

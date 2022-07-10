@@ -24,7 +24,6 @@ fun saveUser(user : User){
     val editor = mSharedPreferences.edit()
     editor.putString("user", userGson)
     editor.apply()
-    Log.d("userGson", userGson)
 }
 
 fun getUser() : User{
