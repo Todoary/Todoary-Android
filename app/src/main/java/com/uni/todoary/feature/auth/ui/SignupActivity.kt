@@ -207,7 +207,6 @@ class SignupActivity : AppCompatActivity() {
                     }
                 }
             })
-
         }
 
         emailCheck()
