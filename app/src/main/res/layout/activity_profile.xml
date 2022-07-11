@@ -86,7 +86,7 @@
             android:id="@+id/profile_pwd_btn"
             android:layout_width="6dp"
             android:layout_height="13dp"
-            android:background="@drawable/nextbtn"
+            android:src="@drawable/ic_nextbtn_vector"
             android:layout_marginStart="124dp"
             android:layout_marginTop="2dp"/>
     </LinearLayout>
