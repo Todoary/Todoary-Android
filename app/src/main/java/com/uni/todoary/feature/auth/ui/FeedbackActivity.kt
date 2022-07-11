@@ -18,5 +18,6 @@ class FeedbackActivity : AppCompatActivity(){
         binding.settingFeedback.toolbarBackIv.setOnClickListener {
             startActivity(intent)
         }
+        
     }
 }
