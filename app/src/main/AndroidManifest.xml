@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.uni.todoary" >
 
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -13,6 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Todoary" >
+<!--        <meta-data android:name="com.fromEmail" android:value="${fromEmail}"/>-->
+<!--        <meta-data android:name="com.password" android:value="${password}"/>-->
         <activity
             android:name=".feature.auth.ui.AlarmActivity"
             android:exported="false" />

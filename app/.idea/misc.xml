@@ -20,9 +20,10 @@
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/setting_layout_border.xml" value="0.1385" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/setting_layout_border2.xml" value="0.1385" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/terms_layout_border.xml" value="0.1385" />
+        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/font/applesdgothickneo.xml" value="0.21770833333333334" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_account.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_agreement.xml" value="0.152" />
-        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_alarm.xml" value="0.209375" />
+        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_alarm.xml" value="0.264" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_display.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_feedback.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_find_pw.xml" value="0.25364583333333335" />
@@ -33,11 +34,11 @@
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_main.xml" value="0.209375" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_password.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_profile.xml" value="0.176" />
-        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_profile_edit.xml" value="0.152" />
+        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_profile_edit.xml" value="0.2" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_pw_lock.xml" value="0.209375" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_review.xml" value="0.209375" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_screen.xml" value="0.1" />
-        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_setting.xml" value="0.21656050955414013" />
+        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_setting.xml" value="0.2" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_signup.xml" value="0.152" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_terms.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_terms_detail.xml" value="0.11197916666666667" />

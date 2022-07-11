@@ -11,5 +11,6 @@ class ReviewActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityReviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
 }

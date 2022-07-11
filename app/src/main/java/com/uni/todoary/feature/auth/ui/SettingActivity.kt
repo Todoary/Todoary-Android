@@ -3,6 +3,7 @@ package com.uni.todoary.feature.auth.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.play.core.review.ReviewManager
 import com.uni.todoary.databinding.ActivitySettingBinding
 import com.uni.todoary.databinding.ActivitySignupBinding
 import com.uni.todoary.feature.main.MainActivity
@@ -52,11 +53,12 @@ class SettingActivity : AppCompatActivity() {
             startActivity(feedbackintent)
         }
         binding.settingReviewBtn.setOnClickListener {
-            startActivity(reviewintent)
+            //startActivity(reviewintent)
         }
 
 
     }
+
 
 
 }
