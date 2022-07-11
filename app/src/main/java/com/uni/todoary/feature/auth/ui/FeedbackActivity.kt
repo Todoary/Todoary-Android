@@ -21,10 +21,9 @@ class FeedbackActivity : AppCompatActivity(){
         }
 
         //인스타그램 이동
-        var insta_intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/imjis_o"))
+        val insta_intent=Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/imjis_o"))
         binding.feedbackInstaBtn.setOnClickListener {
             startActivity(insta_intent)
         }
-        
     }
 }

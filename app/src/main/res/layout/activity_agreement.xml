@@ -61,7 +61,7 @@
                     android:id="@+id/agreement_ad_btn"
                     android:layout_width="6dp"
                     android:layout_height="13dp"
-                    aandroid:src="@drawable/ic_nextbtn_vector"
+                    android:src="@drawable/ic_nextbtn_vector"
                     android:layout_marginStart="124dp"/>
             </LinearLayout>
             <LinearLayout
