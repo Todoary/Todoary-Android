@@ -1,48 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/terms_detail_toolbar"
+        layout="@layout/toolbar_back" />
+<ScrollView
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".Register.TermsDetailActivity"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <ImageView
-                android:id="@+id/termsdetail_back_btn"
-                android:layout_width="9dp"
-                android:layout_height="17dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="4dp"
-                android:src="@drawable/backbtn"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:id="@+id/termsdetail_title_tv"
-                android:layout_width="63dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="115dp"
-                android:layout_marginTop="2dp"
-                app:layout_constraintStart_toEndOf="@id/termscheck_back_btn"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="제목"
-                android:fontFamily="@font/applesdgothicneosb"
-                android:fontWeight="600"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:gravity="center"/>
-        </LinearLayout>
 
         <TextView
             android:layout_width="290dp"
@@ -58,6 +27,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper odio montes
             android:layout_marginHorizontal="35dp"
             android:fontFamily="@font/applesdgothicneom"
             android:gravity="center"
+            android:layout_gravity="center_horizontal"
             />
-    </LinearLayout>
 </ScrollView>
+</LinearLayout>

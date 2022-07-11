@@ -13,10 +13,13 @@ class TermsDetailActivity : AppCompatActivity() {
         binding = ActivityTermsDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val backbtn = binding.termsdetailBackBtn
+
         val backintent = Intent(this, TermscheckActivity::class.java)
-        backbtn.setOnClickListener{
+        //툴바
+        binding.termsDetailToolbar.toolbarBackMainTv.text = "개인 정보 취급방침"
+        binding.termsDetailToolbar.toolbarBackIv.setOnClickListener {
             startActivity(backintent)
         }
+
     }
 }

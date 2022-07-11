@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <!--    <androidx.appcompat.widget.Toolbar-->
-    <!--        android:id="@+id/signup_toolbar_tb"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="15dp"-->
-    <!--        android:background="@color/white"-->
-    <!--        android:minHeight="?attr/actionBarSize"-->
-    <!--        android:contentInsetStart="0dp">-->
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/sign_up_toolbar"
+        layout="@layout/toolbar_back" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="vertical"
         tools:context=".Register.SignupActivity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
         <LinearLayout
@@ -53,10 +52,10 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/signup_line2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="64dp">
+            android:layout_marginTop="60dp">
             <TextView
                 android:id="@+id/signup_titleid_tv"
                 android:layout_width="112dp"
@@ -88,6 +87,8 @@
             android:layout_marginStart="@dimen/signup_marginstart"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
+            android:singleLine="true"
+            android:lines="1"
             style="@style/main_2"/>
         <TextView
             android:id="@+id/signup_emailcheck_tv"
@@ -132,7 +133,9 @@
             android:layout_height="40dp"
             style="@style/main_2"
             android:layout_marginStart="@dimen/signup_marginstart"
-            android:layout_marginTop="7dp"/>
+            android:layout_marginTop="7dp"
+            android:singleLine="true"
+            android:lines="1"/>
 
         <TextView
             android:id="@+id/signup_titlepw_tv"
@@ -151,6 +154,8 @@
             android:layout_marginStart="@dimen/signup_marginstart"
             android:layout_marginTop="17dp"
             android:hint="영문, 숫자 포함 8자리 이상"
+            android:singleLine="true"
+            android:lines="1"
             style="@style/main_2"/>
 
         <EditText
@@ -159,6 +164,8 @@
             android:layout_height="40dp"
             android:layout_marginStart="@dimen/signup_marginstart"
             android:hint="비민번호 재입력"
+            android:singleLine="true"
+            android:lines="1"
             style="@style/main_2"
             android:layout_marginTop="40dp"/>
         <TextView
@@ -190,6 +197,8 @@
             android:layout_marginStart="@dimen/signup_marginstart"
             android:layout_marginTop="16dp"
             android:hint="이름을 입력해 주세요"
+            android:singleLine="true"
+            android:lines="1"
             style="@style/main_2"/>
         <TextView
             android:id="@+id/signup_namedetail_tv"
@@ -219,8 +228,9 @@
             android:layout_marginStart="@dimen/signup_marginstart"
             android:layout_marginTop="16dp"
             android:hint="Todoary에서 사용하실 닉네임을 알려주세요"
+            android:singleLine="true"
+            android:lines="1"
             style="@style/main_2"/>
-
         <TextView
             android:id="@+id/signup_nickdetail_tv"
             android:layout_width="281dp"
@@ -243,5 +253,5 @@
             android:layout_marginBottom="20dp"
             android:layout_gravity="center"/>
     </LinearLayout>
-    <!--    </androidx.appcompat.widget.Toolbar>-->
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

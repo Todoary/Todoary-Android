@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/terms_check_toolbar"
+        layout="@layout/toolbar_back" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".Register.TermscheckActivity"
         android:orientation="vertical">
 
@@ -45,6 +53,7 @@
             android:layout_width="279dp"
             android:layout_height="19dp"
             android:text="Todoary 서비스 이용약관에 동의해 주세요"
+            android:layout_marginTop="60dp"
             android:layout_marginTop="63dp"
             style="@style/sub_title_1"
             android:layout_gravity="center"/>
@@ -201,6 +210,8 @@
             style="@style/main_btn_1"
             android:background="@drawable/round_button_lar"
             android:backgroundTint="@color/color_primary"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="10dp"/>
     </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>
+

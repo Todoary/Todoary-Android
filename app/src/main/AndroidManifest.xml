@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uni.todoary">
+    package="com.uni.todoary" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".ApplicationClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".ApplicationClass"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Todoary">
+        android:theme="@style/Theme.Todoary" >
+        <activity
+            android:name=".feature.auth.ui.AlarmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.auth.ui.SettingActivity"
+            android:exported="false" />
         <activity
             android:name=".feature.auth.ui.TermsDetailActivity"
             android:exported="false" />
         <activity
             android:name=".feature.auth.ui.LoginActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.main.MainActivity"/>
-        <activity android:name=".feature.auth.ui.PwLockActivity"/>
-        <activity android:name=".feature.auth.ui.SignupActivity"/>
-        <activity android:name=".feature.auth.ui.TermscheckActivity"/>
-        <activity android:name=".feature.auth.ui.FindPwActivity"/>
+        <activity android:name=".feature.main.MainActivity" />
+        <activity android:name=".feature.auth.ui.AgreementActivity" />
+        <activity android:name=".feature.auth.ui.DisplayActivity" />
+        <activity android:name=".feature.auth.ui.FeedbackActivity" />
+        <activity android:name=".feature.auth.ui.GuideActivity" />
+        <activity android:name=".feature.auth.ui.PasswordActivity" />
+        <activity android:name=".feature.auth.ui.ProfileActivity" />
+        <activity android:name=".feature.auth.ui.FontActivity"/>
+        <activity android:name=".feature.auth.ui.PwLockActivity" />
+        <activity android:name=".feature.auth.ui.SignupActivity" />
+        <activity android:name=".feature.auth.ui.TermscheckActivity" />
+        <activity android:name=".feature.auth.ui.FindPwActivity" />
+        <activity android:name=".feature.auth.ui.ProfileEditActivity"/>
     </application>
 
 </manifest>

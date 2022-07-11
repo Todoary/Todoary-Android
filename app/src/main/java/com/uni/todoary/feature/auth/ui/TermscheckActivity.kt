@@ -17,7 +17,6 @@ class TermscheckActivity : AppCompatActivity() {
         binding = ActivityTermscheckBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val backbtn = binding.termscheckBackBtn
         val backintent = Intent(this, SignupActivity::class.java)
         val allcheck = binding.termscheckAllCheck
         val nextbtn = binding.termscheckNextBtn
@@ -30,7 +29,10 @@ class TermscheckActivity : AppCompatActivity() {
         val detail3 = binding.termscheck3Detail
         val detail4 = binding.termscheck4Detail
         val detailintent=Intent(this, TermsDetailActivity::class.java)
-        backbtn.setOnClickListener{
+
+        //툴바
+        binding.termsCheckToolbar.toolbarBackMainTv.text = "약관동의"
+        binding.termsCheckToolbar.toolbarBackIv.setOnClickListener {
             startActivity(backintent)
         }
         allcheck.setOnClickListener {

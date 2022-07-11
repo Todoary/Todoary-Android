@@ -24,39 +24,20 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        //툴바
-//        setSupportActionBar(binding.signupToolbarTb)
-//        supportActionBar?.setDisplayShowTitleEnabled(false)
-//        supportActionBar?.setTitle("회원 가입")
-//        //supportActionBar!!.setHomeAsUpIndicator(R.drawable.backbtn)
-
-        val backbtn = findViewById<ImageView>(R.id.signup_backbtn_iv)
         val intent = Intent(this, LoginActivity::class.java)
-
-        // TODO: 회원가입 기능 추가 필요
-        signUpCheck()
-        backbtn.setOnClickListener {
+        //툴바
+        binding.signUpToolbar.toolbarBackMainTv.text = "회원가입"
+        binding.signUpToolbar.toolbarBackIv.setOnClickListener {
             startActivity(intent)
         }
 
+
+        // TODO: 회원가입 기능 추가 필요
+        signUpCheck()
+
+
     }
 
-//    /////////툴바 액션////////
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.toolbar,menu)
-//        return true
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when(item?.itemId){
-//            R.id.toolbar_backbtn_btn -> {
-//                val intent = Intent(this, LoginActivity::class.java)
-//                startActivity(intent)
-//                return true
-//            }
-//            else -> return super.onOptionsItemSelected(item)
-//        }
-//    }
 
     /////////유효성 체크////////
     private fun signUpCheck(){
