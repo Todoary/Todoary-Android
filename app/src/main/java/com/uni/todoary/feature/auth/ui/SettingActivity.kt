@@ -53,7 +53,7 @@ class SettingActivity : AppCompatActivity() {
             startActivity(feedbackintent)
         }
         binding.settingReviewBtn.setOnClickListener {
-            //startActivity(reviewintent)
+            startActivity(reviewintent)
         }
 
 
