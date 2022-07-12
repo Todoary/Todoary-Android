@@ -54,7 +54,6 @@
             android:layout_height="19dp"
             android:text="Todoary 서비스 이용약관에 동의해 주세요"
             android:layout_marginTop="60dp"
-            android:layout_marginTop="63dp"
             style="@style/sub_title_1"
             android:layout_gravity="center"/>
 
@@ -113,12 +112,14 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="7.5dp"
                     style="@style/main_1"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:layout_marginTop="15dp"
                     android:text=" 동의 (필수)"
                     style="@style/main_1"/>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="290dp"
