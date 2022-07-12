@@ -5,8 +5,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-//Properties properties = new Properties()
-//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     aaptOptions {
@@ -32,11 +32,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-//        buildConfigField "String", "fromEmail", properties['fromEmail']
-//        buildConfigField "String", "password", properties['password']
-//
-//        manifestPlaceholders = [fromEmail: fromEmail]
-//        manifestPlaceholders = [password: password]
+
+        buildConfigField("String", "TODOARY_EMAIL", properties.getProperty("todoary_gmail"))
+        buildConfigField("String", "TODOARY_EMAIL_PW", properties.getProperty("todoary_gmail_pw"))
     }
 
     buildTypes {

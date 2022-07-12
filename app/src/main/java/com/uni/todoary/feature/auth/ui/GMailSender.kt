@@ -1,6 +1,7 @@
 package com.uni.todoary.feature.auth.ui
 
 import com.uni.todoary.ApplicationClass.Companion.mSharedPreferences
+import com.uni.todoary.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,9 +14,8 @@ import javax.mail.internet.MimeMessage
 
 class GMailSender : Authenticator(){
     // 보내는 사람 이메일과 비밀번호
-    val fromEmail = "todoary.app@gmail.com"
-    val password = "cprknwdarqtsvkgl"
-
+    val fromEmail = BuildConfig.TODOARY_EMAIL
+    val password = BuildConfig.TODOARY_EMAIL_PW
 
 
     // 보내는 사람 계정 확인
