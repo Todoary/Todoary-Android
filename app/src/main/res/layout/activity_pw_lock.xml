@@ -214,7 +214,7 @@
             android:layout_width="38dp"
             android:layout_height="36dp"
             android:layout_gravity="center"
-            android:background="@drawable/ic_kaypad_back"
+            android:background="@drawable/ic_back_keypad"
             android:paddingHorizontal="45dp"
             android:paddingVertical="25dp" />
     </GridLayout>
