@@ -10,11 +10,17 @@ import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityLoginBinding
 import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.main.MainActivity
 import com.uni.todoary.util.getUser
 import com.uni.todoary.util.saveUser
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
     override fun initAfterBinding() {
+
+        binding.loginExitBtn.setOnClickListener {
+            val exitIntent = Intent(this, MainActivity::class.java)
+            startActivity(exitIntent)
+        }
 
         binding.loginPwEt.setOnEditorActionListener(object : TextView.OnEditorActionListener{
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {

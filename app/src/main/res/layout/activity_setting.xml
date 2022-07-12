@@ -38,8 +38,7 @@
                 <TextView
                     android:layout_width="29dp"
                     android:layout_height="19dp"
-                    android:text="알림"
-                    style="@style/main_3"/>
+                    android:text="알림"/>
                 <ImageView
                     android:id="@+id/setting_alarm_btn"
                     android:layout_width="6dp"
@@ -55,18 +54,10 @@
                 android:layout_marginTop="18dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/setting_layout_border">
-                <ImageView
-                    android:layout_width="20.5dp"
-                    android:layout_height="19.5dp"
-                    android:src="@drawable/ic_display_vector"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginStart="2dp"/>
                 <TextView
                     android:layout_width="29dp"
                     android:layout_height="19dp"
-                    android:text="화면"
-                    style="@style/main_3"/>
+                    android:text="화면"/>
                 <ImageView
                     android:id="@+id/setting_display_btn"
                     android:layout_width="6dp"
@@ -82,18 +73,10 @@
                 android:layout_marginTop="18dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/setting_layout_border">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_account_vector"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginStart="2dp"/>
                 <TextView
                     android:layout_width="29dp"
                     android:layout_height="19dp"
-                    android:text="계정"
-                    style="@style/main_3"/>
+                    android:text="계정"/>
                 <ImageView
                     android:id="@+id/setting_profile_btn"
                     android:layout_width="6dp"
@@ -109,18 +92,10 @@
                 android:layout_marginTop="18dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/setting_layout_border">
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="21dp"
-                    android:src="@drawable/ic_pwd_vector"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginStart="2dp"/>
                 <TextView
                     android:layout_width="29dp"
                     android:layout_height="19dp"
-                    android:text="암호"
-                    style="@style/main_3"/>
+                    android:text="암호"/>
                 <ImageView
                     android:id="@+id/setting_pwd_btn"
                     android:layout_width="6dp"
@@ -136,18 +111,10 @@
                 android:layout_marginTop="18dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/setting_layout_border">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_guide_vector"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginStart="2dp"/>
                 <TextView
                     android:layout_width="106dp"
                     android:layout_height="19dp"
-                    android:text="Todoary 가이드"
-                    style="@style/main_3"/>
+                    android:text="Todoary 가이드"/>
                 <ImageView
                     android:id="@+id/setting_guide_btn"
                     android:layout_width="6dp"
@@ -173,8 +140,7 @@
                 <TextView
                     android:layout_width="81dp"
                     android:layout_height="19dp"
-                    android:text="약관 및 정책"
-                    style="@style/main_3"/>
+                    android:text="약관 및 정책"/>
                 <ImageView
                     android:id="@+id/setting_agreement_btn"
                     android:layout_width="6dp"
@@ -198,10 +164,9 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginStart="2dp"/>
                 <TextView
-                    android:layout_width="58dp"
+                    android:layout_width="29dp"
                     android:layout_height="19dp"
-                    android:text="문의하기"
-                    style="@style/main_3"/>
+                    android:text="문의하기"/>
                 <ImageView
                     android:id="@+id/setting_feedback_btn"
                     android:layout_width="6dp"
@@ -217,18 +182,10 @@
                 android:layout_marginTop="18dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/setting_layout_border">
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_review_vector"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginStart="2dp"/>
                 <TextView
                     android:layout_width="78dp"
                     android:layout_height="19dp"
-                    android:text="리뷰 남기기"
-                    style="@style/main_3"/>
+                    android:text="리뷰 남기기"/>
                 <ImageView
                     android:id="@+id/setting_review_btn"
                     android:layout_width="6dp"
@@ -249,15 +206,13 @@
                     android:layout_width="29dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="16dp"
-                    android:text="버전"
-                    style="@style/main_3"/>
+                    android:text="버전"/>
 
                 <TextView
                     android:id="@+id/setting_ver_tv"
                     android:layout_width="26dp"
                     android:layout_height="35dp"
                     android:text="1.0"
-                    style="@style/main_3"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="242dp"/>
             </LinearLayout>

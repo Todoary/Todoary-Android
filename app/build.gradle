@@ -5,8 +5,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-//Properties properties = new Properties()
-//Properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
 
     compileSdk 31
@@ -20,9 +21,6 @@ android {
     }
 
 
-//    def todoary_email = properties.getProperty('fromEmail')
-//    def todoary_password = properties.getProperty('password')
-
     defaultConfig {
         applicationId "com.uni.todoary"
         minSdk 21
@@ -31,9 +29,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "TODOARY_EMAIL", properties.getProperty("todoary_gmail"))
+        buildConfigField("String", "TODOARY_EMAIL_PW", properties.getProperty("todoary_gmail_pw"))
 
-//        manifestPlaceholders = [fromEmail: todoary_email]
-//        manifestPlaceholders = [password: todoary_password]
     }
 
     buildTypes {
@@ -64,12 +62,12 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.4.0'
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
 
+    //Circle ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     //InAppReviews
     implementation 'com.google.android.play:review-ktx:2.0.0'
 
-    //Circle ImageView
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-    
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
