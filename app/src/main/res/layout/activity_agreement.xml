@@ -11,6 +11,7 @@
         layout="@layout/toolbar_back" />
 
             <LinearLayout
+                android:id="@+id/agreement_inform_ll"
                 android:layout_width="300dp"
                 android:layout_height="35dp"
                 android:orientation="horizontal"
@@ -30,6 +31,7 @@
                     android:layout_marginStart="161dp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/agreement_service_ll"
                 android:layout_width="300dp"
                 android:layout_height="35dp"
                 android:orientation="horizontal"
@@ -49,6 +51,7 @@
                     android:layout_marginStart="124dp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/agreement_ad_ll"
                 android:layout_width="300dp"
                 android:layout_height="35dp"
                 android:orientation="horizontal"
@@ -68,6 +71,7 @@
                     android:layout_marginStart="124dp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/agreement_location_ll"
                 android:layout_width="300dp"
                 android:layout_height="35dp"
                 android:orientation="horizontal"
