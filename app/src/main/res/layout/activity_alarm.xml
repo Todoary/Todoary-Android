@@ -28,8 +28,8 @@
                 android:layout_width="92dp"
                 android:layout_height="19dp"
                 android:text="Todoary 알림"
-                style="@style/main_3"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="2dp"
+                style="@style/setting_list"/>
             <ImageView
                 android:id="@+id/alarm_todoary_iv"
                 android:layout_width="16.6dp"
@@ -56,7 +56,7 @@
                 android:layout_width="92dp"
                 android:layout_height="19dp"
                 android:text="하루기록 알림"
-                style="@style/main_3"
+                style="@style/setting_list"
                 android:layout_marginTop="2dp"/>
             <ImageView
                 android:id="@+id/alarm_day_iv"

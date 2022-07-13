@@ -1,8 +1,7 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.setting.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.uni.todoary.databinding.ActivityDisplayBinding
 
@@ -21,7 +20,7 @@ class DisplayActivity : AppCompatActivity(){
         binding.settingDisplay.toolbarBackIv.setOnClickListener {
             startActivity(intent)
         }
-        binding.displayFontBtn.setOnClickListener {
+        binding.displayFontLl.setOnClickListener {
             startActivity(fontintent)
         }
 

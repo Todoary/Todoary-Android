@@ -8,7 +8,7 @@
     android:orientation="vertical">
     <include
         android:id="@+id/sign_up_toolbar"
-        layout="@layout/toolbar_back" />
+        layout="@layout/toolbar_back"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,7 +16,7 @@
     <LinearLayout
         android:orientation="vertical"
         tools:context=".Register.SignupActivity"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
@@ -25,13 +25,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
             android:layout_marginTop="60dp">
             <TextView
                 android:id="@+id/signup_titleid_tv"
                 android:layout_width="112dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginStart="@dimen/signup_marginstart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:text="아이디"
@@ -75,12 +76,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="6dp">
             <TextView
                 android:id="@+id/signup_titlecode_tv"
                 android:layout_width="112dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="@dimen/signup_marginstart"
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/signup_email_et"
