@@ -3,9 +3,8 @@ package com.uni.todoary.feature.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivityMainBinding
-import com.uni.todoary.feature.auth.ui.SettingActivity
+import com.uni.todoary.feature.setting.ui.SettingActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding

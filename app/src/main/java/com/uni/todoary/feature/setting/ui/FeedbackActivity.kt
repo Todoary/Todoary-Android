@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.setting.ui
 
 import android.content.Intent
 import android.os.Bundle

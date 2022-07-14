@@ -1,9 +1,8 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.setting.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.uni.todoary.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity(){

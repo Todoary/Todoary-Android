@@ -1,15 +1,15 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.setting.ui
 
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
-import com.uni.todoary.databinding.ActivityReviewBinding
+import com.uni.todoary.databinding.ActivityGuideBinding
 
-class ReviewActivity : AppCompatActivity(){
-    lateinit var binding: ActivityReviewBinding
+class GuideActivity : AppCompatActivity(){
+    lateinit var binding: ActivityGuideBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityReviewBinding.inflate(layoutInflater)
+        binding = ActivityGuideBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 }
