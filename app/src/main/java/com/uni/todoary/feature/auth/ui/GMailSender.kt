@@ -58,7 +58,7 @@ class GMailSender : Authenticator(){
             message.sender = InternetAddress(fromEmail)                                 // 보내는 사람 설정
             message.addRecipient(Message.RecipientType.TO, InternetAddress(toEmail))    // 받는 사람 설정
             message.subject = "Todoary 인증메일입니다."                                 // 이메일 제목
-            message.setText("$random_number"+" 을 인증번호란에 입력해주세요.")          // 이메일 내용
+            message.setText("인증번호 [$random_number]을 입력해 주세요.")          // 이메일 내용
 
 
             // 전송
