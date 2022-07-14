@@ -43,7 +43,7 @@
                 android:layout_height="20dp"
                 android:switchMinWidth="32dp"
                 android:layout_marginStart="136dp"
-                style="@style/main_3"/>
+                style="@style/setting_list"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="300dp"
@@ -71,7 +71,7 @@
                 android:layout_height="20dp"
                 android:switchMinWidth="32dp"
                 android:layout_marginStart="136dp"
-                style="@style/main_3"/>
+                style="@style/setting_list"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
