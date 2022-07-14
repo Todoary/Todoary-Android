@@ -14,20 +14,16 @@
     android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/termscheck_detail_tv"
             android:layout_width="290dp"
-            android:layout_height="606dp"
+            android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_marginTop="30dp"
-            android:textSize="@dimen/font_text_size"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper odio montes, adipiscing viverra. Urna cursus et, arcu nulla rhoncus, leo nec urna sit. Tortor vulputate sed aliquet vivamus porttitor lorem quis. Mi aliquet consequat massa mauris vitae amet. Tortor, eget massa faucibus risus faucibus sed sed nulla. Nunc ac tellus purus diam nisl sit ornare. Diam turpis enim faucibus a, nibh fermentum, facilisis maecenas. Nunc nec euismod hac sit vestibulum nisl magnis urna quam.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper odio montes, adipiscing viverra. Urna cursus et, arcu nulla rhoncus, leo nec urna sit. Tortor vulputate sed aliquet vivamus porttitor lorem quis. Mi aliquet consequat massa mauris vitae amet. Tortor, eget massa faucibus risus faucibus sed sed nulla. Nunc ac tellus purus diam nisl sit ornare. Diam turpis enim faucibus a, nibh fermentum, facilisis maecenas. Nunc nec euismod hac sit vestibulum nisl magnis urna quam.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ullamcorper odio montes, adipiscing viverra. Urna cursus et, arcu nulla rhoncus, leo nec urna sit. Tortor vulputate sed aliquet vivamus porttitor lorem quis. Mi aliquet consequat massa mauris vitae amet. Tortor, eget massa faucibus risus faucibus sed sed
- "
-
+            android:text="@string/termsdetail_string"
             android:layout_marginHorizontal="35dp"
-            android:fontFamily="@font/applesdgothicneom"
+            style="@style/main_2"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
-            />
+            android:layout_marginBottom="20dp"/>
 </ScrollView>
 </LinearLayout>

@@ -23,55 +23,61 @@
             android:src="@color/gray"/>
 
         <LinearLayout
-            android:layout_width="85dp"
+            android:layout_width="190dp"
             android:layout_height="50dp"
             android:orientation="vertical"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp">
             <TextView
                 android:id="@+id/profile_name_tv"
-                android:layout_width="130dp"
-                android:layout_height="19dp"
-                android:text="닉네임"/>
+                android:layout_width="150dp"
+                android:layout_height="22dp"
+                android:text="닉네임"
+                style="@style/head_line"/>
             <TextView
                 android:id="@+id/profile_intro_tv"
-                android:layout_width="84dp"
+                android:layout_width="190dp"
                 android:layout_height="17dp"
                 android:layout_marginTop="10dp"
-                android:text="J가 되고싶은 P"/>
+                android:text="J가 되고싶은 P"
+                style="@style/main_1"/>
 
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/profile_edit_btn"
-            android:layout_width="78dp"
-            android:layout_height="26dp"
-            android:background="@drawable/bg_profile_stroke_btn"
-            android:layout_marginStart="31dp"
-            android:textSize="11dp"
-            android:textColor="#747373"
-            android:text="프로필 변경"
-            android:layout_gravity="center_vertical"/>
     </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/profile_edit_btn"
+        android:layout_width="118dp"
+        android:layout_height="31dp"
+        android:background="@drawable/bg_profile_stroke_btn"
+        android:textSize="11dp"
+        android:textColor="#747373"
+        android:text="프로필 변경"
+        android:layout_marginTop="14dp"
+        android:layout_gravity="center_horizontal"/>
+
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="34dp"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/setting_layout_border">
         <TextView
             android:layout_width="40dp"
             android:layout_height="17dp"
-            android:text="계정"/>
+            android:text="계정"
+            style="@style/main_1"/>
         <TextView
             android:id="@+id/profile_id_tv"
-            android:layout_width="110dp"
+            android:layout_width="120dp"
             android:layout_height="19dp"
-            android:layout_marginStart="150dp"
-            android:text="asdf@naver.com"/>
+            android:layout_marginStart="135dp"
+            android:text="asdf@naver.com"
+            style="@style/setting_list"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/profile_pwd_ll"
         android:layout_width="300dp"
         android:layout_height="34dp"
         android:orientation="horizontal"
@@ -81,7 +87,8 @@
         <TextView
             android:layout_width="167dp"
             android:layout_height="19dp"
-            android:text="비밀번호 재설정"/>
+            android:text="비밀번호 재설정"
+            style="@style/main_1"/>
         <ImageView
             android:id="@+id/profile_pwd_btn"
             android:layout_width="6dp"
@@ -91,7 +98,7 @@
             android:layout_marginTop="2dp"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/profile_logout_layout"
+        android:id="@+id/profile_logout_ll"
         android:layout_width="300dp"
         android:layout_height="34dp"
         android:orientation="horizontal"
@@ -102,10 +109,11 @@
             android:id="@+id/profile_logout_tv"
             android:layout_width="167dp"
             android:layout_height="19dp"
-            android:text="로그아웃"/>
+            android:text="로그아웃"
+            style="@style/main_1"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/profile_delete_layout"
+        android:id="@+id/profile_delete_ll"
         android:layout_width="300dp"
         android:layout_height="34dp"
         android:orientation="horizontal"
@@ -117,6 +125,7 @@
             android:layout_width="167dp"
             android:layout_height="17dp"
             android:text="계정 삭제하기"
+            style="@style/main_1"
             android:textColor="@color/red"/>
     </LinearLayout>
 </LinearLayout>

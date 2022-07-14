@@ -11,6 +11,7 @@
         layout="@layout/toolbar_back" />
 
     <LinearLayout
+        android:id="@+id/display_font_ll"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:orientation="horizontal"
@@ -20,7 +21,8 @@
         <TextView
             android:layout_width="130dp"
             android:layout_height="19dp"
-            android:text="글꼴"/>
+            android:text="글꼴"
+            style="@style/setting_list"/>
         <ImageView
             android:id="@+id/display_font_btn"
             android:layout_width="6dp"
@@ -29,6 +31,7 @@
             android:layout_marginStart="161dp"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/display_theme_ll"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:orientation="horizontal"
@@ -38,7 +41,8 @@
         <TextView
             android:layout_width="167dp"
             android:layout_height="19dp"
-            android:text="화면테마"/>
+            android:text="화면테마"
+            style="@style/setting_list"/>
         <ImageView
             android:id="@+id/display_theme_btn"
             android:layout_width="6dp"

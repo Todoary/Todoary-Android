@@ -16,7 +16,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".Register.TermscheckActivity"
         android:orientation="vertical">
 
         <TextView
@@ -175,7 +174,7 @@
             android:id="@+id/termscheck_next_btn"
             android:layout_width="304dp"
             android:layout_height="52dp"
-            android:layout_marginVertical="200dp"
+            android:layout_marginTop="200dp"
             android:layout_gravity="center"
             android:text="확인"
             style="@style/main_btn_1"

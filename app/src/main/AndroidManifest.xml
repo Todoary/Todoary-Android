@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Todoary" >
         <activity
-            android:name=".feature.auth.ui.AlarmActivity"
+            android:name=".feature.setting.ui.AlarmActivity"
             android:exported="false" />
         <activity
-            android:name=".feature.auth.ui.SettingActivity"
+            android:name=".feature.setting.ui.SettingActivity"
             android:exported="false" />
         <activity
             android:name=".feature.auth.ui.TermsDetailActivity"
@@ -32,18 +32,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".feature.main.MainActivity" />
-        <activity android:name=".feature.auth.ui.AgreementActivity" />
-        <activity android:name=".feature.auth.ui.DisplayActivity" />
-        <activity android:name=".feature.auth.ui.FeedbackActivity" />
-        <activity android:name=".feature.auth.ui.GuideActivity" />
-        <activity android:name=".feature.auth.ui.PasswordActivity" />
-        <activity android:name=".feature.auth.ui.ProfileActivity" />
-        <activity android:name=".feature.auth.ui.FontActivity"/>
+        <activity android:name=".feature.setting.ui.AgreementActivity" />
+        <activity android:name=".feature.setting.ui.DisplayActivity" />
+        <activity android:name=".feature.setting.ui.FeedbackActivity" />
+        <activity android:name=".feature.setting.ui.GuideActivity" />
+        <activity android:name=".feature.setting.ui.PasswordActivity" />
+        <activity android:name=".feature.setting.ui.ProfileActivity" />
+        <activity android:name=".feature.setting.ui.FontActivity"/>
         <activity android:name=".feature.auth.ui.PwLockActivity" />
         <activity android:name=".feature.auth.ui.SignupActivity" />
-        <activity android:name=".feature.auth.ui.TermscheckActivity" />
+        <activity android:name=".feature.auth.ui.TermscheckActivity"
+            android:exported="false"/>
         <activity android:name=".feature.auth.ui.FindPwActivity" />
-        <activity android:name=".feature.auth.ui.ProfileEditActivity"/>
+        <activity android:name=".feature.setting.ui.ProfileEditActivity"/>
     </application>
 
 </manifest>
