@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.uni.todoary.databinding.ActivityAgreementBinding
+import com.uni.todoary.feature.auth.ui.TermsDetailActivity
 
 class AgreementActivity : AppCompatActivity(){
     lateinit var binding: ActivityAgreementBinding
@@ -18,5 +19,29 @@ class AgreementActivity : AppCompatActivity(){
         binding.settingAgreement.toolbarBackIv.setOnClickListener {
             startActivity(intent)
         }
+
+        binding.agreementInformLl.setOnClickListener {
+            val detail_intent = Intent(this, TermsDetailActivity::class.java)
+            detail_intent.putExtra("key","1")
+            startActivity(detail_intent)
+
+        }
+        binding.agreementServiceLl.setOnClickListener {
+            val detail_intent = Intent(this, TermsDetailActivity::class.java)
+            detail_intent.putExtra("key","2")
+            startActivity(detail_intent)
+        }
+        binding.agreementAdLl.setOnClickListener {
+            val detail_intent = Intent(this, TermsDetailActivity::class.java)
+            detail_intent.putExtra("key","3")
+            startActivity(detail_intent)
+        }
+        binding.agreementLocationLl.setOnClickListener {
+            val detail_intent = Intent(this, TermsDetailActivity::class.java)
+            detail_intent.putExtra("key","4")
+            startActivity(detail_intent)
+        }
+
+
     }
 }

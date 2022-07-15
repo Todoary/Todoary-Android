@@ -21,11 +21,11 @@ class ProfileActivity : AppCompatActivity(){
         binding.profilePwdBtn.setOnClickListener {
             //ToDo: 비밀번호 재설정 이벤트
         }
-        binding.profileLogoutLayout.setOnClickListener {
+        binding.profileLogoutLl.setOnClickListener {
             //ToDo: 로그아웃 이벤트
             logout()
         }
-        binding.profileDeleteLayout.setOnClickListener {
+        binding.profileDeleteLl.setOnClickListener {
             //ToDo: 계정 삭제 이벤트
             delete()
         }

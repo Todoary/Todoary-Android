@@ -18,22 +18,25 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/profiledit_picedit_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_width="82dp"
+        android:layout_height="26dp"
+        android:background="@drawable/bg_profile_stroke_btn"
+        android:textSize="11dp"
+        android:textColor="#747373"
         android:text="사진 변경"
-        android:layout_marginTop="10dp"
-        android:textSize="14dp"/>
+        android:layout_marginTop="14dp"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="50dp"
         android:layout_height="17dp"
         android:text="닉네임"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="21dp"
         android:layout_marginStart="31dp"
-        android:textSize="14dp"/>
+        android:textSize="14dp"
+        style="@style/main_1"/>
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/profileedit_name_et"
         android:layout_width="300dp"
@@ -43,6 +46,7 @@
         android:textSize="16dp"
         android:paddingStart="10dp"
         android:text="베어🐻"
+        style="@style/setting_list"
         android:background="@drawable/bg_profile_edit_layer"/>
     <TextView
         android:layout_width="60dp"
@@ -50,7 +54,8 @@
         android:text="한줄소개"
         android:layout_marginTop="20dp"
         android:layout_marginStart="31dp"
-        android:textSize="14dp"/>
+        android:textSize="14dp"
+        style="@style/main_1"/>
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/profileedit_intro_et"
         android:layout_width="300dp"
@@ -61,5 +66,6 @@
         android:textSize="16dp"
         android:paddingStart="10dp"
         android:text="J가 되고싶은 P"
+        style="@style/setting_list"
         android:background="@drawable/bg_profile_edit_layer"/>
 </LinearLayout>

@@ -29,28 +29,28 @@ class SettingActivity : AppCompatActivity() {
         }
 
         //화면 이동
-        binding.settingAlarmBtn.setOnClickListener {
+        binding.settingAlarmLl.setOnClickListener {
             startActivity(alarmintent)
         }
-        binding.settingDisplayBtn.setOnClickListener {
+        binding.settingDisplayLl.setOnClickListener {
             startActivity(displayintent)
         }
-        binding.settingProfileBtn.setOnClickListener {
+        binding.settingProfileLl.setOnClickListener {
             startActivity(profileintent)
         }
-        binding.settingPwdBtn.setOnClickListener {
+        binding.settingPwdLl.setOnClickListener {
             startActivity(pwdintent)
         }
-        binding.settingGuideBtn.setOnClickListener {
+        binding.settingGuideLl.setOnClickListener {
             startActivity(guideintent)
         }
-        binding.settingAgreementBtn.setOnClickListener {
+        binding.settingAgreementLl.setOnClickListener {
             startActivity(agreementintent)
         }
-        binding.settingFeedbackBtn.setOnClickListener {
+        binding.settingFeedbackLl.setOnClickListener {
             startActivity(feedbackintent)
         }
-        binding.settingReviewBtn.setOnClickListener {
+        binding.settingReviewLl.setOnClickListener {
             startActivity(reviewintent)
         }
 

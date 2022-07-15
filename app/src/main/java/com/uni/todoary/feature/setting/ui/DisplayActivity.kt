@@ -20,7 +20,7 @@ class DisplayActivity : AppCompatActivity(){
         binding.settingDisplay.toolbarBackIv.setOnClickListener {
             startActivity(intent)
         }
-        binding.displayFontBtn.setOnClickListener {
+        binding.displayFontLl.setOnClickListener {
             startActivity(fontintent)
         }
 

@@ -41,7 +41,8 @@
         <activity android:name=".feature.setting.ui.FontActivity"/>
         <activity android:name=".feature.auth.ui.PwLockActivity" />
         <activity android:name=".feature.auth.ui.SignupActivity" />
-        <activity android:name=".feature.auth.ui.TermscheckActivity" />
+        <activity android:name=".feature.auth.ui.TermscheckActivity"
+            android:exported="false"/>
         <activity android:name=".feature.auth.ui.FindPwActivity" />
         <activity android:name=".feature.setting.ui.ProfileEditActivity"/>
     </application>
