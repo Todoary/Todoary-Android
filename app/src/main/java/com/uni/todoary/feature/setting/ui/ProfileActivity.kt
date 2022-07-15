@@ -2,11 +2,17 @@ package com.uni.todoary.feature.setting.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.uni.todoary.databinding.ActivityProfileBinding
+import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.auth.ui.PwLockViewModel
+import com.uni.todoary.util.getUser
 
 class ProfileActivity : AppCompatActivity(){
     lateinit var binding: ActivityProfileBinding
+    private val userModel : ProfileViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -18,6 +24,7 @@ class ProfileActivity : AppCompatActivity(){
         binding.settingProfile.toolbarBackIv.setOnClickListener {
             startActivity(intent)
         }
+        initView()
         binding.profilePwdBtn.setOnClickListener {
             //ToDo: 비밀번호 재설정 이벤트
         }
@@ -58,5 +65,16 @@ class ProfileActivity : AppCompatActivity(){
             .show()
 
         //ToDo: 계정삭제 기능
+    }
+
+    private fun initView(){
+        binding.profileIdTv.isSelected = true
+        val userObserver = Observer<User>{user ->
+            binding.profileNameTv.text = user.name
+            binding.profileIntroTv.text = user.intro
+            binding.profileIdTv.text = user.email
+        }
+        userModel.user.observe(this, userObserver)
+        userModel.user.value = getUser()
     }
 }

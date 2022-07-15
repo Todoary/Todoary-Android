@@ -68,12 +68,18 @@
             android:layout_height="17dp"
             android:text="계정"
             style="@style/main_1"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <TextView
             android:id="@+id/profile_id_tv"
-            android:layout_width="120dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="135dp"
-            android:text="asdf@naver.com"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewEnd"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
             style="@style/setting_list"/>
     </LinearLayout>
     <LinearLayout

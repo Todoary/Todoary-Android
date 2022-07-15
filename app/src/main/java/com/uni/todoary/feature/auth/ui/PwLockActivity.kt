@@ -19,7 +19,6 @@ class PwLockActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding
 
     override fun initAfterBinding() {
         initKeypad()
-        Log.d("getUser", getUser().toString())
     }
 
     fun initKeypad(){
