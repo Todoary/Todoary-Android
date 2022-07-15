@@ -6,9 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <include
-        android:id="@+id/setting_toolbar"
-        layout="@layout/toolbar_back" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -19,6 +16,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="50dp">
+
+            <include
+                android:id="@+id/setting_toolbar"
+                layout="@layout/toolbar_back" />
 
             <LinearLayout
                 android:id="@+id/setting_alarm_ll"
