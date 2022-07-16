@@ -15,10 +15,10 @@ class AgreementActivity : AppCompatActivity(){
 
         intent = Intent(this, SettingActivity::class.java)
         //툴바
+        binding.settingAgreement.toolbarBackMainTv.text = "약관 및 정책"
         binding.settingAgreement.toolbarBackIv.setOnClickListener {
             startActivity(intent)
         }
-
 
         binding.agreementInformLl.setOnClickListener {
             val detail_intent = Intent(this, TermsDetailActivity::class.java)

@@ -7,6 +7,9 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_login_btn.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_login_solid_btn.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_login_stroke_btn.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_profile_edit_layer.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_profile_stroke_btn.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_back_keypad.xml" value="0.25333333333333335" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/logo_googlep.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ripple_effect_custom.xml" value="0.25729166666666664" />
@@ -17,7 +20,10 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_find_pw.xml" value="0.536" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_main.xml" value="0.24114583333333334" />
-        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_pw_lock.xml" value="0.208649468892261" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_password.xml" value="0.24114583333333334" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_profile_edit.xml" value="0.24114583333333334" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_pw_lock.xml" value="0.2" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_setting.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_signup.xml" value="0.2265625" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_terms_detail.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_termscheck.xml" value="0.2" />

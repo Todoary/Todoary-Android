@@ -6,13 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <include
-        android:id="@+id/setting_toolbar"
-        layout="@layout/toolbar_back" />
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="vertical"
@@ -21,6 +17,10 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="50dp">
 
+            <include
+                android:id="@+id/setting_toolbar"
+                layout="@layout/toolbar_back" />
+
             <LinearLayout
                 android:id="@+id/setting_alarm_ll"
                 android:layout_width="300dp"
@@ -28,6 +28,7 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/setting_layout_border">
+
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="19.5dp"
