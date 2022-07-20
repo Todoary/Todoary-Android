@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.setting.ui
 
 import android.os.Bundle
 import android.os.PersistableBundle

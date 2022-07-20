@@ -9,6 +9,9 @@ def Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
+    aaptOptions {
+        cruncherEnabled = false
+    }
 
     compileSdk 31
 

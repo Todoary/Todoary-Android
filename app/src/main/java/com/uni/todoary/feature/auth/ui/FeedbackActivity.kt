@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.uni.todoary.databinding.ActivityFeedbackBinding
+import com.uni.todoary.feature.setting.ui.SettingActivity
 
 class FeedbackActivity : AppCompatActivity(){
     lateinit var binding: ActivityFeedbackBinding
@@ -17,7 +18,7 @@ class FeedbackActivity : AppCompatActivity(){
         //툴바
         binding.settingFeedback.toolbarBackMainTv.text = "문의하기"
         binding.settingFeedback.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
 
         //인스타그램 이동
