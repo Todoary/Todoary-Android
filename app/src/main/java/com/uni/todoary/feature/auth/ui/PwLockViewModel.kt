@@ -1,6 +1,5 @@
 package com.uni.todoary.feature.auth.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 

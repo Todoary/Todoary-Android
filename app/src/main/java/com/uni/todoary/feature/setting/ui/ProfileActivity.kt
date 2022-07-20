@@ -75,6 +75,5 @@ class ProfileActivity : AppCompatActivity(){
             binding.profileIdTv.text = user.email
         }
         userModel.user.observe(this, userObserver)
-        userModel.user.value = getUser()
     }
 }
