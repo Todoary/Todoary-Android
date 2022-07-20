@@ -16,7 +16,7 @@ class AlarmActivity : AppCompatActivity(){
         //툴바
         binding.settingAlarmToolbar.toolbarBackMainTv.text = "알림"
         binding.settingAlarmToolbar.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
     }
 }
