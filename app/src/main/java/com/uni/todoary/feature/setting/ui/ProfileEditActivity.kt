@@ -17,17 +17,9 @@ class ProfileEditActivity : AppCompatActivity(){
         binding = ActivityProfileEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        intent = Intent(this, ProfileActivity::class.java)
-        //툴바
-        binding.profileEdit.toolbarBackMainTv.text = "계정"
-        binding.profileEdit.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
-        }
+        initClickListeners()
 
-        binding.profileditPiceditTv.setOnClickListener {
-            editpic()
-        }
-
+        // Data Binding
         val userObserver = Observer<User>{ user ->
             binding.profileeditNameEt.setText(user.name)
             binding.profileeditIntroEt.setText(user.intro)
@@ -37,6 +29,19 @@ class ProfileEditActivity : AppCompatActivity(){
 
     private fun editpic() {
         //Todo: 사진변경 기능 추가
+    }
+
+    private fun initClickListeners(){
+        //툴바
+        binding.profileEdit.toolbarBackMainTv.text = "계정"
+        binding.profileEdit.toolbarBackIv.setOnClickListener {
+            intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.profileditPiceditTv.setOnClickListener {
+            editpic()
+        }
     }
 
     override fun onBackPressed() {

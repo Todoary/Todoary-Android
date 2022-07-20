@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import com.uni.todoary.base.BaseDialog
 import com.uni.todoary.databinding.ActivityProfileBinding
 import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.auth.ui.FindPwActivity
 import com.uni.todoary.feature.auth.ui.PwLockViewModel
 import com.uni.todoary.util.getUser
 
@@ -24,13 +27,31 @@ class ProfileActivity : AppCompatActivity(){
         binding.settingProfile.toolbarBackIv.setOnClickListener {
             startActivity(intent)
         }
+
+        // Data Bidning
         initView()
+
         binding.profilePwdBtn.setOnClickListener {
-            //ToDo: 비밀번호 재설정 이벤트
+            val mIntent = Intent(this, FindPwActivity::class.java)
+            startActivity(mIntent)
         }
         binding.profileLogoutLl.setOnClickListener {
-            //ToDo: 로그아웃 이벤트
-            logout()
+            val dialog = BaseDialog()
+            val btnData = arrayOf("취소", "로그아웃")
+            dialog.arguments = bundleOf(
+                "titleContext" to "알림",
+                "bodyContext" to "로그아웃 하시겠습니까?",
+                "btnData" to btnData
+            )
+            dialog.setButtonClickListener(object: BaseDialog.OnButtonClickListener{
+                override fun onButton1Clicked() {
+
+                }
+                override fun onButton2Clicked() {
+                    logout()
+                }
+            })
+            dialog.show(supportFragmentManager, "logout_dialog")
         }
         binding.profileDeleteLl.setOnClickListener {
             //ToDo: 계정 삭제 이벤트
