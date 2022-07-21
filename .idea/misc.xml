@@ -11,7 +11,13 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_main_profile_name.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_profile_edit_layer.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_profile_stroke_btn.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/calendar_datepick_stroke.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/calendar_nickname_stroke.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/calendar_today_stroke.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_back_keypad.xml" value="0.25333333333333335" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_cal_backbtn.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_cal_nextbtn.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_homesetting_vector.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/logo_googlep.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ripple_effect_custom.xml" value="0.25729166666666664" />
@@ -34,6 +40,8 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_termscheck.xml" value="0.2" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/dialog_custom.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/dialog_more.xml" value="0.536" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/fragment_calendar.xml" value="0.2" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/item_calendar.xml" value="0.1203125" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/toolbar_back.xml" value="0.264" />
       </map>
     </option>
