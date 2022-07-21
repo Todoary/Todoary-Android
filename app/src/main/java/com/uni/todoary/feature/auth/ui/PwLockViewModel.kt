@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PwLockViewModel : ViewModel() {
+    // 현재 패스워드 데이터
     val passward : MutableLiveData<List<Int>> by lazy{
         MutableLiveData<List<Int>>()
     }
@@ -13,7 +14,6 @@ class PwLockViewModel : ViewModel() {
     // LiveData에 리스트를 넣으면 add, remove 등이 Notify가 안되기 때문에
     // 지역변수에 리스트 선언해두고 바꾸면서 LiveData에 그대로 복사해서 업데이트
     fun addPw(number : Int){
-        Log.d("pwpwpwpw", passward.value.toString())
         if(passward.value?.size == 4){
             return
         }

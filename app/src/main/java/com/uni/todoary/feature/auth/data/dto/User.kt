@@ -8,5 +8,5 @@ data class User (
     val name : String,
     val email : String,
     val password : String,
-    val secureKey : ArrayList<Int>?
+    var secureKey : ArrayList<Int>?
 ) : Parcelable

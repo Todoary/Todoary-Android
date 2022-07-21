@@ -55,8 +55,6 @@ class TermscheckActivity : AppCompatActivity() {
         spanString3.setSpan(UnderlineSpan(),0,spanString3.length,0)
         detail3.text = spanString3
 
-
-
         detail1.setOnClickListener {
             val detail_intent = Intent(this, TermsDetailActivity::class.java)
             detail_intent.putExtra("key","1")
