@@ -23,7 +23,7 @@ class FeedbackActivity : AppCompatActivity(){
         //툴바
         binding.settingFeedback.toolbarBackMainTv.text = "문의하기"
         binding.settingFeedback.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
 
         //인스타그램 이동

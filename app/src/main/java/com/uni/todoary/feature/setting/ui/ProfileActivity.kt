@@ -25,7 +25,7 @@ class ProfileActivity : AppCompatActivity(){
         //툴바
         binding.settingProfile.toolbarBackMainTv.text = "계정"
         binding.settingProfile.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
 
         // Data Bidning

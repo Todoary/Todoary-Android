@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="167dp"
                     android:layout_height="19dp"
-                    android:text="광고성 정보 수신"
+                    android:text="마케팅 정보 수신"
                     style="@style/setting_list"/>
                 <ImageView
                     android:id="@+id/agreement_ad_btn"
@@ -70,26 +70,8 @@
                     android:src="@drawable/ic_nextbtn_vector"
                     android:layout_marginStart="124dp"/>
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/agreement_location_ll"
-                android:layout_width="300dp"
-                android:layout_height="35dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="18dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/setting_layout_border">
-                <TextView
-                    android:layout_width="167dp"
-                    android:layout_height="19dp"
-                    android:text="위치정보 이용"
-                    style="@style/setting_list"/>
-                <ImageView
-                    android:id="@+id/agreement_location_btn"
-                    android:layout_width="6dp"
-                    android:layout_height="13dp"
-                    android:src="@drawable/ic_nextbtn_vector"
-                    android:layout_marginStart="124dp"/>
-            </LinearLayout>
+
+
 
 
 

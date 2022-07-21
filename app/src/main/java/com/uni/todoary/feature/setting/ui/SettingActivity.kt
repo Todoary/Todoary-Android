@@ -25,7 +25,7 @@ class SettingActivity : AppCompatActivity() {
         //툴바
         binding.settingToolbar.toolbarBackMainTv.text = "설정"
         binding.settingToolbar.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
 
         //화면 이동
