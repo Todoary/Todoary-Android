@@ -28,7 +28,7 @@ class SignupActivity : AppCompatActivity() {
         //툴바
         binding.signUpToolbar.toolbarBackMainTv.text = "회원가입"
         binding.signUpToolbar.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
 
 

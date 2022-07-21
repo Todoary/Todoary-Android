@@ -16,7 +16,7 @@ class ProfileEditActivity : AppCompatActivity(){
         //툴바
         binding.profileEdit.toolbarBackMainTv.text = "계정"
         binding.profileEdit.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
 
         binding.profileditPiceditTv.setOnClickListener {

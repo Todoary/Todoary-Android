@@ -18,7 +18,7 @@ class DisplayActivity : AppCompatActivity(){
         //툴바
         binding.settingDisplay.toolbarBackMainTv.text = "화면"
         binding.settingDisplay.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
         binding.displayFontLl.setOnClickListener {
             startActivity(fontintent)

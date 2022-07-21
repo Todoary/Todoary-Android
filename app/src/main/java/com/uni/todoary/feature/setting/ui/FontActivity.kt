@@ -17,7 +17,7 @@ class FontActivity : AppCompatActivity(){
         //툴바
         binding.settingFont.toolbarBackMainTv.text = "글꼴"
         binding.settingFont.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
 
         //라디오버튼 이벤트

@@ -6,21 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="50dp">
 
             <include
                 android:id="@+id/setting_toolbar"
                 layout="@layout/toolbar_back" />
-
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
             <LinearLayout
                 android:id="@+id/setting_alarm_ll"
                 android:layout_width="300dp"
@@ -270,7 +275,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="242dp"/>
             </LinearLayout>
-
+            </LinearLayout>
+            </ScrollView>
         </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>

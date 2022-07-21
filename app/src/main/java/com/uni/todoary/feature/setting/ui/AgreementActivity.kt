@@ -17,8 +17,9 @@ class AgreementActivity : AppCompatActivity(){
         //툴바
         binding.settingAgreement.toolbarBackMainTv.text = "약관 및 정책"
         binding.settingAgreement.toolbarBackIv.setOnClickListener {
-            startActivity(intent)
+            finish()
         }
+
 
         binding.agreementInformLl.setOnClickListener {
             val detail_intent = Intent(this, TermsDetailActivity::class.java)
@@ -34,11 +35,6 @@ class AgreementActivity : AppCompatActivity(){
         binding.agreementAdLl.setOnClickListener {
             val detail_intent = Intent(this, TermsDetailActivity::class.java)
             detail_intent.putExtra("key","3")
-            startActivity(detail_intent)
-        }
-        binding.agreementLocationLl.setOnClickListener {
-            val detail_intent = Intent(this, TermsDetailActivity::class.java)
-            detail_intent.putExtra("key","4")
             startActivity(detail_intent)
         }
 
