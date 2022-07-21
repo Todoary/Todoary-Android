@@ -7,15 +7,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.uni.todoary.databinding.ActivityProfileEditBinding
 import com.uni.todoary.feature.auth.data.dto.User
+import android.app.Activity
+import android.provider.MediaStore
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+
 
 class ProfileEditActivity : AppCompatActivity(){
     lateinit var binding: ActivityProfileEditBinding
     private val userModel : ProfileViewModel by viewModels()
+    lateinit var getContent : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                result: ActivityResult ->
+            binding.profileImageIv.setImageURI(result.data?.data)
+        }
 
         initClickListeners()
 
@@ -29,6 +40,11 @@ class ProfileEditActivity : AppCompatActivity(){
 
     private fun editpic() {
         //Todo: 사진변경 기능 추가
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.type = MediaStore.Images.Media.CONTENT_TYPE
+        intent.action = Intent.ACTION_GET_CONTENT
+        getContent.launch(intent)
     }
 
     private fun initClickListeners(){

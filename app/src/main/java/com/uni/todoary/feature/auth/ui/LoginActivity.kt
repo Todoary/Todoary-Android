@@ -10,7 +10,7 @@ import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityLoginBinding
 import com.uni.todoary.feature.auth.data.dto.User
-import com.uni.todoary.feature.main.MainActivity
+import com.uni.todoary.feature.main.ui.MainActivity
 import com.uni.todoary.util.getUser
 import com.uni.todoary.util.saveUser
 

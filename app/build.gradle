@@ -100,4 +100,7 @@ dependencies {
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // SlidingUp Pannel
+    implementation 'com.github.hannesa2:AndroidSlidingUpPanel:4.2.1'
 }

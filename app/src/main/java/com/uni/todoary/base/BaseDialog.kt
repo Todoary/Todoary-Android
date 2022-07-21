@@ -1,11 +1,8 @@
 package com.uni.todoary.base
 
-import android.content.Context
 import android.graphics.Color
-import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.uni.todoary.databinding.DialogCustomBinding

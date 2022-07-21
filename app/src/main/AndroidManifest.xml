@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.main.MainActivity" />
+        <activity android:name=".feature.main.ui.MainActivity" />
         <activity android:name=".feature.setting.ui.AgreementActivity" />
         <activity android:name=".feature.setting.ui.DisplayActivity" />
         <activity android:name=".feature.setting.ui.FeedbackActivity" />

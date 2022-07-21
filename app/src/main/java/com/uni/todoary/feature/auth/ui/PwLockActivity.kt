@@ -3,7 +3,6 @@ package com.uni.todoary.feature.auth.ui
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -11,7 +10,7 @@ import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityPwLockBinding
 import androidx.lifecycle.Observer
 import com.uni.todoary.R
-import com.uni.todoary.feature.main.MainActivity
+import com.uni.todoary.feature.main.ui.MainActivity
 import com.uni.todoary.util.getUser
 
 class PwLockActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding::inflate) {

@@ -16,11 +16,12 @@
         android:orientation="horizontal"
         android:layout_marginTop="60dp"
         android:layout_gravity="center_horizontal">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image_iv"
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:src="@color/gray"/>
+            android:src="@color/gray" />
 
         <LinearLayout
             android:layout_width="190dp"
