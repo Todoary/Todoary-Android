@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id "kotlin-parcelize"
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 def Properties properties = new Properties()
@@ -98,4 +100,11 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/javax.mail.jar')
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // SlidingUp Pannel
+    implementation 'com.github.hannesa2:AndroidSlidingUpPanel:4.2.1'
 }

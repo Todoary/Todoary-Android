@@ -1,6 +1,5 @@
 package com.uni.todoary.util
 
-import android.util.Log
 import com.google.gson.Gson
 import com.uni.todoary.ApplicationClass.Companion.mSharedPreferences
 import com.uni.todoary.feature.auth.data.dto.User

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.uni.todoary.databinding.ActivitySettingBinding
-import com.uni.todoary.feature.main.MainActivity
+import com.uni.todoary.feature.main.ui.MainActivity
 
 class SettingActivity : AppCompatActivity() {
     lateinit var binding : ActivitySettingBinding
@@ -53,10 +53,5 @@ class SettingActivity : AppCompatActivity() {
         binding.settingReviewLl.setOnClickListener {
             startActivity(reviewintent)
         }
-
-
     }
-
-
-
 }

@@ -10,7 +10,7 @@ import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityLoginBinding
 import com.uni.todoary.feature.auth.data.dto.User
-import com.uni.todoary.feature.main.MainActivity
+import com.uni.todoary.feature.main.ui.MainActivity
 import com.uni.todoary.util.getUser
 import com.uni.todoary.util.saveUser
 
@@ -46,7 +46,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         }
         binding.loginBtnGoogleLayout.setOnClickListener {
             // TODO : 아래부분은 더미데이터 User 삽입하는 부분 추후 지우고 소셜로그인 구현
-            val userData = User("King현석", "hyuns6677@gmail.com", "madpotato0606", arrayListOf(3,6,9,5))
+            val userData = User("King현석", "MuYaHo", "hyuns6677@gmail.com", "madpotato0606", arrayListOf(3,6,9,5))
             saveUser(userData)
         }
         binding.loginBtnSignInTv.setOnClickListener {

@@ -15,6 +15,13 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Dialog Style -->
+    <style name="Dialog_more_Theme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowMinWidthMinor">0%</item>
+        <item name="android:windowMinWidthMajor">0%</item>
+    </style>
+
     <!-- Font Style -->
     <style name="head_line" parent="@android:style/Widget.TextView">
         <item name="fontFamily">@font/applesdgothicneosb</item>
