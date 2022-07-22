@@ -21,7 +21,7 @@ class ProfileViewModel : ViewModel() {
 
     fun updateUser(name : String, intro : String){
         val newUser = getUser()
-        newUser.name = name
+        newUser!!.name = name
         newUser.intro = intro
         saveUser(newUser)
         this._user.value = newUser
