@@ -31,7 +31,7 @@ class ProfileActivity : AppCompatActivity(){
         // Data Bidning
         initView()
 
-        binding.profilePwdBtn.setOnClickListener {
+        binding.profilePwdLl.setOnClickListener {
             val mIntent = Intent(this, FindPwActivity::class.java)
             startActivity(mIntent)
         }
