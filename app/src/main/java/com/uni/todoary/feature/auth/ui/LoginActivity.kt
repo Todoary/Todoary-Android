@@ -9,12 +9,16 @@ import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityLoginBinding
+import com.uni.todoary.feature.auth.data.dto.LoginRequest
+import com.uni.todoary.feature.auth.data.dto.LoginResponse
 import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.auth.data.service.AuthService
+import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.feature.main.ui.MainActivity
 import com.uni.todoary.util.getUser
 import com.uni.todoary.util.saveUser
 
-class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
+class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginView {
     override fun initAfterBinding() {
 
         binding.loginExitBtn.setOnClickListener {
@@ -62,16 +66,36 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     // 아이디 패스워드 sharedPreferences에서 확인 후 맞으면 로그인, 틀리면 애니메이션 & 안내메시지
     private fun login(){
-        if (binding.loginIdEt.text.toString() == getUser().email &&
-            binding.loginPwEt.text.toString() == getUser().password) {
-            val mIntent = Intent(this, PwLockActivity::class.java)
-            mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(mIntent)
-            finish()
-        } else {
-            binding.loginPwEt.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
-            binding.loginIdEt.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
-            Snackbar.make(binding.loginBtnTv, "아이디 또는 비밀번호가 틀렸습니다.", Snackbar.LENGTH_SHORT).show()
+        val loginService = AuthService()
+        loginService.setLoginView(this)
+        loginService.logIn()
+
+        val email = binding.emai
+        val pw = Q~~#
+
+        val request = LoginRequest(email, pw)
+
+//        if (binding.loginIdEt.text.toString() == getUser().email &&
+//            binding.loginPwEt.text.toString() == getUser().password) {
+//            val mIntent = Intent(this, PwLockActivity::class.java)
+//            mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//            startActivity(mIntent)
+//            finish()
+//        } else {
+//            binding.loginPwEt.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+//            binding.loginIdEt.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+//            Snackbar.make(binding.loginBtnTv, "아이디 또는 비밀번호가 틀렸습니다.", Snackbar.LENGTH_SHORT).show()
         }
+
+    override fun loginLoading() {
+
+    }
+
+    override fun loginSuccess(result: LoginResponse) {
+
+    }
+
+    override fun loginFailure(code: Int) {
+
     }
 }
