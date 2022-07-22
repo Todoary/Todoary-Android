@@ -27,7 +27,6 @@ class CalendarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_calendar, container, false)
         binding = FragmentCalendarBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
 

@@ -97,7 +97,6 @@
         <item name="android:lineSpacingExtra">2.6sp</item>
         <item name="android:textSize">13sp</item>
         <item name="android:letterSpacing">0.025</item>
-        <item name="android:textColor">#D70000</item>
     </style>
 
     <style name="calendar_date" parent="@android:style/Widget.TextView">
@@ -105,6 +104,13 @@
         <item name="android:lineSpacingExtra">2.8sp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="calendar_month" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneob</item>
+        <item name="android:lineSpacingExtra">3.6sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 </resources>

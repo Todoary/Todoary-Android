@@ -51,8 +51,9 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>):
 
         //날짜 클릭 이벤트
         holder.itemView.setOnClickListener {
-            holder.dayText.setBackgroundResource(R.drawable.calendar_datepick_stroke)
-
+            if(day != selectedDate && day != null) {
+                holder.dayText.setBackgroundResource(R.drawable.calendar_datepick_stroke)
+            }
         }
         //holder.dayText.text=dayList[holder.adapterPosition]
     }
