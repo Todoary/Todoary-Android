@@ -14,6 +14,9 @@ interface RetrofitInterface {
     @POST("/auth/signin")
     fun login(@Body loginInfo: LoginRequest): Call<BaseResponse<LoginResponse>>
 
+    @POST("/auth/signin/auto")
+    fun autoLogin(@Body loginInfo: LoginRequest) : Call<BaseResponse<LoginResponse>>
+
     // ------------ Profile ------------- //
     @GET("/users")
     fun getProfile() : Call<BaseResponse<User>>

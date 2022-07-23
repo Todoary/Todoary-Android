@@ -12,6 +12,7 @@ import com.uni.todoary.util.RetrofitInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.UnknownServiceException
 
 class AuthService {
     private val authService= ApplicationClass.retrofit.create(RetrofitInterface::class.java)
@@ -44,6 +45,27 @@ class AuthService {
             override fun onFailure(call: Call<BaseResponse<LoginResponse>>, t: Throwable) {
                 Log.d("login_API_Failure", t.toString())
             }
+        })
+    }
+
+    fun autoLogin(loginInfo : LoginRequest){
+        loginView.loginLoading()
+        authService.autoLogin(loginInfo).enqueue(object : Callback<BaseResponse<LoginResponse>>{
+            override fun onResponse(
+                call: Call<BaseResponse<LoginResponse>>,
+                response: Response<BaseResponse<LoginResponse>>
+            ) {
+                val resp = response.body()!!
+                when (resp.code){
+                    1000 -> loginView.loginSuccess(resp.result!!)
+                    else -> loginView.loginFailure(resp.code)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<LoginResponse>>, t: Throwable) {
+                Log.d("autoLogin_API_Failure", t.toString())
+            }
+
         })
     }
 

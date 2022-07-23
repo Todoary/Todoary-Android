@@ -23,11 +23,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         // Splash Activity 에서 자동로그인 체크 후 원래 Theme로 변경
         Handler(Looper.getMainLooper()).postDelayed({
             if(getIsAutoLogin()){
-                // TODO : 자동로그인 API 구현
                 val loginService = AuthService()
                 loginService.setLoginView(this)
                 val loginRequest = LoginRequest(getUser()!!.email, getUser()!!.password!!)
-                loginService.logIn(loginRequest)
+                loginService.autoLogin(loginRequest)
             } else {
                 // 일반 로그인화면으로 이동
                 val mIntent = Intent(this, LoginActivity::class.java)
