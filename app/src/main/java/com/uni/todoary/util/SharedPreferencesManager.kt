@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 
-// ------------ Token ----------------- //
+// ------------------------- Token -------------------------------- //
 fun saveXcesToken(AccessToken: String) {
     val editor = mSharedPreferences.edit()
     editor.putString("AccessToken", AccessToken)
@@ -36,6 +36,8 @@ fun removeRefToken(){
     editor.remove("RefreshToken")
     editor.commit()
 }
+
+// ------------------------ User Info ----------------------------- //
 
 fun saveUser(user : User){
     val userGson = Gson().toJson(user)
@@ -69,3 +71,11 @@ fun getSecureKey() : ArrayList<Int>?{
         Gson().fromJson(gsonData, type)
     }
 }
+
+fun saveIsAutoLogin(isTrue : Boolean){
+    val editor = mSharedPreferences.edit()
+    editor.putBoolean("isAutoLogin", isTrue)
+    editor.apply()
+}
+
+fun getIsAutoLogin() = mSharedPreferences.getBoolean("isAutoLogin", false)

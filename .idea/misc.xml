@@ -26,6 +26,7 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/round_button_lar.xml" value="0.13697916666666668" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/round_button_mid.xml" value="0.13697916666666668" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/round_layer.xml" value="0.13697916666666668" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/splash_theme.xml" value="0.1828125" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/font/applesdgothickneo.xml" value="0.13645833333333332" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_alarm.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_find_pw.xml" value="0.536" />
@@ -38,6 +39,7 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_pw_lock.xml" value="0.2" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_setting.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_signup.xml" value="0.2265625" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_splash.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_terms_detail.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_termscheck.xml" value="0.2" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/dialog_custom.xml" value="0.24114583333333334" />

@@ -29,7 +29,8 @@
             android:name=".feature.auth.ui.TermsDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".feature.auth.ui.LoginActivity"
+            android:name=".feature.main.ui.SplashActivity"
+            android:theme="@style/SplashTheme"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".feature.auth.ui.LoginActivity"/>
         <activity android:name=".feature.main.ui.MainActivity" />
         <activity android:name=".feature.setting.ui.AgreementActivity" />
         <activity android:name=".feature.setting.ui.DisplayActivity" />
