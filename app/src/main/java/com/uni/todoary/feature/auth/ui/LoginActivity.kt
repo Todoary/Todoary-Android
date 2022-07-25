@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
-import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
@@ -12,8 +11,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import com.uni.todoary.R
-import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityLoginBinding
 import com.uni.todoary.feature.auth.data.dto.LoginRequest
 import com.uni.todoary.feature.auth.data.dto.LoginResponse
@@ -22,19 +19,25 @@ import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.feature.main.ui.MainActivity
 import com.uni.todoary.util.*
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.uni.todoary.feature.auth.data.view.GetProfileView
+import java.util.*
 
 
 class LoginActivity : AppCompatActivity(), LoginView, GetProfileView {
     lateinit var binding : ActivityLoginBinding
+    private val model : LoginViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        model.loginRequest.observe(this, {
+            Log.d("tata", it.toString())
+        })
 
         // TODO : 로그인 생략버튼, 배포시엔 삭제
         binding.loginExitBtn.setOnClickListener {
@@ -76,11 +79,12 @@ class LoginActivity : AppCompatActivity(), LoginView, GetProfileView {
     // 아이디 패스워드 sharedPreferences에서 확인 후 맞으면 로그인, 틀리면 애니메이션 & 안내메시지
     private fun login() {
         // 로그인 API 호출
-        val loginService = AuthService()
-        loginService.setLoginView(this)
+//        val loginService = AuthService()
+//        loginService.setLoginView(this)
         val request =
             LoginRequest(binding.loginIdEt.text.toString(), binding.loginPwEt.text.toString())
-        loginService.logIn(request)
+//        loginService.logIn(request)
+        model.login(this, request)
     }
 
     fun hideKeyboard(v: View) {

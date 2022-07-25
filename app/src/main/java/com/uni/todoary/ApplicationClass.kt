@@ -4,11 +4,13 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.uni.todoary.config.XAccessTokenInterceptor
+import dagger.hilt.android.HiltAndroidApp
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+@HiltAndroidApp
 class ApplicationClass : Application() {
     companion object{
         const val X_ACCESS_TOKEN: String = "Authorization"         // Access Token Key
