@@ -17,10 +17,6 @@ import com.uni.todoary.util.saveUser
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
     override fun initAfterBinding() {
 
-        binding.loginExitBtn.setOnClickListener {
-            val exitIntent = Intent(this, MainActivity::class.java)
-            startActivity(exitIntent)
-        }
 
         binding.loginPwEt.setOnEditorActionListener(object : TextView.OnEditorActionListener{
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
@@ -50,7 +46,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             saveUser(userData)
         }
         binding.loginBtnSignInTv.setOnClickListener {
-            val mIntent = Intent(this, SignupActivity::class.java)
+            val mIntent = Intent(this, TermscheckActivity::class.java)
             mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(mIntent)
         }

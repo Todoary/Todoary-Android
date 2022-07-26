@@ -2,6 +2,7 @@ package com.uni.todoary.feature.setting.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -21,12 +22,14 @@ class ProfileActivity : AppCompatActivity(){
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        intent = Intent(this, SettingActivity::class.java)
         //툴바
         binding.settingProfile.toolbarBackMainTv.text = "계정"
         binding.settingProfile.toolbarBackIv.setOnClickListener {
             finish()
         }
+
+        //닉넴 및 한줄소개 변경
+        Applychange()
 
         // Data Bidning
         initView()
@@ -78,6 +81,22 @@ class ProfileActivity : AppCompatActivity(){
         }
     }
 
+    private fun Applychange() {
+        val name = binding.profileNameTv
+        val intro = binding.profileIntroTv
+        //val oriname=binding.profileNameTv.text.toString()
+
+        val namevalue=intent.getStringExtra("user_name")
+        val introvalue=intent.getStringExtra("user_intro")
+        if (namevalue != null && introvalue != null) {
+            Log.d("user_name: ",namevalue)
+            Log.d("user_name: ",introvalue)
+            name.text=namevalue
+            intro.text=introvalue
+        }
+
+    }
+
     private fun logout() {
         //ToDo: 로그아웃 기능
     }
@@ -95,4 +114,6 @@ class ProfileActivity : AppCompatActivity(){
         }
         userModel.user.observe(this, userObserver)
     }
+
+
 }
