@@ -35,6 +35,7 @@ class AuthService {
                 call: Call<BaseResponse<LoginResponse>>,
                 response: Response<BaseResponse<LoginResponse>>
             ) {
+                Log.d("asdf", response.toString())
                 val resp = response.body()!!
                 when (resp.code){
                     1000 -> loginView.loginSuccess(resp.result!!)

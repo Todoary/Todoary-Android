@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#86B6FF"/>
+    <solid android:color="@color/todo_list_blue"/>
     <corners android:topLeftRadius="30dp"
         android:topRightRadius="30dp"/>
 

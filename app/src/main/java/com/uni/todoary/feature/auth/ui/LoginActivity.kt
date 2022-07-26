@@ -27,17 +27,12 @@ import java.util.*
 
 class LoginActivity : AppCompatActivity(), LoginView, GetProfileView {
     lateinit var binding : ActivityLoginBinding
-    private val model : LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        model.loginRequest.observe(this, {
-            Log.d("tata", it.toString())
-        })
 
         // TODO : 로그인 생략버튼, 배포시엔 삭제
         binding.loginExitBtn.setOnClickListener {
@@ -79,12 +74,11 @@ class LoginActivity : AppCompatActivity(), LoginView, GetProfileView {
     // 아이디 패스워드 sharedPreferences에서 확인 후 맞으면 로그인, 틀리면 애니메이션 & 안내메시지
     private fun login() {
         // 로그인 API 호출
-//        val loginService = AuthService()
-//        loginService.setLoginView(this)
+        val loginService = AuthService()
+        loginService.setLoginView(this)
         val request =
             LoginRequest(binding.loginIdEt.text.toString(), binding.loginPwEt.text.toString())
-//        loginService.logIn(request)
-        model.login(this, request)
+            loginService.logIn(request)
     }
 
     fun hideKeyboard(v: View) {
