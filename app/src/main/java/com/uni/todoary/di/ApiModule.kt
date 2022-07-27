@@ -54,6 +54,7 @@ object ApiModule {
             .build()
     }
 
+    // Api Interfaces 바인딩
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit): LoginInterface {

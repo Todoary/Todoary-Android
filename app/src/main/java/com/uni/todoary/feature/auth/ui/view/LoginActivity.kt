@@ -82,10 +82,6 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
         loginModel.login_resp.observe(this, {
             when (it.status){
                 ApiResult.Status.SUCCESS -> {
-                    // AccessToken과 RefreshToken 캐싱 (헤더에 사용할 것들)
-                    saveRefToken(it.data!!.token.refreshToken)
-                    saveXcesToken(it.data.token.accessToken)
-
                     // 유저 정보 가져와서 캐싱
                     val service = AuthService()
                     service.setProfileView(this)
