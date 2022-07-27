@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.util
 
 import com.uni.todoary.ApplicationClass.Companion.mSharedPreferences
 import com.uni.todoary.BuildConfig

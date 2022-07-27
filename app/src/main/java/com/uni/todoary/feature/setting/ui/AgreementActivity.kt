@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.uni.todoary.databinding.ActivityAgreementBinding
-import com.uni.todoary.feature.auth.ui.TermsDetailActivity
+import com.uni.todoary.feature.auth.ui.view.TermsDetailActivity
 
 class AgreementActivity : AppCompatActivity(){
     lateinit var binding: ActivityAgreementBinding

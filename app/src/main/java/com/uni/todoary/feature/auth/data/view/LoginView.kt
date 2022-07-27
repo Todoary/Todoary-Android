@@ -1,7 +1,7 @@
 package com.uni.todoary.feature.auth.data.view
 
-import com.uni.todoary.feature.auth.data.dto.LoginResponse
 import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.auth.data.module.LoginResponse
 
 interface LoginView {
     fun loginLoading()

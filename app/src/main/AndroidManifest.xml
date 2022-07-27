@@ -26,7 +26,7 @@
             android:name=".feature.setting.ui.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".feature.auth.ui.TermsDetailActivity"
+            android:name=".feature.auth.ui.view.TermsDetailActivity"
             android:exported="false" />
         <activity
             android:name=".feature.main.ui.SplashActivity"
@@ -38,7 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.auth.ui.LoginActivity"/>
+        <activity android:name=".feature.auth.ui.view.LoginActivity"/>
         <activity android:name=".feature.main.ui.MainActivity" />
         <activity android:name=".feature.setting.ui.AgreementActivity" />
         <activity android:name=".feature.setting.ui.DisplayActivity" />
@@ -47,11 +47,11 @@
         <activity android:name=".feature.setting.ui.PasswordActivity" />
         <activity android:name=".feature.setting.ui.ProfileActivity" />
         <activity android:name=".feature.setting.ui.FontActivity"/>
-        <activity android:name=".feature.auth.ui.PwLockActivity" />
-        <activity android:name=".feature.auth.ui.SignupActivity" />
-        <activity android:name=".feature.auth.ui.TermscheckActivity"
+        <activity android:name=".feature.auth.ui.view.PwLockActivity" />
+        <activity android:name=".feature.auth.ui.view.SignupActivity" />
+        <activity android:name=".feature.auth.ui.view.TermscheckActivity"
             android:exported="false"/>
-        <activity android:name=".feature.auth.ui.FindPwActivity" />
+        <activity android:name=".feature.auth.ui.view.FindPwActivity" />
         <activity android:name=".feature.setting.ui.ProfileEditActivity"/>
     </application>
 

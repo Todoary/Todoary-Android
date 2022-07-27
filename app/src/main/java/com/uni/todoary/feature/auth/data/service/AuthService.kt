@@ -3,9 +3,9 @@ package com.uni.todoary.feature.auth.data.service
 import android.util.Log
 import com.uni.todoary.ApplicationClass
 import com.uni.todoary.base.BaseResponse
-import com.uni.todoary.feature.auth.data.dto.LoginRequest
-import com.uni.todoary.feature.auth.data.dto.LoginResponse
 import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.auth.data.module.LoginRequest
+import com.uni.todoary.feature.auth.data.module.LoginResponse
 import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.util.RetrofitInterface

@@ -22,7 +22,6 @@
             android:text="@string/termsdetail_string"
             android:layout_marginHorizontal="35dp"
             style="@style/main_2"
-            android:gravity="center"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"/>
 </ScrollView>

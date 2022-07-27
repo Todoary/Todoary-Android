@@ -1,9 +1,9 @@
 package com.uni.todoary.util
 
 import com.uni.todoary.base.BaseResponse
-import com.uni.todoary.feature.auth.data.dto.LoginRequest
-import com.uni.todoary.feature.auth.data.dto.LoginResponse
 import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.auth.data.module.LoginRequest
+import com.uni.todoary.feature.auth.data.module.LoginResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

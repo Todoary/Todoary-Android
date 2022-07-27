@@ -2,7 +2,6 @@ package com.uni.todoary.feature.setting.ui
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -11,11 +10,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityPwLockBinding
-import com.uni.todoary.feature.auth.ui.PwLockViewModel
+import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
 import com.uni.todoary.util.getSecureKey
-import com.uni.todoary.util.getUser
 import com.uni.todoary.util.saveSecureKey
-import com.uni.todoary.util.saveUser
 
 class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding::inflate){
     private val model : PwLockViewModel by viewModels()

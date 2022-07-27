@@ -9,9 +9,7 @@ import androidx.lifecycle.Observer
 import com.uni.todoary.base.BaseDialog
 import com.uni.todoary.databinding.ActivityProfileBinding
 import com.uni.todoary.feature.auth.data.dto.User
-import com.uni.todoary.feature.auth.ui.FindPwActivity
-import com.uni.todoary.feature.auth.ui.PwLockViewModel
-import com.uni.todoary.util.getUser
+import com.uni.todoary.feature.auth.ui.view.FindPwActivity
 
 class ProfileActivity : AppCompatActivity(){
     lateinit var binding: ActivityProfileBinding

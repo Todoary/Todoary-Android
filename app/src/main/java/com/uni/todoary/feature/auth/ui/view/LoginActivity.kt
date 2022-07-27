@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.auth.ui.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,8 +12,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.databinding.ActivityLoginBinding
-import com.uni.todoary.feature.auth.data.dto.LoginRequest
-import com.uni.todoary.feature.auth.data.dto.LoginResponse
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.data.view.LoginView
@@ -21,12 +19,18 @@ import com.uni.todoary.feature.main.ui.MainActivity
 import com.uni.todoary.util.*
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.uni.todoary.base.ApiResult
+import com.uni.todoary.feature.auth.data.module.LoginRequest
+import com.uni.todoary.feature.auth.data.module.LoginResponse
 import com.uni.todoary.feature.auth.data.view.GetProfileView
-import java.util.*
+import com.uni.todoary.feature.auth.ui.viewmodel.LoginViewModel
+import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class LoginActivity : AppCompatActivity(), LoginView, GetProfileView {
+@AndroidEntryPoint
+class LoginActivity : AppCompatActivity(), GetProfileView {
     lateinit var binding : ActivityLoginBinding
+    private val loginModel : LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -69,62 +73,71 @@ class LoginActivity : AppCompatActivity(), LoginView, GetProfileView {
             val mIntent = Intent(this, FindPwActivity::class.java)
             startActivity(mIntent)
         }
+
+        addObservers()
+    }
+
+    private fun addObservers(){
+        // 로그인 Response 옵저버
+        loginModel.login_resp.observe(this, {
+            when (it.status){
+                ApiResult.Status.SUCCESS -> {
+                    // AccessToken과 RefreshToken 캐싱 (헤더에 사용할 것들)
+                    saveRefToken(it.data!!.token.refreshToken)
+                    saveXcesToken(it.data.token.accessToken)
+
+                    // 유저 정보 가져와서 캐싱
+                    val service = AuthService()
+                    service.setProfileView(this)
+                    service.getProfile()
+
+                    // 보안키 설정 해 두었는지 여부 확인
+                    if (getSecureKey() == null){
+                        val mIntent = Intent(this, MainActivity::class.java)
+                        mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        startActivity(mIntent)
+                        finish()
+                    } else {
+                        val mIntent = Intent(this, PwLockActivity::class.java)
+                        mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        startActivity(mIntent)
+                        finish()
+                    }
+                }
+                ApiResult.Status.LOADING -> {
+
+                }
+                ApiResult.Status.API_ERROR -> {
+                    when (it.code){
+                        2005, 2011 -> {
+                            binding.loginPwEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
+                            binding.loginIdEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
+                            Snackbar.make(binding.loginBtnTv, "아이디 또는 비밀번호가 틀렸습니다.", Snackbar.LENGTH_SHORT).show()
+                        }
+                        4000 -> {
+                            Snackbar.make(binding.loginBtnTv, "데이터베이스 연결에 실패하였습니다. 반복될 시 개발자에게 문의해 주세요.", Snackbar.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                ApiResult.Status.NETWORK_ERROR -> {
+                    Toast.makeText(this, "인터넷 연결이 원활하지 않습니다.", Toast.LENGTH_SHORT).show()
+                    Log.d("Login_Api_Network_Error", it.message!!)
+                }
+            }
+        })
     }
 
     // 아이디 패스워드 sharedPreferences에서 확인 후 맞으면 로그인, 틀리면 애니메이션 & 안내메시지
     private fun login() {
         // 로그인 API 호출
-        val loginService = AuthService()
-        loginService.setLoginView(this)
         val request =
             LoginRequest(binding.loginIdEt.text.toString(), binding.loginPwEt.text.toString())
-            loginService.logIn(request)
+        loginModel.login(request)
     }
 
     fun hideKeyboard(v: View) {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?
         imm?.hideSoftInputFromWindow(v.windowToken, 0)
-    }
-
-    override fun loginLoading() {
-
-    }
-
-    override fun loginSuccess(result: LoginResponse) {
-        // AccessToken과 RefreshToken 캐싱 (헤더에 사용할 것들)
-        saveRefToken(result.token.refreshToken)
-        saveXcesToken(result.token.accessToken)
-
-        // 유저 정보 가져와서 캐싱
-        val service = AuthService()
-        service.setProfileView(this)
-        service.getProfile()
-
-        // 보안키 설정 해 두었는지 여부 확인
-        if (getSecureKey() == null){
-            val mIntent = Intent(this, MainActivity::class.java)
-            mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(mIntent)
-            finish()
-        } else {
-            val mIntent = Intent(this, PwLockActivity::class.java)
-            mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(mIntent)
-            finish()
-        }
-    }
-
-    override fun loginFailure(code: Int) {
-        when (code){
-            2005, 2011 -> {
-                binding.loginPwEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
-                binding.loginIdEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
-                Snackbar.make(binding.loginBtnTv, "아이디 또는 비밀번호가 틀렸습니다.", Snackbar.LENGTH_SHORT).show()
-            }
-            4000 -> {
-                Snackbar.make(binding.loginBtnTv, "데이터베이스 연결에 실패하였습니다. 반복될 시 개발자에게 문의해 주세요.", Snackbar.LENGTH_SHORT).show()
-            }
-        }
     }
 
     override fun getProfileLoading() {

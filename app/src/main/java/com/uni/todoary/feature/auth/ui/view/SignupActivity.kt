@@ -1,13 +1,10 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.auth.ui.view
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.*
@@ -15,6 +12,7 @@ import androidx.core.view.isVisible
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivitySignupBinding
 import com.uni.todoary.ApplicationClass.Companion.mSharedPreferences
+import com.uni.todoary.util.GMailSender
 
 class SignupActivity : AppCompatActivity() {
     lateinit var binding : ActivitySignupBinding

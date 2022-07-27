@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.auth.ui.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,6 @@ import android.widget.CheckBox
 import android.widget.Toast
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivityTermscheckBinding
-import com.uni.todoary.feature.setting.ui.FeedbackActivity
 
 class TermscheckActivity : AppCompatActivity() {
     lateinit var binding : ActivityTermscheckBinding
