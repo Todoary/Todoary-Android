@@ -99,7 +99,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
-        android:paddingHorizontal="30dp"
         android:background="@drawable/bg_slide_panel">
 
         <androidx.cardview.widget.CardView
@@ -135,6 +134,7 @@
                     android:paddingVertical="6dp"
                     android:paddingHorizontal="12dp"
                     android:layout_marginTop="14dp"
+                    android:layout_marginStart="30dp"
                     app:cardCornerRadius="20dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
@@ -157,6 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_marginEnd="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/main_slide_todolist_tv"
                     app:layout_constraintBottom_toBottomOf="@id/main_slide_todolist_tv">
@@ -197,6 +198,7 @@
                     android:paddingVertical="6dp"
                     android:paddingHorizontal="12dp"
                     android:layout_marginTop="14dp"
+                    android:layout_marginStart="30dp"
                     app:cardCornerRadius="20dp"
                     app:layout_goneMarginTop="45dp"
                     app:layout_constraintTop_toBottomOf="@id/main_slide_todolist_rv"
@@ -222,8 +224,10 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="30dp"
                     app:cardCornerRadius="20dp"
+                    android:layout_marginHorizontal="30dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/main_slide_diary_tv">
 
                     <androidx.constraintlayout.widget.ConstraintLayout

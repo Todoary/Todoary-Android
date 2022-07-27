@@ -1,9 +1,11 @@
 package com.uni.todoary.feature.main.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.R
@@ -38,13 +40,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         setTodolist(todoLists)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setTodolist(todoList : ArrayList<TodoListInfo>){
         val todolistAdapter = TodoListRVAdapter()
         todolistAdapter.setTodoList(todoList)
+        val swipeCallback = TodoListSwipeHelper().apply {
+            setClamp(300f, 200f)
+        }
+        val swipeHelper = ItemTouchHelper(swipeCallback)
+        swipeHelper.attachToRecyclerView(binding.mainSlideTodolistRv)
         binding.mainSlideTodolistRv.apply {
             adapter = todolistAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            setOnTouchListener { _, _ ->
+                swipeCallback.removePreviousClamp(this)
+                false
+            }
         }
     }
 }
