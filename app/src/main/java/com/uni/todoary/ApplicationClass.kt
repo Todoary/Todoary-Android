@@ -3,6 +3,7 @@ package com.uni.todoary
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.firebase.FirebaseApp
 import com.uni.todoary.config.XAccessTokenInterceptor
 import dagger.hilt.android.HiltAndroidApp
 import okhttp3.OkHttpClient
@@ -27,6 +28,7 @@ class ApplicationClass : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        FirebaseApp.initializeApp(this)
 
         val client: OkHttpClient = OkHttpClient.Builder()
             .readTimeout(30000, TimeUnit.MILLISECONDS)

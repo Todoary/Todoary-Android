@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "666947728476",
+    "project_id": "todoary-1304d",
+    "storage_bucket": "todoary-1304d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666947728476:android:82ae8585d0a99257486299",
+        "android_client_info": {
+          "package_name": "com.uni.todoary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666947728476-brdn7dbqr60u68hunohgtoh1afsrmnsc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uni.todoary",
+            "certificate_hash": "7c74355478475c8db2ff45cdbcabe4fc6c387d33"
+          }
+        },
+        {
+          "client_id": "666947728476-hjt48pj7805frhiotfon0mv8u9gs80ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgRtgof-fbtAdL4K7_e7IzMr93SX10oro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666947728476-hjt48pj7805frhiotfon0mv8u9gs80ca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Todoary"
         tools:targetApi="m">
+        <service android:name=".util.TodoaryFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
 <!--        <meta-data android:name="com.fromEmail" android:value="${fromEmail}"/>-->
 <!--        <meta-data android:name="com.password" android:value="${password}"/>-->
         <activity
