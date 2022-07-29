@@ -11,7 +11,7 @@ import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.module.LoginResponse
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.data.view.LoginView
-import com.uni.todoary.feature.auth.ui.view.LoginActivity
+import com.uni.todoary.feature.auth.ui.LoginActivity
 import com.uni.todoary.feature.auth.ui.view.PwLockActivity
 import com.uni.todoary.util.*
 

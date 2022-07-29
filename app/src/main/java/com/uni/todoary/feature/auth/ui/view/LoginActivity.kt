@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui.view
+package com.uni.todoary.feature.auth.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -23,6 +23,9 @@ import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.module.LoginResponse
 import com.uni.todoary.feature.auth.data.view.GetProfileView
+import com.uni.todoary.feature.auth.ui.view.FindPwActivity
+import com.uni.todoary.feature.auth.ui.view.PwLockActivity
+import com.uni.todoary.feature.auth.ui.view.TermscheckActivity
 import com.uni.todoary.feature.auth.ui.viewmodel.LoginViewModel
 import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,12 +40,6 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // TODO : 로그인 생략버튼, 배포시엔 삭제
-        binding.loginExitBtn.setOnClickListener {
-            val exitIntent = Intent(this, MainActivity::class.java)
-            startActivity(exitIntent)
-        }
 
         // 키보드에서 엔터 입력시 바로 로그인 되도록 구현
         binding.loginPwEt.setOnEditorActionListener(object : TextView.OnEditorActionListener{
@@ -65,7 +62,7 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
             saveUser(userData)
         }
         binding.loginBtnSignInTv.setOnClickListener {
-            val mIntent = Intent(this, SignupActivity::class.java)
+            val mIntent = Intent(this, TermscheckActivity::class.java)
             mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(mIntent)
         }
@@ -83,22 +80,7 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
             when (it.status){
                 ApiResult.Status.SUCCESS -> {
                     // 유저 정보 가져와서 캐싱
-                    val service = AuthService()
-                    service.setProfileView(this)
-                    service.getProfile()
-
-                    // 보안키 설정 해 두었는지 여부 확인
-                    if (getSecureKey() == null){
-                        val mIntent = Intent(this, MainActivity::class.java)
-                        mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        startActivity(mIntent)
-                        finish()
-                    } else {
-                        val mIntent = Intent(this, PwLockActivity::class.java)
-                        mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        startActivity(mIntent)
-                        finish()
-                    }
+                    loginModel.getUserProfile(binding.loginPwEt.text.toString())
                 }
                 ApiResult.Status.LOADING -> {
 
@@ -119,6 +101,30 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
                     Toast.makeText(this, "인터넷 연결이 원활하지 않습니다.", Toast.LENGTH_SHORT).show()
                     Log.d("Login_Api_Network_Error", it.message!!)
                 }
+            }
+        })
+        loginModel.isProfileSuccess.observe(this, {
+            if (it){
+                // 자동 로그인 여부 캐싱
+                if (binding.loginAutoCheckBox.isChecked){
+                    loginModel.saveIsAutoLogin(true)
+                } else {
+                    loginModel.saveIsAutoLogin(false)
+                }
+                // 보안키 설정 해 두었는지 여부 확인
+                if (getSecureKey() == null){
+                    val mIntent = Intent(this, MainActivity::class.java)
+                    mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(mIntent)
+                    finish()
+                } else {
+                    val mIntent = Intent(this, PwLockActivity::class.java)
+                    mIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(mIntent)
+                    finish()
+                }
+            } else {
+                Toast.makeText(this, "제대로된 유저 정보를 불러오지 못하였습니다.", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -144,14 +150,6 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
         result.password = binding.loginPwEt.text.toString()
         Log.d("user", result.toString())
         saveUser(result)
-
-        // 자동 로그인 여부 캐싱
-        if (binding.loginAutoCheckBox.isChecked){
-            saveIsAutoLogin(true)
-        } else {
-            saveIsAutoLogin(false)
-        }
-
     }
 
     override fun getProfileFailure(code: Int) {

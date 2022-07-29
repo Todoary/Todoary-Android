@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
+import android.util.Log
 import android.widget.CheckBox
 import android.widget.Toast
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivityTermscheckBinding
+import com.uni.todoary.feature.auth.data.service.AuthService
+import com.uni.todoary.feature.auth.ui.view.SignupActivity
+import com.uni.todoary.feature.auth.ui.view.TermsDetailActivity
 
 class TermscheckActivity : AppCompatActivity() {
     lateinit var binding : ActivityTermscheckBinding
@@ -17,16 +21,14 @@ class TermscheckActivity : AppCompatActivity() {
         binding = ActivityTermscheckBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val backintent = Intent(this, SignupActivity::class.java)
         val allcheck = binding.termscheckAllCheck
         val nextbtn = binding.termscheckNextBtn
         val check1 = binding.termscheck1Check
         val check2 = binding.termscheck2Check
-        val check3 = binding.termscheck3Check
         val detail1 = binding.termscheck1Detail
         val detail2 = binding.termscheck2Detail
         val detail3 = binding.termscheck3Detail
-        //val detailintent=Intent(this, TermsDetailActivity::class.java)
+        val mIntent = Intent(this, SignupActivity::class.java)
 
         //툴바
         binding.termsCheckToolbar.toolbarBackMainTv.text = "약관동의"
@@ -38,7 +40,10 @@ class TermscheckActivity : AppCompatActivity() {
         }
         nextbtn.setOnClickListener {
             if(check1.isChecked==true&&check2.isChecked==true){
-                Toast.makeText(applicationContext, "다 체크됨",Toast.LENGTH_SHORT).show()
+                mIntent.putExtra("termscheck", binding.termscheck3Check.isChecked)
+                Log.d("termscheck: ",binding.termscheck3Check.isChecked.toString())
+
+                startActivity(mIntent)
             }else {
                 Toast.makeText(applicationContext, "체크부터 해줘 ",Toast.LENGTH_SHORT).show()
             }
@@ -87,4 +92,6 @@ class TermscheckActivity : AppCompatActivity() {
         }
 
     }
+
+
 }

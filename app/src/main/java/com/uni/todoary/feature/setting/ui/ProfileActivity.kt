@@ -2,6 +2,7 @@ package com.uni.todoary.feature.setting.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -10,8 +11,14 @@ import com.uni.todoary.base.BaseDialog
 import com.uni.todoary.databinding.ActivityProfileBinding
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.ui.view.FindPwActivity
+import com.uni.todoary.feature.auth.data.service.AuthService
+import com.uni.todoary.feature.auth.data.view.DeleteMemberView
+import com.uni.todoary.feature.auth.ui.LoginActivity
+import com.uni.todoary.util.removeRefToken
+import com.uni.todoary.util.removeUser
+import com.uni.todoary.util.removeXcesToken
 
-class ProfileActivity : AppCompatActivity(){
+class ProfileActivity : AppCompatActivity(), DeleteMemberView{
     lateinit var binding: ActivityProfileBinding
     private val userModel : ProfileViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,13 +26,13 @@ class ProfileActivity : AppCompatActivity(){
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        intent = Intent(this, SettingActivity::class.java)
         //툴바
         binding.settingProfile.toolbarBackMainTv.text = "계정"
         binding.settingProfile.toolbarBackIv.setOnClickListener {
             finish()
         }
 
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         // Data Bidning
         initView()
 
@@ -65,7 +72,7 @@ class ProfileActivity : AppCompatActivity(){
 
                 }
                 override fun onButton2Clicked() {
-                    delete()
+                    DeleteMember()
                 }
             })
             dialog.show(supportFragmentManager, "destroy_id_dialog")
@@ -75,6 +82,7 @@ class ProfileActivity : AppCompatActivity(){
             startActivity(editintent)
         }
     }
+
 
     private fun logout() {
         //ToDo: 로그아웃 기능
@@ -92,5 +100,40 @@ class ProfileActivity : AppCompatActivity(){
             binding.profileIdTv.text = user.email
         }
         userModel.user.observe(this, userObserver)
+    }
+
+
+
+    override fun onResume() {
+        super.onResume()
+        initView()
+        //Log.d("onResume: ","실행완료")
+    }
+
+    private fun DeleteMember(){
+        val DeleteMemberService = AuthService()
+        DeleteMemberService.setDeleteMemberView(this)
+        DeleteMemberService.DeleteMember()
+    }
+
+    override fun DeleteMemberLoading() {
+    }
+
+    override fun DeleteMemberSuccess() {
+        Log.d("탈퇴","성공")
+        removeUser()
+        removeXcesToken()
+        removeRefToken()
+
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+        startActivity(intent)
+    }
+
+    override fun DeleteMemberFailure(code: Int) {
+        Log.d("탈퇴","실패")
+        Log.d("Error", code.toString())
     }
 }

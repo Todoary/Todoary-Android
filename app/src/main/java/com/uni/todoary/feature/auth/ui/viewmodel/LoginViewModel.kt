@@ -1,5 +1,6 @@
 package com.uni.todoary.feature.auth.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,6 +22,10 @@ class LoginViewModel @Inject constructor(
     val login_resp : MutableLiveData<ApiResult<LoginResponse>>
         get() =_login_resp
 
+    private val _isProfileSuccess = MutableLiveData<Boolean>()
+    val isProfileSuccess : MutableLiveData<Boolean>
+        get() =_isProfileSuccess
+
     fun login(request : LoginRequest) {
         viewModelScope.launch {
             _login_resp.value = ApiResult.loading()
@@ -37,6 +42,28 @@ class LoginViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun getUserProfile(pw : String){
+        viewModelScope.launch {
+            repository.getProfile().let {
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        val user = it.body()!!.result
+                        user!!.password = pw
+                        Log.d("usus", user.toString())
+                        isProfileSuccess.value = true
+                        repository.saveUser(user)
+                    }
+                    else isProfileSuccess.value = false
+                }
+                else isProfileSuccess.value = false
+            }
+        }
+    }
+
+    fun saveIsAutoLogin(status : Boolean){
+        repository.saveIsAutoLogin(status)
     }
 
     fun autoLogin(){

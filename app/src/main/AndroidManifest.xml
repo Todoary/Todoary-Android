@@ -13,8 +13,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:supportsRtl="true"
         android:theme="@style/Theme.Todoary"
         tools:targetApi="m">
         <service android:name=".util.TodoaryFirebaseMessagingService"
@@ -44,7 +44,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.auth.ui.view.LoginActivity"/>
+        <activity android:name=".feature.auth.ui.LoginActivity"/>
         <activity android:name=".feature.main.ui.MainActivity" />
         <activity android:name=".feature.setting.ui.AgreementActivity" />
         <activity android:name=".feature.setting.ui.DisplayActivity" />

@@ -45,7 +45,6 @@
         android:layout_marginTop="12dp"
         android:maxLines="1"
         android:paddingStart="10dp"
-        android:text="베어🐻"
         style="@style/setting_list"
         android:background="@drawable/bg_profile_edit_layer"/>
     <TextView
@@ -65,7 +64,6 @@
         android:layout_marginBottom="10dp"
         android:maxLines="1"
         android:paddingStart="10dp"
-        android:text="J가 되고싶은 P"
         style="@style/setting_list"
         android:background="@drawable/bg_profile_edit_layer"/>
 </LinearLayout>
