@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.auth.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

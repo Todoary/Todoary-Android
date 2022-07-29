@@ -13,10 +13,16 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:supportsRtl="true"
         android:theme="@style/Theme.Todoary"
         tools:targetApi="m">
+        <service android:name=".util.TodoaryFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
 <!--        <meta-data android:name="com.fromEmail" android:value="${fromEmail}"/>-->
 <!--        <meta-data android:name="com.password" android:value="${password}"/>-->
         <activity
@@ -26,7 +32,7 @@
             android:name=".feature.setting.ui.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".feature.auth.ui.TermsDetailActivity"
+            android:name=".feature.auth.ui.view.TermsDetailActivity"
             android:exported="false" />
         <activity
             android:name=".feature.main.ui.SplashActivity"
@@ -47,11 +53,11 @@
         <activity android:name=".feature.setting.ui.PasswordActivity" />
         <activity android:name=".feature.setting.ui.ProfileActivity" />
         <activity android:name=".feature.setting.ui.FontActivity"/>
-        <activity android:name=".feature.auth.ui.PwLockActivity" />
-        <activity android:name=".feature.auth.ui.SignupActivity" />
-        <activity android:name=".feature.auth.ui.TermscheckActivity"
+        <activity android:name=".feature.auth.ui.view.PwLockActivity" />
+        <activity android:name=".feature.auth.ui.view.SignupActivity" />
+        <activity android:name=".feature.auth.ui.view.TermscheckActivity"
             android:exported="false"/>
-        <activity android:name=".feature.auth.ui.FindPwActivity" />
+        <activity android:name=".feature.auth.ui.view.FindPwActivity" />
         <activity android:name=".feature.setting.ui.ProfileEditActivity"/>
     </application>
 

@@ -46,6 +46,12 @@ fun saveUser(user : User){
     editor.apply()
 }
 
+fun removeUser(){
+    val editor = mSharedPreferences.edit()
+    editor.remove("user")
+    editor.commit()
+}
+
 fun getUser() : User?{
     val gsonData = mSharedPreferences.getString("user", null)
     return if (gsonData == null){

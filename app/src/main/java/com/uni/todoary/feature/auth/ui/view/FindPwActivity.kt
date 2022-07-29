@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.auth.ui.view
 
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityFindPwBinding

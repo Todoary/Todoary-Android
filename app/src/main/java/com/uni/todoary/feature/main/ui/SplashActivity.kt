@@ -1,21 +1,18 @@
 package com.uni.todoary.feature.main.ui
 
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.animation.AnimationUtils
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivitySplashBinding
-import com.uni.todoary.feature.auth.data.dto.LoginRequest
-import com.uni.todoary.feature.auth.data.dto.LoginResponse
+import com.uni.todoary.feature.auth.data.module.LoginRequest
+import com.uni.todoary.feature.auth.data.module.LoginResponse
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.feature.auth.ui.LoginActivity
-import com.uni.todoary.feature.auth.ui.PwLockActivity
+import com.uni.todoary.feature.auth.ui.view.PwLockActivity
 import com.uni.todoary.util.*
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate), LoginView {

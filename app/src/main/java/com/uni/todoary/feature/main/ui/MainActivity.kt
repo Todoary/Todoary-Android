@@ -16,6 +16,17 @@ import com.uni.todoary.feature.main.data.dto.TodoListInfo
 import com.uni.todoary.feature.setting.ui.SettingActivity
 import com.uni.todoary.util.getRefToken
 import com.uni.todoary.util.getXcesToken
+import android.widget.Toast
+
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.FirebaseApp
+
+import com.google.firebase.messaging.FirebaseMessaging
+
+
+
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -38,6 +49,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         todoLists.add(TodoListInfo(false, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("구룰구룰", "기릴기릴"), TodoListAlarm(true, 6, 45)))
         todoLists.add(TodoListInfo(false, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("끼릭끼릭", "기릴기릴"), TodoListAlarm(false, 6, 45)))
         setTodolist(todoLists)
+
+        getFCMToken()
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -58,5 +71,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 false
             }
         }
+    }
+
+    private fun getFCMToken(){
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("TAG", "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                val token = task.result
+
+                // Log and toast
+                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
+                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
+            })
     }
 }

@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.auth.ui.view
 
 import android.content.Intent
 import android.os.Handler
@@ -10,9 +10,9 @@ import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityPwLockBinding
 import androidx.lifecycle.Observer
 import com.uni.todoary.R
+import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
 import com.uni.todoary.feature.main.ui.MainActivity
 import com.uni.todoary.util.getSecureKey
-import com.uni.todoary.util.getUser
 
 class PwLockActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding::inflate) {
     private val model : PwLockViewModel by viewModels()
