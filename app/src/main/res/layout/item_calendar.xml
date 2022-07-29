@@ -6,12 +6,12 @@
     android:orientation="vertical">
     <TextView
         android:id="@+id/dayText"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/black"
         android:text="1"
-        android:textSize="13sp"/>
+        style="@style/calendar_date"/>
 
 </LinearLayout>
