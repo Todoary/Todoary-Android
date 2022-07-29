@@ -31,7 +31,7 @@ class ProfileActivity : AppCompatActivity(){
         // Data Bidning
         initView()
 
-        binding.profilePwdBtn.setOnClickListener {
+        binding.profilePwdLl.setOnClickListener {
             val mIntent = Intent(this, FindPwActivity::class.java)
             startActivity(mIntent)
         }
@@ -89,8 +89,8 @@ class ProfileActivity : AppCompatActivity(){
     private fun initView(){
         binding.profileIdTv.isSelected = true
         val userObserver = Observer<User>{user ->
-            binding.profileNameTv.text = user.name
-            binding.profileIntroTv.text = user.intro
+            binding.profileNameTv.text = user.nickname
+            binding.profileIntroTv.text = user.introduce
             binding.profileIdTv.text = user.email
         }
         userModel.user.observe(this, userObserver)

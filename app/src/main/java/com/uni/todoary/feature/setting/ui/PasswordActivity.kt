@@ -2,6 +2,7 @@ package com.uni.todoary.feature.setting.ui
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -11,7 +12,9 @@ import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityPwLockBinding
 import com.uni.todoary.feature.auth.ui.PwLockViewModel
+import com.uni.todoary.util.getSecureKey
 import com.uni.todoary.util.getUser
+import com.uni.todoary.util.saveSecureKey
 import com.uni.todoary.util.saveUser
 
 class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding::inflate){
@@ -58,7 +61,7 @@ class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBindi
                     binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
 
                     // preferences에 저장되어 있는 유저정보의 비밀번호(secureKey)와 비교
-                    if (pwArr == getUser().secureKey){
+                    if (pwArr == getSecureKey()){
                         // depth 1 -> depth 2로 진행
                         setPw()
                     } else {
@@ -108,7 +111,11 @@ class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBindi
     }
 
     fun pwCheck(){
-        binding.pwLockSubTv.text = "현재 비밀번호를 입력해 주세요"
+        if (getSecureKey() == null){
+            setPw()
+        } else {
+            binding.pwLockSubTv.text = "현재 비밀번호를 입력해 주세요"
+        }
     }
 
     fun setPw(){
@@ -156,10 +163,7 @@ class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBindi
                         Snackbar.make(binding.pwLockSubTv, "비밀번호가 변경되었습니다.", Snackbar.LENGTH_SHORT).show()
                         Handler(Looper.getMainLooper()).postDelayed({
                             // user 정보 업데이트 in sharedPreferences
-                            val user = getUser()
-                            user.secureKey!!.clear()
-                            user.secureKey!!.addAll(newPw)
-                            saveUser(user)
+                            saveSecureKey(newPw)
                             finish()
                         }, 1500)
                     } else {

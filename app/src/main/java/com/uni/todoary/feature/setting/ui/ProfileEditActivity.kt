@@ -32,8 +32,8 @@ class ProfileEditActivity : AppCompatActivity(){
 
         // Data Binding
         val userObserver = Observer<User>{ user ->
-            binding.profileeditNameEt.setText(user.name)
-            binding.profileeditIntroEt.setText(user.intro)
+            binding.profileeditNameEt.setText(user.nickname)
+            binding.profileeditIntroEt.setText(user.introduce)
         }
         userModel.user.observe(this, userObserver)
     }
