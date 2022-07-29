@@ -83,7 +83,7 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
 
                 override fun afterTextChanged(p0: Editable?) {
                     email = emailet.text.toString()
-                    ExistenceCheck()
+                    //ExistenceCheck()
                     if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                         //이메일 형식이 아님
                         emailcheck.visibility = View.INVISIBLE

@@ -9,12 +9,18 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import com.uni.todoary.base.BaseDialog
 import com.uni.todoary.databinding.ActivityProfileBinding
+import com.uni.todoary.feature.auth.data.dto.ProfileChangeRequest
 import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.auth.data.service.AuthService
+import com.uni.todoary.feature.auth.data.view.DeleteMemberView
+import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.ui.FindPwActivity
-import com.uni.todoary.feature.auth.ui.PwLockViewModel
-import com.uni.todoary.util.getUser
+import com.uni.todoary.feature.auth.ui.LoginActivity
+import com.uni.todoary.util.removeRefToken
+import com.uni.todoary.util.removeUser
+import com.uni.todoary.util.removeXcesToken
 
-class ProfileActivity : AppCompatActivity(){
+class ProfileActivity : AppCompatActivity(), DeleteMemberView{
     lateinit var binding: ActivityProfileBinding
     private val userModel : ProfileViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,13 +34,11 @@ class ProfileActivity : AppCompatActivity(){
             finish()
         }
 
-        //닉넴 및 한줄소개 변경
-        Applychange()
-
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         // Data Bidning
         initView()
 
-        binding.profilePwdBtn.setOnClickListener {
+        binding.profilePwdLl.setOnClickListener {
             val mIntent = Intent(this, FindPwActivity::class.java)
             startActivity(mIntent)
         }
@@ -70,7 +74,7 @@ class ProfileActivity : AppCompatActivity(){
 
                 }
                 override fun onButton2Clicked() {
-                    delete()
+                    DeleteMember()
                 }
             })
             dialog.show(supportFragmentManager, "destroy_id_dialog")
@@ -81,21 +85,6 @@ class ProfileActivity : AppCompatActivity(){
         }
     }
 
-    private fun Applychange() {
-        val name = binding.profileNameTv
-        val intro = binding.profileIntroTv
-        //val oriname=binding.profileNameTv.text.toString()
-
-        val namevalue=intent.getStringExtra("user_name")
-        val introvalue=intent.getStringExtra("user_intro")
-        if (namevalue != null && introvalue != null) {
-            Log.d("user_name: ",namevalue)
-            Log.d("user_name: ",introvalue)
-            name.text=namevalue
-            intro.text=introvalue
-        }
-
-    }
 
     private fun logout() {
         //ToDo: 로그아웃 기능
@@ -108,12 +97,45 @@ class ProfileActivity : AppCompatActivity(){
     private fun initView(){
         binding.profileIdTv.isSelected = true
         val userObserver = Observer<User>{user ->
-            binding.profileNameTv.text = user.name
-            binding.profileIntroTv.text = user.intro
+            binding.profileNameTv.text = user.nickname
+            binding.profileIntroTv.text = user.introduce
             binding.profileIdTv.text = user.email
         }
         userModel.user.observe(this, userObserver)
     }
 
 
+
+    override fun onResume() {
+        super.onResume()
+        initView()
+        //Log.d("onResume: ","실행완료")
+    }
+
+    private fun DeleteMember(){
+        val DeleteMemberService = AuthService()
+        DeleteMemberService.setDeleteMemberView(this)
+        DeleteMemberService.DeleteMember()
+    }
+
+    override fun DeleteMemberLoading() {
+    }
+
+    override fun DeleteMemberSuccess() {
+        Log.d("탈퇴","성공")
+        removeUser()
+        removeXcesToken()
+        removeRefToken()
+
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+        startActivity(intent)
+    }
+
+    override fun DeleteMemberFailure(code: Int) {
+        Log.d("탈퇴","실패")
+        Log.d("Error", code.toString())
+    }
 }

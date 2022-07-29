@@ -11,6 +11,7 @@ import com.uni.todoary.databinding.ActivityPwLockBinding
 import androidx.lifecycle.Observer
 import com.uni.todoary.R
 import com.uni.todoary.feature.main.ui.MainActivity
+import com.uni.todoary.util.getSecureKey
 import com.uni.todoary.util.getUser
 
 class PwLockActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding::inflate) {
@@ -55,7 +56,7 @@ class PwLockActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding
 
                     // TODO : 현재는 더미데이터 패스워드 1234인 상태, 실제로는 유저가 정한 패스워드로 validation check 해야합니다.
                     // preferences에 저장되어 있는 유저정보의 비밀번호(secureKey)와 비교
-                    if (pwArr == getUser().secureKey){
+                    if (pwArr == getSecureKey()){
                         val mIntent = Intent(this, MainActivity::class.java)
                         startActivity(mIntent)
                         finish()
