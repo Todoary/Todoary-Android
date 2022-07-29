@@ -15,6 +15,16 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Checkbox Style -->
+    <style name="CheckBox_Todolist" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/todo_list_blue</item>
+    </style>
+
+    <!-- Splash Style -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_theme</item>
+    </style>
+
     <!-- Dialog Style -->
     <style name="Dialog_more_Theme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
@@ -104,6 +114,14 @@
         <item name="fontFamily">@font/applesdgothicneob</item>
         <item name="android:lineSpacingExtra">2.8sp</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="todo_list" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneob</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:letterSpacing">0.02</item>
         <item name="android:textColor">@color/black</item>
     </style>
