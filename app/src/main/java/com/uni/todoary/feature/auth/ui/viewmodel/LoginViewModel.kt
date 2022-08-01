@@ -1,6 +1,5 @@
 package com.uni.todoary.feature.auth.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -51,7 +50,6 @@ class LoginViewModel @Inject constructor(
                     if(it.body()!!.code == 1000){
                         val user = it.body()!!.result
                         user!!.password = pw
-                        Log.d("usus", user.toString())
                         isProfileSuccess.value = true
                         repository.saveUser(user)
                     }

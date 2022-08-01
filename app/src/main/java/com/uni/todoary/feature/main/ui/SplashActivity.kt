@@ -3,6 +3,7 @@ package com.uni.todoary.feature.main.ui
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
@@ -11,7 +12,7 @@ import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.module.LoginResponse
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.data.view.LoginView
-import com.uni.todoary.feature.auth.ui.LoginActivity
+import com.uni.todoary.feature.auth.ui.view.LoginActivity
 import com.uni.todoary.feature.auth.ui.view.PwLockActivity
 import com.uni.todoary.util.*
 
@@ -42,6 +43,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         // AccessToken과 RefreshToken 캐싱 (헤더에 사용할 것들)
         saveRefToken(result.token.refreshToken)
         saveXcesToken(result.token.accessToken)
+        Log.d("TokenResult", result.toString())
 
         // 보안키 설정 해 두었는지 여부 확인
         if (getSecureKey() == null){

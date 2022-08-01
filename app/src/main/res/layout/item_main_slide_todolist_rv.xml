@@ -79,12 +79,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/item_todolist_cb"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                style="@style/CheckBox_Todolist"
-                android:buttonTint="@color/todo_list_blue"
+                android:button="@drawable/selector_checkbox"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>

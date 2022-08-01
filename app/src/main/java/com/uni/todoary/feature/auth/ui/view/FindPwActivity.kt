@@ -9,5 +9,7 @@ class FindPwActivity : BaseActivity<ActivityFindPwBinding>(ActivityFindPwBinding
         binding.findPwToolbar.toolbarBackIv.setOnClickListener {
             finish()
         }
+
+
     }
 }

@@ -18,7 +18,6 @@ import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.data.view.EmailCheckView
 import com.uni.todoary.feature.auth.data.view.ExistenceCheckView
 import com.uni.todoary.feature.auth.data.view.SignInView
-import com.uni.todoary.feature.auth.ui.LoginActivity
 import com.uni.todoary.util.GMailSender
 
 class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, ExistenceCheckView {
@@ -325,7 +324,7 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
 
     override fun SignInSuccess() {
         //조건 충족시 다음 화면으로
-        val intent = Intent(this,LoginActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 

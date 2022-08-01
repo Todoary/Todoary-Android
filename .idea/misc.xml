@@ -37,10 +37,12 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/round_button_lar.xml" value="0.13697916666666668" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/round_button_mid.xml" value="0.13697916666666668" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/round_layer.xml" value="0.13697916666666668" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/selector_checkbox.xml" value="0.15416666666666667" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/setting_layout_border.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/splash_theme.xml" value="0.1828125" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/terms_layout_border.xml" value="0.15416666666666667" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/font/applesdgothickneo.xml" value="0.13645833333333332" />
-        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_alarm.xml" value="0.24114583333333334" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_alarm.xml" value="0.264" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_find_pw.xml" value="0.536" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_home.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_login.xml" value="0.264" />
@@ -58,7 +60,7 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/dialog_more.xml" value="0.536" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/fragment_calendar.xml" value="0.2" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/item_calendar.xml" value="0.1203125" />
-        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/item_main_slide_todolist_rv.xml" value="0.4" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/item_main_slide_todolist_rv.xml" value="0.32406287787182586" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/toolbar_back.xml" value="0.264" />
       </map>
     </option>
