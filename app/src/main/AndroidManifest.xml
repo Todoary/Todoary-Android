@@ -48,6 +48,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".feature.category.ui.view.CategoryActivity"/>
         <activity android:name=".feature.auth.ui.view.LoginActivity"/>
         <activity android:name=".feature.main.ui.MainActivity" />
         <activity android:name=".feature.setting.ui.view.AgreementActivity" />
@@ -63,8 +64,8 @@
             android:name=".feature.auth.ui.view.TermscheckActivity"
             android:exported="false" />
         <activity android:name=".feature.auth.ui.view.FindPwActivity" />
-        <activity android:name=".feature.category.ui.CategorysettingActivity" />
-        <activity android:name=".feature.category.ui.TodoSettingActivity" />
+        <activity android:name=".feature.category.ui.view.CategorysettingActivity" />
+        <activity android:name=".feature.category.ui.view.TodoSettingActivity" />
         <activity android:name=".feature.setting.ui.view.ProfileEditActivity"/>
     </application>
 

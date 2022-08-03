@@ -12,7 +12,8 @@ import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
 
-class GMailSender : Authenticator(){
+class GMailSender(private val random_number : Int) : Authenticator(){
+
     // 보내는 사람 이메일과 비밀번호
     val fromEmail = BuildConfig.TODOARY_EMAIL
     val password = BuildConfig.TODOARY_EMAIL_PW
@@ -25,16 +26,16 @@ class GMailSender : Authenticator(){
 
 
     //난수발생
-    var random_number = (1000..9999).random()
+//    var random_number = (1000..9999).random()
 
 
     //난수 저장해놓기
-    fun init() {
-        var random_number = random_number.toString()
-        var editor = mSharedPreferences.edit()
-        editor.putString("key", random_number)
-        editor.apply()
-    }
+//    fun init() {
+//        var random_number = random_number.toString()
+//        var editor = mSharedPreferences.edit()
+//        editor.putString("key", random_number)
+//        editor.apply()
+//    }
 
 
     // 메일 보내기
@@ -63,7 +64,7 @@ class GMailSender : Authenticator(){
 
             // 전송
             Transport.send(message)
-            init()
+//            init()
         }
     }
 }

@@ -78,7 +78,7 @@
             android:paddingHorizontal="17dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
+v
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/item_todolist_cb"
                 android:layout_width="22dp"

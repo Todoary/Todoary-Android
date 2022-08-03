@@ -1,12 +1,9 @@
-package com.uni.todoary.feature.category.ui
+package com.uni.todoary.feature.category.ui.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.service.autofill.UserData
 import com.uni.todoary.databinding.ActivityCategorysettingBinding
-import com.uni.todoary.util.CategoryData
-import com.uni.todoary.util.CategoryRVAdapter
 
 class CategorysettingActivity : AppCompatActivity() {
     lateinit var binding : ActivityCategorysettingBinding

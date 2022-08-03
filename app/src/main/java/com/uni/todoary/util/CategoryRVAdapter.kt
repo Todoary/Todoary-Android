@@ -1,17 +1,12 @@
 package com.uni.todoary.util
 
 import android.content.Context
-import android.service.autofill.UserData
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.R
-import com.uni.todoary.feature.category.ui.TodoSettingActivity
-import com.uni.todoary.feature.main.ui.TodoListRVAdapter
-import java.lang.reflect.Member
 
 class CategoryRVAdapter(private val context: Context,private val dataList: ArrayList<CategoryData>):  RecyclerView.Adapter<CategoryRVAdapter.ViewHolder>() {
     //var listData = mutableListOf<CategoryData>()

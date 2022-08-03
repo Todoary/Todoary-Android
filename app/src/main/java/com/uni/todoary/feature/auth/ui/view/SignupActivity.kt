@@ -27,6 +27,7 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
     var nickflag = false
     var nameflag = false
     var emailflag = false
+    val randomNumber = (1000..9999).random()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -250,11 +251,11 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
         DuplicateCheck()
 
         codecheckbtn.setOnClickListener {
-            var value = mSharedPreferences.getString("key", "데이터 없음")
+//            var value = mSharedPreferences.getString("key", "데이터 없음")
             val checkbuilder = android.app.AlertDialog.Builder(this)
-            editor.commit()
+//            editor.commit()
             //Log.d("key", "value: $value")
-            if (randomnum.text.toString() == "$value") {
+            if (randomnum.text.toString() == "$randomNumber") {
                 //Toast.makeText(applicationContext, "인증되었습니다.", Toast.LENGTH_SHORT).show()
                 checkbuilder.setTitle("알림")
                     .setMessage("인증이 완료 되었습니다.")
@@ -294,7 +295,7 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
         val codebuilder = android.app.AlertDialog.Builder(this)
         Log.d("중복된 이메일","아님")
                 var email = binding.signupEmailEt.text.toString()
-                GMailSender().sendEmail(email)
+                GMailSender(randomNumber).sendEmail(email)
                 //Toast.makeText(applicationContext,"보냄요",Toast.LENGTH_SHORT).show()
                 codebuilder.setTitle("알림")
                     .setMessage("인증코드가 메일로 발송 되었습니다.")

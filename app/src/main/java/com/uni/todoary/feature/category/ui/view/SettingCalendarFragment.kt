@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.category.ui
+package com.uni.todoary.feature.category.ui.view
 
 import android.os.Build
 import android.os.Bundle

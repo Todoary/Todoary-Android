@@ -25,15 +25,15 @@ class ProfileViewModel @Inject constructor(
     val user : LiveData<User> get() = _user
 
     private val _updateResult = MutableLiveData<ApiResult<Any>>()
-    val updateResult : MutableLiveData<ApiResult<Any>>
+    val updateResult : LiveData<ApiResult<Any>>
         get() =_updateResult
 
     private val _deleteResult = MutableLiveData<ApiResult<Any>>()
-    val deleteResult : MutableLiveData<ApiResult<Any>>
+    val deleteResult : LiveData<ApiResult<Any>>
         get() =_deleteResult
 
     private val _logOutResult = MutableLiveData<ApiResult<Any>>()
-    val logOutResult : MutableLiveData<ApiResult<Any>>
+    val logOutResult : LiveData<ApiResult<Any>>
         get() =_logOutResult
 
     init {
@@ -48,9 +48,7 @@ class ProfileViewModel @Inject constructor(
         _updateResult.value = ApiResult.loading()
         viewModelScope.launch {
             repository.changeProfile(ProfileChangeRequest(name, intro)).let {
-                Log.d("ittoto", it.toString())
                 if(it.isSuccessful){
-                    Log.d("itit", it.body().toString())
                     if(it.body()!!.code == 1000){
                         val user = repository.getUser()!!
                         user.nickname = it.body()!!.result!!.nickname
@@ -59,11 +57,9 @@ class ProfileViewModel @Inject constructor(
                         repository.saveUser(user)
                         _updateResult.value = ApiResult.success(null)
                     } else {
-                        Log.d("ittoto", "false1")
                         _updateResult.value = ApiResult.error(it.body()!!.code)
                     }
                 } else {
-                    Log.d("ittoto", "false2")
                     _updateResult.value = ApiResult.networkError(it.code(), it.toString())
                 }
             }

@@ -1,19 +1,13 @@
-package com.uni.todoary.feature.category.ui
+package com.uni.todoary.feature.category.ui.view
 
-import android.content.Context
-import android.content.DialogInterface
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivityTodoSettingBinding
-import com.uni.todoary.feature.auth.data.dto.SignInRequest
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.category.data.dto.CategoryAddRequest
 import com.uni.todoary.feature.category.data.view.CategoryAddView
 import com.uni.todoary.util.CategoryData
-import com.uni.todoary.util.CategoryRVAdapter
 
 class TodoSettingActivity : AppCompatActivity(), CategoryAddView {
     lateinit var binding : ActivityTodoSettingBinding

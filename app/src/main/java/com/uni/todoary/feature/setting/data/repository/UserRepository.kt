@@ -3,6 +3,8 @@ package com.uni.todoary.feature.setting.data.repository
 import com.uni.todoary.base.BaseResponse
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.AuthSpfManager
+import com.uni.todoary.feature.setting.data.module.AlarmStatus
+import com.uni.todoary.feature.setting.data.module.AlarmUpdateRequest
 import com.uni.todoary.feature.setting.data.module.ProfileChangeRequest
 import com.uni.todoary.feature.setting.data.module.UserInterface
 import retrofit2.Response
@@ -24,6 +26,25 @@ class UserRepository @Inject constructor(
 
     suspend fun logOut() : Response<BaseResponse<Any>>{
         return remoteApi.logOut()
+    }
+
+    suspend fun getAlarmStatus() : Response<BaseResponse<AlarmStatus>>{
+        return remoteApi.getAlarmStatus()
+    }
+
+    suspend fun updateAlarmTodo(status : Boolean) : Response<BaseResponse<Any>>{
+        val request = AlarmUpdateRequest(status)
+        return remoteApi.updateAlarmTodo(request)
+    }
+
+    suspend fun updateAlarmDiary(status : Boolean) : Response<BaseResponse<Any>>{
+        val request = AlarmUpdateRequest(status)
+        return remoteApi.updateAlarmDiary(request)
+    }
+
+    suspend fun updateAlarmRemind(status : Boolean) : Response<BaseResponse<Any>>{
+        val request = AlarmUpdateRequest(status)
+        return remoteApi.updateAlarmRemind(request)
     }
 
     // Spf Manager

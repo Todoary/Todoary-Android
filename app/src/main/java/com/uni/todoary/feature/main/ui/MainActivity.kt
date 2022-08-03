@@ -12,28 +12,21 @@ import com.uni.todoary.databinding.ActivityMainBinding
 import com.uni.todoary.feature.main.data.dto.TodoListAlarm
 import com.uni.todoary.feature.main.data.dto.TodoListInfo
 import com.uni.todoary.feature.setting.ui.view.SettingActivity
-import android.widget.Toast
 
 import com.google.android.gms.tasks.OnCompleteListener
 
 import com.google.firebase.messaging.FirebaseMessaging
-import com.uni.todoary.feature.category.ui.CategorysettingActivity
+import java.util.*
+import kotlin.collections.ArrayList
+import com.uni.todoary.feature.category.ui.view.CategorysettingActivity
+import com.uni.todoary.feature.category.ui.view.CategoryActivity
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
     override fun initAfterBinding() {
-        // 설정 버튼
-        binding.mainMenuIv.setOnClickListener {
-            val menuIntent = Intent(this, SettingActivity::class.java)
-            startActivity(menuIntent)
-        }
 
-        //슬라이딩 플러스 버튼 이벤트
-        binding.mainPlusIv.setOnClickListener {
-            val intent=Intent(this,CategorysettingActivity::class.java)
-            startActivity(intent)
-        }
+        initView()
 
         // 달력 프래그먼트 달기
         supportFragmentManager.beginTransaction()
@@ -49,6 +42,38 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         setTodolist(todoLists)
 
         getFCMToken()
+
+    }
+
+    private fun initView(){
+        // 설정 버튼
+        binding.mainMenuIv.setOnClickListener {
+            val menuIntent = Intent(this, SettingActivity::class.java)
+            startActivity(menuIntent)
+        }
+
+        // 달력 프래그먼트 달기
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_calendar_fl, CalendarFragment())
+            .commit()
+
+        // 카테고리 버튼
+        binding.mainSlideMenuGridIv.setOnClickListener {
+            val categoryIntent = Intent(this, CategoryActivity::class.java)
+            startActivity(categoryIntent)
+        }
+
+        // 투두리스트 생성 버튼
+        binding.mainSlideMenuAddIv.setOnClickListener {
+            val intent=Intent(this, CategorysettingActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 일기 작성 버튼
+        binding.mainPostingBtnCv.setOnClickListener{
+            val intent = Intent(this, DiaryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -83,8 +108,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 val token = task.result
 
                 // Log and toast
-                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
-                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
+//                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
+//                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
             })
     }
 }
