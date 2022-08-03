@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.auth.ui
+package com.uni.todoary.feature.auth.ui.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,21 +13,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.databinding.ActivityLoginBinding
 import com.uni.todoary.feature.auth.data.dto.User
-import com.uni.todoary.feature.auth.data.service.AuthService
-import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.feature.main.ui.MainActivity
 import com.uni.todoary.util.*
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.module.LoginRequest
-import com.uni.todoary.feature.auth.data.module.LoginResponse
 import com.uni.todoary.feature.auth.data.view.GetProfileView
-import com.uni.todoary.feature.auth.ui.view.FindPwActivity
-import com.uni.todoary.feature.auth.ui.view.PwLockActivity
-import com.uni.todoary.feature.auth.ui.view.TermscheckActivity
 import com.uni.todoary.feature.auth.ui.viewmodel.LoginViewModel
-import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

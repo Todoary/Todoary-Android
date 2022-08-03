@@ -2,6 +2,7 @@ package com.uni.todoary.feature.auth.data.module
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import com.uni.todoary.ApplicationClass
 import com.uni.todoary.feature.auth.data.dto.User
 import javax.inject.Inject
 
@@ -49,6 +50,12 @@ class AuthSpfManager @Inject constructor(private val spf : SharedPreferences){
         } else {
             Gson().fromJson(gsonData, User::class.java)
         }
+    }
+
+    fun removeUser(){
+        val editor = ApplicationClass.mSharedPreferences.edit()
+        editor.remove("user")
+        editor.apply()
     }
 
     fun saveIsAutoLogin(isTrue : Boolean){

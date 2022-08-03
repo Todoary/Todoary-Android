@@ -31,6 +31,8 @@ interface LoginInterface{
     @POST("/auth/signin/auto")
     suspend fun autoLogin(@Body loginInfo: LoginRequest) : Response<BaseResponse<LoginResponse>>
 
+
+
     // ------------ Profile ------------- //
     @GET("/users")
     suspend fun getProfile() : Response<BaseResponse<User>>

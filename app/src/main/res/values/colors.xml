@@ -15,4 +15,5 @@
     <color name="calendar_red">#D70000</color>
     <color name="deep_blue">#3273D6</color>
     <color name= "todo_list_blue">#86B6FF</color>
+    <color name="transparent">#00000000</color>
 </resources>

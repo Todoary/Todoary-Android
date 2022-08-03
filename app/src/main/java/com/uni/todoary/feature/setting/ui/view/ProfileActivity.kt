@@ -1,24 +1,31 @@
-package com.uni.todoary.feature.setting.ui
+package com.uni.todoary.feature.setting.ui.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import com.uni.todoary.base.ApiResult
 import com.uni.todoary.base.BaseDialog
 import com.uni.todoary.databinding.ActivityProfileBinding
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.ui.view.FindPwActivity
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.data.view.DeleteMemberView
-import com.uni.todoary.feature.auth.ui.LoginActivity
+import com.uni.todoary.feature.auth.ui.view.LoginActivity
+import com.uni.todoary.feature.setting.ui.viewmodel.ProfileViewModel
 import com.uni.todoary.util.removeRefToken
 import com.uni.todoary.util.removeUser
 import com.uni.todoary.util.removeXcesToken
+import com.uni.todoary.util.saveIsAutoLogin
+import com.uni.todoary.feature.main.ui.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class ProfileActivity : AppCompatActivity(), DeleteMemberView{
+@AndroidEntryPoint
+class ProfileActivity : AppCompatActivity(){
     lateinit var binding: ActivityProfileBinding
     private val userModel : ProfileViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +60,7 @@ class ProfileActivity : AppCompatActivity(), DeleteMemberView{
 
                 }
                 override fun onButton2Clicked() {
-                    logout()
+                    userModel.logOut()
                 }
             })
             dialog.show(supportFragmentManager, "logout_dialog")
@@ -72,7 +79,7 @@ class ProfileActivity : AppCompatActivity(), DeleteMemberView{
 
                 }
                 override fun onButton2Clicked() {
-                    DeleteMember()
+                    userModel.deleteUser()
                 }
             })
             dialog.show(supportFragmentManager, "destroy_id_dialog")
@@ -84,14 +91,6 @@ class ProfileActivity : AppCompatActivity(), DeleteMemberView{
     }
 
 
-    private fun logout() {
-        //ToDo: 로그아웃 기능
-    }
-
-    private fun delete() {
-        //ToDo: 계정삭제 기능
-    }
-
     private fun initView(){
         binding.profileIdTv.isSelected = true
         val userObserver = Observer<User>{user ->
@@ -100,40 +99,67 @@ class ProfileActivity : AppCompatActivity(), DeleteMemberView{
             binding.profileIdTv.text = user.email
         }
         userModel.user.observe(this, userObserver)
+
+        userModel.deleteResult.observe(this, {
+            when (it.status){
+                ApiResult.Status.SUCCESS ->{
+                    val dialog = BaseDialog()
+                    val btnData = arrayOf("네")
+                    dialog.arguments = bundleOf(
+                        "titleContext" to "알림",
+                        "bodyContext" to "계정삭제가 정상적으로 처리되었습니다\n"+
+                                        "로그인 화면으로 돌아갑니다.",
+                        "btnData" to btnData
+                    )
+                    dialog.setButtonClickListener(object: BaseDialog.OnButtonClickListener{
+                        override fun onButton1Clicked() {
+                            goToReLogin()
+                        }
+                        override fun onButton2Clicked() {
+
+                        }
+                    })
+                    dialog.show(supportFragmentManager, "destroy_id_result_dialog")
+                }
+                else -> {
+                    Toast.makeText(this, "잘못된 요청입니다. 다시 로그인 해주세요.", Toast.LENGTH_SHORT).show()
+                    goToReLogin()
+                }
+            }
+        })
+        userModel.logOutResult.observe(this, {
+            when (it.status){
+                ApiResult.Status.SUCCESS ->{
+                    val dialog = BaseDialog()
+                    val btnData = arrayOf("네")
+                    dialog.arguments = bundleOf(
+                        "titleContext" to "알림",
+                        "bodyContext" to "로그아웃 했습니다. 다시 로그인 해주세요.",
+                        "btnData" to btnData
+                    )
+                    dialog.setButtonClickListener(object: BaseDialog.OnButtonClickListener{
+                        override fun onButton1Clicked() {
+                            goToReLogin()
+                        }
+                        override fun onButton2Clicked() {
+
+                        }
+                    })
+                    dialog.show(supportFragmentManager, "logout_result_dialog")
+                }
+                else -> {}
+            }
+        })
     }
 
-
+    fun goToReLogin(){
+        val mIntent = Intent(this, LoginActivity::class.java)
+        mIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(mIntent)
+    }
 
     override fun onResume() {
         super.onResume()
-        initView()
-        //Log.d("onResume: ","실행완료")
-    }
-
-    private fun DeleteMember(){
-        val DeleteMemberService = AuthService()
-        DeleteMemberService.setDeleteMemberView(this)
-        DeleteMemberService.DeleteMember()
-    }
-
-    override fun DeleteMemberLoading() {
-    }
-
-    override fun DeleteMemberSuccess() {
-        Log.d("탈퇴","성공")
-        removeUser()
-        removeXcesToken()
-        removeRefToken()
-
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-
-        startActivity(intent)
-    }
-
-    override fun DeleteMemberFailure(code: Int) {
-        Log.d("탈퇴","실패")
-        Log.d("Error", code.toString())
+        userModel.getUser()
     }
 }

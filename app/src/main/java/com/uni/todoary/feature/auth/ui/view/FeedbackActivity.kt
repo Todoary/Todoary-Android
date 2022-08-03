@@ -5,7 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.uni.todoary.databinding.ActivityFeedbackBinding
-import com.uni.todoary.feature.setting.ui.SettingActivity
+import com.uni.todoary.feature.setting.ui.view.SettingActivity
 
 class FeedbackActivity : AppCompatActivity(){
     lateinit var binding: ActivityFeedbackBinding
