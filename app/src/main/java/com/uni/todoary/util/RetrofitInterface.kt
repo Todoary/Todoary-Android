@@ -6,6 +6,8 @@ import com.uni.todoary.feature.auth.data.dto.SignInRequest
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.module.LoginResponse
+import com.uni.todoary.feature.category.data.dto.CategoryAddRequest
+import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -40,4 +42,11 @@ interface RetrofitInterface {
     @PATCH("/users/status")
     fun DeleteMember() : Call<BaseResponse<User>>
 
+    // ------------ To_Do ------------- //
+    @PATCH("/todo/check")
+    fun CheckBox(@Body CheckBoxInfo : CheckBoxRequest) : Call<BaseResponse<Any>>
+
+    // ------------ Category ------------- //
+    @POST("/category")
+    fun CategoryAdd(@Body CateogoryAddInfo : CategoryAddRequest) : Call<BaseResponse<Any>>
 }

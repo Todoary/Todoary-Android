@@ -29,7 +29,6 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
     var nameflag = false
     var emailflag = false
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)

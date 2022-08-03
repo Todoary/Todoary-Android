@@ -131,4 +131,61 @@
         <item name="android:letterSpacing">0.02</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="todo_setting" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneom</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="diary_complete" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneosb</item>
+        <item name="android:lineSpacingExtra">3.4sp</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="diary_time" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneom</item>
+        <item name="android:lineSpacingExtra">2.6sp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#484848</item>
+    </style>
+
+    <style name="category_name" parent="@android:style/Widget.TextView">
+        <item name="fontFamily">@font/applesdgothicneob</item>
+        <item name="android:lineSpacingExtra">2.4sp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+
+    <style name="todosetting_complete" parent="@android:style/Widget.TextView">
+    <item name="fontFamily">@font/applesdgothicneosb</item>
+    <item name="android:lineSpacingExtra">3.2sp</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:letterSpacing">0.02</item>
+    <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Bottom sheet dialog style -->
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomRoundedBackgroundBottomSheet</item>
+    </style>
+    <style name="CustomRoundedBackgroundBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottomsheet_dialog</item>
+    </style>
+
+    <style name="Theme.AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/timepicker_gray</item>
+        <item name="colorPrimaryVariant">@color/timepicker_gray</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+    <style name="ThemeOverlay.NumberPicker" parent="Theme.AppTheme">
+        <item name="colorControlNormal">@color/timepicker_gray</item>
+        <item name="android:dividerHeight">0.5dp</item>
+    </style>
+
+
 </resources>

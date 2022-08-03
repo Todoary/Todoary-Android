@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/alarmsetting_complete_btn"
+        android:layout_width="29dp"
+        android:layout_height="19dp"
+        style="@style/todosetting_complete"
+        android:text="완료"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="310dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp">
+
+        <!-- layout for time picker mm:ss AM/PM -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <NumberPicker
+                android:id="@+id/numPickerH"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.NumberPicker"/>
+
+            <NumberPicker
+                android:id="@+id/numPickerM"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.NumberPicker"/>
+
+            <NumberPicker
+                android:id="@+id/numPickerAm"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.NumberPicker"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

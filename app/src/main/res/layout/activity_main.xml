@@ -163,6 +163,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/main_slide_todolist_tv">
 
                     <ImageView
+                        android:id="@+id/main_plus_iv"
                         android:layout_width="43dp"
                         android:layout_height="57dp"
                         android:src="@drawable/ic_menu_plus"

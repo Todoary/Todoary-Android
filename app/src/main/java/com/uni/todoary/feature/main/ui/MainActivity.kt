@@ -24,8 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 
 import com.google.firebase.messaging.FirebaseMessaging
-
-
+import com.uni.todoary.feature.category.ui.CategorysettingActivity
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
@@ -35,6 +34,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         binding.mainMenuIv.setOnClickListener {
             val menuIntent = Intent(this, SettingActivity::class.java)
             startActivity(menuIntent)
+        }
+
+        //슬라이딩 플러스 버튼 이벤트
+        binding.mainPlusIv.setOnClickListener {
+            val intent=Intent(this,CategorysettingActivity::class.java)
+            startActivity(intent)
         }
 
         // 달력 프래그먼트 달기

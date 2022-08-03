@@ -28,6 +28,7 @@ import com.uni.todoary.feature.auth.ui.view.PwLockActivity
 import com.uni.todoary.feature.auth.ui.view.TermscheckActivity
 import com.uni.todoary.feature.auth.ui.viewmodel.LoginViewModel
 import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
+import com.uni.todoary.feature.main.ui.DiaryActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +42,10 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btn.setOnClickListener {
+            val intent = Intent(this,DiaryActivity::class.java)
+            startActivity(intent)
+        }
         // 키보드에서 엔터 입력시 바로 로그인 되도록 구현
         binding.loginPwEt.setOnEditorActionListener(object : TextView.OnEditorActionListener{
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {

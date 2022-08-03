@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cate_item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:background="@drawable/category_select"
+        android:text="카테고리 이름"
+        android:textColor="@color/white"
+        android:paddingStart="9dp"
+        android:paddingEnd="9dp"
+        android:gravity="center_vertical"
+        style="@style/calendar_date"
+        android:layout_marginStart="11dp"
+        android:layout_margin="5dp"/>
+
+
+</LinearLayout>
