@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9d9467502b8969a5f078152f03468a79/transformed/databinding-adapters-7.0.4/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9d9467502b8969a5f078152f03468a79/transformed/databinding-adapters-7.0.4/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9d9467502b8969a5f078152f03468a79/transformed/databinding-adapters-7.0.4/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9a097c551ea5657d4d1fcd6a67e99976/transformed/databinding-adapters-7.0.4/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9a097c551ea5657d4d1fcd6a67e99976/transformed/databinding-adapters-7.0.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9a097c551ea5657d4d1fcd6a67e99976/transformed/databinding-adapters-7.0.4/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a3a8d468d28c7d0678ef0e6acb34f9ba/transformed/databinding-adapters-7.0.4/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a3a8d468d28c7d0678ef0e6acb34f9ba/transformed/databinding-adapters-7.0.4/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a3a8d468d28c7d0678ef0e6acb34f9ba/transformed/databinding-adapters-7.0.4/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
