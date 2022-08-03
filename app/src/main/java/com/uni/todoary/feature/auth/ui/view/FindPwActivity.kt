@@ -56,7 +56,7 @@ class FindPwActivity : BaseActivity<ActivityFindPwBinding>(ActivityFindPwBinding
             } else {
                 binding.findPwEmailErrorTv.visibility = View.INVISIBLE
                 binding.findPwIdHintTv.visibility = View.VISIBLE
-                sendGmail(binding.findPwEmailEt.toString())
+                sendGmail(binding.findPwEmailEt.text.toString())
             }
         }
     }

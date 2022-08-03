@@ -7,6 +7,7 @@ import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityCategoryBinding
 import com.uni.todoary.feature.main.data.dto.TodoListAlarm
 import com.uni.todoary.feature.main.data.dto.TodoListInfo
+import kotlin.collections.ArrayList
 
 class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryBinding::inflate) {
 
@@ -15,6 +16,7 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
     }
 
     override fun initAfterBinding() {
+
         initView()
 
         // TODO : API 연결하면서 더미데이터 생성하는 부분 없애기
