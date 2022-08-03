@@ -30,10 +30,10 @@
         </service> <!-- <meta-data android:name="com.fromEmail" android:value="${fromEmail}"/> -->
         <!-- <meta-data android:name="com.password" android:value="${password}"/> -->
         <activity
-            android:name=".feature.setting.ui.AlarmActivity"
+            android:name=".feature.setting.ui.view.AlarmActivity"
             android:exported="false" />
         <activity
-            android:name=".feature.setting.ui.SettingActivity"
+            android:name=".feature.setting.ui.view.SettingActivity"
             android:exported="false" />
         <activity
             android:name=".feature.auth.ui.view.TermsDetailActivity"
@@ -48,24 +48,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.auth.ui.LoginActivity" />
+        <activity android:name=".feature.auth.ui.view.LoginActivity"/>
         <activity android:name=".feature.main.ui.MainActivity" />
-        <activity android:name=".feature.setting.ui.AgreementActivity" />
-        <activity android:name=".feature.setting.ui.DisplayActivity" />
-        <activity android:name=".feature.setting.ui.FeedbackActivity" />
-        <activity android:name=".feature.setting.ui.GuideActivity" />
-        <activity android:name=".feature.setting.ui.PasswordActivity" />
-        <activity android:name=".feature.setting.ui.ProfileActivity" />
-        <activity android:name=".feature.setting.ui.FontActivity" />
+        <activity android:name=".feature.setting.ui.view.AgreementActivity" />
+        <activity android:name=".feature.setting.ui.view.DisplayActivity" />
+        <activity android:name=".feature.setting.ui.view.FeedbackActivity" />
+        <activity android:name=".feature.setting.ui.view.GuideActivity" />
+        <activity android:name=".feature.setting.ui.view.PasswordActivity" />
+        <activity android:name=".feature.setting.ui.view.ProfileActivity" />
+        <activity android:name=".feature.setting.ui.view.FontActivity"/>
         <activity android:name=".feature.auth.ui.view.PwLockActivity" />
         <activity android:name=".feature.auth.ui.view.SignupActivity" />
         <activity
             android:name=".feature.auth.ui.view.TermscheckActivity"
             android:exported="false" />
         <activity android:name=".feature.auth.ui.view.FindPwActivity" />
-        <activity android:name=".feature.setting.ui.ProfileEditActivity" />
         <activity android:name=".feature.category.ui.CategorysettingActivity" />
         <activity android:name=".feature.category.ui.TodoSettingActivity" />
+        <activity android:name=".feature.setting.ui.view.ProfileEditActivity"/>
     </application>
 
 </manifest>

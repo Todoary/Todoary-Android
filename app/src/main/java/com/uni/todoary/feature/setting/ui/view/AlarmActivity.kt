@@ -1,9 +1,8 @@
-package com.uni.todoary.feature.setting.ui
+package com.uni.todoary.feature.setting.ui.view
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -42,6 +41,12 @@ class AlarmActivity : AppCompatActivity(){
                     "알림입니다. 매일 설정한 시간에 알람이\n" +
                     "올 수 있도록 설정할 수 있습니다."
             makeMoreDialog(binding.alarmDayIv, msg)
+        }
+
+        binding.alarmRemindIv.setOnClickListener {
+            val msg = "일주일동안 기록을 하지 않으면\n" +
+                    "Todoary가 알려줍니다."
+            makeMoreDialog(binding.alarmRemindIv, msg)
         }
     }
 

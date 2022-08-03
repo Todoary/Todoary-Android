@@ -39,4 +39,5 @@
     <color name="todoset_pruple">#BF2D59</color>
     <color name="timepicker_gray">#CCCCCC</color>
     <color name="keyboard_gray">#F4F4F4</color>
+    <color name="transparent">#00000000</color>
 </resources>

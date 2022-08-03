@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.setting.ui
+package com.uni.todoary.feature.setting.ui.view
 
 import android.content.Intent
 import android.net.Uri

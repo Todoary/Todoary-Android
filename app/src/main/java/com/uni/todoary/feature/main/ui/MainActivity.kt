@@ -2,8 +2,6 @@ package com.uni.todoary.feature.main.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,15 +11,10 @@ import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityMainBinding
 import com.uni.todoary.feature.main.data.dto.TodoListAlarm
 import com.uni.todoary.feature.main.data.dto.TodoListInfo
-import com.uni.todoary.feature.setting.ui.SettingActivity
-import com.uni.todoary.util.getRefToken
-import com.uni.todoary.util.getXcesToken
+import com.uni.todoary.feature.setting.ui.view.SettingActivity
 import android.widget.Toast
 
-import androidx.annotation.NonNull
-
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.FirebaseApp
 
 import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.feature.category.ui.CategorysettingActivity

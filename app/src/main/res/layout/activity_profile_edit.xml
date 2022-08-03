@@ -66,4 +66,16 @@
         android:paddingStart="10dp"
         style="@style/setting_list"
         android:background="@drawable/bg_profile_edit_layer"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/profileedit_confirm_btn"
+        android:layout_width="304dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="42dp"
+        android:text="확인"
+        android:background="@drawable/round_button_lar"
+        style="@style/main_btn_1"
+        android:backgroundTint="@color/color_primary"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"/>
 </LinearLayout>

@@ -4,12 +4,16 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.firebase.FirebaseApp
+import com.uni.todoary.config.TokenInterface
+import com.uni.todoary.config.TokenRepository
 import com.uni.todoary.config.XAccessTokenInterceptor
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @HiltAndroidApp
 class ApplicationClass : Application() {
@@ -30,10 +34,13 @@ class ApplicationClass : Application() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
 
+        val tokenApi = TokenInterface.create()
+        val tokenRepo = TokenRepository(tokenApi)
+
         val client: OkHttpClient = OkHttpClient.Builder()
             .readTimeout(30000, TimeUnit.MILLISECONDS)
             .connectTimeout(30000, TimeUnit.MILLISECONDS)
-            .addNetworkInterceptor(XAccessTokenInterceptor()) // JWT 자동 헤더 전송
+            .addInterceptor(XAccessTokenInterceptor(tokenRepo, this)) // JWT 자동 헤더 전송
             .build()
 
         retrofit = Retrofit.Builder()
