@@ -44,6 +44,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".feature.category.ui.view.CategoryActivity"/>
         <activity android:name=".feature.auth.ui.view.LoginActivity"/>
         <activity android:name=".feature.main.ui.MainActivity" />
         <activity android:name=".feature.setting.ui.view.AgreementActivity" />

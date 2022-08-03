@@ -7,6 +7,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 
 data class LoginRequest(
@@ -23,6 +24,11 @@ data class LoginToken(
     @SerializedName("refreshToken") val refreshToken: String
 )
 
+data class AccountInfo(
+    @SerializedName("email") val email: String,
+    @SerializedName("newPassword") val newPassword: String
+)
+
 interface LoginInterface{
     // --------- Auth ------------- //
     @POST("/auth/signin")
@@ -31,7 +37,8 @@ interface LoginInterface{
     @POST("/auth/signin/auto")
     suspend fun autoLogin(@Body loginInfo: LoginRequest) : Response<BaseResponse<LoginResponse>>
 
-
+    @PATCH("/auth/password")
+    suspend fun findPw(@Body accountInfo : AccountInfo) : Response<BaseResponse<Any>>
 
     // ------------ Profile ------------- //
     @GET("/users")

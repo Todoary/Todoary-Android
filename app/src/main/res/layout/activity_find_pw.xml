@@ -55,6 +55,20 @@
         app:layout_constraintTop_toBottomOf="@id/find_pw_email_et"/>
 
     <TextView
+        android:id="@+id/find_pw_email_error_tv"
+        android:layout_width="174dp"
+        android:layout_height="20dp"
+        android:text="이메일 형식을 확인해 주세요."
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="35dp"
+        style="@style/sub_1"
+        android:textColor="@color/red"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/find_pw_email_et"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_email_et"/>
+
+
+    <TextView
         android:id="@+id/find_pw_verification_code_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

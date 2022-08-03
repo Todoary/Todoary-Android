@@ -17,13 +17,29 @@ import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 
 import com.google.firebase.messaging.FirebaseMessaging
-
-
-
+import com.uni.todoary.feature.category.ui.view.CategoryActivity
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
     override fun initAfterBinding() {
+
+        initView()
+
+        // TODO: API 연결 시 더미데이터 부분 삭제
+        val todoLists = arrayListOf<TodoListInfo>()
+        todoLists.add(TodoListInfo(true, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("아랄아랄", "기릴기릴"), TodoListAlarm(false, 6, 30)))
+        todoLists.add(TodoListInfo(true, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("오롤오롤", "기릴기릴"), TodoListAlarm(true, 7, 30)))
+        todoLists.add(TodoListInfo(false, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("구룰구룰", "기릴기릴"), TodoListAlarm(true, 6, 45)))
+        todoLists.add(TodoListInfo(false, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("끼릭끼릭", "기릴기릴"), TodoListAlarm(false, 6, 45)))
+        setTodolist(todoLists)
+
+        getFCMToken()
+
+    }
+
+    private fun initView(){
         // 설정 버튼
         binding.mainMenuIv.setOnClickListener {
             val menuIntent = Intent(this, SettingActivity::class.java)
@@ -35,15 +51,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             .replace(R.id.main_calendar_fl, CalendarFragment())
             .commit()
 
-        // TODO: API 연결 시 더미데이터 부분 삭제
-        val todoLists = arrayListOf<TodoListInfo>()
-        todoLists.add(TodoListInfo(true, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("아랄아랄", "기릴기릴"), TodoListAlarm(false, 6, 30)))
-        todoLists.add(TodoListInfo(true, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("오롤오롤", "기릴기릴"), TodoListAlarm(true, 7, 30)))
-        todoLists.add(TodoListInfo(false, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("구룰구룰", "기릴기릴"), TodoListAlarm(true, 6, 45)))
-        todoLists.add(TodoListInfo(false, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("끼릭끼릭", "기릴기릴"), TodoListAlarm(false, 6, 45)))
-        setTodolist(todoLists)
-
-        getFCMToken()
+        // 카테고리 버튼
+        binding.mainSlideMenuGridIv.setOnClickListener {
+            val categoryIntent = Intent(this, CategoryActivity::class.java)
+            startActivity(categoryIntent)
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -78,8 +90,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 val token = task.result
 
                 // Log and toast
-                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
-                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
+//                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
+//                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
             })
     }
 }
