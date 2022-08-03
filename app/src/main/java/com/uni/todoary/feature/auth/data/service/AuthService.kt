@@ -10,6 +10,10 @@ import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.feature.auth.data.dto.*
 import com.uni.todoary.feature.auth.data.view.*
+import com.uni.todoary.feature.category.data.dto.CategoryAddRequest
+import com.uni.todoary.feature.category.data.view.CategoryAddView
+import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
+import com.uni.todoary.feature.main.data.view.CheckBoxView
 import com.uni.todoary.util.RetrofitInterface
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +27,8 @@ class AuthService {
     private lateinit var ExistenceCheckView: ExistenceCheckView
     private lateinit var ProfileChangeView: ProfileChangeView
     private lateinit var DeleteMemberView: DeleteMemberView
+    private lateinit var CheckBoxView: CheckBoxView
+    private lateinit var CategoryAddView:CategoryAddView
 
     fun setSignInView(SignInView: SignInView) {
         this.SignInView = SignInView
@@ -44,6 +50,13 @@ class AuthService {
         this.DeleteMemberView = DeleteMemberView
     }
 
+    fun setCheckBoxView(CheckBoxView: CheckBoxView){
+        this.CheckBoxView = CheckBoxView
+    }
+
+    fun setCategoryAddView(CategoryAddView: CategoryAddView){
+        this.CategoryAddView = CategoryAddView
+    }
     fun SignIn(request: SignInRequest) {
         SignInView.SignInLoading()
         authService.SignIn(request).enqueue(object : Callback<BaseResponse<Any>> {
@@ -219,6 +232,50 @@ class AuthService {
 
             override fun onFailure(call: Call<BaseResponse<User>>, t: Throwable) {
                 Log.d("Delete_API_Failure", t.toString())
+            }
+        })
+    }
+
+    fun CheckBox(request: CheckBoxRequest) {
+        CheckBoxView.CheckBoxLoading()
+        authService.CheckBox(request).enqueue(object : Callback<BaseResponse<Any>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+
+                val resp = response.body()!!
+                Log.d("resp: ", request.toString())
+                when (resp.code) {
+                    1000 -> CheckBoxView.CheckBoxSuccess()
+                    else -> CheckBoxView.CheckBoxFailure(resp.code)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("CheckBox_API_Failure", t.toString())
+            }
+        })
+    }
+
+    fun CategoryAdd(request: CategoryAddRequest) {
+        CategoryAddView.CategoryAddLoading()
+        authService.CategoryAdd(request).enqueue(object : Callback<BaseResponse<Any>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+
+                val resp = response.body()!!
+                Log.d("resp: ", request.toString())
+                when (resp.code) {
+                    1000 -> CategoryAddView.CategoryAddSuccess()
+                    else -> CategoryAddView.CategoryAddFailure(resp.code)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("CategoryAdd_API_Failure", t.toString())
             }
         })
     }

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.hannesa2:AndroidSlidingUpPanel:4.2.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4549db48efa41b9f4cb34c05d36e5db3/transformed/jetified-AndroidSlidingUpPanel-4.2.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4549db48efa41b9f4cb34c05d36e5db3/transformed/jetified-AndroidSlidingUpPanel-4.2.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4549db48efa41b9f4cb34c05d36e5db3/transformed/jetified-AndroidSlidingUpPanel-4.2.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d80130689daff3394029d6f09294b174/transformed/jetified-AndroidSlidingUpPanel-4.2.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d80130689daff3394029d6f09294b174/transformed/jetified-AndroidSlidingUpPanel-4.2.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d80130689daff3394029d6f09294b174/transformed/jetified-AndroidSlidingUpPanel-4.2.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

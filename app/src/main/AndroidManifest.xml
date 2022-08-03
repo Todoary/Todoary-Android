@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.uni.todoary" >
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -13,18 +12,23 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.Todoary"
-        tools:targetApi="m">
-        <service android:name=".util.TodoaryFirebaseMessagingService"
-            android:exported="false">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m" >
+        <activity
+            android:name=".feature.main.ui.DiaryActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <service
+            android:name=".util.TodoaryFirebaseMessagingService"
+            android:exported="false" >
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-<!--        <meta-data android:name="com.fromEmail" android:value="${fromEmail}"/>-->
-<!--        <meta-data android:name="com.password" android:value="${password}"/>-->
+        </service> <!-- <meta-data android:name="com.fromEmail" android:value="${fromEmail}"/> -->
+        <!-- <meta-data android:name="com.password" android:value="${password}"/> -->
         <activity
             android:name=".feature.setting.ui.view.AlarmActivity"
             android:exported="false" />
@@ -36,8 +40,8 @@
             android:exported="false" />
         <activity
             android:name=".feature.main.ui.SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,9 +60,12 @@
         <activity android:name=".feature.setting.ui.view.FontActivity"/>
         <activity android:name=".feature.auth.ui.view.PwLockActivity" />
         <activity android:name=".feature.auth.ui.view.SignupActivity" />
-        <activity android:name=".feature.auth.ui.view.TermscheckActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".feature.auth.ui.view.TermscheckActivity"
+            android:exported="false" />
         <activity android:name=".feature.auth.ui.view.FindPwActivity" />
+        <activity android:name=".feature.category.ui.view.CategorysettingActivity" />
+        <activity android:name=".feature.category.ui.view.TodoSettingActivity" />
         <activity android:name=".feature.setting.ui.view.ProfileEditActivity"/>
     </application>
 

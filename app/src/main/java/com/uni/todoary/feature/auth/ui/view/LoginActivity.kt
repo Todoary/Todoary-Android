@@ -21,6 +21,8 @@ import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.ui.viewmodel.LoginViewModel
+import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
+import com.uni.todoary.feature.main.ui.DiaryActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
