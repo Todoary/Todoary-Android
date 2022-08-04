@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FindPwViewModel @Inject constructor(private val repository : FindPwRepository): ViewModel() {
     val email : MutableLiveData<String> = MutableLiveData("")
-    private var checkList : ArrayList<Boolean> = arrayListOf(false, false)
+    private var checkList : ArrayList<Boolean> = arrayListOf(false, false, false)
 
     val _findPwResult = MutableLiveData<ApiResult<Any>>()
     val findPwResult : LiveData<ApiResult<Any>>
@@ -27,7 +27,7 @@ class FindPwViewModel @Inject constructor(private val repository : FindPwReposit
     }
 
     fun validationCheck() : Boolean{
-        return checkList[0] && checkList[1]
+        return checkList[0] && checkList[1] && checkList[2]
     }
 
     fun registerNewPw(request : AccountInfo){

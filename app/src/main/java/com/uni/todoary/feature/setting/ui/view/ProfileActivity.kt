@@ -94,6 +94,7 @@ class ProfileActivity : AppCompatActivity(){
 
         userModel.deleteResult.observe(this, {
             when (it.status){
+                ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS ->{
                     val dialog = BaseDialog()
                     val btnData = arrayOf("네")

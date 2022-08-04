@@ -63,7 +63,8 @@
         <activity
             android:name=".feature.auth.ui.view.TermscheckActivity"
             android:exported="false" />
-        <activity android:name=".feature.auth.ui.view.FindPwActivity" />
+        <activity android:name=".feature.auth.ui.view.FindPwActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".feature.category.ui.view.CategorysettingActivity" />
         <activity android:name=".feature.category.ui.view.TodoSettingActivity" />
         <activity android:name=".feature.setting.ui.view.ProfileEditActivity"/>

@@ -40,6 +40,8 @@
         android:hint="이메일"
         style="@style/main_2"
         android:layout_marginTop="15dp"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
         app:layout_constraintStart_toStartOf="@id/find_pw_id_tv"
         app:layout_constraintEnd_toEndOf="@id/find_pw_id_check_tv"
         app:layout_constraintTop_toBottomOf="@id/find_pw_id_tv"/>
@@ -98,6 +100,8 @@
         android:layout_height="wrap_content"
         android:hint="인증 코드"
         style="@style/main_2"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="@id/find_pw_id_tv"
         app:layout_constraintEnd_toEndOf="@id/find_pw_id_check_tv"
@@ -119,11 +123,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="영문, 숫자 포함 8자리 이상"
+        android:maxLength="30"
         style="@style/main_2"
+        android:digits="qwertyuioplkjhgfdsazxcvbnm1234567890"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="@id/find_pw_id_tv"
         app:layout_constraintEnd_toEndOf="@id/find_pw_id_check_tv"
         app:layout_constraintTop_toBottomOf="@id/find_pw_rebuild_pw_tv"/>
+
+    <TextView
+        android:id="@+id/find_pw_rebuild_pw_off_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/main_2"
+        android:textColor="@color/red"
+        android:text="영문, 숫자 포함 8자리 이상 입력해 주세요."
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/find_pw_rebuild_pw_et"
+        app:layout_constraintTop_toBottomOf="@id/find_pw_rebuild_pw_et"/>
 
     <EditText
         android:id="@+id/find_pw_rebuild_pw_check_et"
@@ -131,10 +151,14 @@
         android:layout_height="wrap_content"
         android:hint="비밀번호 재입력"
         style="@style/main_2"
+        android:digits="qwertyuioplkjhgfdsazxcvbnm1234567890"
+        android:maxLines="1"
+        android:maxLength="30"
+        android:imeOptions="actionDone"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="@id/find_pw_id_tv"
         app:layout_constraintEnd_toEndOf="@id/find_pw_id_check_tv"
-        app:layout_constraintTop_toBottomOf="@id/find_pw_rebuild_pw_et"/>
+        app:layout_constraintTop_toBottomOf="@id/find_pw_rebuild_pw_off_tv"/>
 
     <TextView
         android:id="@+id/find_pw_rebuild_pw_check_off_tv"

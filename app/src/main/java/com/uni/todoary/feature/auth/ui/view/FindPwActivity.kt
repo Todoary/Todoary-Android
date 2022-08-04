@@ -2,12 +2,18 @@ package com.uni.todoary.feature.auth.ui.view
 
 import android.content.Intent
 import android.text.Editable
+import android.text.InputFilter
+import android.text.Spanned
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.os.bundleOf
+import androidx.core.widget.addTextChangedListener
 import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.base.BaseActivity
@@ -18,6 +24,7 @@ import com.uni.todoary.feature.auth.ui.viewmodel.FindPwViewModel
 import com.uni.todoary.util.GMailSender
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class FindPwActivity constructor(private var random_number : Int = 0) : BaseActivity<ActivityFindPwBinding>(ActivityFindPwBinding::inflate) {
@@ -75,6 +82,22 @@ class FindPwActivity constructor(private var random_number : Int = 0) : BaseActi
                 model.codeChecked(0, false)
             }
         }
+        binding.findPwRebuildPwEt.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(curText: Editable?) {
+                if(curText.toString().length >= 8){
+                    model.codeChecked(2, true)
+                    binding.findPwRebuildPwOffTv.visibility = View.GONE
+                } else {
+                    model.codeChecked(2, false)
+                    binding.findPwRebuildPwOffTv.visibility = View.VISIBLE
+                }
+            }
+
+        })
         binding.findPwRebuildPwCheckEt.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -94,17 +117,32 @@ class FindPwActivity constructor(private var random_number : Int = 0) : BaseActi
 
         })
         binding.findPwConfirmTv.setOnClickListener {
-            if (model.validationCheck()){
-                val request = AccountInfo(binding.findPwEmailEt.text.toString(),
-                                        binding.findPwRebuildPwCheckEt.text.toString())
-                model.registerNewPw(request)
-            } else {
-                android.app.AlertDialog.Builder(this).apply {
-                    setTitle("알림")
-                    setMessage("이메일 또는 비밀번호의 유효성이 확인되지 않았습니다.")
-                    setPositiveButton("확인", null)
-                    show()
+            confirmNewPw()
+        }
+        // 키보드에서 엔터 입력시 바로 로그인 되도록 구현
+        binding.findPwRebuildPwCheckEt.setOnEditorActionListener(object : TextView.OnEditorActionListener{
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_DONE){
+                    confirmNewPw()
+                    hideKeyboard(binding.findPwRebuildPwCheckEt)
+                    return true
                 }
+                return false
+            }
+        })
+    }
+
+    private fun confirmNewPw(){
+        if (model.validationCheck()){
+            val request = AccountInfo(binding.findPwEmailEt.text.toString(),
+                binding.findPwRebuildPwCheckEt.text.toString())
+            model.registerNewPw(request)
+        } else {
+            android.app.AlertDialog.Builder(this).apply {
+                setTitle("알림")
+                setMessage("이메일 또는 비밀번호의 유효성이 확인되지 않았습니다.")
+                setPositiveButton("확인", null)
+                show()
             }
         }
     }

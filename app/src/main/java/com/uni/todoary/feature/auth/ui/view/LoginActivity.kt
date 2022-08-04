@@ -85,6 +85,13 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
                             binding.loginIdEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
                             Snackbar.make(binding.loginBtnTv, "아이디 또는 비밀번호가 틀렸습니다.", Snackbar.LENGTH_SHORT).show()
                         }
+                        2112 -> {
+                            binding.loginPwEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
+                            Snackbar.make(binding.loginBtnTv, "비밀번호를 확인해 주세요.", Snackbar.LENGTH_SHORT).show()
+                        }
+                        2012 -> {
+                            Snackbar.make(binding.loginBtnTv, "정지된 계정입니다.", Snackbar.LENGTH_SHORT).show()
+                        }
                         4000 -> {
                             Snackbar.make(binding.loginBtnTv, "데이터베이스 연결에 실패하였습니다. 반복될 시 개발자에게 문의해 주세요.", Snackbar.LENGTH_SHORT).show()
                         }
