@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.databinding.ActivityLoginBinding
 import com.uni.todoary.feature.auth.data.dto.User
-import com.uni.todoary.feature.main.ui.MainActivity
+import com.uni.todoary.feature.main.ui.view.MainActivity
 import com.uni.todoary.util.*
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -21,8 +21,6 @@ import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.ui.viewmodel.LoginViewModel
-import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
-import com.uni.todoary.feature.main.ui.DiaryActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

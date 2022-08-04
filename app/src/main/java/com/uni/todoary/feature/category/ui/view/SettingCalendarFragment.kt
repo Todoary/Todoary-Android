@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.databinding.FragmentCalendarBinding
-import com.uni.todoary.feature.main.ui.CalendarAdapter
+import com.uni.todoary.feature.main.ui.view.CalendarAdapter
 import com.uni.todoary.util.CalendarUtil
 import com.uni.todoary.util.CalendarUtil.Companion.selectedDate
 import java.time.LocalDate

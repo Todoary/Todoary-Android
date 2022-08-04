@@ -1,8 +1,9 @@
-package com.uni.todoary.feature.main.ui
+package com.uni.todoary.feature.main.ui.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,17 +13,20 @@ import com.uni.todoary.databinding.ActivityMainBinding
 import com.uni.todoary.feature.main.data.dto.TodoListAlarm
 import com.uni.todoary.feature.main.data.dto.TodoListInfo
 import com.uni.todoary.feature.setting.ui.view.SettingActivity
-
 import com.google.android.gms.tasks.OnCompleteListener
-
 import com.google.firebase.messaging.FirebaseMessaging
 import java.util.*
 import kotlin.collections.ArrayList
 import com.uni.todoary.feature.category.ui.view.CategorysettingActivity
 import com.uni.todoary.feature.category.ui.view.CategoryActivity
+import com.uni.todoary.feature.main.ui.viewmodel.MainViewModel
+import com.uni.todoary.feature.setting.ui.view.ProfileActivity
+import com.uni.todoary.feature.setting.ui.view.ProfileActivity_GeneratedInjector
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+    val model : MainViewModel by viewModels()
 
     override fun initAfterBinding() {
 
@@ -46,6 +50,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     private fun initView(){
+        // 프로필
+        binding.mainProfileNameTv.text = model.user.value!!.nickname
+        binding.mainProfileIntroTv.text = model.user.value!!.introduce
+
         // 설정 버튼
         binding.mainMenuIv.setOnClickListener {
             val menuIntent = Intent(this, SettingActivity::class.java)
@@ -72,6 +80,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         // 일기 작성 버튼
         binding.mainPostingBtnCv.setOnClickListener{
             val intent = Intent(this, DiaryActivity::class.java)
+            startActivity(intent)
+        }
+        
+        // 프로필 화면
+        binding.mainProfileLayout.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }

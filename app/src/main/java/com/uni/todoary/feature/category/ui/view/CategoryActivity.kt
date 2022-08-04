@@ -1,5 +1,6 @@
 package com.uni.todoary.feature.category.ui.view
 
+import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,10 +30,17 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
     }
 
     private fun initView(){
+        // 투두리스트 RecyclerView 초기화
         binding.categoryTodoListsRv.apply {
             adapter = todoListAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        }
+
+        // 투두리스트 만들기 버튼
+        binding.categoryTodoListsAddIv.setOnClickListener {
+            val intent = Intent(this, CategorysettingActivity::class.java)
+            startActivity(intent)
         }
     }
 

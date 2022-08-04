@@ -2,7 +2,6 @@ package com.uni.todoary.feature.setting.ui.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,15 +12,8 @@ import com.uni.todoary.base.BaseDialog
 import com.uni.todoary.databinding.ActivityProfileBinding
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.ui.view.FindPwActivity
-import com.uni.todoary.feature.auth.data.service.AuthService
-import com.uni.todoary.feature.auth.data.view.DeleteMemberView
 import com.uni.todoary.feature.auth.ui.view.LoginActivity
 import com.uni.todoary.feature.setting.ui.viewmodel.ProfileViewModel
-import com.uni.todoary.util.removeRefToken
-import com.uni.todoary.util.removeUser
-import com.uni.todoary.util.removeXcesToken
-import com.uni.todoary.util.saveIsAutoLogin
-import com.uni.todoary.feature.main.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

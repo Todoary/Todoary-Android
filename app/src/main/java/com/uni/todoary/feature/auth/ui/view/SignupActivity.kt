@@ -19,6 +19,7 @@ import com.uni.todoary.feature.auth.data.view.EmailCheckView
 import com.uni.todoary.feature.auth.data.view.ExistenceCheckView
 import com.uni.todoary.feature.auth.data.view.SignInView
 import com.uni.todoary.util.GMailSender
+import java.util.*
 
 class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, ExistenceCheckView {
     lateinit var binding: ActivitySignupBinding
@@ -27,7 +28,7 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
     var nickflag = false
     var nameflag = false
     var emailflag = false
-    val randomNumber = (1000..9999).random()
+    var randomNumber = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -292,6 +293,8 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
 
     }
     private fun GmailSend() {
+        val random = Random()
+        randomNumber = random.nextInt(8999)+1000
         val codebuilder = android.app.AlertDialog.Builder(this)
         Log.d("중복된 이메일","아님")
                 var email = binding.signupEmailEt.text.toString()

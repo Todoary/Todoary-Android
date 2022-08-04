@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.main.ui
+package com.uni.todoary.feature.main.ui.view
 
 import android.view.LayoutInflater
 import android.view.View

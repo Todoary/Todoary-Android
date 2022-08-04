@@ -19,7 +19,7 @@ class CategorysettingActivity : AppCompatActivity() {
             }
 
         binding.categorysettingEditEt.setPadding(10,10,5,20)
-        binding.categorysettingCatebtnLl.setOnClickListener {
+        binding.categorysettingAddLayout.setOnClickListener {
             val mIntent = Intent(this, TodoSettingActivity::class.java)
             startActivity(mIntent)
 
@@ -31,7 +31,7 @@ class CategorysettingActivity : AppCompatActivity() {
                     bottomSheet.show(supportFragmentManager, bottomSheet.tag)
                 }
             }
-            binding.categorysettingDateLl.setOnClickListener {
+            binding.categorysettingDateLayout.setOnClickListener {
                 val bottomSheet = SettingCalendarBottomSheet()
                 bottomSheet.show(supportFragmentManager,bottomSheet.tag)
             }

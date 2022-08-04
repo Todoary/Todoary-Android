@@ -35,7 +35,7 @@
         app:umanoShadowHeight="0dp"
         app:umanoOverlay="true"
         app:umanoScrollableView="@id/main_slide_sv"
-        tools:context=".feature.main.ui.MainActivity"
+        tools:context=".feature.main.ui.view.MainActivity"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toTopOf="@id/main_calendar_fl"
                 app:layout_constraintTop_toBottomOf="@id/main_menu_iv"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -114,7 +115,7 @@
                 android:id="@+id/main_calendar_fl"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 app:flow_horizontalAlign="center"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

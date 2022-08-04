@@ -11,7 +11,7 @@ import com.uni.todoary.databinding.ActivityPwLockBinding
 import androidx.lifecycle.Observer
 import com.uni.todoary.R
 import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
-import com.uni.todoary.feature.main.ui.MainActivity
+import com.uni.todoary.feature.main.ui.view.MainActivity
 import com.uni.todoary.util.getSecureKey
 
 class PwLockActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding::inflate) {
