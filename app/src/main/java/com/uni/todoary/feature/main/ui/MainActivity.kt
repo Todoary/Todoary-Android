@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 
 import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.feature.category.ui.view.CategoryActivity
+import com.uni.todoary.util.dpToPx
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -63,7 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         val todolistAdapter = TodoListRVAdapter()
         todolistAdapter.setTodoList(todoList)
         val swipeCallback = TodoListSwipeHelper().apply {
-            setClamp(300f, 200f)
+            setClamp(dpToPx(this@MainActivity, 110f), dpToPx(this@MainActivity, 55f))
         }
         val swipeHelper = ItemTouchHelper(swipeCallback)
         swipeHelper.attachToRecyclerView(binding.mainSlideTodolistRv)
