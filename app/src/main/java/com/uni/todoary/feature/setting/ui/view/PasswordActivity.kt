@@ -64,8 +64,10 @@ class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBindi
                     } else {
                         // 흔들리는 애니메이션 적용, 해당 애니메이션 시간 만큼 딜레이 하기위해 Handler 사용
                         binding.pwLockLayout.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                        binding.pwLockSubTv.setTextColor(ContextCompat.getColor(applicationContext, R.color.red))
                         Handler(Looper.getMainLooper()).postDelayed({
                             model.clearPw()
+                            binding.pwLockSubTv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
                         }, 300)
                     }
                 }
@@ -173,8 +175,10 @@ class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBindi
                         } else {
                             // 흔들리는 애니메이션 적용, 해당 애니메이션 시간 만큼 딜레이 하기위해 Handler 사용
                             binding.pwLockLayout.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                            binding.pwLockSubTv.setTextColor(ContextCompat.getColor(applicationContext, R.color.red))
                             Handler(Looper.getMainLooper()).postDelayed({
                                 model.clearPw()
+                                binding.pwLockSubTv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
                             }, 300)
                         }
                     }

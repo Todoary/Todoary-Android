@@ -11,14 +11,28 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.R
+import com.uni.todoary.base.ApiResult
 import com.uni.todoary.databinding.ActivityAlarmBinding
 import com.uni.todoary.util.dpToPx
+import com.uni.todoary.feature.setting.ui.viewmodel.AlarmViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlarmActivity : AppCompatActivity(){
     lateinit var binding: ActivityAlarmBinding
+    private val alarmModel : AlarmViewModel by viewModels()
+
+    enum class AlarmType{
+        TODO,
+        DIARY,
+        REMIND
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAlarmBinding.inflate(layoutInflater)
@@ -31,7 +45,72 @@ class AlarmActivity : AppCompatActivity(){
             finish()
         }
 
-        // 물음표 눌렀을 때 자세히 보기 설명 (AlertDialog 띄우기)
+        setQuestionMarks()
+        initObservers()
+        initAlarmSwitches()
+    }
+
+    private fun initObservers(){
+        alarmModel.alarmApiResult.observe(this, {
+            when (it.status){
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {
+                    binding.alarmTodoarySwitch.isChecked = it.data!!.isTodoAlarmChecked
+                    binding.alarmDaySwitch.isChecked = it.data.isDiaryAlarmChecked
+                    binding.alarmRemindSwitch.isChecked = it.data.isRemindAlarmChecked
+                }
+                ApiResult.Status.API_ERROR -> {
+                    binding.alarmTodoarySwitch.isChecked = false
+                    binding.alarmDaySwitch.isChecked = false
+                    binding.alarmRemindSwitch.isChecked = false
+                    Snackbar.make(binding.alarmRemindIv, "데이터 베이스에 연결 실패했습니다.", Snackbar.LENGTH_SHORT).show()
+                }
+                ApiResult.Status.NETWORK_ERROR -> {
+                    Log.d("GetAlarm_Api_Error", it.message!!)
+                }
+            }
+        })
+        alarmModel.updateAlarmApiResult.observe(this, {
+            when (it.status){
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {
+
+                }
+                ApiResult.Status.API_ERROR -> {
+                    Snackbar.make(binding.alarmRemindIv, "인터넷 연결을 확인해 주세요.", Snackbar.LENGTH_SHORT).show()
+                    when (it.data){
+                        AlarmType.TODO -> {
+                            binding.alarmTodoarySwitch.isChecked = !binding.alarmTodoarySwitch.isChecked
+                        }
+                        AlarmType.DIARY -> {
+                            binding.alarmDaySwitch.isChecked = !binding.alarmDaySwitch.isChecked
+                        }
+                        AlarmType.REMIND -> {
+                            binding.alarmRemindSwitch.isChecked = !binding.alarmRemindSwitch.isChecked
+                        }
+                    }
+                }
+                ApiResult.Status.NETWORK_ERROR -> {
+                    Log.d("UpdateAlarm_Api_Error", it.message!!)
+                }
+            }
+        })
+    }
+
+    private fun initAlarmSwitches(){
+        binding.alarmTodoarySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            alarmModel.updateAlarmStatus(AlarmType.TODO, isChecked)
+        }
+        binding.alarmDaySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            alarmModel.updateAlarmStatus(AlarmType.DIARY, isChecked)
+        }
+        binding.alarmRemindSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            alarmModel.updateAlarmStatus(AlarmType.REMIND, isChecked)
+        }
+    }
+
+    // 물음표 눌렀을 때 자세히 보기 설명 (AlertDialog 띄우기)
+    private fun setQuestionMarks(){
         binding.alarmTodoaryIv.setOnClickListener {
             val msg = "Todo list의 시간알림입니다.\n" +
                     "알림을 해제하면 모든 Todo list\n" +

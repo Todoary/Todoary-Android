@@ -2,6 +2,7 @@ package com.uni.todoary.feature.setting.ui.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Looper
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.dto.ProfileChangeRequest
 import com.uni.todoary.feature.auth.data.service.AuthService
@@ -23,7 +25,7 @@ import com.uni.todoary.util.saveUser
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileEditActivity : AppCompatActivity(), ProfileChangeView{
+class ProfileEditActivity : AppCompatActivity(){
     lateinit var binding: ActivityProfileEditBinding
     private val userModel : ProfileViewModel by viewModels()
     lateinit var getContent : ActivityResultLauncher<Intent>
@@ -61,7 +63,11 @@ class ProfileEditActivity : AppCompatActivity(), ProfileChangeView{
 
                 }
                 ApiResult.Status.SUCCESS -> {
-                    Toast.makeText(this, "프로필 정보 변경에 성공했습니다.", Toast.LENGTH_SHORT).show()
+                    val handler = android.os.Handler(Looper.getMainLooper())
+                    handler.postDelayed(Runnable {
+                        Snackbar.make(binding.profileeditConfirmBtn, "프로필 정보 변경에 성공했습니다.", Snackbar.LENGTH_SHORT).show()
+                    }, 1500)
+                    finish()
                 }
                 else -> Toast.makeText(this, "code : ${it.code}, message : ${it.message}", Toast.LENGTH_SHORT).show()
             }
@@ -103,27 +109,27 @@ class ProfileEditActivity : AppCompatActivity(), ProfileChangeView{
 //        ProfileChangeService.ProfileChange(request)
 //    }
 
-    override fun ProfileChangeLoading() {
-    }
-
-    override fun ProfileChangeSuccess() {
-        Log.d("변경","성공")
-
-        val user = getUser()!!
-        user.nickname=binding.profileeditNameEt.text.toString()
-        user.introduce=binding.profileeditIntroEt.text.toString()
-        saveUser(user)
-
-        val intent = Intent(this, ProfileActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        userModel.updateUser(binding.profileeditNameEt.text.toString(), binding.profileeditIntroEt.text.toString())
-
-        startActivity(intent)
-    }
-
-    override fun ProfileChangeFailure(code: Int) {
-        Log.d("변경","실패")
-        Log.d("Error", code.toString())
-    }
+//    override fun ProfileChangeLoading() {
+//    }
+//
+//    override fun ProfileChangeSuccess() {
+//        Log.d("변경","성공")
+//
+//        val user = getUser()!!
+//        user.nickname=binding.profileeditNameEt.text.toString()
+//        user.introduce=binding.profileeditIntroEt.text.toString()
+//        saveUser(user)
+//
+//        val intent = Intent(this, ProfileActivity::class.java)
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//        userModel.updateUser(binding.profileeditNameEt.text.toString(), binding.profileeditIntroEt.text.toString())
+//
+//        startActivity(intent)
+//    }
+//
+//    override fun ProfileChangeFailure(code: Int) {
+//        Log.d("변경","실패")
+//        Log.d("Error", code.toString())
+//    }
 
 }

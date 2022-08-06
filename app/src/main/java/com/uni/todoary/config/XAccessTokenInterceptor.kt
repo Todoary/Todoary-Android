@@ -35,6 +35,7 @@ class XAccessTokenInterceptor @Inject constructor (
             request = builder.build()
         }
 
+        Log.d("requrequ", request.toString())
         // 응답을 가져와서 401 에러 (jwt토큰이 유효하지 않은 경우)를 캐치
         var response : Response = chain.proceed(request!!)
 

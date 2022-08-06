@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="category_array">
+        <item>@color/todoset_orange</item>
+        <item>@color/todoset_yellow</item>
+        <item>@color/todoset_bisquit</item>
+        <item>@color/todoset_green</item>
+        <item>@color/todoset_darkgreen</item>
+        <item>@color/todoset_darkpink</item>
+        <item>@color/todoset_mint</item>
+        <item>@color/todoset_lightmint</item>
+        <item>@color/todoset_apricot</item>
+        <item>@color/todoset_lightbrown</item>
+        <item>@color/todoset_brown</item>
+        <item>@color/todoset_lightorange</item>
+        <item>@color/todoset_blue</item>
+        <item>@color/todoset_darkblue</item>
+        <item>@color/todoset_gray</item>
+        <item>@color/todoset_lightgray</item>
+        <item>@color/todoset_babypink</item>
+        <item>@color/todoset_pink</item>
+    </array>
+</resources>
