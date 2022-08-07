@@ -2,7 +2,10 @@ package com.uni.todoary.feature.main.ui.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Looper
+import android.util.DisplayMetrics
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +35,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun initAfterBinding() {
 
         initView()
+        setSlidingPanelHeight()
 
         // 달력 프래그먼트 달기
         supportFragmentManager.beginTransaction()
@@ -47,6 +51,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         setTodolist(todoLists)
 
         getFCMToken()
+
 
     }
 
@@ -89,6 +94,25 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun setSlidingPanelHeight(){
+        val outMetrics = DisplayMetrics()
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            val display = this.display
+            display?.getRealMetrics(outMetrics)
+        } else {
+            @Suppress("DEPRECATION")
+            val display = this.windowManager.defaultDisplay
+            @Suppress("DEPRECATION")
+            display.getMetrics(outMetrics)
+        }
+        val targetHeight = outMetrics.heightPixels - dpToPx(this, 500f)
+        val handler = android.os.Handler(Looper.getMainLooper())
+        handler.postDelayed( {
+            binding.mainSlidingPanelLayout.panelHeight = targetHeight.toInt()
+        },
+            20)
     }
 
     @SuppressLint("ClickableViewAccessibility")

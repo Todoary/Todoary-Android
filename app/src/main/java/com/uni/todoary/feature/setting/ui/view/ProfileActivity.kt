@@ -41,7 +41,7 @@ class ProfileActivity : AppCompatActivity(){
         }
         binding.profileLogoutLl.setOnClickListener {
             val dialog = BaseDialog()
-            val btnData = arrayOf("취소", "로그아웃")
+            val btnData = arrayOf("로그아웃", "취소")
             dialog.arguments = bundleOf(
                 "titleContext" to "알림",
                 "bodyContext" to "로그아웃 하시겠습니까?",
@@ -49,17 +49,17 @@ class ProfileActivity : AppCompatActivity(){
             )
             dialog.setButtonClickListener(object: BaseDialog.OnButtonClickListener{
                 override fun onButton1Clicked() {
-
+                    userModel.logOut()
                 }
                 override fun onButton2Clicked() {
-                    userModel.logOut()
+
                 }
             })
             dialog.show(supportFragmentManager, "logout_dialog")
         }
         binding.profileDeleteLl.setOnClickListener {
             val dialog = BaseDialog()
-            val btnData = arrayOf("아니오", "네")
+            val btnData = arrayOf("네", "아니오")
             dialog.arguments = bundleOf(
                 "titleContext" to "알림",
                 "bodyContext" to "정말 계정을 탈퇴하시겠습니까?\n" +
@@ -68,10 +68,10 @@ class ProfileActivity : AppCompatActivity(){
             )
             dialog.setButtonClickListener(object: BaseDialog.OnButtonClickListener{
                 override fun onButton1Clicked() {
-
+                    userModel.deleteUser()
                 }
                 override fun onButton2Clicked() {
-                    userModel.deleteUser()
+
                 }
             })
             dialog.show(supportFragmentManager, "destroy_id_dialog")
