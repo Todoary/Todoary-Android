@@ -4,13 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v23/circle_selector.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/category_select.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/categorycolor_selector_apricot.xml" value="0.159375" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/categorycolor_selector_lightgray.xml" value="0.159375" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/categorycolor_selector_orange.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/categorycolor_selector_yellow.xml" value="0.159375" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/ic_todolist_alarm_small.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/ic_todolist_alarm_smallvector.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/ic_todolist_pin_small.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable-v24/todo_edittext.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_alert_dialog_more.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_login_btn.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/bg_login_solid_btn.xml" value="0.25729166666666664" />
@@ -73,11 +76,15 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_splash.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_terms_detail.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_termscheck.xml" value="0.2" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_todo_setting.xml" value="0.176" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/categoryitem_list.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/dialog_custom.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/dialog_more.xml" value="0.536" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/diarycard_layout.xml" value="0.4" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/fragment_alarmsetting.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/fragment_calendar.xml" value="0.2" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/item_calendar.xml" value="0.1203125" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/item_category.xml" value="0.536" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/item_category_todo_lists_rv.xml" value="0.264" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/item_main_slide_todolist_rv.xml" value="0.32406287787182586" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/toolbar_back.xml" value="0.264" />

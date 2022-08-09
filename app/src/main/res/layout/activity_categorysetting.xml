@@ -142,9 +142,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        tools:listitem="@layout/categoryitem_list"
-        app:layout_constraintStart_toStartOf="@id/categorysetting_edit_et"
-        app:layout_constraintEnd_toEndOf="@id/categorysetting_edit_et"
+        android:layout_marginHorizontal="25dp"
+        tools:listitem="@layout/item_category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/categorysetting_add_layout"/>
 
     <View

@@ -120,7 +120,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         val todolistAdapter = TodoListRVAdapter()
         todolistAdapter.setTodoList(todoList)
         val swipeCallback = TodoListSwipeHelper().apply {
-            setClamp(dpToPx(this@MainActivity, 110f), dpToPx(this@MainActivity, 55f))
+            setClamp(dpToPx(this@MainActivity, 110f).toFloat(), dpToPx(this@MainActivity, 55f).toFloat())
         }
         val swipeHelper = ItemTouchHelper(swipeCallback)
         swipeHelper.attachToRecyclerView(binding.mainSlideTodolistRv)

@@ -7,7 +7,6 @@ import com.uni.todoary.databinding.ActivityTodoSettingBinding
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.category.data.dto.CategoryAddRequest
 import com.uni.todoary.feature.category.data.view.CategoryAddView
-import com.uni.todoary.util.CategoryData
 
 class TodoSettingActivity : AppCompatActivity(), CategoryAddView {
     lateinit var binding : ActivityTodoSettingBinding
