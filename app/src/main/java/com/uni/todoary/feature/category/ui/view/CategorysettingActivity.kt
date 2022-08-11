@@ -3,74 +3,110 @@ package com.uni.todoary.feature.category.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import com.uni.todoary.base.ApiResult
 import com.uni.todoary.databinding.ActivityCategorysettingBinding
+import com.uni.todoary.feature.category.data.dto.CategoryData
+import com.uni.todoary.feature.category.ui.viewmodel.TodoViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CategorysettingActivity : AppCompatActivity() {
     lateinit var binding : ActivityCategorysettingBinding
+    val model : TodoViewModel by viewModels()
 
-        override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategorysettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-            binding.categorysettingToolbarTb.toolbarBackMainTv.text = " "
 
-            binding.categorysettingToolbarTb.toolbarBackIv.setOnClickListener {
-                finish()
+        initView()
+        initObservers()
+    }
+
+    private fun initObservers(){
+        model.date.observe(this, {
+            val dateString = "${it.year}년 ${it.monthValue}월 ${it.dayOfMonth}일"
+            binding.categorysettingDateBtnTv.text = dateString
+        })
+        model.categoryList.observe(this, {
+            when (it.status){
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {
+                    makeCategoryList(it.data!!)
+                }
+                else -> {
+                    Toast.makeText(this, "카테고리 목록 조회에 실패하였습니다. 인터넷 연결을 확인해 주세요.", Toast.LENGTH_SHORT).show()
+                }
             }
+        })
+    }
 
-        binding.categorysettingEditEt.setPadding(10,10,5,20)
+    private fun initView(){
+        // 툴바 세팅
+        binding.categorysettingToolbarTb.toolbarBackMainTv.text = " "
+        binding.categorysettingToolbarTb.toolbarBackIv.setOnClickListener {
+            finish()
+        }
+
+        // 카테고리 새로 추가하는 Activity 실행 -> 되돌아오면 onResume에서 카테고리 목록 refresh
         binding.categorysettingAddLayout.setOnClickListener {
             val mIntent = Intent(this, TodoSettingActivity::class.java)
             startActivity(mIntent)
-
         }
-//            if(binding.alarmTodoarySwitch.isChecked){
-            binding.alarmTodoarySwitch.setOnClickListener {
-                if(binding.alarmTodoarySwitch.isChecked) {
-                    val bottomSheet = SettingAlarmBottomSheet()
-                    bottomSheet.show(supportFragmentManager, bottomSheet.tag)
-                }
+        // 알람 설정
+        binding.alarmTodoarySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                val bottomSheet = SettingAlarmBottomSheet()
+                bottomSheet.isCancelable = false        // 바깥 영역 클릭시 dismiss() 되는 현상 막기
+                bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+            } else {
+                model.setAlarmInfo(false, null, null)
             }
-            binding.categorysettingDateLayout.setOnClickListener {
-                val bottomSheet = SettingCalendarBottomSheet()
-                bottomSheet.show(supportFragmentManager,bottomSheet.tag)
-            }
+        }
 
-            //mainactivity에서 참고
-            val list = arrayListOf<CategoryData>()
-            list.add(CategoryData("아랄아랄", 1))
-            list.add(CategoryData("오롤", 2))
-            list.add(CategoryData("구루룩구루룩", 3))
-            list.add(CategoryData("게렐게렐게렐게렐", 4))
-            list.add(CategoryData("아랄라", 5))
-            list.add(CategoryData("롤롤ㄹ로롤ㄹㄹ", 6))
-            list.add(CategoryData("오롤오롤", 7))
+        // 날짜 설정 bottomSheet
+        binding.categorysettingDateLayout.setOnClickListener {
+            val bottomSheet = SettingCalendarBottomSheet()
+            bottomSheet.show(supportFragmentManager,bottomSheet.tag)
+        }
 
+        // content 입력 시 viewmmodel에 전달
+        binding.categorysettingEditEt.addTextChangedListener {
+            model.setContent(it.toString())
+        }
+    }
 
-            val mAdapter=CategoryRVAdapter(this)
-            val mLayoutManager = FlexboxLayoutManager(this)
-            mLayoutManager.apply {
-                flexDirection = FlexDirection.ROW
-                justifyContent = JustifyContent.FLEX_START
+    // CategoryList 리사이클러뷰 생성함수 (Flexbox Library 사용)
+    private fun makeCategoryList(list : ArrayList<CategoryData>){
+        val mAdapter=CategoryRVAdapter(this)
+        val mLayoutManager = FlexboxLayoutManager(this)
+        mLayoutManager.apply {
+            flexDirection = FlexDirection.ROW
+            justifyContent = JustifyContent.FLEX_START
+        }
+        mAdapter.setItemSelectedListener(object : CategoryRVAdapter.ItemSelectedListener{
+            override fun categorySelectedCallback(categoryIdx: Int) {
+                // 뷰모델에 아이템 인덱스 전달
+                model.setCategoryIdx(categoryIdx)
             }
-            mAdapter.setItemSelectedListener(object : CategoryRVAdapter.ItemSelectedListener{
-                override fun categorySelectedCallback(colorIdx: Int) {
-                    // TODO : 뷰모델에 아이템 인덱스 전달
-                }
-            })
-            binding.categorysettingRecyclerRv.apply {
-                adapter = mAdapter
-                layoutManager = mLayoutManager
-                overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-            }
-            mAdapter.setList(list)
+        })
+        binding.categorysettingRecyclerRv.apply {
+            adapter = mAdapter
+            layoutManager = mLayoutManager
+            overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        }
+        mAdapter.setList(list)
     }
 
     override fun onResume() {
         super.onResume()
+        model.initCategoryList()
     }
 }

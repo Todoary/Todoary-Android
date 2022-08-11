@@ -24,7 +24,7 @@ class TodoListRVAdapter : RecyclerView.Adapter<TodoListRVAdapter.ViewHolder>() {
             binding.itemTodolistCb.isChecked = todolist.isChecked
             binding.itemTodolistContentTv.text = todolist.content
             // TODO : 카테고리 색 변경 알고리즘 추가 해야함.
-            binding.itemTodolistCategoryTv.text = todolist.category[0]
+            binding.itemTodolistCategoryTv.text = todolist.category
         }
     }
 

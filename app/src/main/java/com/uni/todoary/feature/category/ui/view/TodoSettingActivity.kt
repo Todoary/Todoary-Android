@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.uni.todoary.databinding.ActivityTodoSettingBinding
 import com.uni.todoary.feature.auth.data.service.AuthService
-import com.uni.todoary.feature.category.data.dto.CategoryAddRequest
+import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.category.data.view.CategoryAddView
 
 class TodoSettingActivity : AppCompatActivity(), CategoryAddView {
@@ -172,7 +172,7 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView {
         if(binding.todosettingEditEt.text?.isNotEmpty() == true){
             val title = binding.todosettingEditEt.text.toString()
             //list.add(CategoryData(title,colorArray[color]))
-            val request = CategoryAddRequest(title,color)
+            val request = CategoryData(null, title, color)
             categoryAddService.CategoryAdd(request)
         }
     }

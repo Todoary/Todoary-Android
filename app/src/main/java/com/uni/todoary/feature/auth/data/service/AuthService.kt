@@ -10,7 +10,7 @@ import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.feature.auth.data.dto.*
 import com.uni.todoary.feature.auth.data.view.*
-import com.uni.todoary.feature.category.data.dto.CategoryAddRequest
+import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.category.data.view.CategoryAddView
 import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
 import com.uni.todoary.feature.main.data.view.CheckBoxView
@@ -258,7 +258,7 @@ class AuthService {
         })
     }
 
-    fun CategoryAdd(request: CategoryAddRequest) {
+    fun CategoryAdd(request: CategoryData) {
         CategoryAddView.CategoryAddLoading()
         authService.CategoryAdd(request).enqueue(object : Callback<BaseResponse<Any>> {
             override fun onResponse(
