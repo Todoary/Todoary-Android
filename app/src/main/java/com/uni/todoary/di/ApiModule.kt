@@ -1,12 +1,14 @@
 package com.uni.todoary.di
 
 import android.content.Context
+import androidx.databinding.ktx.BuildConfig
 import com.uni.todoary.ApplicationClass
-import com.uni.todoary.BuildConfig
 import com.uni.todoary.config.TokenInterface
 import com.uni.todoary.config.TokenRepository
 import com.uni.todoary.config.XAccessTokenInterceptor
 import com.uni.todoary.feature.auth.data.module.LoginInterface
+import com.uni.todoary.feature.category.data.module.TodoInterface
+import com.uni.todoary.feature.main.data.module.MainApiInterface
 import com.uni.todoary.feature.setting.data.module.UserInterface
 import dagger.Module
 import dagger.Provides
@@ -81,4 +83,15 @@ object ApiModule {
         return retrofit.create(UserInterface::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideMainApi(retrofit: Retrofit): MainApiInterface {
+        return retrofit.create(MainApiInterface::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTodoApi(retrofit: Retrofit): TodoInterface {
+        return retrofit.create(TodoInterface::class.java)
+    }
 }

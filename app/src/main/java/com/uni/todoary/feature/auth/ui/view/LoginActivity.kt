@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.databinding.ActivityLoginBinding
 import com.uni.todoary.feature.auth.data.dto.User
-import com.uni.todoary.feature.main.ui.MainActivity
+import com.uni.todoary.feature.main.ui.view.MainActivity
 import com.uni.todoary.util.*
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -21,8 +21,6 @@ import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.ui.viewmodel.LoginViewModel
-import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
-import com.uni.todoary.feature.main.ui.DiaryActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -86,6 +84,13 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
                             binding.loginPwEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
                             binding.loginIdEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
                             Snackbar.make(binding.loginBtnTv, "아이디 또는 비밀번호가 틀렸습니다.", Snackbar.LENGTH_SHORT).show()
+                        }
+                        2112 -> {
+                            binding.loginPwEt.startAnimation(AnimationUtils.loadAnimation(this, com.uni.todoary.R.anim.shake))
+                            Snackbar.make(binding.loginBtnTv, "비밀번호를 확인해 주세요.", Snackbar.LENGTH_SHORT).show()
+                        }
+                        2012 -> {
+                            Snackbar.make(binding.loginBtnTv, "정지된 계정입니다.", Snackbar.LENGTH_SHORT).show()
                         }
                         4000 -> {
                             Snackbar.make(binding.loginBtnTv, "데이터베이스 연결에 실패하였습니다. 반복될 시 개발자에게 문의해 주세요.", Snackbar.LENGTH_SHORT).show()

@@ -20,7 +20,7 @@ class CategoryTodoListRVAdapter() : RecyclerView.Adapter<CategoryTodoListRVAdapt
             } else {
                 binding.itemCategoryTodolistAlarmLayout.visibility = View.GONE
             }
-            binding.itemCategoryTodolistCategoryTv.text = todoLists[position].category[0]
+            binding.itemCategoryTodolistCategoryTv.text = todoLists[position].category
         }
     }
 

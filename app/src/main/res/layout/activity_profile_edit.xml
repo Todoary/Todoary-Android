@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_weight="1">
     <include
         android:id="@+id/profile_edit"
         layout="@layout/toolbar_back" />
@@ -58,13 +59,14 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/profileedit_intro_et"
         android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
+        android:minHeight="47dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="10dp"
-        android:maxLines="1"
         android:paddingStart="10dp"
         style="@style/setting_list"
+        android:paddingVertical="10dp"
         android:background="@drawable/bg_profile_edit_layer"/>
 
     <androidx.appcompat.widget.AppCompatButton

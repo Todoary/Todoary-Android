@@ -29,7 +29,7 @@ android {
 
     defaultConfig {
         applicationId "com.uni.todoary"
-        minSdk 21
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -109,6 +109,9 @@ dependencies {
     // SlidingUp Pannel
     implementation 'com.github.hannesa2:AndroidSlidingUpPanel:4.2.1'
     implementation 'com.google.android.material:material:1.1.0'
+
+    // Flexbox layout
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
     // FCM
     implementation 'com.google.firebase:firebase-messaging:17.3.3'

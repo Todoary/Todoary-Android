@@ -11,7 +11,7 @@ import com.uni.todoary.databinding.ActivityPwLockBinding
 import androidx.lifecycle.Observer
 import com.uni.todoary.R
 import com.uni.todoary.feature.auth.ui.viewmodel.PwLockViewModel
-import com.uni.todoary.feature.main.ui.MainActivity
+import com.uni.todoary.feature.main.ui.view.MainActivity
 import com.uni.todoary.util.getSecureKey
 
 class PwLockActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding::inflate) {
@@ -63,8 +63,10 @@ class PwLockActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBinding
                     } else {
                         // 흔들리는 애니메이션 적용, 해당 애니메이션 시간 만큼 딜레이 하기위해 Handler 사용
                         binding.pwLockLayout.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake))
+                        binding.pwLockSubTv.setTextColor(ContextCompat.getColor(applicationContext, R.color.red))
                         Handler(Looper.getMainLooper()).postDelayed({
                             model.clearPw()
+                            binding.pwLockSubTv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
                         }, 300)
                     }
                 }

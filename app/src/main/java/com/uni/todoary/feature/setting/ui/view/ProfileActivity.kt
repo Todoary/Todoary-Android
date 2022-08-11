@@ -2,7 +2,6 @@ package com.uni.todoary.feature.setting.ui.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,15 +12,8 @@ import com.uni.todoary.base.BaseDialog
 import com.uni.todoary.databinding.ActivityProfileBinding
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.ui.view.FindPwActivity
-import com.uni.todoary.feature.auth.data.service.AuthService
-import com.uni.todoary.feature.auth.data.view.DeleteMemberView
 import com.uni.todoary.feature.auth.ui.view.LoginActivity
 import com.uni.todoary.feature.setting.ui.viewmodel.ProfileViewModel
-import com.uni.todoary.util.removeRefToken
-import com.uni.todoary.util.removeUser
-import com.uni.todoary.util.removeXcesToken
-import com.uni.todoary.util.saveIsAutoLogin
-import com.uni.todoary.feature.main.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,7 +41,7 @@ class ProfileActivity : AppCompatActivity(){
         }
         binding.profileLogoutLl.setOnClickListener {
             val dialog = BaseDialog()
-            val btnData = arrayOf("취소", "로그아웃")
+            val btnData = arrayOf("로그아웃", "취소")
             dialog.arguments = bundleOf(
                 "titleContext" to "알림",
                 "bodyContext" to "로그아웃 하시겠습니까?",
@@ -57,17 +49,17 @@ class ProfileActivity : AppCompatActivity(){
             )
             dialog.setButtonClickListener(object: BaseDialog.OnButtonClickListener{
                 override fun onButton1Clicked() {
-
+                    userModel.logOut()
                 }
                 override fun onButton2Clicked() {
-                    userModel.logOut()
+
                 }
             })
             dialog.show(supportFragmentManager, "logout_dialog")
         }
         binding.profileDeleteLl.setOnClickListener {
             val dialog = BaseDialog()
-            val btnData = arrayOf("아니오", "네")
+            val btnData = arrayOf("네", "아니오")
             dialog.arguments = bundleOf(
                 "titleContext" to "알림",
                 "bodyContext" to "정말 계정을 탈퇴하시겠습니까?\n" +
@@ -76,10 +68,10 @@ class ProfileActivity : AppCompatActivity(){
             )
             dialog.setButtonClickListener(object: BaseDialog.OnButtonClickListener{
                 override fun onButton1Clicked() {
-
+                    userModel.deleteUser()
                 }
                 override fun onButton2Clicked() {
-                    userModel.deleteUser()
+
                 }
             })
             dialog.show(supportFragmentManager, "destroy_id_dialog")
@@ -102,6 +94,7 @@ class ProfileActivity : AppCompatActivity(){
 
         userModel.deleteResult.observe(this, {
             when (it.status){
+                ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS ->{
                     val dialog = BaseDialog()
                     val btnData = arrayOf("네")

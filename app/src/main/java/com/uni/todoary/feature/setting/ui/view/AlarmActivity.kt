@@ -3,6 +3,7 @@ package com.uni.todoary.feature.setting.ui.view
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.R
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.databinding.ActivityAlarmBinding
+import com.uni.todoary.util.dpToPx
 import com.uni.todoary.feature.setting.ui.viewmodel.AlarmViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -141,7 +143,22 @@ class AlarmActivity : AppCompatActivity(){
         // 물음표 상자 위치 구해서 해당 위치로 AlertDialog 옮기기
         val location : IntArray = IntArray(2)
         questionView.getLocationOnScreen(location)      // 절대 위치 구해서 IntArray에 x, y 좌표 저장
-        params.x = -150     // AlertDialog가 기본적으로 가운데정렬되어서 가운데가 x = 0 으로 되어있기 때문에 그냥 150만큼 뒤로 미룸 (계산하기 귀찮 ㅎㅎ)
+
+        // display의 크기를 가져옴 -> outMetrics
+        val outMetrics = DisplayMetrics()
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            val display = this.display
+            display?.getRealMetrics(outMetrics)
+        } else {
+            @Suppress("DEPRECATION")
+            val display = this.windowManager.defaultDisplay
+            @Suppress("DEPRECATION")
+            display.getMetrics(outMetrics)
+        }
+        val centerXpos = outMetrics.widthPixels / 2     // 화면 x축 중앙 px값
+        val xTarget = centerXpos - dpToPx(this, 120f)       // 옮길 px값
+
+        params.x = -xTarget.toInt()     // AlertDialog가 기본적으로 가운데정렬되어서 가운데가 x = 0 으로 되어있기 때문에 그냥 150만큼 뒤로 미룸 (계산하기 귀찮 ㅎㅎ)
         params.y = location[1]
         dialog.window!!.apply {
             attributes = params

@@ -1,8 +1,12 @@
-package com.uni.todoary.feature.main.ui
+package com.uni.todoary.feature.main.ui.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Looper
+import android.util.DisplayMetrics
 import android.util.Log
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,21 +16,27 @@ import com.uni.todoary.databinding.ActivityMainBinding
 import com.uni.todoary.feature.main.data.dto.TodoListAlarm
 import com.uni.todoary.feature.main.data.dto.TodoListInfo
 import com.uni.todoary.feature.setting.ui.view.SettingActivity
-
 import com.google.android.gms.tasks.OnCompleteListener
-
 import com.google.firebase.messaging.FirebaseMessaging
+import com.uni.todoary.feature.category.ui.view.CategoryActivity
+import com.uni.todoary.util.dpToPx
 import java.util.*
 import kotlin.collections.ArrayList
 import com.uni.todoary.feature.category.ui.view.CategorysettingActivity
-import com.uni.todoary.feature.category.ui.view.CategoryActivity
+import com.uni.todoary.feature.main.ui.viewmodel.MainViewModel
+import com.uni.todoary.feature.setting.ui.view.ProfileActivity
+import com.uni.todoary.feature.setting.ui.view.ProfileActivity_GeneratedInjector
+import com.uni.todoary.util.getXcesToken
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+    val model : MainViewModel by viewModels()
 
     override fun initAfterBinding() {
 
         initView()
+        setSlidingPanelHeight()
 
         // 달력 프래그먼트 달기
         supportFragmentManager.beginTransaction()
@@ -35,17 +45,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         // TODO: API 연결 시 더미데이터 부분 삭제
         val todoLists = arrayListOf<TodoListInfo>()
-        todoLists.add(TodoListInfo(true, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("아랄아랄", "기릴기릴"), TodoListAlarm(false, 6, 30)))
-        todoLists.add(TodoListInfo(true, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("오롤오롤", "기릴기릴"), TodoListAlarm(true, 7, 30)))
-        todoLists.add(TodoListInfo(false, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("구룰구룰", "기릴기릴"), TodoListAlarm(true, 6, 45)))
-        todoLists.add(TodoListInfo(false, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", arrayListOf("끼릭끼릭", "기릴기릴"), TodoListAlarm(false, 6, 45)))
+        todoLists.add(TodoListInfo(true, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "아랄아랄", TodoListAlarm(false, 6, 30)))
+        todoLists.add(TodoListInfo(true, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "오롤오롤", TodoListAlarm(true, 7, 30)))
+        todoLists.add(TodoListInfo(false, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "구룰구룰", TodoListAlarm(true, 6, 45)))
+        todoLists.add(TodoListInfo(false, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "끼릭끼릭", TodoListAlarm(false, 6, 45)))
         setTodolist(todoLists)
 
         getFCMToken()
+        Log.d("jwtjwt", getXcesToken()!!)
+
 
     }
 
     private fun initView(){
+        // 프로필
+        binding.mainProfileNameTv.text = model.user.value!!.nickname
+        binding.mainProfileIntroTv.text = model.user.value!!.introduce
+
         // 설정 버튼
         binding.mainMenuIv.setOnClickListener {
             val menuIntent = Intent(this, SettingActivity::class.java)
@@ -74,6 +90,31 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             val intent = Intent(this, DiaryActivity::class.java)
             startActivity(intent)
         }
+
+        // 프로필 화면
+        binding.mainProfileLayout.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setSlidingPanelHeight(){
+        val outMetrics = DisplayMetrics()
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            val display = this.display
+            display?.getRealMetrics(outMetrics)
+        } else {
+            @Suppress("DEPRECATION")
+            val display = this.windowManager.defaultDisplay
+            @Suppress("DEPRECATION")
+            display.getMetrics(outMetrics)
+        }
+        val targetHeight = outMetrics.heightPixels - dpToPx(this, 500f)
+        val handler = android.os.Handler(Looper.getMainLooper())
+        handler.postDelayed( {
+            binding.mainSlidingPanelLayout.panelHeight = targetHeight.toInt()
+        },
+            20)
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -81,7 +122,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         val todolistAdapter = TodoListRVAdapter()
         todolistAdapter.setTodoList(todoList)
         val swipeCallback = TodoListSwipeHelper().apply {
-            setClamp(300f, 200f)
+            setClamp(dpToPx(this@MainActivity, 110f).toFloat(), dpToPx(this@MainActivity, 55f).toFloat())
         }
         val swipeHelper = ItemTouchHelper(swipeCallback)
         swipeHelper.attachToRecyclerView(binding.mainSlideTodolistRv)

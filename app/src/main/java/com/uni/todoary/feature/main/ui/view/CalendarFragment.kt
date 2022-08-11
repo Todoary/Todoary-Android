@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.main.ui
+package com.uni.todoary.feature.main.ui.view
 
 import android.os.Build
 import android.os.Bundle
@@ -9,7 +9,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.uni.todoary.R
 import com.uni.todoary.databinding.FragmentCalendarBinding
 import com.uni.todoary.util.CalendarUtil
 import com.uni.todoary.util.CalendarUtil.Companion.selectedDate

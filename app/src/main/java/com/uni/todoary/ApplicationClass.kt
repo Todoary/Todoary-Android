@@ -10,6 +10,7 @@ import com.uni.todoary.config.XAccessTokenInterceptor
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -27,6 +28,8 @@ class ApplicationClass : Application() {
         const val BASE_URL: String = DEV_URL
 
         lateinit var mSharedPreferences: SharedPreferences
+        lateinit var cSharedPreferences: SharedPreferences
+
         lateinit var retrofit: Retrofit
     }
 
@@ -37,11 +40,46 @@ class ApplicationClass : Application() {
         val tokenApi = TokenInterface.create()
         val tokenRepo = TokenRepository(tokenApi)
 
-        val client: OkHttpClient = OkHttpClient.Builder()
-            .readTimeout(30000, TimeUnit.MILLISECONDS)
-            .connectTimeout(30000, TimeUnit.MILLISECONDS)
-            .addInterceptor(XAccessTokenInterceptor(tokenRepo, this)) // JWT 자동 헤더 전송
-            .build()
+//        val client: OkHttpClient = OkHttpClient.Builder()
+//            .readTimeout(30000, TimeUnit.MILLISECONDS)
+//            .connectTimeout(30000, TimeUnit.MILLISECONDS)
+//            .addInterceptor(XAccessTokenInterceptor(tokenRepo, this)) // JWT 자동 헤더 전송
+//            .build()
+
+
+        val client: OkHttpClient = if (BuildConfig.DEBUG) {
+            val loggingInterceptor = HttpLoggingInterceptor()
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+            OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .readTimeout(30000, TimeUnit.MILLISECONDS)
+                .connectTimeout(30000, TimeUnit.MILLISECONDS)
+                .addInterceptor(XAccessTokenInterceptor(tokenRepo, this)) // JWT 자동 헤더 전송
+                .build()
+        } else {
+            OkHttpClient.Builder()
+                .readTimeout(30000, TimeUnit.MILLISECONDS)
+                .connectTimeout(30000, TimeUnit.MILLISECONDS)
+                .addInterceptor(XAccessTokenInterceptor(tokenRepo, this)) // JWT 자동 헤더 전송
+                .build()
+        }
+
+//        val client: OkHttpClient = if (BuildConfig.DEBUG) {
+//            val loggingInterceptor = HttpLoggingInterceptor()
+//            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+//            OkHttpClient.Builder()
+//                .addInterceptor(loggingInterceptor)
+//                .readTimeout(30000, TimeUnit.MILLISECONDS)
+//                .connectTimeout(30000, TimeUnit.MILLISECONDS)
+//                .addInterceptor(XAccessTokenInterceptor(tokenRepo, this)) // JWT 자동 헤더 전송
+//                .build()
+//        } else {
+//            OkHttpClient.Builder()
+//                .readTimeout(30000, TimeUnit.MILLISECONDS)
+//                .connectTimeout(30000, TimeUnit.MILLISECONDS)
+//                .addInterceptor(XAccessTokenInterceptor(tokenRepo, this)) // JWT 자동 헤더 전송
+//                .build()
+//        }
 
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

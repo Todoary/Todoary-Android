@@ -6,7 +6,8 @@ import com.uni.todoary.feature.auth.data.dto.SignInRequest
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.module.LoginResponse
-import com.uni.todoary.feature.category.data.dto.CategoryAddRequest
+import com.uni.todoary.feature.category.data.dto.CategoryChangeRequest
+import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
 import retrofit2.Call
 import retrofit2.http.Body
@@ -48,5 +49,17 @@ interface RetrofitInterface {
 
     // ------------ Category ------------- //
     @POST("/category")
-    fun CategoryAdd(@Body CateogoryAddInfo : CategoryAddRequest) : Call<BaseResponse<Any>>
+    fun CategoryAdd(@Body CateogoryAddInfo : CategoryChangeRequest) : Call<BaseResponse<Any>>
+
+    @GET("/category")
+    fun GetCategory() : Call<BaseResponse<List<CategoryData>>>
+
+    @PATCH("/category/{categoryId}")
+    fun CategoryChange(
+        @Path("categoryId") categoryId : Long,
+        @Body CategoryChangeInfo : CategoryChangeRequest
+    ) : Call<BaseResponse<Any>>
+
+    @DELETE("/category/{categoryId}")
+    fun CategoryDelete(@Path("categoryId") categoryId: Long) : Call<BaseResponse<Any>>
 }

@@ -61,7 +61,7 @@ fun getUser() : User?{
     }
 }
 
-fun saveSecureKey(key : ArrayList<Int>){
+fun saveSecureKey(key : ArrayList<Int>?){
     val editor = mSharedPreferences.edit()
     val keyJson = Gson().toJson(key)
     editor.putString("secureKey", keyJson)

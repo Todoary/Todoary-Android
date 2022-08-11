@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.uni.todoary.databinding.ActivitySettingBinding
-import com.uni.todoary.feature.main.ui.MainActivity
+import com.uni.todoary.feature.main.ui.view.MainActivity
 
 class SettingActivity : AppCompatActivity() {
     lateinit var binding : ActivitySettingBinding
@@ -17,7 +17,7 @@ class SettingActivity : AppCompatActivity() {
         val alarmintent = Intent(this, AlarmActivity::class.java)
         val displayintent = Intent(this, DisplayActivity::class.java)
         val profileintent = Intent(this, ProfileActivity::class.java)
-        val pwdintent = Intent(this, PasswordActivity::class.java)
+        val pwdintent = Intent(this, SecureKeyActivity::class.java)
         val guideintent = Intent(this, GuideActivity::class.java)
         val agreementintent = Intent(this, AgreementActivity::class.java)
         val feedbackintent = Intent(this, FeedbackActivity::class.java)

@@ -1,4 +1,4 @@
-package com.uni.todoary.feature.main.ui
+package com.uni.todoary.feature.main.ui.view
 
 import android.graphics.Canvas
 import android.util.Log
@@ -93,13 +93,16 @@ class TodoListSwipeHelper : ItemTouchHelper.Callback() {
 
     override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
         val isClamped = getTag(viewHolder)
-        Log.d("xxx", "thresthres")
+        Log.d("isclamped1", isClamped.toString())
+        Log.d("xxx_currentDx", currentDx.toString())
         // 현재 View가 고정되어있지 않고 사용자가 -clamp 이상 swipe시 isClamped true로 변경 아닐시 false로 변경
-        if (currentDx < 0){
+        if (currentDx < 0){ // 왼쪽으로 밀렸을 때
             setTag(viewHolder, (!isClamped && currentDx <= -rightClamp))
+            Log.d("isclamped2", isClamped.toString())
             Log.d("xxx", "right")
-        } else {
+        } else {    // 오른쪽으로 밀렸을 때
             setTag(viewHolder, (!isClamped && currentDx >= leftClamp))
+            Log.d("isclamped3", isClamped.toString())
             Log.d("xxx", "left")
         }
         return 2f
@@ -140,6 +143,7 @@ class TodoListSwipeHelper : ItemTouchHelper.Callback() {
     }
 
     fun setClamp(rightClamp: Float, leftClamp : Float) {
+        Log.d("xxxmuyaho", "right : ${rightClamp}, left : ${leftClamp}")
         this.rightClamp = rightClamp
         this.leftClamp = leftClamp
     }

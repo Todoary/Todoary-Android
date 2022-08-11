@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m" >
         <activity
-            android:name=".feature.main.ui.DiaryActivity"
+            android:name=".feature.main.ui.view.DiaryActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"/>
 
@@ -39,7 +39,7 @@
             android:name=".feature.auth.ui.view.TermsDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".feature.main.ui.SplashActivity"
+            android:name=".feature.main.ui.view.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme" >
             <intent-filter>
@@ -48,9 +48,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".feature.setting.ui.view.SecureKeyActivity"/>
         <activity android:name=".feature.category.ui.view.CategoryActivity"/>
         <activity android:name=".feature.auth.ui.view.LoginActivity"/>
-        <activity android:name=".feature.main.ui.MainActivity" />
+        <activity android:name=".feature.main.ui.view.MainActivity" />
         <activity android:name=".feature.setting.ui.view.AgreementActivity" />
         <activity android:name=".feature.setting.ui.view.DisplayActivity" />
         <activity android:name=".feature.setting.ui.view.FeedbackActivity" />
@@ -63,7 +64,8 @@
         <activity
             android:name=".feature.auth.ui.view.TermscheckActivity"
             android:exported="false" />
-        <activity android:name=".feature.auth.ui.view.FindPwActivity" />
+        <activity android:name=".feature.auth.ui.view.FindPwActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".feature.category.ui.view.CategorysettingActivity" />
         <activity android:name=".feature.category.ui.view.TodoSettingActivity" />
         <activity android:name=".feature.setting.ui.view.ProfileEditActivity"/>

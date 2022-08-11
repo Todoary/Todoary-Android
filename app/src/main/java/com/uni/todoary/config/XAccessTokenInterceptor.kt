@@ -35,6 +35,7 @@ class XAccessTokenInterceptor @Inject constructor (
             request = builder.build()
         }
 
+        Log.d("requrequ", request.toString())
         // 응답을 가져와서 401 에러 (jwt토큰이 유효하지 않은 경우)를 캐치
         var response : Response = chain.proceed(request!!)
 
@@ -54,6 +55,7 @@ class XAccessTokenInterceptor @Inject constructor (
                                 saveXcesToken(it.body()!!.result!!.tokens.accessToken)
                                 saveRefToken(it.body()!!.result!!.tokens.refreshToken)
                                 val newToken: String? = getXcesToken()
+                                Log.d("토큰",newToken.toString())
                                 // 새로운 Request 생성 후 다시 API Call을 하기 위해 newBuilder() 사용
                                 val newRequest = chain.request().newBuilder().putTokenHeader(newToken!!)
                                 response = chain.proceed(newRequest)
