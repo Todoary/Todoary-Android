@@ -10,11 +10,16 @@ import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.feature.auth.data.dto.*
 import com.uni.todoary.feature.auth.data.view.*
+import com.uni.todoary.feature.category.data.dto.CategoryChangeRequest
 import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.category.data.view.CategoryAddView
+import com.uni.todoary.feature.category.data.view.CategoryChangeView
+import com.uni.todoary.feature.category.data.view.CategoryDeleteView
+import com.uni.todoary.feature.category.data.view.GetCategoryView
 import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
 import com.uni.todoary.feature.main.data.view.CheckBoxView
 import com.uni.todoary.util.RetrofitInterface
+import com.uni.todoary.util.getXcesToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +34,9 @@ class AuthService {
     private lateinit var DeleteMemberView: DeleteMemberView
     private lateinit var CheckBoxView: CheckBoxView
     private lateinit var CategoryAddView:CategoryAddView
+    private lateinit var GetCategoryView: GetCategoryView
+    private lateinit var CategoryChangeView: CategoryChangeView
+    private lateinit var CategoryDeleteView: CategoryDeleteView
 
     fun setSignInView(SignInView: SignInView) {
         this.SignInView = SignInView
@@ -57,6 +65,17 @@ class AuthService {
     fun setCategoryAddView(CategoryAddView: CategoryAddView){
         this.CategoryAddView = CategoryAddView
     }
+
+    fun setCategoryChangeView(CategoryChangeView:CategoryChangeView){
+        this.CategoryChangeView = CategoryChangeView
+    }
+    fun setGetCategoryView(GetCategoryView: GetCategoryView){
+        this.GetCategoryView=GetCategoryView
+    }
+    fun setCategoryDeleteView(CategoryDeleteView:CategoryDeleteView){
+        this.CategoryDeleteView=CategoryDeleteView
+    }
+
     fun SignIn(request: SignInRequest) {
         SignInView.SignInLoading()
         authService.SignIn(request).enqueue(object : Callback<BaseResponse<Any>> {
@@ -258,7 +277,7 @@ class AuthService {
         })
     }
 
-    fun CategoryAdd(request: CategoryData) {
+    fun CategoryAdd(request: CategoryChangeRequest) {
         CategoryAddView.CategoryAddLoading()
         authService.CategoryAdd(request).enqueue(object : Callback<BaseResponse<Any>> {
             override fun onResponse(
@@ -267,7 +286,7 @@ class AuthService {
             ) {
 
                 val resp = response.body()!!
-                Log.d("resp: ", request.toString())
+                Log.d("resp ", request.toString())
                 when (resp.code) {
                     1000 -> CategoryAddView.CategoryAddSuccess()
                     else -> CategoryAddView.CategoryAddFailure(resp.code)
@@ -280,5 +299,66 @@ class AuthService {
         })
     }
 
+    fun CategoryChange(categoryId:Long,request: CategoryChangeRequest) {
+        CategoryChangeView.CategoryChangeLoading()
+        authService.CategoryChange(categoryId,request).enqueue(object : Callback<BaseResponse<Any>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+                Log.d("cateId",categoryId.toString())
+                Log.d("cateRequ",request.toString())
+                Log.d("response1",response.toString())
+                Log.d("cate_log", getXcesToken().toString())
+                val resp = response.body()!!
+                when (resp.code) {
+                    1000 -> CategoryChangeView.CategoryChangeSuccess()
+                    else -> CategoryChangeView.CategoryChangeFailure(resp.code)
+                }
+            }
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("CateChange_API_Failure", t.toString())
+            }
+        })
+    }
+
+    fun GetCategory() {
+        GetCategoryView.GetCategoryLoading()
+        authService.GetCategory().enqueue(object : Callback<BaseResponse<List<CategoryData>>> {
+            override fun onResponse(
+                call: Call<BaseResponse<List<CategoryData>>>,
+                response: Response<BaseResponse<List<CategoryData>>>
+            ) {
+                val resp = response.body()!!
+                when (resp.code) {
+                    1000 -> resp.result?.let { GetCategoryView.GetCategorySuccess(it) }
+                    else -> GetCategoryView.GetCategoryFailure(resp.code)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<List<CategoryData>>>, t: Throwable) {
+                Log.d("GetCategory_API_Failure", t.toString())
+            }
+        })
+    }
+
+    fun CategoryDelete(categoryId:Long) {
+        CategoryDeleteView.CategoryDeleteLoading()
+        authService.CategoryDelete(categoryId).enqueue(object : Callback<BaseResponse<Any>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+                val resp = response.body()!!
+                when (resp.code) {
+                    1000 -> CategoryDeleteView.CategoryDeleteSuccess()
+                    else -> CategoryDeleteView.CategoryDeleteFailure(resp.code)
+                }
+            }
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("CateDelete_API_Failure", t.toString())
+            }
+        })
+    }
 }
 

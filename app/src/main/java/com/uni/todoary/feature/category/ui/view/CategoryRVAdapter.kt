@@ -16,7 +16,7 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
     lateinit var mItemSelectedListener : ItemSelectedListener
 
     interface ItemSelectedListener{
-        fun categorySelectedCallback(categoryIdx : Int)
+        fun categorySelectedCallback(categoryIdx : Long)
     }
 
     fun setItemSelectedListener(listener : ItemSelectedListener){

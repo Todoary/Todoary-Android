@@ -23,7 +23,7 @@ class TodoViewModel @Inject constructor(private val repository : TodoRepository)
     private var todoContent : String  = ""
     private var alarmEnable : Boolean = false
     private var alarmInfo : String = ""
-    private var categoryIdx = 0
+    private var categoryIdx = 0L
 
     init {
         _date.value = LocalDate.now()
@@ -34,7 +34,7 @@ class TodoViewModel @Inject constructor(private val repository : TodoRepository)
         this.todoContent = content
     }
 
-    fun setCategoryIdx(idx : Int){
+    fun setCategoryIdx(idx : Long){
         this.categoryIdx = idx
     }
 

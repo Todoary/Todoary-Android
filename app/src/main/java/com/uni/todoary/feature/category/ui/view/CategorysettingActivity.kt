@@ -92,7 +92,7 @@ class CategorysettingActivity : AppCompatActivity() {
             justifyContent = JustifyContent.FLEX_START
         }
         mAdapter.setItemSelectedListener(object : CategoryRVAdapter.ItemSelectedListener{
-            override fun categorySelectedCallback(categoryIdx: Int) {
+            override fun categorySelectedCallback(categoryIdx: Long) {
                 // 뷰모델에 아이템 인덱스 전달
                 model.setCategoryIdx(categoryIdx)
             }

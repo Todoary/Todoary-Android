@@ -1,10 +1,11 @@
 package com.uni.todoary.feature.category.data.dto
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
+import kotlinx.parcelize.Parcelize
 
-data class CategoryData(
-    @SerializedName("id") val id: Long,
+
+data class CategoryChangeRequest(
     @SerializedName("title") val title: String,
     @SerializedName("color") val color : Int
-): Serializable
+)
