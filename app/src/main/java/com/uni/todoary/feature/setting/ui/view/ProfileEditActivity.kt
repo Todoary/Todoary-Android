@@ -93,16 +93,6 @@ class ProfileEditActivity : AppCompatActivity(), ProfileChangeView{
         finish()
     }
 
-    //닉네임, 한줄소개 변경
-//    private fun ProfileChange() {
-//        val nickname = binding.profileeditNameEt.text.toString()
-//        val introduce = binding.profileeditIntroEt.text.toString()
-//        val ProfileChangeService = AuthService()
-//        ProfileChangeService.setProfileChangeView(this)
-//        val request = ProfileChangeRequest(nickname,introduce)
-//        ProfileChangeService.ProfileChange(request)
-//    }
-
     override fun ProfileChangeLoading() {
     }
 

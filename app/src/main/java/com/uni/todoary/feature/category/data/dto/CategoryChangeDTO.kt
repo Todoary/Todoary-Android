@@ -4,8 +4,8 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class CategoryAddRequest(
+
+data class CategoryChangeRequest(
     @SerializedName("title") val title: String,
     @SerializedName("color") val color : Int
-) : Parcelable
+)

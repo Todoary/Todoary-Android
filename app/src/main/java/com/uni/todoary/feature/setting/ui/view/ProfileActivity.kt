@@ -57,7 +57,6 @@ class ProfileActivity : AppCompatActivity(){
             )
             dialog.setButtonClickListener(object: BaseDialog.OnButtonClickListener{
                 override fun onButton1Clicked() {
-
                 }
                 override fun onButton2Clicked() {
                     userModel.logOut()
@@ -65,6 +64,7 @@ class ProfileActivity : AppCompatActivity(){
             })
             dialog.show(supportFragmentManager, "logout_dialog")
         }
+
         binding.profileDeleteLl.setOnClickListener {
             val dialog = BaseDialog()
             val btnData = arrayOf("아니오", "네")
