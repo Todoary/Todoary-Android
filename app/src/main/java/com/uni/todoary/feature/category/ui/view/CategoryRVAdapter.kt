@@ -60,7 +60,7 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
             notifyItemRangeChanged(0, itemCount, "initCategories")
             notifyItemChanged(position, "setCategory")
             // 콜백함수로 카테고리 인덱스 전달
-            mItemSelectedListener.categorySelectedCallback(categoryDataset[position].id!!)
+            mItemSelectedListener.categorySelectedCallback(categoryDataset[position].id)
         }
     }
 

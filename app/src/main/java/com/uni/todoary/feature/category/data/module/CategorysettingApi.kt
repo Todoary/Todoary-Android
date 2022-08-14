@@ -11,7 +11,7 @@ data class CreateTodoRequest(
     @SerializedName("targetDate") val targetDate : String,
     @SerializedName("isAlarmEnabled") val isAlarmEnabled : Boolean,
     @SerializedName("targetTime") val targetTime : String,
-    @SerializedName("categoryId") val categoryId : Int,
+    @SerializedName("categoryId") val categoryId : Long,
 )
 
 data class CreateTodoResponse(
@@ -27,7 +27,7 @@ interface TodoInterface {
 
     @PATCH("/todo/{todoid}")
     suspend fun editTodo(
-        @Body request : CreateTodoResponse,
+        @Body request : CreateTodoRequest,
         @Path("todoid") todoId : Int
     ) : Response<BaseResponse<Any>>
 

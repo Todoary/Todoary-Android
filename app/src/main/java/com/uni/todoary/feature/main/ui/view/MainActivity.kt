@@ -18,11 +18,13 @@ import com.uni.todoary.feature.main.data.dto.TodoListInfo
 import com.uni.todoary.feature.setting.ui.view.SettingActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
+import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.category.ui.view.CategoryActivity
 import com.uni.todoary.util.dpToPx
 import java.util.*
 import kotlin.collections.ArrayList
 import com.uni.todoary.feature.category.ui.view.CategorysettingActivity
+import com.uni.todoary.feature.main.data.module.TodoListResponse
 import com.uni.todoary.feature.main.ui.viewmodel.MainViewModel
 import com.uni.todoary.feature.setting.ui.view.ProfileActivity
 import com.uni.todoary.feature.setting.ui.view.ProfileActivity_GeneratedInjector
@@ -37,27 +39,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         initView()
         setSlidingPanelHeight()
+        initObserver()
 
+        // TODO: API 연결 시 더미데이터 부분 삭제
+//        val todoLists = arrayListOf<TodoListInfo>()
+//        todoLists.add(TodoListInfo(true, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "아랄아랄", TodoListAlarm(false, 6, 30)))
+//        todoLists.add(TodoListInfo(true, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "오롤오롤", TodoListAlarm(true, 7, 30)))
+//        todoLists.add(TodoListInfo(false, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "구룰구룰", TodoListAlarm(true, 6, 45)))
+//        todoLists.add(TodoListInfo(false, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "끼릭끼릭", TodoListAlarm(false, 6, 45)))
+//        setTodolist(todoLists)
+
+        getFCMToken()
+
+    }
+
+    private fun initView(){
         // 달력 프래그먼트 달기
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_calendar_fl, CalendarFragment())
             .commit()
 
-        // TODO: API 연결 시 더미데이터 부분 삭제
-        val todoLists = arrayListOf<TodoListInfo>()
-        todoLists.add(TodoListInfo(true, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "아랄아랄", TodoListAlarm(false, 6, 30)))
-        todoLists.add(TodoListInfo(true, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "오롤오롤", TodoListAlarm(true, 7, 30)))
-        todoLists.add(TodoListInfo(false, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "구룰구룰", TodoListAlarm(true, 6, 45)))
-        todoLists.add(TodoListInfo(false, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "끼릭끼릭", TodoListAlarm(false, 6, 45)))
-        setTodolist(todoLists)
-
-        getFCMToken()
-        Log.d("jwtjwt", getXcesToken()!!)
-
-
-    }
-
-    private fun initView(){
         // 프로필
         binding.mainProfileNameTv.text = model.user.value!!.nickname
         binding.mainProfileIntroTv.text = model.user.value!!.introduce
@@ -98,6 +99,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
     }
 
+    private fun initObserver(){
+        model.todoListResponse.observe(this, {
+            when(it.status){
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {
+                    setTodolist(it.data!!)
+                }
+                ApiResult.Status.API_ERROR -> {
+                    when (it.code){
+                        2005, 2010 -> {
+                            Toast.makeText(this, "유효하지 않은 회원정보입니다. 다시 로그인 해주세요.", Toast.LENGTH_SHORT).show()
+                            goToReLogin(this)
+                        } else -> Toast.makeText(this, "Database Error!!!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                ApiResult.Status.NETWORK_ERROR -> Log.d("Get_Todo_List_Api_Error", it.message!!)
+            }
+        })
+    }
+
     private fun setSlidingPanelHeight(){
         val outMetrics = DisplayMetrics()
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
@@ -109,7 +130,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             @Suppress("DEPRECATION")
             display.getMetrics(outMetrics)
         }
-        val targetHeight = outMetrics.heightPixels - dpToPx(this, 500f)
+        val targetHeight = outMetrics.heightPixels - dpToPx(this, 520f)
         val handler = android.os.Handler(Looper.getMainLooper())
         handler.postDelayed( {
             binding.mainSlidingPanelLayout.panelHeight = targetHeight.toInt()
@@ -118,8 +139,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setTodolist(todoList : ArrayList<TodoListInfo>){
-        val todolistAdapter = TodoListRVAdapter()
+    private fun setTodolist(todoList : ArrayList<TodoListResponse>){
+        val todolistAdapter = TodoListRVAdapter(this)
         todolistAdapter.setTodoList(todoList)
         val swipeCallback = TodoListSwipeHelper().apply {
             setClamp(dpToPx(this@MainActivity, 110f).toFloat(), dpToPx(this@MainActivity, 55f).toFloat())
@@ -152,5 +173,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 //                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
 //                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
             })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        model.getTodoList()
     }
 }

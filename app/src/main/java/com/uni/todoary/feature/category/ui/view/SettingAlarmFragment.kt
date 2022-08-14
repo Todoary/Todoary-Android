@@ -57,10 +57,11 @@ class SettingAlarmFragment : Fragment() {
 
     fun initSubmitBtn(){
         binding.alarmsettingCompleteBtn.setOnClickListener {
-            val hour = binding.numPickerH.value
+            var hour = binding.numPickerH.value
             val minute = binding.numPickerM.value
             val ampm = binding.numPickerAm.displayedValues[binding.numPickerAm.value]
-            val timeFormat = alarmFormatter(ampm, hour, minute)
+            if (hour != 12 && ampm == "PM") hour += 12
+            if (hour == 12 && ampm == "AM") hour = 0
             model.setAlarmInfo(true, hour, minute)
             (parentFragment as SettingAlarmBottomSheet).dismiss()
         }

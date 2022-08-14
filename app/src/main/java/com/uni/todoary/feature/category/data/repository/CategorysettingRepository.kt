@@ -13,7 +13,7 @@ class TodoRepository @Inject constructor(private val remoteApi : TodoInterface){
         return remoteApi.createTodo(request)
     }
 
-    suspend fun editTodo(request : CreateTodoResponse, todoId : Int) : Response<BaseResponse<Any>> {
+    suspend fun editTodo(request : CreateTodoRequest, todoId : Int) : Response<BaseResponse<Any>> {
         return remoteApi.editTodo(request, todoId)
     }
 

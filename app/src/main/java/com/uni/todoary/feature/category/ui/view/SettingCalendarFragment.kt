@@ -7,19 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.databinding.FragmentCalendarBinding
+import com.uni.todoary.feature.category.ui.viewmodel.TodoViewModel
 import com.uni.todoary.feature.main.ui.view.CalendarAdapter
 import com.uni.todoary.util.CalendarUtil
-import com.uni.todoary.util.CalendarUtil.Companion.selectedDate
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
 
 class SettingCalendarFragment : Fragment() {
+    companion object{
+        @RequiresApi(Build.VERSION_CODES.O)
+        var selectedDate: LocalDate = LocalDate.now()
+    }
+
     private lateinit var binding: FragmentCalendarBinding
+    val model : TodoViewModel by activityViewModels()
     //lateinit var selectedDate: LocalDate
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -61,6 +68,13 @@ class SettingCalendarFragment : Fragment() {
         val dayList= dayInMonthArray(selectedDate)
         val adapter = CalendarAdapter(dayList)
         var manager: RecyclerView.LayoutManager = GridLayoutManager(context, 7)
+        adapter.setItemClickListener(object : CalendarAdapter.ItemClickListener {
+            override fun onDateSelect(day: LocalDate) {
+                model.setDate(day)
+                (parentFragment as SettingCalendarBottomSheet).dismiss()
+            }
+
+        })
         binding.calendarDateRv.layoutManager = manager
         binding.calendarDateRv.adapter = adapter
     }
@@ -82,7 +96,7 @@ class SettingCalendarFragment : Fragment() {
             if (i <= dayOfWeek || i > (lastDay + dayOfWeek)) {
                 dayList.add(null)
             } else {
-                dayList.add(LocalDate.of(CalendarUtil.selectedDate.year, selectedDate.monthValue, i-dayOfWeek))
+                dayList.add(LocalDate.of(selectedDate.year, selectedDate.monthValue, i-dayOfWeek))
             }
 
         }
