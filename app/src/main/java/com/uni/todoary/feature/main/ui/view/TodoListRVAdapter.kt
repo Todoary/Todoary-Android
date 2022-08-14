@@ -14,6 +14,16 @@ import com.uni.todoary.util.alarmFormatter
 class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdapter.ViewHolder>() {
     val categoryColors  = context.resources.obtainTypedArray(R.array.category_array)
     private var todolist = arrayListOf<TodoListResponse>()
+    lateinit var mItemClickListener: ItemClickListener
+
+    interface ItemClickListener {
+        fun todoCheckListener(todoId : Long, isChecked : Boolean)
+    }
+
+    fun setItemClickListener(listener : ItemClickListener){
+        this.mItemClickListener = listener
+    }
+
     inner class ViewHolder(val binding : ItemMainSlideTodolistRvBinding) : RecyclerView.ViewHolder(binding.root) {
         fun initView(position : Int){
             val todolist = todolist[position]
@@ -37,6 +47,12 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
             }
             binding.itemTodolistCategoryCv.strokeColor = color
         }
+        fun initClickListener(position : Int){
+            val todolist = todolist[position]
+            binding.itemTodolistCb.setOnCheckedChangeListener { buttonView, isChecked ->
+                mItemClickListener.todoCheckListener(todolist.todoId, isChecked)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,6 +61,7 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.initView(position)
+        holder.initClickListener(position)
     }
 
     override fun getItemCount(): Int {

@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityMainBinding
-import com.uni.todoary.feature.main.data.dto.TodoListAlarm
-import com.uni.todoary.feature.main.data.dto.TodoListInfo
 import com.uni.todoary.feature.setting.ui.view.SettingActivity
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.category.ui.view.CategoryActivity
@@ -27,8 +26,6 @@ import com.uni.todoary.feature.category.ui.view.CategorysettingActivity
 import com.uni.todoary.feature.main.data.module.TodoListResponse
 import com.uni.todoary.feature.main.ui.viewmodel.MainViewModel
 import com.uni.todoary.feature.setting.ui.view.ProfileActivity
-import com.uni.todoary.feature.setting.ui.view.ProfileActivity_GeneratedInjector
-import com.uni.todoary.util.getXcesToken
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,15 +37,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         initView()
         setSlidingPanelHeight()
         initObserver()
-
-        // TODO: API 연결 시 더미데이터 부분 삭제
-//        val todoLists = arrayListOf<TodoListInfo>()
-//        todoLists.add(TodoListInfo(true, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "아랄아랄", TodoListAlarm(false, 6, 30)))
-//        todoLists.add(TodoListInfo(true, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "오롤오롤", TodoListAlarm(true, 7, 30)))
-//        todoLists.add(TodoListInfo(false, true, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "구룰구룰", TodoListAlarm(true, 6, 45)))
-//        todoLists.add(TodoListInfo(false, false, "뛝쁅뽥쬻뀷뀛끵꽓뜛춁뒑퉳줡뚊뀖꾧", "끼릭끼릭", TodoListAlarm(false, 6, 45)))
-//        setTodolist(todoLists)
-
         getFCMToken()
 
     }
@@ -117,6 +105,25 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 ApiResult.Status.NETWORK_ERROR -> Log.d("Get_Todo_List_Api_Error", it.message!!)
             }
         })
+        model.todoCheckResponse.observe(this, {
+            when(it.status){
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {}
+                ApiResult.Status.API_ERROR -> {
+                    when(it.code){
+                        2005, 2010 -> {
+                            Toast.makeText(this, "유효하지 않은 회원정보 입니다. 다시 로그인 해주세요.", Toast.LENGTH_SHORT).show()
+                            goToReLogin(this)
+                        }
+                        2302 -> {
+                            Snackbar.make(binding.mainSlidingPanelLayout, "존재하지 않는 투두리스트 입니다.", Snackbar.LENGTH_SHORT).show()
+                        }
+                        else -> Toast.makeText(this, "Database Error!!!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                ApiResult.Status.NETWORK_ERROR -> Log.d("Todo_Check_Api_Error", it.message!!)
+            }
+        })
     }
 
     private fun setSlidingPanelHeight(){
@@ -133,15 +140,25 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         val targetHeight = outMetrics.heightPixels - dpToPx(this, 520f)
         val handler = android.os.Handler(Looper.getMainLooper())
         handler.postDelayed( {
-            binding.mainSlidingPanelLayout.panelHeight = targetHeight.toInt()
+            binding.mainSlidingPanelLayout.panelHeight = targetHeight
         },
             20)
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setTodolist(todoList : ArrayList<TodoListResponse>){
+        // 어댑터 셋팅
         val todolistAdapter = TodoListRVAdapter(this)
-        todolistAdapter.setTodoList(todoList)
+        todolistAdapter.apply{
+            setTodoList(todoList)
+            setItemClickListener(object : TodoListRVAdapter.ItemClickListener{
+                override fun todoCheckListener(todoId: Long, isChecked: Boolean) {
+                    model.todoCheck(todoId, isChecked)
+                }
+            })
+        }
+
+        // 스와이프 메뉴 셋팅 -> dpToPx 함수 사용해서 해상도에 따른 비율코딩
         val swipeCallback = TodoListSwipeHelper().apply {
             setClamp(dpToPx(this@MainActivity, 110f).toFloat(), dpToPx(this@MainActivity, 55f).toFloat())
         }
@@ -151,7 +168,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             adapter = todolistAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-            setOnTouchListener { _, _ ->
+            setOnTouchListener { _, _ ->        // 다른 영역 터치했을 때 clamp 된거 초기화
                 swipeCallback.removePreviousClamp(this)
                 false
             }

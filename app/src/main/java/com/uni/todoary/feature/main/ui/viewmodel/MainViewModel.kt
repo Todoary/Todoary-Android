@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.dto.User
+import com.uni.todoary.feature.main.data.module.TodoCheckRequest
 import com.uni.todoary.feature.main.data.module.TodoListResponse
 import com.uni.todoary.feature.main.data.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +25,10 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
     val todoListResponse : LiveData<ApiResult<ArrayList<TodoListResponse>>>
         get() = _todoListResposne
 
+    var _todoCheckResponse : MutableLiveData<ApiResult<Any>> = MutableLiveData()
+    val todoCheckResponse : LiveData<ApiResult<Any>>
+        get() = _todoCheckResponse
+
     init {
         _user.value = repository.getUser()
         date.value = LocalDate.now()
@@ -39,8 +44,22 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
                 if(it.isSuccessful){
                     if(it.body()!!.code == 1000){
                         _todoListResposne.value = ApiResult.success(it.body()!!.result)
-                    } else _todoListResposne.value = ApiResult.error(it.code())
+                    } else _todoListResposne.value = ApiResult.error(it.body()!!.code)
                 } else _todoListResposne.value = ApiResult.networkError(it.code(), it.message())
+            }
+        }
+    }
+
+    fun todoCheck(todoId : Long , isChecked : Boolean){
+        viewModelScope.launch {
+            _todoCheckResponse.value = ApiResult.loading()
+            val request = TodoCheckRequest(todoId, isChecked)
+            repository.todoCheck(request).let {
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _todoCheckResponse.value = ApiResult.success(it.body()!!.result)
+                    } else _todoCheckResponse.value = ApiResult.error(it.body()!!.code)
+                } else _todoCheckResponse.value = ApiResult.networkError(it.code(), it.message())
             }
         }
     }
