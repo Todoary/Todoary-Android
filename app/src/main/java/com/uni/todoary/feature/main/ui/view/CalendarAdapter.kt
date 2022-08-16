@@ -54,14 +54,13 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val ma
             holder.dayText.text = day.dayOfMonth.toString()
 
             //현재 날짜 색상 변경
-            if(day == currentDate){
-                holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
-                holder.dayText.setTextColor(Color.WHITE)
-            }
-
             if (markingList.isNotEmpty() && day.dayOfMonth == markingList[0]){
                 markingList.removeAt(0)
                 holder.dayText.setBackgroundResource(R.drawable.calendar_datepick_stroke)
+            }
+            if(day == currentDate){
+                holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
+                holder.dayText.setTextColor(Color.WHITE)
             }
         }
 
