@@ -66,7 +66,7 @@ class SettingCalendarFragment : Fragment() {
         binding.calendarMonthTv.text = monthYearFromDate(selectedDate)
         //날짜 생성해서 리스트에 담음
         val dayList= dayInMonthArray(selectedDate)
-        val adapter = CalendarAdapter(dayList)
+        val adapter = CalendarAdapter(dayList, arrayListOf())
         var manager: RecyclerView.LayoutManager = GridLayoutManager(context, 7)
         adapter.setItemClickListener(object : CalendarAdapter.ItemClickListener {
             override fun onDateSelect(day: LocalDate) {

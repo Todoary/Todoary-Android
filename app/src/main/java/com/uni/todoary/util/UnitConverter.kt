@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import java.text.DecimalFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 fun dpToPx(context : Context, dp : Float) : Int{
     val dm : DisplayMetrics = context.resources.displayMetrics
@@ -21,4 +23,9 @@ fun alarmFormatter(timeString : String) : String{
         }
     }
     return "$ampm $hour$minute"
+}
+
+fun yearMonthFormatter(date : LocalDate) : String{
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM")
+    return date.format(formatter)
 }

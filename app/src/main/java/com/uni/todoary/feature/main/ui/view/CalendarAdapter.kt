@@ -16,7 +16,7 @@ import com.uni.todoary.util.CalendarUtil.currentDate
 import java.time.LocalDate
 
 
-class CalendarAdapter(private val dayList: ArrayList<LocalDate?>):
+class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val markingList : ArrayList<Int>):
     RecyclerView.Adapter<CalendarAdapter.ItemViewHolder>(){
     lateinit var mItemClickListener: ItemClickListener
 
@@ -57,6 +57,11 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>):
             if(day == currentDate){
                 holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
                 holder.dayText.setTextColor(Color.WHITE)
+            }
+
+            if (markingList.isNotEmpty() && day.dayOfMonth == markingList[0]){
+                markingList.removeAt(0)
+                holder.dayText.setBackgroundResource(R.drawable.calendar_datepick_stroke)
             }
         }
 

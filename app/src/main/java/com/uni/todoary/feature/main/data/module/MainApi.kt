@@ -37,4 +37,9 @@ interface MainApiInterface {
     suspend fun todoCheck(
         @Body request : TodoCheckRequest
     ) : Response<BaseResponse<Any>>
+
+    @GET("/todo/days/{year-month}")
+    suspend fun getCalendarInfo(
+        @Path("year-month") yearMonth : String
+    ) : Response<BaseResponse<ArrayList<Int>>>
 }

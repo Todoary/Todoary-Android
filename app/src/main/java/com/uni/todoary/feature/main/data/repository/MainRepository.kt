@@ -19,6 +19,9 @@ class MainRepository @Inject constructor(private val remoteApi : MainApiInterfac
         return remoteApi.todoCheck(request)
     }
 
+    suspend fun getCalendarInfo(yearMonth : String) : Response<BaseResponse<ArrayList<Int>>> {
+        return remoteApi.getCalendarInfo(yearMonth)
+    }
     // --------------- SPF Manager ---------------- //
     fun getUser() : User = spf.getUser()!!
 }

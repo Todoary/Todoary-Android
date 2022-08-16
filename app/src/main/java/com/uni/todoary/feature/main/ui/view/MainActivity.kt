@@ -197,6 +197,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onResume() {
         super.onResume()
         model.getTodoList()
+        model.getCalendarInfo()
     }
 
     override fun onBackPressed() {

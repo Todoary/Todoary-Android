@@ -1,5 +1,6 @@
 package com.uni.todoary.feature.main.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,7 @@ import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.main.data.module.TodoCheckRequest
 import com.uni.todoary.feature.main.data.module.TodoListResponse
 import com.uni.todoary.feature.main.data.repository.MainRepository
+import com.uni.todoary.util.yearMonthFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -28,6 +30,10 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
     var _todoCheckResponse : MutableLiveData<ApiResult<Any>> = MutableLiveData()
     val todoCheckResponse : LiveData<ApiResult<Any>>
         get() = _todoCheckResponse
+
+    var _getCalendarInfoResp : MutableLiveData<ApiResult<ArrayList<Int>>> = MutableLiveData()
+    val getCalendarInfoResp : LiveData<ApiResult<ArrayList<Int>>>
+        get() = _getCalendarInfoResp
 
     init {
         _user.value = repository.getUser()
@@ -60,6 +66,20 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
                         _todoCheckResponse.value = ApiResult.success(it.body()!!.result)
                     } else _todoCheckResponse.value = ApiResult.error(it.body()!!.code)
                 } else _todoCheckResponse.value = ApiResult.networkError(it.code(), it.message())
+            }
+        }
+    }
+
+    fun getCalendarInfo(){
+        val yearMonth = yearMonthFormatter(date.value!!)
+        viewModelScope.launch {
+            _getCalendarInfoResp.value = ApiResult.loading()
+            repository.getCalendarInfo(yearMonth).let {
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _getCalendarInfoResp.value = ApiResult.success(it.body()!!.result)
+                    } else _getCalendarInfoResp.value = ApiResult.error(it.body()!!.code)
+                } else _getCalendarInfoResp.value = ApiResult.networkError(it.code(), it.message())
             }
         }
     }
