@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ItemMainSlideTodolistRvBinding
-import com.uni.todoary.feature.main.data.dto.TodoListInfo
 import com.uni.todoary.feature.main.data.module.TodoListResponse
 import com.uni.todoary.util.alarmFormatter
 

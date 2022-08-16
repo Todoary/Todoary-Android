@@ -2,6 +2,7 @@ package com.uni.todoary.feature.category.ui.view
 
 import android.content.Context
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat

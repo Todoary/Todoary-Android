@@ -36,6 +36,7 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_back_keypad.xml" value="0.25333333333333335" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_cal_backbtn.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_cal_nextbtn.xml" value="0.25729166666666664" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_category_add.xml" value="0.15260416666666668" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_heart_vector.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_homesetting_vector.xml" value="0.25729166666666664" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25729166666666664" />
@@ -58,7 +59,7 @@
         <entry key="..\:/Project_Android/todoary/app/src/main/res/font/applesdgothickneo.xml" value="0.13645833333333332" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_agreement.xml" value="0.24114583333333334" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_alarm.xml" value="0.264" />
-        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_category.xml" value="0.264" />
+        <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_category.xml" value="0.2314487632508834" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_categorysetting.xml" value="0.264" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_display.xml" value="0.536" />
         <entry key="..\:/Project_Android/todoary/app/src/main/res/layout/activity_find_pw.xml" value="0.264" />

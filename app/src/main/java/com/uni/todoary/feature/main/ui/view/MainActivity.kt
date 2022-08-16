@@ -31,6 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     val model : MainViewModel by viewModels()
+    private var backpressedTime : Long = 0
 
     override fun initAfterBinding() {
 
@@ -65,6 +66,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         // 카테고리 버튼
         binding.mainSlideMenuGridIv.setOnClickListener {
             val categoryIntent = Intent(this, CategoryActivity::class.java)
+            categoryIntent.putExtra("date", model.date.value)
             startActivity(categoryIntent)
         }
 
@@ -104,7 +106,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 }
                 ApiResult.Status.NETWORK_ERROR -> Log.d("Get_Todo_List_Api_Error", it.message!!)
             }
-        })
+        })      // 투두리스트 생성
         model.todoCheckResponse.observe(this, {
             when(it.status){
                 ApiResult.Status.LOADING -> {}
@@ -123,7 +125,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 }
                 ApiResult.Status.NETWORK_ERROR -> Log.d("Todo_Check_Api_Error", it.message!!)
             }
-        })
+        })      // 체크했을 때 API통신
     }
 
     private fun setSlidingPanelHeight(){
@@ -195,5 +197,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onResume() {
         super.onResume()
         model.getTodoList()
+    }
+
+    override fun onBackPressed() {
+        if(System.currentTimeMillis() > backpressedTime + 2000){
+            backpressedTime = System.currentTimeMillis()
+            Snackbar.make(binding.mainSlidingPanelLayout, "진짜 종료하실건가요..? :)", Snackbar.LENGTH_SHORT).show()
+            return
+        } else {
+            finish()
+        }
     }
 }
