@@ -156,7 +156,7 @@ class AlarmActivity : AppCompatActivity(){
             display.getMetrics(outMetrics)
         }
         val centerXpos = outMetrics.widthPixels / 2     // 화면 x축 중앙 px값
-        val xTarget = centerXpos - dpToPx(this, 120f)       // 옮길 px값
+        val xTarget = centerXpos - dpToPx(this@AlarmActivity, 120f)       // 옮길 px값
 
         params.x = -xTarget.toInt()     // AlertDialog가 기본적으로 가운데정렬되어서 가운데가 x = 0 으로 되어있기 때문에 그냥 150만큼 뒤로 미룸 (계산하기 귀찮 ㅎㅎ)
         params.y = location[1]
