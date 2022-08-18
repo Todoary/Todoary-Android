@@ -20,12 +20,12 @@
             android:layout_marginStart="17dp"
             android:padding="5dp"/>
 
-
         <ImageView
             android:id="@+id/toolbar_back_delete_iv"
             android:layout_width="72dp"
             android:layout_height="49dp"
-            android:layout_marginStart="220dp"
+            android:layout_marginStart="200dp"
+            android:visibility="invisible"
             android:src="@drawable/ic_categorydelete_vector"/>
     </LinearLayout>
 

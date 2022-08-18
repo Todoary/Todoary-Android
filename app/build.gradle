@@ -117,4 +117,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:17.3.3'
     implementation platform('com.google.firebase:firebase-bom:30.3.0')
     implementation 'com.google.firebase:firebase-analytics'
+
+    //keyboard 감지
+    implementation 'gun0912.ted:tedkeyboardobserver:x.y.z'
+    implementation 'gun0912.ted:tedkeyboardobserver:1.0.0-alpha2'
 }

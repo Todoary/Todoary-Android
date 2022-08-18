@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/diary_relativewrapper_rl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:id="@+id/diary_parent_ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -39,11 +45,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
     <TextView
         android:id="@+id/diary_date_tv"
         android:layout_width="84dp"
         android:layout_height="19dp"
-        android:text="2022.07.20"
+        android:text="date"
         style="@style/sub_title_1"
         android:layout_marginStart="35dp"
         android:layout_marginTop="40dp"/>
@@ -68,14 +75,17 @@
 
     </LinearLayout>
 
-    <TextView
+    <EditText
+        android:id="@+id/diary_title_et"
         android:layout_width="85dp"
         android:layout_height="22dp"
-        android:text="오늘의 일기"
+        android:hint = "오늘의 일기"
         android:layout_marginTop="23dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="25dp"
+        android:background="@null"
         style="@style/calendar_month"/>
     <EditText
+        android:id="@+id/diary_detail_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -83,13 +93,15 @@
         android:layout_gravity="center_horizontal"
         android:background="@null"
         style="@style/todo_setting"
-        android:text="일기 내용"/>
+        android:hint="일기 내용"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <LinearLayout
+        android:id="@+id/diary_keytoolbar_ll"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:orientation="horizontal"
+        android:visibility="invisible"
         android:gravity="center"
         android:background="@color/keyboard_gray">
         <ImageView
@@ -121,6 +133,6 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_x"
             android:layout_marginStart="40dp"/>
-
     </LinearLayout>
 </LinearLayout>
+    </RelativeLayout>

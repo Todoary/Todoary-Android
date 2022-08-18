@@ -16,8 +16,11 @@ import com.uni.todoary.feature.category.data.view.CategoryAddView
 import com.uni.todoary.feature.category.data.view.CategoryChangeView
 import com.uni.todoary.feature.category.data.view.CategoryDeleteView
 import com.uni.todoary.feature.category.data.view.GetCategoryView
+import com.uni.todoary.feature.main.data.dto.AddDiaryRequest
 import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
+import com.uni.todoary.feature.main.data.view.AddDiaryView
 import com.uni.todoary.feature.main.data.view.CheckBoxView
+import com.uni.todoary.feature.main.data.view.GetDiaryView
 import com.uni.todoary.util.RetrofitInterface
 import com.uni.todoary.util.getXcesToken
 import retrofit2.Call
@@ -37,6 +40,9 @@ class AuthService {
     private lateinit var GetCategoryView: GetCategoryView
     private lateinit var CategoryChangeView: CategoryChangeView
     private lateinit var CategoryDeleteView: CategoryDeleteView
+    private lateinit var AddDiaryView: AddDiaryView
+    private lateinit var AgreeTermsView: AgreeTermsView
+    private lateinit var GetDiaryView: GetDiaryView
 
     fun setSignInView(SignInView: SignInView) {
         this.SignInView = SignInView
@@ -72,8 +78,21 @@ class AuthService {
     fun setGetCategoryView(GetCategoryView: GetCategoryView){
         this.GetCategoryView=GetCategoryView
     }
+
+    fun setAddDiaryView(AddDiaryView: AddDiaryView){
+        this.AddDiaryView=AddDiaryView
+    }
+
     fun setCategoryDeleteView(CategoryDeleteView:CategoryDeleteView){
         this.CategoryDeleteView=CategoryDeleteView
+    }
+
+    fun setAgreeTermsView(AgreeTermsView:AgreeTermsView){
+        this.AgreeTermsView=AgreeTermsView
+    }
+
+    fun setGetDiaryView(GetDiaryView: GetDiaryView){
+        this.GetDiaryView=GetDiaryView
     }
 
     fun SignIn(request: SignInRequest) {
@@ -91,7 +110,6 @@ class AuthService {
                     else -> SignInView.SignInFailure(resp.code)
                 }
             }
-
             override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
                 Log.d("SignIn_API_Failure", t.toString())
             }
@@ -357,6 +375,70 @@ class AuthService {
             }
             override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
                 Log.d("CateDelete_API_Failure", t.toString())
+            }
+        })
+    }
+
+
+    //Diary
+    fun AddDiary(createdDate:String, request: AddDiaryRequest) {
+        AddDiaryView.AddDiaryLoading()
+        authService.AddDiary(createdDate, request).enqueue(object : Callback<BaseResponse<Any>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+                val resp = response.body()!!
+                Log.d("resp: ", request.toString())
+                when (resp.code) {
+                    1000 -> AddDiaryView.AddDiarySuccess()
+                    else -> AddDiaryView.AddDiaryFailure(resp.code)
+                }
+                Log.d("resp", resp.toString())
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("AddDiary_API_Failure", t.toString())
+            }
+        })
+    }
+    fun AgreeTerms(isChecked : Boolean) {
+        AgreeTermsView.AgreeTermsLoading()
+        authService.AgreeTerms(isChecked).enqueue(object : Callback<BaseResponse<Any>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+                val resp = response.body()!!
+                Log.d("resp code: ",resp.code.toString())
+                when (resp.code) {
+                    1000 -> AgreeTermsView.AgreeTermsSuccess()
+                    else -> AgreeTermsView.AgreeTermsFailure(resp.code)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("AgreeTerms_API_Failure", t.toString())
+            }
+        })
+    }
+
+    fun GetDiary(createdDate: String) {
+        GetDiaryView.GetDiaryLoading()
+        authService.GetDiary(createdDate).enqueue(object : Callback<BaseResponse<Any>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+                val resp = response.body()!!
+                when (resp.code) {
+                    1000 -> GetDiaryView.GetDiarySuccess()
+                    else -> GetDiaryView.GetDiaryFailure(resp.code)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("GetDiary_API_Failure", t.toString())
             }
         })
     }

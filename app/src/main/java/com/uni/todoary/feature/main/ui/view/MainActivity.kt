@@ -14,18 +14,16 @@ import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityMainBinding
 import com.uni.todoary.feature.setting.ui.view.SettingActivity
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.category.ui.view.CategoryActivity
 import com.uni.todoary.util.dpToPx
-import java.util.*
 import kotlin.collections.ArrayList
 import com.uni.todoary.feature.category.ui.view.CategorysettingActivity
 import com.uni.todoary.feature.main.data.module.TodoListResponse
 import com.uni.todoary.feature.main.ui.viewmodel.MainViewModel
 import com.uni.todoary.feature.setting.ui.view.ProfileActivity
+import com.uni.todoary.util.getXcesToken
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -137,7 +135,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             @Suppress("DEPRECATION")
             display.getMetrics(outMetrics)
         }
-        val targetHeight = outMetrics.heightPixels - dpToPx(this, 520f)
+        val targetHeight = outMetrics.heightPixels - dpToPx(this, 500f)
         val handler = android.os.Handler(Looper.getMainLooper())
         handler.postDelayed( {
             binding.mainSlidingPanelLayout.panelHeight = targetHeight
