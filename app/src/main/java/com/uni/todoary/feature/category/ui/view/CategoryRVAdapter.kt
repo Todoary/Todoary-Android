@@ -1,6 +1,7 @@
 package com.uni.todoary.feature.category.ui.view
 
 import android.content.Context
+import android.content.Intent
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
     private var categoryDataset = arrayListOf<CategoryData>()
     val categoryColors  = context.resources.obtainTypedArray(R.array.category_array)
     lateinit var mItemSelectedListener : ItemSelectedListener
-
+    var flag = false
     interface ItemSelectedListener{
         fun categorySelectedCallback(categoryIdx : Long)
     }
@@ -61,6 +62,17 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
             notifyItemChanged(position, "setCategory")
             // 콜백함수로 카테고리 인덱스 전달
             mItemSelectedListener.categorySelectedCallback(categoryDataset[position].id!!)
+        }
+
+        //롱터치 리스너
+        holder.itemView.setOnLongClickListener {
+            val mIntent = Intent(holder.itemView.context,TodoSettingActivity::class.java)
+            flag = true
+            mIntent.putExtra("flag",flag)
+            mIntent.putExtra("cateData",categoryDataset[position])
+            mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            ContextCompat.startActivity(holder.itemView.context,mIntent,null)
+            return@setOnLongClickListener(true)
         }
     }
 

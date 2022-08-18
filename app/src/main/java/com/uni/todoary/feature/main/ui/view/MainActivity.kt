@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Looper
 import android.util.DisplayMetrics
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,12 +19,10 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.feature.category.ui.view.CategoryActivity
 import com.uni.todoary.util.dpToPx
-import java.util.*
 import kotlin.collections.ArrayList
 import com.uni.todoary.feature.category.ui.view.CategorysettingActivity
 import com.uni.todoary.feature.main.ui.viewmodel.MainViewModel
 import com.uni.todoary.feature.setting.ui.view.ProfileActivity
-import com.uni.todoary.feature.setting.ui.view.ProfileActivity_GeneratedInjector
 import com.uni.todoary.util.getXcesToken
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -110,6 +107,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             display.getMetrics(outMetrics)
         }
         val targetHeight = outMetrics.heightPixels - dpToPx(this, 500f)
+        //val targetHeight = outMetrics.heightPixels - 500f
         val handler = android.os.Handler(Looper.getMainLooper())
         handler.postDelayed( {
             binding.mainSlidingPanelLayout.panelHeight = targetHeight.toInt()
@@ -123,6 +121,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         todolistAdapter.setTodoList(todoList)
         val swipeCallback = TodoListSwipeHelper().apply {
             setClamp(dpToPx(this@MainActivity, 110f).toFloat(), dpToPx(this@MainActivity, 55f).toFloat())
+            //setClamp(110f,55f)
         }
         val swipeHelper = ItemTouchHelper(swipeCallback)
         swipeHelper.attachToRecyclerView(binding.mainSlideTodolistRv)

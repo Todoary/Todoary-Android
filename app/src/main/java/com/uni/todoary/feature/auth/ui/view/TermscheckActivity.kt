@@ -10,11 +10,13 @@ import android.widget.CheckBox
 import android.widget.Toast
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivityTermscheckBinding
+import com.uni.todoary.feature.auth.data.dto.SignInRequest
 import com.uni.todoary.feature.auth.data.service.AuthService
+import com.uni.todoary.feature.auth.data.view.AgreeTermsView
 import com.uni.todoary.feature.auth.ui.view.SignupActivity
 import com.uni.todoary.feature.auth.ui.view.TermsDetailActivity
 
-class TermscheckActivity : AppCompatActivity() {
+class TermscheckActivity : AppCompatActivity(), AgreeTermsView {
     lateinit var binding : ActivityTermscheckBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +44,7 @@ class TermscheckActivity : AppCompatActivity() {
             if(check1.isChecked==true&&check2.isChecked==true){
                 mIntent.putExtra("termscheck", binding.termscheck3Check.isChecked)
                 Log.d("termscheck: ",binding.termscheck3Check.isChecked.toString())
-
+                AgreeTerms()
                 startActivity(mIntent)
             }else {
                 Toast.makeText(applicationContext, "체크부터 해줘 ",Toast.LENGTH_SHORT).show()
@@ -93,5 +95,24 @@ class TermscheckActivity : AppCompatActivity() {
 
     }
 
+    private fun AgreeTerms(){
+        val AgreeTermsService = AuthService()
+        AgreeTermsService.setAgreeTermsView(this)
+        val isChecked = binding.termscheck3Check.isChecked
+        Log.d("isChecked",isChecked.toString())
+        AgreeTermsService.AgreeTerms(isChecked)
+        }
 
+    override fun AgreeTermsLoading() {
+    }
+
+    override fun AgreeTermsSuccess() {
+    }
+
+    override fun AgreeTermsFailure(code: Int) {
+    }
 }
+
+
+
+

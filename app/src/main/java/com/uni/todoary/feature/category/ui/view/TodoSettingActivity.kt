@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.uni.todoary.databinding.ActivityTodoSettingBinding
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.category.data.dto.CategoryData
@@ -129,13 +130,19 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
             binding.todosettingDarkpinkIv.isSelected=!binding.todosettingDarkpinkIv.isSelected
         }
 
-        if(intent.hasExtra("cateData")) {
-            val data = intent.getSerializableExtra("cateData") as CategoryData
-            Log.d("cateData",data.toString())
-            if (intent.hasExtra("cateData")) {
+
+        //카테고리 변경 혹은 삭제 기능
+        val flag = intent.getBooleanExtra("flag",false)
+        if(flag){
+            binding.toolbarBackDeleteIv.isVisible=true
+            if(intent.hasExtra("cateData")) {
+                val data = intent.getSerializableExtra("cateData") as CategoryData
+                Log.d("cateData",data.toString())
+
                 //제목 띄우기
                 binding.todosettingEditEt.setText(data.title)
-
+                //색깔 띄우기
+                checkPallete()
                 //카테고리 변경
                 binding.todosettingCompleteTv.setOnClickListener {
                     if (binding.todosettingEditEt.text?.isNotEmpty() == true) {
@@ -144,23 +151,21 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
                         CategoryChange(data.id)
                     }
                 }
-            }
-            binding.toolbarBackDeleteIv.setOnClickListener {
-                val checkbuilder = android.app.AlertDialog.Builder(this)
-
-                checkbuilder.setTitle("알림")
-                    .setMessage("카테고리를 삭제 하시겠습니까?")
-                    .setNegativeButton("아니오",null)
-                    .setPositiveButton("네") { dialogInterface, i ->
-                        categoryDelete(data.id)
-                        val intent=Intent(this,CategorysettingActivity::class.java)
-                        //startActivity(intent)
-                        finish()
-                    }
-                    .show()
+                binding.toolbarBackDeleteIv.setOnClickListener {
+                    val checkbuilder = android.app.AlertDialog.Builder(this)
+                    checkbuilder.setTitle("알림")
+                        .setMessage("카테고리를 삭제 하시겠습니까?")
+                        .setNegativeButton("아니오", null)
+                        .setPositiveButton("네") { dialogInterface, i ->
+                            categoryDelete(data.id)
+                            val intent = Intent(this, CategorysettingActivity::class.java)
+                            //startActivity(intent)
+                            finish()
+                        }
+                        .show()
+                }
             }
         }
-
 
     }
 
@@ -207,8 +212,6 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
         val intent=Intent(this,CategorysettingActivity::class.java)
         Log.d("카테고리 생성","성공")
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//        startActivity(intent)
-//        overridePendingTransition(0, 0)
         finish()
         overridePendingTransition(0, 0)
 
@@ -237,9 +240,6 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
         Log.d("카테고리 변경","성공")
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         finish()
-//        overridePendingTransition(0, 0)
-//        startActivity(intent)
-//        overridePendingTransition(0, 0)
     }
 
     override fun CategoryChangeFailure(code: Int) {
@@ -263,6 +263,48 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
     }
 
     override fun CategoryDeleteFailure(code: Int) {
+
+    }
+
+    fun checkPallete(){
+        val data = intent.getSerializableExtra("cateData") as CategoryData
+        if(data.color==0)
+            binding.todosettingOrangeIv.isSelected=!binding.todosettingOrangeIv.isSelected
+        else if(data.color==1)
+            binding.todosettingYellowIv.isSelected=!binding.todosettingYellowIv.isSelected
+        else if(data.color==2)
+            binding.todosettingBisquitIv.isSelected=!binding.todosettingBisquitIv.isSelected
+        else if(data.color==3)
+            binding.todosettingGreenIv.isSelected=!binding.todosettingGreenIv.isSelected
+        else if(data.color==4)
+            binding.todosettingDarkgreenIv.isSelected=!binding.todosettingDarkgreenIv.isSelected
+        else if(data.color==5)
+            binding.todosettingDarkpinkIv.isSelected=!binding.todosettingDarkpinkIv.isSelected
+        else if(data.color==6)
+            binding.todosettingMintIv.isSelected=!binding.todosettingMintIv.isSelected
+        else if(data.color==7)
+            binding.todosettingLightmintIv.isSelected=!binding.todosettingLightmintIv.isSelected
+        else if(data.color==8)
+            binding.todosettingApricotIv.isSelected=!binding.todosettingApricotIv.isSelected
+        else if(data.color==9)
+            binding.todosettingLightbrownIv.isSelected=!binding.todosettingLightbrownIv.isSelected
+        else if(data.color==10)
+            binding.todosettingBrownIv.isSelected=!binding.todosettingBrownIv.isSelected
+        else if(data.color==11)
+            binding.todosettingLightorangeIv.isSelected=!binding.todosettingLightorangeIv.isSelected
+        else if(data.color==12)
+            binding.todosettingBlueIv.isSelected=!binding.todosettingBlueIv.isSelected
+        else if(data.color==13)
+            binding.todosettingDarkblueIv.isSelected=!binding.todosettingDarkblueIv.isSelected
+        else if(data.color==14)
+            binding.todosettingGrayIv.isSelected=!binding.todosettingGrayIv.isSelected
+        else if(data.color==15)
+            binding.todosettingLightgrayIv.isSelected=!binding.todosettingLightgrayIv.isSelected
+        else if(data.color==16)
+            binding.todosettingBabypinkIv.isSelected=!binding.todosettingBabypinkIv.isSelected
+        else if(data.color==17)
+            binding.todosettingPinkIv.isSelected=!binding.todosettingPinkIv.isSelected
+
 
     }
 
