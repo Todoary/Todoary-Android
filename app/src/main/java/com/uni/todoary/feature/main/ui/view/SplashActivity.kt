@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivitySplashBinding
@@ -20,12 +22,13 @@ import com.uni.todoary.util.*
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate), LoginView, GetProfileView {
     override fun initAfterBinding() {
+        val fcmToken = getFCMToken()
         // Splash Activity 에서 자동로그인 체크 후 원래 Theme로 변경
         Handler(Looper.getMainLooper()).postDelayed({
             if(getIsAutoLogin()){
                 val loginService = AuthService()
                 loginService.setLoginView(this)
-                val loginRequest = LoginRequest(getUser()!!.email, getUser()!!.password!!)
+                val loginRequest = LoginRequest(getUser()!!.email, getUser()!!.password!!, fcmToken)
                 loginService.autoLogin(loginRequest)
             } else {
                 // 일반 로그인화면으로 이동
@@ -35,6 +38,25 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
             }
             setTheme(R.style.Theme_Todoary)
         }, 300)
+    }
+
+    private fun getFCMToken() : String{
+        var token = ""
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("TAG", "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                token = task.result
+
+                // Log and toast
+//                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
+//                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
+            })
+        return token
     }
 
     override fun loginLoading() {

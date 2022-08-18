@@ -3,6 +3,7 @@ package com.uni.todoary.feature.category.ui.view
 import android.content.Context
 import android.content.Intent
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -61,7 +62,7 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
             notifyItemRangeChanged(0, itemCount, "initCategories")
             notifyItemChanged(position, "setCategory")
             // 콜백함수로 카테고리 인덱스 전달
-            mItemSelectedListener.categorySelectedCallback(categoryDataset[position].id!!)
+            mItemSelectedListener.categorySelectedCallback(categoryDataset[position].id)
         }
 
         //롱터치 리스너

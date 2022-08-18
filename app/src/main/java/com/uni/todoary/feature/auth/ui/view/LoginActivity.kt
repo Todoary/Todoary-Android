@@ -17,6 +17,8 @@ import com.uni.todoary.feature.main.ui.view.MainActivity
 import com.uni.todoary.util.*
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.view.GetProfileView
@@ -129,11 +131,31 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
         })
     }
 
+    private fun getFCMToken() : String{
+        var token = ""
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("TAG", "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                token = task.result
+
+                // Log and toast
+//                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
+//                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
+            })
+        return token
+    }
+
     // 아이디 패스워드 sharedPreferences에서 확인 후 맞으면 로그인, 틀리면 애니메이션 & 안내메시지
     private fun login() {
+        val fcmToken = getFCMToken()
         // 로그인 API 호출
         val request =
-            LoginRequest(binding.loginIdEt.text.toString(), binding.loginPwEt.text.toString())
+            LoginRequest(binding.loginIdEt.text.toString(), binding.loginPwEt.text.toString(), fcmToken)
         loginModel.login(request)
     }
 

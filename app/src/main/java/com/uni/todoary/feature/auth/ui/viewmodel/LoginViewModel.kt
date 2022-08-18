@@ -64,24 +64,24 @@ class LoginViewModel @Inject constructor(
         repository.saveIsAutoLogin(status)
     }
 
-    fun autoLogin(){
-        viewModelScope.launch {
-            _login_resp.value = ApiResult.loading()
-            val user = getUser()
-            val request = LoginRequest(user!!.email, user.password!!)
-            repository.autoLogin(request).let {
-                if(it.isSuccessful){
-                    if(it.body()!!.code == 1000){
-                        // 엑세스 토큰, 리프레쉬 토큰 둘다 저장 (자동로그인에서만)
-                        repository.saveXcesToken(it.body()!!.result!!.token.accessToken)
-                        repository.saveRefToken(it.body()!!.result!!.token.refreshToken)
-                        _login_resp.value = ApiResult.success(it.body()!!.result)
-                    }
-                    else _login_resp.value = (ApiResult.error(it.body()!!.code))
-                } else {
-                    _login_resp.value = (ApiResult.networkError(it.code(), it.toString()))
-                }
-            }
-        }
-    }
+//    fun autoLogin(){
+//        viewModelScope.launch {
+//            _login_resp.value = ApiResult.loading()
+//            val user = getUser()
+//            val request = LoginRequest(user!!.email, user.password!!)
+//            repository.autoLogin(request).let {
+//                if(it.isSuccessful){
+//                    if(it.body()!!.code == 1000){
+//                        // 엑세스 토큰, 리프레쉬 토큰 둘다 저장 (자동로그인에서만)
+//                        repository.saveXcesToken(it.body()!!.result!!.token.accessToken)
+//                        repository.saveRefToken(it.body()!!.result!!.token.refreshToken)
+//                        _login_resp.value = ApiResult.success(it.body()!!.result)
+//                    }
+//                    else _login_resp.value = (ApiResult.error(it.body()!!.code))
+//                } else {
+//                    _login_resp.value = (ApiResult.networkError(it.code(), it.toString()))
+//                }
+//            }
+//        }
+//    }
 }

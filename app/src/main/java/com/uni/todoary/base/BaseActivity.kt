@@ -1,5 +1,6 @@
 package com.uni.todoary.base
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.uni.todoary.feature.auth.ui.view.LoginActivity
 
 abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater) -> T): AppCompatActivity() {
     protected lateinit var binding: T
@@ -63,5 +65,11 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
     // 키보드 숨기기
     fun hideKeyboard(v: View) {
         imm?.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+
+    fun goToReLogin(context : Context){
+        val mIntent = Intent(context, LoginActivity::class.java)
+        mIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(mIntent)
     }
 }

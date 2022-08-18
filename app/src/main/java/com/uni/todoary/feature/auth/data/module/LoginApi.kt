@@ -12,7 +12,8 @@ import retrofit2.http.POST
 
 data class LoginRequest(
     @SerializedName("email") val email: String,
-    @SerializedName("password") val password : String
+    @SerializedName("password") val password : String,
+    @SerializedName("fcm_token") val fcm_token : String
 )
 
 data class LoginResponse(

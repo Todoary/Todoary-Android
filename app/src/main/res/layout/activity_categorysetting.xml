@@ -9,6 +9,17 @@
         android:id="@+id/categorysetting_toolbar_tb"
         layout="@layout/toolbar_back"/>
 
+    <TextView
+        android:id="@+id/categorysetting_register_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="완료"
+        style="@style/head_line"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintTop_toTopOf="@id/categorysetting_toolbar_tb"
+        app:layout_constraintBottom_toBottomOf="@id/categorysetting_toolbar_tb"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/categorysetting_edit_et"
         android:layout_width="0dp"
