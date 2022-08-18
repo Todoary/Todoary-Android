@@ -1,6 +1,7 @@
 package com.uni.todoary.feature.main.ui.view
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,5 +70,10 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
 
     fun setTodoList(todolist : ArrayList<TodoListResponse>){
         this.todolist = todolist
+    }
+
+    fun initSort(){
+        val sortedList = ArrayList(this.todolist.sortedBy { it.createdTime })
+        this.todolist = sortedList
     }
 }

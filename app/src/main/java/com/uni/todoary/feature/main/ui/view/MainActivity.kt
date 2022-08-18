@@ -38,8 +38,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         initView()
         setSlidingPanelHeight()
         initObserver()
-        getFCMToken()
-
     }
 
     private fun initView(){
@@ -153,6 +151,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         val todolistAdapter = TodoListRVAdapter(this)
         todolistAdapter.apply{
             setTodoList(todoList)
+            initSort()
             setItemClickListener(object : TodoListRVAdapter.ItemClickListener{
                 override fun todoCheckListener(todoId: Long, isChecked: Boolean) {
                     model.todoCheck(todoId, isChecked)
@@ -175,23 +174,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 false
             }
         }
-    }
-
-    private fun getFCMToken(){
-        FirebaseMessaging.getInstance().token
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w("TAG", "Fetching FCM registration token failed", task.exception)
-                    return@OnCompleteListener
-                }
-
-                // Get new FCM registration token
-                val token = task.result
-
-                // Log and toast
-//                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
-//                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
-            })
     }
 
     override fun onResume() {
