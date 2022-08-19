@@ -10,6 +10,8 @@ import com.uni.todoary.R
 import com.uni.todoary.databinding.ItemMainSlideTodolistRvBinding
 import com.uni.todoary.feature.main.data.module.TodoListResponse
 import com.uni.todoary.util.alarmFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdapter.ViewHolder>() {
     val categoryColors  = context.resources.obtainTypedArray(R.array.category_array)
@@ -18,6 +20,7 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
 
     interface ItemClickListener {
         fun todoCheckListener(todoId : Long, isChecked : Boolean)
+        fun todoPinListener(todoId : Long, isPinned : Boolean, position: Int)
     }
 
     fun setItemClickListener(listener : ItemClickListener){
@@ -34,9 +37,10 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
                 val time = alarmFormatter(todolist.targetTime)
                 binding.itemTodolistAlarmTv.text = time
             }
-            if (todolist.isPinned){
-                // TODO : 정렬 관해서 추가 논의 , 기능구현 필요
+            if (todolist.isPinned){     // 고정된 항목
                 binding.itemTodolistPinSmallIv.visibility = View.VISIBLE
+            } else {
+                binding.itemTodolistPinSmallIv.visibility = View.GONE
             }
             binding.itemTodolistCb.isChecked = todolist.isChecked
             binding.itemTodolistContentTv.text = todolist.title
@@ -51,6 +55,9 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
             val todolist = todolist[position]
             binding.itemTodolistCb.setOnCheckedChangeListener { buttonView, isChecked ->
                 mItemClickListener.todoCheckListener(todolist.todoId, isChecked)
+            }
+            binding.itemTodolistPinIv.setOnClickListener {
+                mItemClickListener.todoPinListener(todolist.todoId, !todolist.isPinned, position)
             }
         }
     }
@@ -69,11 +76,17 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
     }
 
     fun setTodoList(todolist : ArrayList<TodoListResponse>){
-        this.todolist = todolist
+        val sortedList = ArrayList(todolist.sortedWith(compareBy(
+            {!it.isPinned},
+            {it.createdTime}
+        )))
+        this.todolist = sortedList
+        Log.d("lislis", this.todolist.toString())
+        notifyDataSetChanged()
     }
 
-    fun initSort(){
-        val sortedList = ArrayList(this.todolist.sortedBy { it.createdTime })
-        this.todolist = sortedList
+    fun pinTodo(position : Int){
+        this.todolist[position].isPinned = !this.todolist[position].isPinned
+        setTodoList(this.todolist)
     }
 }

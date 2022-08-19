@@ -29,6 +29,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     val model : MainViewModel by viewModels()
+    private val todolistAdapter : TodoListRVAdapter by lazy {
+        TodoListRVAdapter(this)
+    }
     private var backpressedTime : Long = 0
 
     override fun initAfterBinding() {
@@ -122,6 +125,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 ApiResult.Status.NETWORK_ERROR -> Log.d("Todo_Check_Api_Error", it.message!!)
             }
         })      // 체크했을 때 API통신
+        model.todoPinResp.observe(this, {
+            when(it.status){
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {
+                    todolistAdapter.pinTodo(it.data!!)
+                }
+                ApiResult.Status.API_ERROR -> {
+                    when(it.code){
+                        2005, 2010 -> {
+                            Toast.makeText(this, "유효하지 않은 회원정보 입니다. 다시 로그인 해주세요.", Toast.LENGTH_SHORT).show()
+                            goToReLogin(this)
+                        }
+                        2302 -> {
+                            Snackbar.make(binding.mainSlidingPanelLayout, "존재하지 않는 투두리스트 입니다.", Snackbar.LENGTH_SHORT).show()
+                        }
+                        else -> Toast.makeText(this, "Database Error!!!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                ApiResult.Status.NETWORK_ERROR -> Log.d("Todo_Check_Api_Error", it.message!!)
+            }
+        })
     }
 
     private fun setSlidingPanelHeight(){
@@ -145,14 +169,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setTodolist(todoList : ArrayList<TodoListResponse>){
+//        val todolistAdapter = TodoListRVAdapter(this)
         // 어댑터 셋팅
-        val todolistAdapter = TodoListRVAdapter(this)
         todolistAdapter.apply{
             setTodoList(todoList)
-            initSort()
             setItemClickListener(object : TodoListRVAdapter.ItemClickListener{
                 override fun todoCheckListener(todoId: Long, isChecked: Boolean) {
                     model.todoCheck(todoId, isChecked)
+                }
+
+                override fun todoPinListener(todoId: Long, isPinned: Boolean, position : Int) {
+                    model.todoPin(todoId, isPinned, position)
                 }
             })
         }
