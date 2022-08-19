@@ -10,7 +10,7 @@ import retrofit2.http.Path
 
 data class TodoListResponse(
     @SerializedName("todoId") val todoId : Long,
-    @SerializedName("isPinned") val isPinned : Boolean,
+    @SerializedName("isPinned") var isPinned : Boolean,
     @SerializedName("isChecked") val isChecked : Boolean,
     @SerializedName("title") val title : String,
     @SerializedName("targetDate") val targetDate : String,
@@ -27,6 +27,12 @@ data class TodoCheckRequest(
     @SerializedName("isChecked") val isChecked : Boolean
     )
 
+data class TodoPinRequest(
+    @SerializedName("todoId") val todoId : Long,
+    @SerializedName("isPinned") val isPinned : Boolean
+
+)
+
 interface MainApiInterface {
     @GET("/todo/date/{date}")
     suspend fun getTodoList(
@@ -36,6 +42,11 @@ interface MainApiInterface {
     @PATCH("/todo/check")
     suspend fun todoCheck(
         @Body request : TodoCheckRequest
+    ) : Response<BaseResponse<Any>>
+
+    @PATCH("/todo/pin")
+    suspend fun todoPin(
+        @Body request : TodoPinRequest
     ) : Response<BaseResponse<Any>>
 
     @GET("/todo/days/{year-month}")

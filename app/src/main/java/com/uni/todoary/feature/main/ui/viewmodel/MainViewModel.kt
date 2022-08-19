@@ -9,6 +9,7 @@ import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.main.data.module.TodoCheckRequest
 import com.uni.todoary.feature.main.data.module.TodoListResponse
+import com.uni.todoary.feature.main.data.module.TodoPinRequest
 import com.uni.todoary.feature.main.data.repository.MainRepository
 import com.uni.todoary.util.yearMonthFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,6 +35,10 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
     var _getCalendarInfoResp : MutableLiveData<ApiResult<ArrayList<Int>>> = MutableLiveData()
     val getCalendarInfoResp : LiveData<ApiResult<ArrayList<Int>>>
         get() = _getCalendarInfoResp
+
+    var _todoPinResp : MutableLiveData<ApiResult<Int>> = MutableLiveData()
+    val todoPinResp : LiveData<ApiResult<Int>>
+        get() = _todoPinResp
 
     init {
         _user.value = repository.getUser()
@@ -80,6 +85,20 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
                         _getCalendarInfoResp.value = ApiResult.success(it.body()!!.result)
                     } else _getCalendarInfoResp.value = ApiResult.error(it.body()!!.code)
                 } else _getCalendarInfoResp.value = ApiResult.networkError(it.code(), it.message())
+            }
+        }
+    }
+
+    fun todoPin(todoId : Long, status : Boolean, position : Int){
+        val request = TodoPinRequest(todoId, status)
+        viewModelScope.launch {
+            _todoPinResp.value = ApiResult.loading()
+            repository.todoPin(request).let {
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _todoPinResp.value = ApiResult.success(position)
+                    } else _todoPinResp.value = ApiResult.error(it.body()!!.code)
+                } else _todoPinResp.value = ApiResult.networkError(it.code(), it.message())
             }
         }
     }

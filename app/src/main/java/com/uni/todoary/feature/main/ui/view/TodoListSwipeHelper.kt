@@ -11,11 +11,14 @@ import com.uni.todoary.R
 
 class TodoListSwipeHelper : ItemTouchHelper.Callback() {
 
-    private var currentPosition: Int? = null
-    private var previousPosition: Int? = null
     private var currentDx = 0f
     private var rightClamp = 0f
     private var leftClamp = 0f
+
+    companion object{
+        private var currentPosition: Int? = null
+        private var previousPosition: Int? = null
+    }
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,
@@ -36,13 +39,17 @@ class TodoListSwipeHelper : ItemTouchHelper.Callback() {
     }
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
+        Log.d("positionPreprevious", previousPosition.toString())
         previousPosition = viewHolder.adapterPosition
+        Log.d("positionPrevious",previousPosition.toString())
         getDefaultUIUtil().clearView(getView(viewHolder))
     }
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
         viewHolder?.let {
             currentPosition = viewHolder.adapterPosition
+            Log.d("positionCurrent",currentPosition.toString())
+
             getDefaultUIUtil().onSelected(getView(it))
         }
     }
@@ -93,17 +100,11 @@ class TodoListSwipeHelper : ItemTouchHelper.Callback() {
 
     override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
         val isClamped = getTag(viewHolder)
-        Log.d("isclamped1", isClamped.toString())
-        Log.d("xxx_currentDx", currentDx.toString())
         // 현재 View가 고정되어있지 않고 사용자가 -clamp 이상 swipe시 isClamped true로 변경 아닐시 false로 변경
         if (currentDx < 0){ // 왼쪽으로 밀렸을 때
             setTag(viewHolder, (!isClamped && currentDx <= -rightClamp))
-            Log.d("isclamped2", isClamped.toString())
-            Log.d("xxx", "right")
         } else {    // 오른쪽으로 밀렸을 때
             setTag(viewHolder, (!isClamped && currentDx >= leftClamp))
-            Log.d("isclamped3", isClamped.toString())
-            Log.d("xxx", "left")
         }
         return 2f
     }
@@ -150,6 +151,7 @@ class TodoListSwipeHelper : ItemTouchHelper.Callback() {
 
     // 다른 View가 swipe 되거나 터치되면 고정 해제
     fun removePreviousClamp(recyclerView: RecyclerView) {
+        Log.d("positionposition", "$previousPosition, $currentPosition")
         // 현재 선택한 view가 이전에 선택한 view와 같으면 패스
         if (currentPosition == previousPosition) return
 

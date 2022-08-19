@@ -44,7 +44,7 @@ class TermscheckActivity : AppCompatActivity(), AgreeTermsView {
             if(check1.isChecked==true&&check2.isChecked==true){
                 mIntent.putExtra("termscheck", binding.termscheck3Check.isChecked)
                 Log.d("termscheck: ",binding.termscheck3Check.isChecked.toString())
-                AgreeTerms()
+//                AgreeTerms()
                 startActivity(mIntent)
             }else {
                 Toast.makeText(applicationContext, "체크부터 해줘 ",Toast.LENGTH_SHORT).show()
@@ -95,22 +95,25 @@ class TermscheckActivity : AppCompatActivity(), AgreeTermsView {
 
     }
 
-    private fun AgreeTerms(){
-        val AgreeTermsService = AuthService()
-        AgreeTermsService.setAgreeTermsView(this)
-        val isChecked = binding.termscheck3Check.isChecked
-        Log.d("isChecked",isChecked.toString())
-        AgreeTermsService.AgreeTerms(isChecked)
-        }
+//    private fun AgreeTerms(){
+//        val AgreeTermsService = AuthService()
+//        AgreeTermsService.setAgreeTermsView(this)
+//        val isChecked = binding.termscheck3Check.isChecked
+//        Log.d("isChecked",isChecked.toString())
+//        AgreeTermsService.AgreeTerms(isChecked)
+//        }
 
     override fun AgreeTermsLoading() {
     }
 
     override fun AgreeTermsSuccess() {
+        Log.d("마케팅동의","성공")
     }
 
     override fun AgreeTermsFailure(code: Int) {
+        Log.d("마케팅동의실패",code.toString())
     }
+
 }
 
 

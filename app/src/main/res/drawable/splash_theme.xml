@@ -13,7 +13,7 @@
     </item>
     <item
         android:drawable="@drawable/splash_logo_text"
-        android:top="300dp"
+        android:top="150dp"
         android:width="200dp"
         android:height="55dp"
         android:gravity="center">

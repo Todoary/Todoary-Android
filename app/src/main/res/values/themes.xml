@@ -177,6 +177,14 @@
         <item name="android:background">@drawable/bottomsheet_dialog</item>
     </style>
 
+    <!-- Bottom sheet palette style -->
+    <style name="CustomBottomSheetDialogPaletteTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomRoundedBackgroundBottomSheet</item>
+    </style>
+    <style name="CustomRoundedBackgroundBottomSheetPalette" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottomsheet_pallete</item>
+    </style>
+
     <style name="Theme.AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/timepicker_gray</item>
         <item name="colorPrimaryVariant">@color/timepicker_gray</item>

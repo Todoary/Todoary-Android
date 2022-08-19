@@ -28,7 +28,6 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
             finish()
         }
 
-
         binding.todosettingCompleteTv.setOnClickListener {
             categoryAdd()
             //startActivity(intent)
@@ -38,96 +37,96 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
 
         binding.todosettingEditEt.setPadding(40,14,5,20)
 
-
-        binding.todosettingOrangeIv.setOnClickListener {
+        // 팔레트 설정
+        binding.todosetting0Iv.setOnClickListener {
             color=0
             Removeselect()
-            binding.todosettingOrangeIv.isSelected=!binding.todosettingOrangeIv.isSelected
+            binding.todosetting0Iv.isSelected=!binding.todosetting0Iv.isSelected
         }
-        binding.todosettingYellowIv.setOnClickListener {
+        binding.todosetting1Iv.setOnClickListener {
             color=1
             Removeselect()
-            binding.todosettingYellowIv.isSelected=!binding.todosettingYellowIv.isSelected
+            binding.todosetting1Iv.isSelected=!binding.todosetting1Iv.isSelected
         }
-        binding.todosettingPinkIv.setOnClickListener {
+        binding.todosetting17Iv.setOnClickListener {
             color=17
             Removeselect()
-            binding.todosettingPinkIv.isSelected=!binding.todosettingPinkIv.isSelected
+            binding.todosetting17Iv.isSelected=!binding.todosetting17Iv.isSelected
         }
-        binding.todosettingMintIv.setOnClickListener {
+        binding.todosetting6Iv.setOnClickListener {
             color=6
             Removeselect()
-            binding.todosettingMintIv.isSelected=!binding.todosettingMintIv.isSelected
+            binding.todosetting6Iv.isSelected=!binding.todosetting6Iv.isSelected
         }
-        binding.todosettingLightorangeIv.setOnClickListener {
+        binding.todosetting11Iv.setOnClickListener {
             color=11
             Removeselect()
-            binding.todosettingLightorangeIv.isSelected=!binding.todosettingLightorangeIv.isSelected
+            binding.todosetting11Iv.isSelected=!binding.todosetting11Iv.isSelected
         }
-        binding.todosettingLightgrayIv.setOnClickListener {
+        binding.todosetting15Iv.setOnClickListener {
             color=15
             Removeselect()
-            binding.todosettingLightgrayIv.isSelected=!binding.todosettingLightgrayIv.isSelected
+            binding.todosetting15Iv.isSelected=!binding.todosetting15Iv.isSelected
         }
-        binding.todosettingLightbrownIv.setOnClickListener {
+        binding.todosetting9Iv.setOnClickListener {
             color=9
             Removeselect()
-            binding.todosettingLightbrownIv.isSelected=!binding.todosettingLightbrownIv.isSelected
+            binding.todosetting9Iv.isSelected=!binding.todosetting9Iv.isSelected
         }
-        binding.todosettingGreenIv.setOnClickListener {
+        binding.todosetting3Iv.setOnClickListener {
             color=3
             Removeselect()
-            binding.todosettingGreenIv.isSelected=!binding.todosettingGreenIv.isSelected
+            binding.todosetting3Iv.isSelected=!binding.todosetting3Iv.isSelected
         }
-        binding.todosettingGrayIv.setOnClickListener {
+        binding.todosetting14Iv.setOnClickListener {
             color=14
             Removeselect()
-            binding.todosettingGrayIv.isSelected=!binding.todosettingGrayIv.isSelected
+            binding.todosetting14Iv.isSelected=!binding.todosetting14Iv.isSelected
         }
-        binding.todosettingDarkblueIv.setOnClickListener {
+        binding.todosetting13Iv.setOnClickListener {
             color=13
             Removeselect()
-            binding.todosettingDarkblueIv.isSelected=!binding.todosettingDarkblueIv.isSelected
+            binding.todosetting13Iv.isSelected=!binding.todosetting13Iv.isSelected
         }
-        binding.todosettingBisquitIv.setOnClickListener {
+        binding.todosetting2Iv.setOnClickListener {
             color=2
             Removeselect()
-            binding.todosettingBisquitIv.isSelected=!binding.todosettingBisquitIv.isSelected
+            binding.todosetting2Iv.isSelected=!binding.todosetting2Iv.isSelected
         }
-        binding.todosettingLightmintIv.setOnClickListener {
+        binding.todosetting7Iv.setOnClickListener {
             color=7
             Removeselect()
-            binding.todosettingLightmintIv.isSelected=!binding.todosettingLightmintIv.isSelected
+            binding.todosetting7Iv.isSelected=!binding.todosetting7Iv.isSelected
         }
-        binding.todosettingBrownIv.setOnClickListener {
+        binding.todosetting10Iv.setOnClickListener {
             color=10
             Removeselect()
-            binding.todosettingBrownIv.isSelected=!binding.todosettingBrownIv.isSelected
+            binding.todosetting10Iv.isSelected=!binding.todosetting10Iv.isSelected
         }
-        binding.todosettingBlueIv.setOnClickListener {
+        binding.todosetting12Iv.setOnClickListener {
             color=12
             Removeselect()
-            binding.todosettingBlueIv.isSelected=!binding.todosettingBlueIv.isSelected
+            binding.todosetting12Iv.isSelected=!binding.todosetting12Iv.isSelected
         }
-        binding.todosettingBabypinkIv.setOnClickListener {
+        binding.todosetting16Iv.setOnClickListener {
             color=16
             Removeselect()
-            binding.todosettingBabypinkIv.isSelected=!binding.todosettingBabypinkIv.isSelected
+            binding.todosetting16Iv.isSelected=!binding.todosetting16Iv.isSelected
         }
-        binding.todosettingApricotIv.setOnClickListener {
+        binding.todosetting8Iv.setOnClickListener {
             color=8
             Removeselect()
-            binding.todosettingApricotIv.isSelected=!binding.todosettingApricotIv.isSelected
+            binding.todosetting8Iv.isSelected=!binding.todosetting8Iv.isSelected
         }
-        binding.todosettingDarkgreenIv.setOnClickListener {
+        binding.todosetting4Iv.setOnClickListener {
             color=4
             Removeselect()
-            binding.todosettingDarkgreenIv.isSelected=!binding.todosettingDarkgreenIv.isSelected
+            binding.todosetting4Iv.isSelected=!binding.todosetting4Iv.isSelected
         }
-        binding.todosettingDarkpinkIv.setOnClickListener {
+        binding.todosetting5Iv.setOnClickListener {
             color=5
             Removeselect()
-            binding.todosettingDarkpinkIv.isSelected=!binding.todosettingDarkpinkIv.isSelected
+            binding.todosetting5Iv.isSelected=!binding.todosetting5Iv.isSelected
         }
 
 
@@ -142,6 +141,7 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
                 //제목 띄우기
                 binding.todosettingEditEt.setText(data.title)
                 //색깔 띄우기
+                color = data.color
                 checkPallete()
                 //카테고리 변경
                 binding.todosettingCompleteTv.setOnClickListener {
@@ -165,7 +165,7 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
                         .show()
                 }
             }
-        }
+        } else checkPallete()
 
     }
 
@@ -173,24 +173,24 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
 
 
     private fun Removeselect() {
-        binding.todosettingApricotIv.isSelected=false
-        binding.todosettingBabypinkIv.isSelected=false
-        binding.todosettingBisquitIv.isSelected=false
-        binding.todosettingBlueIv.isSelected=false
-        binding.todosettingBrownIv.isSelected=false
-        binding.todosettingDarkgreenIv.isSelected=false
-        binding.todosettingDarkblueIv.isSelected=false
-        binding.todosettingDarkpinkIv.isSelected=false
-        binding.todosettingGrayIv.isSelected=false
-        binding.todosettingGreenIv.isSelected=false
-        binding.todosettingLightbrownIv.isSelected=false
-        binding.todosettingLightgrayIv.isSelected=false
-        binding.todosettingLightmintIv.isSelected=false
-        binding.todosettingLightorangeIv.isSelected=false
-        binding.todosettingMintIv.isSelected=false
-        binding.todosettingOrangeIv.isSelected=false
-        binding.todosettingPinkIv.isSelected=false
-        binding.todosettingYellowIv.isSelected=false
+        binding.todosetting0Iv.isSelected=false
+        binding.todosetting1Iv.isSelected=false
+        binding.todosetting2Iv.isSelected=false
+        binding.todosetting3Iv.isSelected=false
+        binding.todosetting4Iv.isSelected=false
+        binding.todosetting5Iv.isSelected=false
+        binding.todosetting6Iv.isSelected=false
+        binding.todosetting7Iv.isSelected=false
+        binding.todosetting8Iv.isSelected=false
+        binding.todosetting9Iv.isSelected=false
+        binding.todosetting10Iv.isSelected=false
+        binding.todosetting11Iv.isSelected=false
+        binding.todosetting12Iv.isSelected=false
+        binding.todosetting13Iv.isSelected=false
+        binding.todosetting14Iv.isSelected=false
+        binding.todosetting15Iv.isSelected=false
+        binding.todosetting16Iv.isSelected=false
+        binding.todosetting17Iv.isSelected=false
     }
 
     ////////////카테고리 추가///////////////
@@ -267,43 +267,26 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
     }
 
     fun checkPallete(){
-        val data = intent.getSerializableExtra("cateData") as CategoryData
-        if(data.color==0)
-            binding.todosettingOrangeIv.isSelected=!binding.todosettingOrangeIv.isSelected
-        else if(data.color==1)
-            binding.todosettingYellowIv.isSelected=!binding.todosettingYellowIv.isSelected
-        else if(data.color==2)
-            binding.todosettingBisquitIv.isSelected=!binding.todosettingBisquitIv.isSelected
-        else if(data.color==3)
-            binding.todosettingGreenIv.isSelected=!binding.todosettingGreenIv.isSelected
-        else if(data.color==4)
-            binding.todosettingDarkgreenIv.isSelected=!binding.todosettingDarkgreenIv.isSelected
-        else if(data.color==5)
-            binding.todosettingDarkpinkIv.isSelected=!binding.todosettingDarkpinkIv.isSelected
-        else if(data.color==6)
-            binding.todosettingMintIv.isSelected=!binding.todosettingMintIv.isSelected
-        else if(data.color==7)
-            binding.todosettingLightmintIv.isSelected=!binding.todosettingLightmintIv.isSelected
-        else if(data.color==8)
-            binding.todosettingApricotIv.isSelected=!binding.todosettingApricotIv.isSelected
-        else if(data.color==9)
-            binding.todosettingLightbrownIv.isSelected=!binding.todosettingLightbrownIv.isSelected
-        else if(data.color==10)
-            binding.todosettingBrownIv.isSelected=!binding.todosettingBrownIv.isSelected
-        else if(data.color==11)
-            binding.todosettingLightorangeIv.isSelected=!binding.todosettingLightorangeIv.isSelected
-        else if(data.color==12)
-            binding.todosettingBlueIv.isSelected=!binding.todosettingBlueIv.isSelected
-        else if(data.color==13)
-            binding.todosettingDarkblueIv.isSelected=!binding.todosettingDarkblueIv.isSelected
-        else if(data.color==14)
-            binding.todosettingGrayIv.isSelected=!binding.todosettingGrayIv.isSelected
-        else if(data.color==15)
-            binding.todosettingLightgrayIv.isSelected=!binding.todosettingLightgrayIv.isSelected
-        else if(data.color==16)
-            binding.todosettingBabypinkIv.isSelected=!binding.todosettingBabypinkIv.isSelected
-        else if(data.color==17)
-            binding.todosettingPinkIv.isSelected=!binding.todosettingPinkIv.isSelected
+        when (color) {
+            0 -> binding.todosetting0Iv.isSelected=!binding.todosetting0Iv.isSelected
+            1 -> binding.todosetting1Iv.isSelected=!binding.todosetting1Iv.isSelected
+            2 -> binding.todosetting2Iv.isSelected=!binding.todosetting2Iv.isSelected
+            3 -> binding.todosetting3Iv.isSelected=!binding.todosetting3Iv.isSelected
+            4 -> binding.todosetting4Iv.isSelected=!binding.todosetting4Iv.isSelected
+            5 -> binding.todosetting5Iv.isSelected=!binding.todosetting5Iv.isSelected
+            6 -> binding.todosetting6Iv.isSelected=!binding.todosetting6Iv.isSelected
+            7 -> binding.todosetting7Iv.isSelected=!binding.todosetting7Iv.isSelected
+            8 -> binding.todosetting8Iv.isSelected=!binding.todosetting8Iv.isSelected
+            9 -> binding.todosetting9Iv.isSelected=!binding.todosetting9Iv.isSelected
+            10 -> binding.todosetting10Iv.isSelected=!binding.todosetting10Iv.isSelected
+            11 -> binding.todosetting11Iv.isSelected=!binding.todosetting11Iv.isSelected
+            12 -> binding.todosetting12Iv.isSelected=!binding.todosetting12Iv.isSelected
+            13 -> binding.todosetting13Iv.isSelected=!binding.todosetting13Iv.isSelected
+            14 -> binding.todosetting14Iv.isSelected=!binding.todosetting14Iv.isSelected
+            15 -> binding.todosetting15Iv.isSelected=!binding.todosetting15Iv.isSelected
+            16 -> binding.todosetting16Iv.isSelected=!binding.todosetting16Iv.isSelected
+            17 -> binding.todosetting17Iv.isSelected=!binding.todosetting17Iv.isSelected
+        }
 
 
     }
