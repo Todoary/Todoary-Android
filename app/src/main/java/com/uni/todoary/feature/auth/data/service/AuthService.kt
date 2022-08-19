@@ -402,6 +402,7 @@ class AuthService {
             }
         })
     }
+    // TODO : Setting에서 마케팅 동의 체크버튼으로 이동
     fun AgreeTerms(isChecked : Boolean) {
         AgreeTermsView.AgreeTermsLoading()
         authService.AgreeTerms(isChecked).enqueue(object : Callback<BaseResponse<Any>> {

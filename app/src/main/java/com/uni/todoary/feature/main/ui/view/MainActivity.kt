@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Looper
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -35,7 +36,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private var backpressedTime : Long = 0
 
     override fun initAfterBinding() {
-
         initView()
         setSlidingPanelHeight()
         initObserver()
@@ -94,6 +94,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS -> {
                     setTodolist(it.data!!)
+                    if(it.data.size != 0) {
+                        binding.mainSlideTodolistNewCv.visibility = View.GONE
+                    } else binding.mainSlideTodolistNewCv.visibility = View.VISIBLE
                 }
                 ApiResult.Status.API_ERROR -> {
                     when (it.code){
@@ -145,7 +148,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 }
                 ApiResult.Status.NETWORK_ERROR -> Log.d("Todo_Check_Api_Error", it.message!!)
             }
-        })
+        })            // 고정 했을 때 API 통신
     }
 
     private fun setSlidingPanelHeight(){
