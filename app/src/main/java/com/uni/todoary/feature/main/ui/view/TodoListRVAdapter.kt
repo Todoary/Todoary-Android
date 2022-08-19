@@ -39,8 +39,10 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
             }
             if (todolist.isPinned){     // 고정된 항목
                 binding.itemTodolistPinSmallIv.visibility = View.VISIBLE
+                binding.itemTodolistPinIv.setImageResource(R.drawable.ic_todolist_pinned)
             } else {
                 binding.itemTodolistPinSmallIv.visibility = View.GONE
+                binding.itemTodolistPinIv.setImageResource(R.drawable.ic_todolist_pin)
             }
             binding.itemTodolistCb.isChecked = todolist.isChecked
             binding.itemTodolistContentTv.text = todolist.title

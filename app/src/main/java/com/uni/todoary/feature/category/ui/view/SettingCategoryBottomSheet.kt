@@ -1,4 +1,5 @@
 package com.uni.todoary.feature.category.ui.view
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +7,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.uni.todoary.R
 
-class SettingCalendarBottomSheet() : BottomSheetDialogFragment() {
-
+class SettingCategoryBottomSheet : BottomSheetDialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme)
@@ -19,7 +19,7 @@ class SettingCalendarBottomSheet() : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.bottomsheet_alarm_setting, container, false)
+        return inflater.inflate(R.layout.bottomsheet_categorysetting, container, false)
     }
 
 
