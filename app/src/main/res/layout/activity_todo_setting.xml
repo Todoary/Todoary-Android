@@ -36,6 +36,7 @@
         android:maxWidth="350dp"
         android:hint="카테고리 이름을 입력해 주세요"
         android:textSize="15dp"
+        android:maxLength="5"
         style="@style/todo_setting"
         android:paddingVertical="13dp"
         android:paddingStart="11dp"
@@ -64,38 +65,38 @@
             android:layout_marginTop="12dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_orange_iv"
+                    android:id="@+id/todosetting_0_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_weight="1"
                     android:layout_gravity="center"
                     android:src ="@drawable/categorycolor_selector_orange" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_yellow_iv"
+                    android:id="@+id/todosetting_1_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_yellow" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_bisquit_iv"
+                    android:id="@+id/todosetting_2_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_bisquit" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_green_iv"
+                    android:id="@+id/todosetting_3_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_green" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_darkgreen_iv"
+                    android:id="@+id/todosetting_4_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_darkgreen" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_darkpink_iv"
+                    android:id="@+id/todosetting_5_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_weight="1"
@@ -110,42 +111,42 @@
                 android:layout_gravity="center_horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_mint_iv"
+                    android:id="@+id/todosetting_6_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_mint" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_lightmint_iv"
+                    android:id="@+id/todosetting_7_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_lightmint" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_apricot_iv"
+                    android:id="@+id/todosetting_8_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_apricot" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_lightbrown_iv"
+                    android:id="@+id/todosetting_9_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_lightbrown" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_brown_iv"
+                    android:id="@+id/todosetting_10_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_brown" />
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_lightorange_iv"
+                    android:id="@+id/todosetting_11_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
@@ -161,42 +162,42 @@
                 android:layout_marginBottom="23dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_blue_iv"
+                    android:id="@+id/todosetting_12_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_blue"/>
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_darkblue_iv"
+                    android:id="@+id/todosetting_13_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_darkblue"/>
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_gray_iv"
+                    android:id="@+id/todosetting_14_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_gray"/>
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_lightgray_iv"
+                    android:id="@+id/todosetting_15_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_lightgray"/>
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_babypink_iv"
+                    android:id="@+id/todosetting_16_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/categorycolor_selector_babypink"/>
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/todosetting_pink_iv"
+                    android:id="@+id/todosetting_17_iv"
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center"

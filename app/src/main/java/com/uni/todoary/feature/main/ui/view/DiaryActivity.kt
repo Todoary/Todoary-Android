@@ -50,7 +50,8 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView {
         val strDate = dateFormat.format(date)
 
         binding.diaryDateTv.text=strDate
-        //키보드 감지 어떡하지????
+
+        //키보드 감지
 
         val softKeyboardDecector = SoftKeyboardDectectorView(this)
         addContentView(softKeyboardDecector, FrameLayout.LayoutParams(-1, -1))

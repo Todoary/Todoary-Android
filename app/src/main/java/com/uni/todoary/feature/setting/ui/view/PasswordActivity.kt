@@ -34,28 +34,28 @@ class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBindi
                     binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                 }
                 1->{
-                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
+                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon1)
                     binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                     binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                     binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                 }
                 2->{
-                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
+                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon1)
+                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon2)
                     binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                     binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                 }
                 3->{
-                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
+                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon1)
+                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon2)
+                    binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon3)
                     binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                 }
                 4->{
-                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
+                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon1)
+                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon2)
+                    binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon3)
+                    binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon4)
 
                     // preferences에 저장되어 있는 유저정보의 비밀번호(secureKey)와 비교
                     if (pwArr == getSecureKey()){
@@ -134,28 +134,28 @@ class PasswordActivity : BaseActivity<ActivityPwLockBinding>(ActivityPwLockBindi
                     }
                 }
                 1->{
-                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
+                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon1)
                     binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                     binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                     binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                 }
                 2->{
-                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
+                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon1)
+                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon2)
                     binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                     binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                 }
                 3->{
-                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
+                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon1)
+                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon2)
+                    binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon3)
                     binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_stroke_btn)
                 }
                 4->{
-                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
-                    binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.bg_login_solid_btn)
+                    binding.pwLockKey1.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon1)
+                    binding.pwLockKey2.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon2)
+                    binding.pwLockKey3.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon3)
+                    binding.pwLockKey4.background = ContextCompat.getDrawable(this, R.drawable.ic_pwd_icon4)
 
                     if (newPw.size == 4 && pwArr == newPw){
                         // depth 3 에서 새로운 비밀번호 check 까지 완료 후 비밀번호 변경 완료

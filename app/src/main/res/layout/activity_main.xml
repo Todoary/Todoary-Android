@@ -48,10 +48,10 @@
             android:paddingHorizontal="30dp"
             android:paddingTop="30dp">
 
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Todoary"
+                android:background="@drawable/main_title"
                 style="@style/head_line"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -329,7 +329,8 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"/>
 
-                            <TextView
+                            <EditText
+                                android:id="@+id/main_diary_et"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/termsdetail_string"
@@ -343,6 +344,14 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/main_slide_diary_title_tv"/>
 
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toBottomOf="@id/main_diary_et"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:text="여기다가 카테고리 리사이클러뷰 달아주세요"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </androidx.cardview.widget.CardView>
@@ -356,4 +365,28 @@
 
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
+    <LinearLayout
+        android:id="@+id/diary_keytoolbar_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/bottomsheet_dialog">
+        
+        <EditText
+            android:id="@+id/main_todoet_et"
+            android:layout_width="327dp"
+            android:layout_height="45dp"
+            android:hint="오늘의 할일은 무엇인가요?"
+            android:textColorHint="@color/black"
+            android:layout_marginTop="17dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_caterv_rv"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
