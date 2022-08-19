@@ -107,10 +107,13 @@ class TermscheckActivity : AppCompatActivity(), AgreeTermsView {
     }
 
     override fun AgreeTermsSuccess() {
+        Log.d("마케팅동의","성공")
     }
 
     override fun AgreeTermsFailure(code: Int) {
+        Log.d("마케팅동의실패",code.toString())
     }
+
 }
 
 

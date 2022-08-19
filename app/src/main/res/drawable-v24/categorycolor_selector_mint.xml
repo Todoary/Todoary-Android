@@ -11,14 +11,14 @@
                 android:left="5.5dp">
                 <shape
                     android:shape="oval">
-                    <solid android:color="@color/todoset_mint" />
+                    <solid android:color="@color/todoset_6" />
                 </shape>
             </item>
             <item>
                 <shape
                     android:shape="oval">
                     <stroke android:width="2dp"
-                        android:color="@color/todoset_mint"/>
+                        android:color="@color/todoset_6"/>
                 </shape>
             </item>
         </layer-list>
@@ -34,7 +34,7 @@
                 android:bottom="5dp"
                 android:left="5.5dp">
                 <shape android:shape="oval">
-                    <solid android:color="@color/todoset_mint"/>
+                    <solid android:color="@color/todoset_6"/>
                 </shape>
             </item>
         </layer-list>

@@ -32,5 +32,11 @@ class SecureKeyActivity : BaseActivity<ActivitySettingPwBinding>(ActivitySetting
             val intent = Intent(this, PasswordActivity::class.java)
             startActivity(intent)
         }
+
+        //툴바
+        binding.settingPwToolbar.toolbarBackMainTv.text = "암호"
+        binding.settingPwToolbar.toolbarBackIv.setOnClickListener {
+            finish()
+        }
     }
 }
