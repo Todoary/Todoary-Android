@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cate_card_cv"
+    android:layout_width="wrap_content"
+    android:layout_height="28dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="30dp"
+    app:cardBackgroundColor="@color/purple_200">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cate_item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:text="카테고리 이름"
+        android:textColor="@color/white"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:gravity="center_vertical"
+        style="@style/calendar_date"
+        android:layout_marginStart="11dp"
+        android:layout_margin="2dp"/>
+
+</androidx.cardview.widget.CardView>

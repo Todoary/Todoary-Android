@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="1">
+    <include
+        android:id="@+id/profile_edit"
+        layout="@layout/toolbar_back" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image_iv"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:src="@color/gray"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/profiledit_picedit_tv"
+        android:layout_width="82dp"
+        android:layout_height="26dp"
+        android:background="@drawable/bg_profile_stroke_btn"
+        android:textSize="11dp"
+        android:textColor="#747373"
+        android:text="사진 변경"
+        android:layout_marginTop="14dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="17dp"
+        android:text="닉네임"
+        android:layout_marginTop="21dp"
+        android:layout_marginStart="31dp"
+        android:textSize="14dp"
+        style="@style/main_1"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/profileedit_name_et"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:maxLines="1"
+        android:paddingStart="10dp"
+        style="@style/setting_list"
+        android:background="@drawable/bg_profile_edit_layer"/>
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="17dp"
+        android:text="한줄소개"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="31dp"
+        android:textSize="14dp"
+        style="@style/main_1"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/profileedit_intro_et"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:minHeight="47dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="10dp"
+        style="@style/setting_list"
+        android:paddingVertical="10dp"
+        android:background="@drawable/bg_profile_edit_layer"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/profileedit_confirm_btn"
+        android:layout_width="304dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="42dp"
+        android:text="확인"
+        android:background="@drawable/round_button_lar"
+        style="@style/main_btn_1"
+        android:backgroundTint="@color/color_primary"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"/>
+</LinearLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/setting_alarm_toolbar"
+        layout="@layout/toolbar_back" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/setting_layout_border">
+
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="19dp"
+                android:text="Todoary 알림"
+                android:layout_marginTop="2dp"
+                style="@style/setting_list"/>
+            <ImageView
+                android:id="@+id/alarm_todoary_iv"
+                android:layout_width="16.6dp"
+                android:layout_height="16.6dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_guide_vector"/>
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/alarm_todoary_switch"
+                android:layout_width="52dp"
+                android:layout_height="20dp"
+                android:switchMinWidth="32dp"
+                android:layout_marginStart="136dp"
+                style="@style/setting_list"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="19dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/setting_layout_border">
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="19dp"
+                android:text="하루기록 알림"
+                style="@style/setting_list"
+                android:layout_marginTop="2dp"/>
+            <ImageView
+                android:id="@+id/alarm_day_iv"
+                android:layout_width="16.6dp"
+                android:layout_height="16.6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_guide_vector"/>
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/alarm_day_switch"
+                android:layout_width="52dp"
+                android:layout_height="20dp"
+                android:switchMinWidth="32dp"
+                android:layout_marginStart="136dp"
+                style="@style/setting_list"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="19dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/setting_layout_border">
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="19dp"
+                android:text="리마인드 알림"
+                style="@style/setting_list"
+                android:layout_marginTop="2dp"/>
+            <ImageView
+                android:id="@+id/alarm_remind_iv"
+                android:layout_width="16.6dp"
+                android:layout_height="16.6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_guide_vector"/>
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/alarm_remind_switch"
+                android:layout_width="52dp"
+                android:layout_height="20dp"
+                android:switchMinWidth="32dp"
+                android:layout_marginStart="136dp"
+                style="@style/setting_list"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

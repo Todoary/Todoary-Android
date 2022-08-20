@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/setting_agreement"
+        layout="@layout/toolbar_back" />
+
+            <LinearLayout
+                android:id="@+id/agreement_inform_ll"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="43dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/setting_layout_border">
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="19dp"
+                    android:text="개인 정보 취급방침"
+                    style="@style/setting_list"/>
+                <ImageView
+                    android:id="@+id/agreement_inform_btn"
+                    android:layout_width="6dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/ic_nextbtn_vector"
+                    android:layout_marginStart="161dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/agreement_service_ll"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/setting_layout_border">
+                <TextView
+                    android:layout_width="167dp"
+                    android:layout_height="19dp"
+                    android:text="서비스 이용약관"
+                    style="@style/setting_list"/>
+                <ImageView
+                    android:id="@+id/agreement_service_btn"
+                    android:layout_width="6dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/ic_nextbtn_vector"
+                    android:layout_marginStart="124dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/agreement_ad_ll"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/setting_layout_border">
+                <TextView
+                    android:layout_width="167dp"
+                    android:layout_height="19dp"
+                    android:text="마케팅 정보 수신"
+                    style="@style/setting_list"/>
+                <ImageView
+                    android:id="@+id/agreement_ad_btn"
+                    android:layout_width="6dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/ic_nextbtn_vector"
+                    android:layout_marginStart="124dp"/>
+            </LinearLayout>
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/pw_lock_main_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="암호입력"
+        style="@style/head_line"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/pw_lock_layout"/>
+
+    <TextView
+        android:id="@+id/pw_lock_sub_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="암호를 입력해 주세요"
+        android:layout_marginTop="16dp"
+        style="@style/main_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pw_lock_main_tv"/>
+
+    <LinearLayout
+        android:id="@+id/pw_lock_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/pw_lock_keypad_layout">
+
+        <View
+            android:id="@+id/pw_lock_key_1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_login_stroke_btn"/>
+
+        <View
+            android:id="@+id/pw_lock_key_2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_login_stroke_btn"/>
+
+        <View
+            android:id="@+id/pw_lock_key_3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_login_stroke_btn"/>
+
+        <View
+            android:id="@+id/pw_lock_key_4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_login_stroke_btn"/>
+
+    </LinearLayout>
+    
+    <GridLayout
+        android:id="@+id/pw_lock_keypad_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/pw_lock_1_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:layout_gravity="fill_horizontal"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+        <TextView
+            android:id="@+id/pw_lock_2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <TextView
+            android:id="@+id/pw_lock_3_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <TextView
+            android:id="@+id/pw_lock_4_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <TextView
+            android:id="@+id/pw_lock_5_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <TextView
+            android:id="@+id/pw_lock_6_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <TextView
+            android:id="@+id/pw_lock_7_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <TextView
+            android:id="@+id/pw_lock_8_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <TextView
+            android:id="@+id/pw_lock_9_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/pw_lock_null_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_pwd_icon0"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp" />
+
+
+        <TextView
+            android:id="@+id/pw_lock_0_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            style="?android:attr/borderlessButtonStyle"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="25dp"
+            android:textStyle="bold"
+            android:textSize="26sp"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/pw_lock_back_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="33dp"
+            android:layout_gravity="center"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_back_keypad"/>
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
