@@ -36,12 +36,12 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView {
         recyclerView.adapter=adapter
 
 
-        binding.diaryBackIv.setOnClickListener {
+        /*binding.diaryBackIv.setOnClickListener {
             finish()
         }
         binding.diaryCompleteTv.setOnClickListener {
             AddDiary()
-        }
+        }*/
 
 
         //날짜 띄우기

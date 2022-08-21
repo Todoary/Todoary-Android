@@ -7,8 +7,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="30dp"
         app:cardCornerRadius="20dp"
         android:elevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="30dp"
-                android:layout_marginStart="19dp"
+                android:layout_marginStart="17dp"
                 android:layout_marginTop="14dp"
                 app:strokeColor="@color/red"
                 app:strokeWidth="1dp"
@@ -39,7 +39,7 @@
                     android:text="아랄ㄹ라"
                     android:textColor="@color/red"
                     android:fontFamily="@font/applesdgothicneosb"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:layout_marginVertical="4dp"
                     android:layout_marginHorizontal="12dp"
                     android:lineSpacingExtra="2.2sp"
@@ -49,11 +49,11 @@
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/item_category_todolist_cb"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="22.08dp"
+                android:layout_height="22.08dp"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
-                android:button="@drawable/selector_checkbox"
+                android:button="@drawable/selector_checkbox_blue"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_category_todolist_category_cv"/>
 
@@ -62,10 +62,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="야호야호야호야호야호야호야호야호야호야호야호야호야호야호야호야호야호야호"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:lineSpacingExtra="7sp"
                 android:letterSpacing="0.02"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="12.44dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/applesdgothicneosb"
@@ -77,7 +77,7 @@
 
             <TextView
                 android:id="@+id/item_category_todolist_date_tv"
-                android:layout_width="71dp"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:text="7월 11일"
                 android:textSize="13sp"
@@ -85,38 +85,36 @@
                 android:letterSpacing="-0.02"
                 android:gravity="end"
                 android:layout_marginEnd="18dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="6dp"
                 android:fontFamily="@font/applesdgothicneom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/item_category_todolist_alarm_layout"/>
 
             <LinearLayout
                 android:id="@+id/item_category_todolist_alarm_layout"
-                android:layout_width="71dp"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:gravity="end"
                 android:layout_marginEnd="18dp"
+                android:layout_marginBottom="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/item_category_todolist_content_tv">
 
                 <ImageView
                     android:id="@+id/item_category_todolist_alarm_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="1dp"
-                    android:paddingHorizontal="2dp"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="5dp"
-                    android:src="@drawable/ic_todolist_alarm_small"/>
+                    android:layout_width="12.8dp"
+                    android:layout_height="12.8dp"
+                    android:src="@drawable/ic_todolist_alarm_small" />
 
                 <TextView
                     android:id="@+id/item_category_todolist_alarm_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="13dp"
                     android:text="PM 6:00"
-                    android:lineSpacingExtra="2.6sp"
+                    android:lineSpacingExtra="2.6dp"
                     android:letterSpacing="-0.02"
                     android:textColor="#484848"
                     android:fontFamily="@font/applesdgothicneom"/>

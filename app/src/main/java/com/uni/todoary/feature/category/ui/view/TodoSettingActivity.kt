@@ -23,10 +23,10 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
         binding = ActivityTodoSettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.toolbarBackIv.setOnClickListener {
+        /*binding.toolbarBackIv.setOnClickListener {
             //startActivity(intent)
             finish()
-        }
+        }*/
 
         binding.todosettingCompleteTv.setOnClickListener {
             categoryAdd()
@@ -133,7 +133,7 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
         //카테고리 변경 혹은 삭제 기능
         val flag = intent.getBooleanExtra("flag",false)
         if(flag){
-            binding.toolbarBackDeleteIv.isVisible=true
+            //binding.toolbarBackDeleteIv.isVisible=true
             if(intent.hasExtra("cateData")) {
                 val data = intent.getSerializableExtra("cateData") as CategoryData
                 Log.d("cateData",data.toString())
@@ -151,7 +151,7 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
                         CategoryChange(data.id)
                     }
                 }
-                binding.toolbarBackDeleteIv.setOnClickListener {
+                /*binding.toolbarBackDeleteIv.setOnClickListener {
                     val checkbuilder = android.app.AlertDialog.Builder(this)
                     checkbuilder.setTitle("알림")
                         .setMessage("카테고리를 삭제 하시겠습니까?")
@@ -163,7 +163,7 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
                             finish()
                         }
                         .show()
-                }
+                }*/
             }
         } else checkPallete()
 

@@ -90,10 +90,10 @@ class FindPwActivity constructor(private var random_number : Int = 0) : BaseActi
             override fun afterTextChanged(curText: Editable?) {
                 if(curText.toString().length >= 8){
                     model.codeChecked(2, true)
-                    binding.findPwRebuildPwOffTv.visibility = View.GONE
+                    //binding.findPwRebuildPwOffTv.visibility = View.GONE
                 } else {
                     model.codeChecked(2, false)
-                    binding.findPwRebuildPwOffTv.visibility = View.VISIBLE
+                    //binding.findPwRebuildPwOffTv.visibility = View.VISIBLE
                 }
             }
 

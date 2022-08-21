@@ -242,7 +242,7 @@
         <TextView
             android:id="@+id/signup_nickdetail_tv"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:text="*10자 이하의 한글,영어,숫자로만 가능합니다."
             android:textColor="@color/gray"
             style="@style/sub_1"

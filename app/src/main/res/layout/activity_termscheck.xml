@@ -127,7 +127,7 @@
                     android:layout_height="18dp"
                     android:layout_marginStart="7.5dp"
                     android:text="전체 동의"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:fontFamily="@font/applesdgothicneob"
                     android:lineSpacingExtra="3.2sp"
                     android:textColor="@color/black"/>
