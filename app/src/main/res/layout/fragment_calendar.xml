@@ -5,11 +5,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="36dp"
-        android:layout_marginHorizontal="28dp">
+        android:layout_gravity="center_horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,38 +18,36 @@
 
             <TextView
                 android:id="@+id/calendar_month_tv"
-                android:layout_width="120dp"
+                android:layout_width="129.42dp"
                 android:layout_height="24dp"
                 android:text="날짜"
-                android:paddingStart="20dp"
+                android:paddingStart="15dp"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/black"
-                style="@style/calendar_month"
-                android:layout_weight="1"/>
-
+                style="@style/calendar_month"/>
 
             <ImageView
-                android:layout_width="0dp"
+                android:layout_width="8dp"
+                android:layout_height="15dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="8dp"
                 android:layout_height="15dp"
                 android:layout_weight="1"/>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="15dp"
-                android:layout_weight="1"/>
 
             <ImageView
                 android:id="@+id/calendar_back_iv"
-                android:layout_width="7dp"
+                android:layout_width="8dp"
                 android:layout_height="15dp"
-                android:src="@drawable/ic_calendar_previous"
-                android:layout_weight="1"/>
-
+                android:layout_weight="1"
+                android:src="@drawable/ic_calendar_previous"/>
             <ImageView
                 android:id="@+id/calendar_next_iv"
                 android:layout_width="8dp"
                 android:layout_height="15dp"
-                android:src="@drawable/ic_calendar_next"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:src="@drawable/ic_calendar_next"/>
 
         </LinearLayout>
 
@@ -59,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="13dp"
             android:layout_gravity="center_horizontal">
             <TextView
                 android:id="@+id/calendar_sun_tv"
@@ -85,8 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                style="@style/calendar_week"
                 android:text="화"
+                style="@style/calendar_week"
                 android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/calendar_wed_tv"
@@ -94,8 +91,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                style="@style/calendar_week"
                 android:text="수"
+                style="@style/calendar_week"
                 android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/calendar_thu_tv"
@@ -103,8 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                style="@style/calendar_week"
                 android:text="목"
+                style="@style/calendar_week"
                 android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/calendar_fri_tv"
@@ -112,8 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                style="@style/calendar_week"
                 android:text="금"
+                style="@style/calendar_week"
                 android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/calendar_sat_tv"
@@ -121,18 +118,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                style="@style/calendar_week"
                 android:text="토"
+                style="@style/calendar_week"
                 android:textColor="@color/calendar_blue"/>
 
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="2dp"
             android:id="@+id/calendar_date_rv"
-            android:layout_width="match_parent"
+            android:layout_width="302dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="23dp"
-            android:layout_marginBottom="23dp"/>
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
 
