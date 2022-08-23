@@ -90,6 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:bufferType="spannable"
         android:layout_marginHorizontal="25dp"
         android:layout_gravity="center_horizontal"
         android:background="@null"
@@ -98,11 +99,152 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <LinearLayout
+        android:id="@+id/diary_keytoolbar4_ll"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/keyboard_highlight1_iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_highlight_1"/>
+        <ImageView
+            android:id="@+id/keyboard_highlight2_iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="26dp"
+            android:src="@drawable/ic_highlight_2"/>
+        <ImageView
+            android:id="@+id/keyboard_highlight3_iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="26dp"
+            android:src="@drawable/ic_highlight_3"/>
+        <ImageView
+            android:id="@+id/keyboard_highlight4_iv"
+            android:layout_width="28dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_highlight_4"
+            android:layout_marginStart="11dp"/>
+        <ImageView
+            android:id="@+id/keyboard_highlight5_iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_highlight_5"
+            android:layout_marginStart="26dp"/>
+        <ImageView
+            android:id="@+id/keyboard_highlight6_iv"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_highlight_6"
+            android:layout_marginStart="26dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/diary_keytoolbar3_ll"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/keyboard_font1_iv"
+            android:layout_width="58dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_fontstyle_1"/>
+        <ImageView
+            android:id="@+id/keyboard_font2_iv"
+            android:layout_width="58dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="9dp"
+            android:src="@drawable/ic_fontstyle_2"/>
+        <ImageView
+            android:id="@+id/keyboard_font3_iv"
+            android:layout_width="62dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_fontstyle_3"/>
+        <ImageView
+            android:id="@+id/keyboard_font4_iv"
+            android:layout_width="58dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_fontstyle_4"
+            android:layout_marginStart="11dp"/>
+        <ImageView
+            android:id="@+id/keyboard_font5_iv"
+            android:layout_width="58dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_fontstyle_5"
+            android:layout_marginStart="6dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/diary_keytoolbar2_ll"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/keyboard_leftalign_iv"
+            android:layout_width="18dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_left_align"/>
+        <ImageView
+            android:id="@+id/keyboard_centeralign_iv"
+            android:layout_width="18dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="37dp"
+            android:src="@drawable/ic_center_align"/>
+        <ImageView
+            android:id="@+id/keyboard_rightalign_iv"
+            android:layout_width="18dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="37dp"
+            android:src="@drawable/ic_right_align"/>
+        <ImageView
+            android:id="@+id/keyboard_font_iv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_font_btn"
+            android:layout_marginStart="34dp"/>
+        <ImageView
+            android:id="@+id/keyboard_T_iv"
+            android:layout_width="14dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_t"
+            android:layout_marginStart="31dp"/>
+        <ImageView
+            android:id="@+id/keyboard_U_iv"
+            android:layout_width="13dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_u"
+            android:layout_marginStart="31dp"/>
+        <ImageView
+            android:id="@+id/keyboard_B_iv"
+            android:layout_width="14dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_b"
+            android:layout_marginStart="31dp"/>
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/diary_keytoolbar_ll"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:orientation="horizontal"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:gravity="center"
         android:background="@color/keyboard_gray">
         <ImageView

@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <include
         android:id="@+id/setting_feedback"
         layout="@layout/toolbar_back" />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/setting_feedback">
+    <LinearLayout
         android:id="@+id/feedback_email_ll"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:layout_marginHorizontal="30dp"
         android:orientation="horizontal"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="38dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/setting_layout_border">
         <TextView
@@ -23,18 +30,22 @@
             android:layout_height="19dp"
             android:text="이메일"
             style="@style/setting_list"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <ImageView
             android:id="@+id/feedback_email_btn"
             android:layout_width="6dp"
             android:layout_height="13dp"
-            android:src="@drawable/ic_nextbtn_vector"
-            android:layout_marginStart="161dp"/>
+            android:src="@drawable/ic_nextbtn_vector"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/feedback_insta_ll"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
         android:orientation="horizontal"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="18dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/setting_layout_border">
@@ -43,12 +54,16 @@
             android:layout_height="19dp"
             android:text="인스타"
             style="@style/setting_list"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <ImageView
             android:id="@+id/feedback_insta_btn"
             android:layout_width="6dp"
             android:layout_height="13dp"
-            android:src="@drawable/ic_nextbtn_vector"
-            android:layout_marginStart="124dp"/>
+            android:src="@drawable/ic_nextbtn_vector"/>
+    </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

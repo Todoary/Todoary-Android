@@ -80,6 +80,9 @@ class ProfileActivity : AppCompatActivity(){
             val editintent = Intent(this, ProfileEditActivity::class.java)
             startActivity(editintent)
         }
+
+        binding.profileImageIv.borderColor=0
+        binding.profileImageIv.circleBackgroundColor=0
     }
 
 

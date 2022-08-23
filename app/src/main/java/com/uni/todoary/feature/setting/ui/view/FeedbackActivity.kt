@@ -27,7 +27,7 @@ class FeedbackActivity : AppCompatActivity(){
         }
 
         //인스타그램 이동
-        val insta_intent=Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/todoary_official"))
+        val insta_intent=Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/todoary__official"))
         binding.feedbackInstaLl.setOnClickListener {
             startActivity(insta_intent)
         }

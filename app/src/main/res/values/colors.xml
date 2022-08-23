@@ -15,6 +15,12 @@
     <color name="calendar_red">#D70000</color>
     <color name="deep_blue">#3273D6</color>
     <color name="todo_list_blue">#86B6FF</color>
+    <color name="highlight_01">#FED25A</color>
+    <color name="highlight_02">#FF8F54</color>
+    <color name="highlight_03">#EA2C04</color>
+    <color name="highlight_04">#ACD786</color>
+    <color name="highlight_05">#5698FF</color>
+    <color name="highlight_06">#B8B8B8</color>
     <color name="todoset_0">#F88F2F</color>
     <color name="todoset_1">#49B968</color>
     <color name="todoset_2">#7A49B9</color>
@@ -38,4 +44,6 @@
     <color name="timepicker_gray">#CCCCCC</color>
     <color name="keyboard_gray">#F4F4F4</color>
     <color name="transparent">#00000000</color>
+    <color name="profile_gray">#C4C4C4</color>
+    <color name="nickname_gray">#8D8D8D</color>
 </resources>

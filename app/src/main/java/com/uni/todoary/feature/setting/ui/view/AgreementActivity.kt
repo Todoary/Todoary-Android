@@ -34,7 +34,7 @@ class AgreementActivity : AppCompatActivity(){
         }
         binding.agreementAdLl.setOnClickListener {
             val detail_intent = Intent(this, TermsDetailActivity::class.java)
-            detail_intent.putExtra("key","3")
+            detail_intent.putExtra("key","4")
             startActivity(detail_intent)
         }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,41 +11,43 @@
         layout="@layout/toolbar_back" />
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="38dp"
         android:layout_gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/setting_font"
         android:background="@drawable/setting_layout_border">
         <RadioGroup
             android:id="@+id/setting_font_rg"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
             <RadioButton
                 android:id="@+id/font_1_rb"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="글꼴 1"
                 android:layoutDirection="rtl"
                 android:background="@drawable/setting_layout_border"/>
             <RadioButton
                 android:id="@+id/font_2_rb"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="글꼴 2"
                 android:layoutDirection="rtl"
                 android:background="@drawable/setting_layout_border"/>
             <RadioButton
                 android:id="@+id/font_3_rb"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="글꼴 3"
                 android:layoutDirection="rtl"
                 android:background="@drawable/setting_layout_border"/>
             <RadioButton
                 android:id="@+id/font_4_rb"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="글꼴 4"
                 android:layoutDirection="rtl"
@@ -56,4 +58,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
