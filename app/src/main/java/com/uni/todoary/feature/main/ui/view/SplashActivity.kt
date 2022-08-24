@@ -22,7 +22,7 @@ import com.uni.todoary.util.*
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate), LoginView, GetProfileView {
     override fun initAfterBinding() {
-        val fcmToken = getFCMToken()
+        val fcmToken = getNewFCMToken()
         // Splash Activity 에서 자동로그인 체크 후 원래 Theme로 변경
         Handler(Looper.getMainLooper()).postDelayed({
             if(getIsAutoLogin()){
@@ -40,7 +40,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         }, 300)
     }
 
-    private fun getFCMToken() : String{
+    private fun getNewFCMToken() : String{
         var token = ""
         FirebaseMessaging.getInstance().token
             .addOnCompleteListener(OnCompleteListener { task ->
@@ -56,6 +56,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 //                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
 //                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
             })
+        saveFCMToken(token)
         return token
     }
 

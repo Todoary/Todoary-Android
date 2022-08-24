@@ -13,7 +13,8 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 data class RefreshToken(
-    @SerializedName("refreshToken") val refreshToken : String
+    @SerializedName("refreshToken") val refreshToken : String,
+    @SerializedName("fcm_token") val fcm_token : String
 )
 
 data class Tokens(

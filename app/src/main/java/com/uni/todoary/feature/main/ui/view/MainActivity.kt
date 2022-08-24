@@ -12,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
@@ -180,6 +181,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 ApiResult.Status.NETWORK_ERROR -> Log.d("Todo_Check_Api_Error", it.message!!)
             }
         })            // 고정 했을 때 API 통신
+        model.user.observe(this, {
+            binding.mainProfileNameTv.text = it.nickname
+            binding.mainProfileIntroTv.text = it.introduce
+            if (it.profileImgUrl == "https://todoary.com/users/profile-img"){
+                Log.d("glgl", "empty")
+                Glide.with(this)
+                    .load(R.drawable.bg_profile_default)
+                    .into(binding.profileImageIv)
+            } else {
+                Log.d("glgl", "noempty")
+                Glide.with(this)
+                    .load(it.profileImgUrl)
+                    .circleCrop()
+                    .into(binding.profileImageIv)
+            }
+        })                  // 프로필 설정
     }
 
     private fun setSlidingPanelHeight(){
@@ -238,6 +255,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         super.onResume()
         model.getTodoList()
         model.getCalendarInfo()
+        model.getUser()
     }
 
     override fun onBackPressed() {

@@ -9,12 +9,15 @@ import com.uni.todoary.ApplicationClass.Companion.mSharedPreferences
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.LoginResponse
+import com.uni.todoary.feature.setting.data.module.ChangeProfileImgResponse
 import com.uni.todoary.feature.setting.data.module.ProfileChangeRequest
 import com.uni.todoary.feature.setting.data.repository.UserRepository
 import com.uni.todoary.util.getUser
+import com.uni.todoary.util.getXcesToken
 import com.uni.todoary.util.saveUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,6 +39,9 @@ class ProfileViewModel @Inject constructor(
     val logOutResult : LiveData<ApiResult<Any>>
         get() =_logOutResult
 
+    private val _changeImgResult = MutableLiveData<ApiResult<ChangeProfileImgResponse>>()
+    val changeImgResult : LiveData<ApiResult<ChangeProfileImgResponse>>
+        get() =_changeImgResult
     init {
         _user.value = repository.getUser()
     }
@@ -80,6 +86,20 @@ class ProfileViewModel @Inject constructor(
                         _deleteResult.value = ApiResult.success(null)
                     } else _deleteResult.value = ApiResult.error(it.body()!!.code)
                 } else _deleteResult.value = ApiResult.networkError(it.code(), it.toString())
+            }
+        }
+    }
+
+    fun changeProfileImg(request : MultipartBody.Part){
+        _changeImgResult.value = ApiResult.loading()
+        viewModelScope.launch {
+            repository.changeProfileImg(request).let {
+                Log.d("imim", it.toString())
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _changeImgResult.value = ApiResult.success(it.body()!!.result)
+                    } else _changeImgResult.value = ApiResult.error(it.body()!!.code)
+                } else _changeImgResult.value = ApiResult.networkError(it.code(), it.message())
             }
         }
     }

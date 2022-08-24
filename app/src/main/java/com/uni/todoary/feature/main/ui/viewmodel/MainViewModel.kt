@@ -46,6 +46,10 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
         getTodoList()
     }
 
+    fun getUser(){
+        _user.value = repository.getUser()
+    }
+
     fun getTodoList(){
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val dateString = date.value!!.format(formatter)

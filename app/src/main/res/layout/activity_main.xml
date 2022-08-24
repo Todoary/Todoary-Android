@@ -73,11 +73,11 @@
                 app:layout_constraintTop_toBottomOf="@id/main_menu_iv"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/profile_image_iv"
                     android:layout_width="37dp"
                     android:layout_height="37dp"
-                    android:src="@color/gray"
+                    android:src="@color/profile_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -128,7 +128,7 @@
             android:id="@+id/slide_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/bg_slide_panel">
 
             <androidx.cardview.widget.CardView

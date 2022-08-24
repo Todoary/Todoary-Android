@@ -5,10 +5,7 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import com.uni.todoary.ApplicationClass.Companion.X_ACCESS_TOKEN
-import com.uni.todoary.util.getRefToken
-import com.uni.todoary.util.getXcesToken
-import com.uni.todoary.util.saveRefToken
-import com.uni.todoary.util.saveXcesToken
+import com.uni.todoary.util.*
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -44,7 +41,7 @@ class XAccessTokenInterceptor @Inject constructor (
             // RefreshToken이 있는 경우 (자동로그인)
             if (getRefToken() != null){
                 // 새로 AccessToken을 요청하는 API Call 로직 수행
-                val refreshRequest = RefreshToken(getRefToken()!!)
+                val refreshRequest = RefreshToken(getRefToken()!!, getFCMToken())
                 // Interceptor는 동기, Retrofit은 비동기 실행이므로 runBlocking으로 둘다 동기적으로 실행되도록 함
                 runBlocking {
                     tokenRepository.refreshToken(refreshRequest).let {

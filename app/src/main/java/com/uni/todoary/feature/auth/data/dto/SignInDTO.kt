@@ -7,6 +7,7 @@ data class SignInRequest(
     @SerializedName("name") val name: String,
     @SerializedName("nickname") val nickname: String,
     @SerializedName("password") val password: String,
-    @SerializedName("isTermsEnable") val isTermsEnable: Boolean
+    @SerializedName("isTermsEnable") val isTermsEnable: Boolean,
+    @SerializedName("fcm_token") val fcm_token: String
 )
 

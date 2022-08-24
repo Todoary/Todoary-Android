@@ -15,7 +15,7 @@
         android:id="@+id/profile_image_iv"
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:src="@color/gray"
+        android:src="@color/profile_gray"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"/>
 

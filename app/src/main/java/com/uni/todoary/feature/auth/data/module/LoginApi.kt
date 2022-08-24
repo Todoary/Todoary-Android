@@ -30,6 +30,27 @@ data class AccountInfo(
     @SerializedName("newPassword") val newPassword: String
 )
 
+data class SocialLoginResponse(
+    @SerializedName("isNewUser") val isNewUser: Boolean,
+    @SerializedName("user") val user: SocialUser,
+    @SerializedName("token") val token: LoginToken
+    )
+
+data class SocialUser(
+    @SerializedName("name") val name: String,
+    @SerializedName("email") val email: String,
+    @SerializedName("provider") val provider: String,
+    @SerializedName("providerId") val providerId: String
+)
+data class SocialSignInRequest(
+    @SerializedName("name") val name: String,
+    @SerializedName("email") val email: String,
+    @SerializedName("provider") val provider: String,
+    @SerializedName("providerId") val providerId: String,
+    @SerializedName("isTermsEnable") val isTermsEnable: Boolean,
+    @SerializedName("fcm_token") val fcm_token: String
+)
+
 interface LoginInterface{
     // --------- Auth ------------- //
     @POST("/auth/signin")
@@ -40,6 +61,12 @@ interface LoginInterface{
 
     @PATCH("/auth/password")
     suspend fun findPw(@Body accountInfo : AccountInfo) : Response<BaseResponse<Any>>
+
+    @GET("/oauth2/authorization/google")
+    suspend fun socialLogin() : Response<BaseResponse<SocialLoginResponse>>
+
+    @POST("/auth/signup/oauth2")
+    suspend fun socialSignIn(@Body request : SocialSignInRequest) : Response<BaseResponse<Any>>
 
     // ------------ Profile ------------- //
     @GET("/users")

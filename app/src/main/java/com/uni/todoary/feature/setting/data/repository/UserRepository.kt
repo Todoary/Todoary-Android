@@ -3,10 +3,8 @@ package com.uni.todoary.feature.setting.data.repository
 import com.uni.todoary.base.BaseResponse
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.AuthSpfManager
-import com.uni.todoary.feature.setting.data.module.AlarmStatus
-import com.uni.todoary.feature.setting.data.module.AlarmUpdateRequest
-import com.uni.todoary.feature.setting.data.module.ProfileChangeRequest
-import com.uni.todoary.feature.setting.data.module.UserInterface
+import com.uni.todoary.feature.setting.data.module.*
+import okhttp3.MultipartBody
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,6 +20,10 @@ class UserRepository @Inject constructor(
 
     suspend fun deleteUser() : Response<BaseResponse<Any>> {
         return remoteApi.deleteUser()
+    }
+
+    suspend fun changeProfileImg(request : MultipartBody.Part) : Response<BaseResponse<ChangeProfileImgResponse>> {
+        return remoteApi.changeProfileImg(request)
     }
 
     suspend fun logOut() : Response<BaseResponse<Any>>{
