@@ -121,4 +121,7 @@ dependencies {
     //keyboard 감지
     implementation 'gun0912.ted:tedkeyboardobserver:x.y.z'
     implementation 'gun0912.ted:tedkeyboardobserver:1.0.0-alpha2'
+
+    //on board
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
 }
