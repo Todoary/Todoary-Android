@@ -2,7 +2,6 @@ package com.uni.todoary.feature.setting.ui.view
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -14,52 +13,28 @@ import com.uni.todoary.databinding.ActivityProfileEditBinding
 import com.uni.todoary.feature.auth.data.dto.User
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Gallery
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.base.ApiResult
-import com.uni.todoary.feature.auth.data.dto.ProfileChangeRequest
-import com.uni.todoary.feature.auth.data.service.AuthService
-import com.uni.todoary.feature.auth.data.view.ProfileChangeView
 import com.uni.todoary.feature.setting.ui.viewmodel.ProfileViewModel
-import com.uni.todoary.util.getUser
-import com.uni.todoary.util.saveUser
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
-
 import java.io.FileNotFoundException
-
-import android.graphics.Bitmap
 import android.net.Uri
-
-import androidx.activity.result.ActivityResultCallback
-
 import androidx.activity.result.contract.ActivityResultContracts
-import java.net.URI
 import androidx.core.app.ActivityCompat
-
-import android.text.TextUtils
-
 import android.content.pm.PackageManager
-
 import com.bumptech.glide.Glide
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import android.content.DialogInterface
 import android.provider.Settings
 import com.uni.todoary.BuildConfig
 import com.uni.todoary.R
-import com.uni.todoary.feature.main.ui.view.MainActivity
-
-
-
-
 
 @AndroidEntryPoint
 class ProfileEditActivity : AppCompatActivity(){
@@ -80,6 +55,7 @@ class ProfileEditActivity : AppCompatActivity(){
         }
         binding.profileeditConfirmBtn.setOnClickListener {
             userModel.updateUser(binding.profileeditNameEt.text.toString(), binding.profileeditIntroEt.text.toString())
+            userModel.changeProfileImg()
         }
 
         initClickListeners()
@@ -108,19 +84,35 @@ class ProfileEditActivity : AppCompatActivity(){
     private fun setApiWatchers(){
         userModel.updateResult.observe(this, {
             when (it.status){
-                ApiResult.Status.LOADING -> {
-
-                }
+                ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS -> {
-                    val handler = android.os.Handler(Looper.getMainLooper())
-                    handler.postDelayed(Runnable {
-                        Snackbar.make(binding.profileeditConfirmBtn, "프로필 정보 변경에 성공했습니다.", Snackbar.LENGTH_SHORT).show()
-                    }, 1500)
-                    finish()
+                    Snackbar.make(binding.profileeditConfirmBtn, "프로필 정보 변경에 성공했습니다.", Snackbar.LENGTH_SHORT).show()
                 }
                 else -> Toast.makeText(this, "code : ${it.code}, message : ${it.message}", Toast.LENGTH_SHORT).show()
             }
-        })
+        })  // 프로필 정보 변경 API
+        userModel.changeImgResult.observe(this, {
+            when (it.status){
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {
+                    val handler = android.os.Handler(Looper.getMainLooper())
+                    handler.postDelayed(Runnable {
+                        finish()
+                    }, 1500)
+                }
+                ApiResult.Status.API_ERROR -> {
+                    when (it.code){
+                        5001, 5002 -> {
+                            Toast.makeText(this, "해당하는 이미지 파일의 엑세스 권한이 없습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                        else -> {
+                            Toast.makeText(this, "Database Error!!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                ApiResult.Status.NETWORK_ERROR -> {}
+            }
+        })      // 프로필 이미지 변경 API
     }
 
     // 갤러리 띄우기 위한 launcher 및 콜백
@@ -139,10 +131,6 @@ class ProfileEditActivity : AppCompatActivity(){
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-//            val file = File(uri.path!!)
-//            if (!file.exists()) {       // 원하는 경로에 폴더가 있는지 확인
-//                file.mkdirs();    // 하위폴더를 포함한 폴더를 전부 생성
-//            }
 
             //커서 사용해서 경로 확인
             val cursor =
@@ -151,9 +139,8 @@ class ProfileEditActivity : AppCompatActivity(){
             val mediaPath = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA));
             val file = File(mediaPath)
             val requestFile = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-            Log.d("reqreq", requestFile.toString())
             val body = MultipartBody.Part.createFormData("profile-img", file.name, requestFile)
-            userModel.changeProfileImg(body)
+            userModel.setUri(body)
         } else {
             Toast.makeText(this, "사진 업로드 실패", Toast.LENGTH_LONG).show();
         }

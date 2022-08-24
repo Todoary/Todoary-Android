@@ -1,5 +1,6 @@
 package com.uni.todoary.feature.setting.ui.viewmodel
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -42,19 +43,33 @@ class ProfileViewModel @Inject constructor(
     private val _changeImgResult = MutableLiveData<ApiResult<ChangeProfileImgResponse>>()
     val changeImgResult : LiveData<ApiResult<ChangeProfileImgResponse>>
         get() =_changeImgResult
+
+    var _profileImgUrl : MutableLiveData<MultipartBody.Part?> = MutableLiveData()
+    val profileImgUrl : LiveData<MultipartBody.Part?>
+        get() =_profileImgUrl
+
     init {
         _user.value = repository.getUser()
+        _profileImgUrl.value = null
+        Log.d("prtprt1", profileImgUrl.value.toString())
     }
 
     fun getUser(){
         _user.value = repository.getUser()
     }
 
+    fun setUri(uri : MultipartBody.Part){
+        _profileImgUrl.value = uri
+        Log.d("prtprt2", profileImgUrl.value.toString())
+    }
+
     fun updateUser(name : String, intro : String){
         _updateResult.value = ApiResult.loading()
         viewModelScope.launch {
             repository.changeProfile(ProfileChangeRequest(name, intro)).let {
+                Log.d("iit", it.toString())
                 if(it.isSuccessful){
+                    Log.d("iiiit", it.body().toString())
                     if(it.body()!!.code == 1000){
                         val user = repository.getUser()!!
                         user.nickname = it.body()!!.result!!.nickname
@@ -90,16 +105,26 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-    fun changeProfileImg(request : MultipartBody.Part){
-        _changeImgResult.value = ApiResult.loading()
-        viewModelScope.launch {
-            repository.changeProfileImg(request).let {
-                Log.d("imim", it.toString())
-                if(it.isSuccessful){
-                    if(it.body()!!.code == 1000){
-                        _changeImgResult.value = ApiResult.success(it.body()!!.result)
-                    } else _changeImgResult.value = ApiResult.error(it.body()!!.code)
-                } else _changeImgResult.value = ApiResult.networkError(it.code(), it.message())
+    fun changeProfileImg(){
+        Log.d("prtprt", profileImgUrl.value.toString())
+        if (this.profileImgUrl.value == null) {
+            _changeImgResult.value = ApiResult.success(null)
+            return
+        }
+        else {
+            val request = this.profileImgUrl.value!!
+            _changeImgResult.value = ApiResult.loading()
+            viewModelScope.launch {
+                repository.changeProfileImg(request).let {
+                    if(it.isSuccessful){
+                        if(it.body()!!.code == 1000){
+                            _changeImgResult.value = ApiResult.success(it.body()!!.result)
+                            val user = repository.getUser()!!
+                            user.profileImgUrl = it.body()!!.result!!.profile_img_url
+                            repository.saveUser(user)
+                        } else _changeImgResult.value = ApiResult.error(it.body()!!.code)
+                    } else _changeImgResult.value = ApiResult.networkError(it.code(), it.message())
+                }
             }
         }
     }
