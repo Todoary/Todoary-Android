@@ -184,11 +184,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         model.user.observe(this, {
             binding.mainProfileNameTv.text = it.nickname
             binding.mainProfileIntroTv.text = it.introduce
-            if (it.profileImgUrl == "https://todoary.com/users/profile-img"){
+            if (it.profileImgUrl == null || it.profileImgUrl == "https://todoarybucket.s3.ap-northeast-2.amazonaws.com/todoary/users/admin/default_profile_img.jpg"){
                 Log.d("glgl", "empty")
-                Glide.with(this)
-                    .load(R.drawable.bg_profile_default)
-                    .into(binding.profileImageIv)
+//                Glide.with(this)
+//                    .load(R.drawable.bg_profile_default)
+//                    .into(binding.profileImageIv)
+                binding.profileImageIv.setImageResource(R.drawable.bg_profile_default)
             } else {
                 Log.d("glgl", "noempty")
                 Glide.with(this)

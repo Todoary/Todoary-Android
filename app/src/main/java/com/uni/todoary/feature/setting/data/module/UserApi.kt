@@ -44,6 +44,9 @@ interface UserInterface {
         @Part imgFile : MultipartBody.Part
     ) : Response<BaseResponse<ChangeProfileImgResponse>>
 
+    @PATCH("/users/profile-img/default")
+    suspend fun deleteProfileImg() : Response<BaseResponse<Any>>
+
     // -------------- alarm update --------------- //
     @GET("/users/alarm")
     suspend fun getAlarmStatus() : Response<BaseResponse<AlarmStatus>>

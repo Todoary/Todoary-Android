@@ -26,6 +26,10 @@ class UserRepository @Inject constructor(
         return remoteApi.changeProfileImg(request)
     }
 
+    suspend fun deleteProfileImg() : Response<BaseResponse<Any>> {
+        return remoteApi.deleteProfileImg()
+    }
+
     suspend fun logOut() : Response<BaseResponse<Any>>{
         return remoteApi.logOut()
     }

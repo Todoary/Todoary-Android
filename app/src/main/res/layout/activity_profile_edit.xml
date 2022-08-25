@@ -11,7 +11,7 @@
         android:id="@+id/profile_edit"
         layout="@layout/toolbar_back" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/profile_image_iv"
         android:layout_width="85dp"
         android:layout_height="85dp"

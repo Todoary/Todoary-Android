@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottomsheet_thumb"
+        android:layout_width="32dp"
+        android:layout_height="2dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="23dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/bottomsheet_thumb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/profile_edit_delete_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="      현재 사진 삭제"
+            style="@style/setting_list"
+            android:paddingVertical="20dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E1E1E1"/>
+
+        <TextView
+            android:id="@+id/profile_edit_gallery_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="      갤러리에서 가져오기"
+            style="@style/setting_list"
+            android:paddingVertical="20dp"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

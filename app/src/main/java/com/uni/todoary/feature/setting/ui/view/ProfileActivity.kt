@@ -93,10 +93,11 @@ class ProfileActivity : AppCompatActivity(){
             binding.profileNameTv.text = user.nickname
             binding.profileIntroTv.text = user.introduce
             binding.profileIdTv.text = user.email
-            if (user.profileImgUrl == "https://todoary.com/users/profile-img"){
-                Glide.with(this)
-                    .load(R.drawable.bg_profile_default)
-                    .into(binding.profileImageIv)
+            if (user.profileImgUrl == null || user.profileImgUrl == "https://todoarybucket.s3.ap-northeast-2.amazonaws.com/todoary/users/admin/default_profile_img.jpg"){
+//                Glide.with(this)
+//                    .load(R.drawable.bg_profile_default)
+//                    .into(binding.profileImageIv)
+                binding.profileImageIv.setImageResource(R.drawable.bg_profile_default)
             } else {
                 Glide.with(this)
                     .load(user.profileImgUrl)

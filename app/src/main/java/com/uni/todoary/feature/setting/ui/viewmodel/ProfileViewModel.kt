@@ -44,6 +44,10 @@ class ProfileViewModel @Inject constructor(
     val changeImgResult : LiveData<ApiResult<ChangeProfileImgResponse>>
         get() =_changeImgResult
 
+    private val _deleteImgResult = MutableLiveData<ApiResult<Any>>()
+    val deleteImgResult : LiveData<ApiResult<Any>>
+        get() =_deleteImgResult
+
     var _profileImgUrl : MutableLiveData<MultipartBody.Part?> = MutableLiveData()
     val profileImgUrl : LiveData<MultipartBody.Part?>
         get() =_profileImgUrl
@@ -51,7 +55,6 @@ class ProfileViewModel @Inject constructor(
     init {
         _user.value = repository.getUser()
         _profileImgUrl.value = null
-        Log.d("prtprt1", profileImgUrl.value.toString())
     }
 
     fun getUser(){
@@ -60,7 +63,6 @@ class ProfileViewModel @Inject constructor(
 
     fun setUri(uri : MultipartBody.Part){
         _profileImgUrl.value = uri
-        Log.d("prtprt2", profileImgUrl.value.toString())
     }
 
     fun updateUser(name : String, intro : String){
@@ -106,7 +108,6 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun changeProfileImg(){
-        Log.d("prtprt", profileImgUrl.value.toString())
         if (this.profileImgUrl.value == null) {
             _changeImgResult.value = ApiResult.success(null)
             return
@@ -125,6 +126,22 @@ class ProfileViewModel @Inject constructor(
                         } else _changeImgResult.value = ApiResult.error(it.body()!!.code)
                     } else _changeImgResult.value = ApiResult.networkError(it.code(), it.message())
                 }
+            }
+        }
+    }
+
+    fun deleteProfileImg(){
+        _deleteImgResult.value = ApiResult.loading()
+        viewModelScope.launch {
+            repository.deleteProfileImg().let {
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _deleteImgResult.value = ApiResult.success(it.body()!!.result)
+                        val user = repository.getUser()!!
+                        user.profileImgUrl = null
+                        repository.saveUser(user)
+                    } else _deleteImgResult.value = ApiResult.error(it.body()!!.code)
+                } else _deleteImgResult.value = ApiResult.networkError(it.code(), it.message())
             }
         }
     }

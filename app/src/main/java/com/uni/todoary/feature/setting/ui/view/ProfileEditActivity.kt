@@ -35,12 +35,12 @@ import android.content.DialogInterface
 import android.provider.Settings
 import com.uni.todoary.BuildConfig
 import com.uni.todoary.R
+import com.uni.todoary.feature.category.ui.view.SettingCalendarBottomSheet
 
 @AndroidEntryPoint
 class ProfileEditActivity : AppCompatActivity(){
     lateinit var binding: ActivityProfileEditBinding
     private val userModel : ProfileViewModel by viewModels()
-    lateinit var getContent : ActivityResultLauncher<Intent>
     lateinit var uri : Uri
     val PERMISSIONS_REQUEST_CODE = 1
 
@@ -48,11 +48,7 @@ class ProfileEditActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityProfileEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                result: ActivityResult ->
-            binding.profileImageIv.setImageURI(result.data?.data)
 
-        }
         binding.profileeditConfirmBtn.setOnClickListener {
             userModel.updateUser(binding.profileeditNameEt.text.toString(), binding.profileeditIntroEt.text.toString())
             userModel.changeProfileImg()
@@ -65,10 +61,11 @@ class ProfileEditActivity : AppCompatActivity(){
         val userObserver = Observer<User>{ user ->
             binding.profileeditNameEt.setText(user.nickname)
             binding.profileeditIntroEt.setText(user.introduce)
-            if (user.profileImgUrl == "https://todoary.com/users/profile-img"){
-                Glide.with(this)
-                    .load(R.drawable.bg_profile_default)
-                    .into(binding.profileImageIv)
+            if (user.profileImgUrl == null || user.profileImgUrl == "https://todoarybucket.s3.ap-northeast-2.amazonaws.com/todoary/users/admin/default_profile_img.jpg"){
+//                Glide.with(this)
+//                    .load(R.drawable.bg_profile_default)
+//                    .into(binding.profileImageIv)
+                binding.profileImageIv.setImageResource(R.drawable.bg_profile_default)
             } else {
                 Glide.with(this)
                     .load(user.profileImgUrl)
@@ -95,6 +92,8 @@ class ProfileEditActivity : AppCompatActivity(){
             when (it.status){
                 ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS -> {
+                    // updateResult에서 스낵바 메시지 띄우고 1.5초 뒤에 finish하도록
+                    // 사진 변경되도, 변경 안되도 모두 success로 오기 때문에 finish됨
                     val handler = android.os.Handler(Looper.getMainLooper())
                     handler.postDelayed(Runnable {
                         finish()
@@ -124,8 +123,12 @@ class ProfileEditActivity : AppCompatActivity(){
             uri = result.data!!.data!!
             try {
                 // 받아온 이미지 프로필로 저장
-                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
-                binding.profileImageIv.setImageBitmap(bitmap)
+                Glide.with(this)
+                    .load(uri)
+                    .circleCrop()
+                    .into(binding.profileImageIv)
+//                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+//                binding.profileImageIv.setImageBitmap(bitmap)
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
             } catch (e: IOException) {
@@ -146,53 +149,25 @@ class ProfileEditActivity : AppCompatActivity(){
         }
     }
 
-    private fun editpic() {
-        //Todo: 사진변경 기능 추가
+    fun deletepic(){
+        userModel.deleteProfileImg()
+    }
+
+    fun editpic() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         intent.type = MediaStore.Images.Media.CONTENT_TYPE
         launcher.launch(intent)
     }
 
-//    private fun checkSelfPermission() {
-//        var temp = ""
-//
-//        //파일 읽기 권한 확인
-//        if (ContextCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.READ_EXTERNAL_STORAGE
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            temp += Manifest.permission.READ_EXTERNAL_STORAGE.toString() + " "
-//        }
-//
-//        //파일 쓰기 권한 확인
-//        if (ContextCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.WRITE_EXTERNAL_STORAGE
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            temp += Manifest.permission.WRITE_EXTERNAL_STORAGE.toString() + " "
-//        }
-//        if (!TextUtils.isEmpty(temp)) {
-//            // 권한 요청
-//            ActivityCompat.requestPermissions(
-//                this,
-//                temp.trim { it <= ' ' }.split(" ").toTypedArray(),
-//                1
-//            )
-//        } else {
-//            // 모두 허용 상태
-//            Toast.makeText(this, "권한을 모두 허용", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
+    // 외부 저장소에 대한 권한 check
     private fun requestPermission() {
         val shouldProviceRationale = ActivityCompat.shouldShowRequestPermissionRationale(
             this,
             Manifest.permission.READ_EXTERNAL_STORAGE
         ) //사용자가 이전에 거절한적이 있어도 true 반환
         if (shouldProviceRationale) {
+            Log.d("reqreq", "true")
             //앱에 필요한 권한이 없어서 권한 요청
             ActivityCompat.requestPermissions(
                 this@ProfileEditActivity,
@@ -200,6 +175,7 @@ class ProfileEditActivity : AppCompatActivity(){
                 PERMISSIONS_REQUEST_CODE
             )
         } else {
+            Log.d("reqreq", "false")
             ActivityCompat.requestPermissions(
                 this@ProfileEditActivity,
                 arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
@@ -218,7 +194,6 @@ class ProfileEditActivity : AppCompatActivity(){
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             PERMISSIONS_REQUEST_CODE -> {
-
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.size > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED
@@ -262,7 +237,8 @@ class ProfileEditActivity : AppCompatActivity(){
         }
 
         binding.profileditPiceditTv.setOnClickListener {
-            editpic()
+            val bottomSheet = EditProfileImgBottomSheet()
+            bottomSheet.show(supportFragmentManager,bottomSheet.tag)
         }
     }
     override fun onBackPressed() {
