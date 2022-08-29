@@ -5,6 +5,10 @@ import com.uni.todoary.base.BaseResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.PATCH
+import retrofit2.http.POST
 
 data class ProfileChangeRequest(
     @SerializedName("nickname") val nickname: String,

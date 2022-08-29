@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/termscheck_detail_tv"
-            android:layout_width="290dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_marginTop="30dp"
@@ -23,6 +23,6 @@
             android:layout_marginHorizontal="35dp"
             style="@style/main_2"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="36dp"/>
 </ScrollView>
 </LinearLayout>

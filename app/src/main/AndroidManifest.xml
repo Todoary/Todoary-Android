@@ -21,6 +21,11 @@
         android:requestLegacyExternalStorage="true"
         tools:targetApi="m" >
         <activity
+            android:name=".feature.main.ui.view.OnBoardActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
             android:name=".feature.main.ui.view.DiaryActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"/>

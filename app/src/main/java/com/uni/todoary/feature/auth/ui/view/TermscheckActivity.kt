@@ -51,13 +51,13 @@ class TermscheckActivity : AppCompatActivity(), AgreeTermsView {
             }
         }
 
-        val spanString1 = SpannableString("개인 정보 취급방침")
+        val spanString1 = SpannableString("개인 정보 취급방침 ")
         spanString1.setSpan(UnderlineSpan(),0,spanString1.length,0)
         detail1.text = spanString1
-        val spanString2 = SpannableString("서비스 이용약관")
+        val spanString2 = SpannableString("서비스 이용약관 ")
         spanString2.setSpan(UnderlineSpan(),0,spanString2.length,0)
         detail2.text = spanString2
-        val spanString3 = SpannableString("마케팅 정보 수신")
+        val spanString3 = SpannableString("마케팅 정보 수신 ")
         spanString3.setSpan(UnderlineSpan(),0,spanString3.length,0)
         detail3.text = spanString3
 

@@ -6,6 +6,10 @@ import android.util.Log
 import android.widget.Toast
 import com.uni.todoary.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.uni.todoary.util.*
+import com.uni.todoary.util.getRefToken
+import com.uni.todoary.util.getXcesToken
+import com.uni.todoary.util.saveRefToken
+import com.uni.todoary.util.saveXcesToken
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Request

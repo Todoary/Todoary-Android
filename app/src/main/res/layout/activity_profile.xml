@@ -17,11 +17,11 @@
         android:layout_marginTop="45dp"
         android:layout_gravity="center_horizontal">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image_iv"
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:src="@color/profile_gray" />
+            android:src="@color/gray" />
 
         <LinearLayout
             android:layout_width="190dp"

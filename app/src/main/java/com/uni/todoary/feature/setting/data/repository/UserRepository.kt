@@ -5,6 +5,10 @@ import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.AuthSpfManager
 import com.uni.todoary.feature.setting.data.module.*
 import okhttp3.MultipartBody
+import com.uni.todoary.feature.setting.data.module.AlarmStatus
+import com.uni.todoary.feature.setting.data.module.AlarmUpdateRequest
+import com.uni.todoary.feature.setting.data.module.ProfileChangeRequest
+import com.uni.todoary.feature.setting.data.module.UserInterface
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton

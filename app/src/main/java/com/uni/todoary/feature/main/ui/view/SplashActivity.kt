@@ -23,6 +23,8 @@ import com.uni.todoary.util.*
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate), LoginView, GetProfileView {
     override fun initAfterBinding() {
         val fcmToken = getNewFCMToken()
+        Log.d("isis", getIsAutoLogin().toString())
+        Log.d("isis", getUser().toString())
         // Splash Activity 에서 자동로그인 체크 후 원래 Theme로 변경
         Handler(Looper.getMainLooper()).postDelayed({
             if(getIsAutoLogin()){
@@ -32,9 +34,15 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
                 loginService.autoLogin(loginRequest)
             } else {
                 // 일반 로그인화면으로 이동
-                val mIntent = Intent(this, LoginActivity::class.java)
-                startActivity(mIntent)
-                finish()
+                    if(getUser() != null) {
+                        val mIntent = Intent(this, LoginActivity::class.java)
+                        startActivity(mIntent)
+                        finish()
+                    } else {
+                        val mIntent = Intent(this, OnBoardActivity::class.java)
+                        startActivity(mIntent)
+                        finish()
+                    }
             }
             setTheme(R.style.Theme_Todoary)
         }, 300)

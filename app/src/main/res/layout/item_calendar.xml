@@ -2,16 +2,17 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
     <TextView
         android:id="@+id/dayText"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@color/black"
         android:text="1"
+        android:layout_margin="1dp"
         style="@style/calendar_date"/>
 
 </LinearLayout>
