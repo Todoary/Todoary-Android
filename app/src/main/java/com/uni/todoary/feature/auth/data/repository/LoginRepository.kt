@@ -2,10 +2,7 @@ package com.uni.todoary.feature.auth.data.repository
 
 import com.uni.todoary.base.BaseResponse
 import com.uni.todoary.feature.auth.data.dto.User
-import com.uni.todoary.feature.auth.data.module.AuthSpfManager
-import com.uni.todoary.feature.auth.data.module.LoginInterface
-import com.uni.todoary.feature.auth.data.module.LoginRequest
-import com.uni.todoary.feature.auth.data.module.LoginResponse
+import com.uni.todoary.feature.auth.data.module.*
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,6 +19,14 @@ class LoginRepository @Inject constructor(private val remoteApi : LoginInterface
 
     suspend fun getProfile(): Response<BaseResponse<User>> {
         return remoteApi.getProfile()
+    }
+
+    suspend fun socialLogin() : Response<BaseResponse<SocialLoginResponse>> {
+        return remoteApi.socialLogin()
+    }
+
+    suspend fun socialSignIn(request : SocialSignInRequest) : Response<BaseResponse<Any>>{
+        return remoteApi.socialSignIn(request)
     }
 
     // -------------- SharedPreferencesManager --------------- //

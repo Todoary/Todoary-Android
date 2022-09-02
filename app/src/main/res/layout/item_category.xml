@@ -26,7 +26,7 @@
             android:layout_marginHorizontal="12dp"
             android:textColor="@color/todoset_0"
             android:fontFamily="@font/applesdgothicneosb"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:lineSpacingExtra="2.8sp"
             android:letterSpacing="0.02"/>
 

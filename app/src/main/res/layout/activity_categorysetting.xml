@@ -14,159 +14,137 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="완료"
-        style="@style/head_line"
+        android:fontFamily="@font/applesdgothicneosb"
+        android:lineSpacingExtra="3.6dp"
+        android:textSize="17dp"
+        android:textColor="@color/black"
         android:layout_marginEnd="25dp"
         app:layout_constraintTop_toTopOf="@id/categorysetting_toolbar_tb"
         app:layout_constraintBottom_toBottomOf="@id/categorysetting_toolbar_tb"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/categorysetting_edit_et"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/categorysetting_menu_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="할 일을 적어주세요!"
-        android:textSize="15dp"
-        style="@style/setting_list"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="30dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/categorysetting_toolbar_tb"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/categorysetting_toolbar_tb"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="30dp">
 
-    <View
-        android:id="@+id/categorysetting_line_1"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#E1E1E1"
-        android:layout_marginTop="17dp"
-        app:layout_constraintEnd_toEndOf="@id/categorysetting_edit_et"
-        app:layout_constraintStart_toStartOf="@id/categorysetting_edit_et"
-        app:layout_constraintTop_toBottomOf="@id/categorysetting_edit_et"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/categorysetting_date_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingVertical="8dp"
-        app:layout_constraintEnd_toEndOf="@id/categorysetting_edit_et"
-        app:layout_constraintStart_toStartOf="@id/categorysetting_edit_et"
-        app:layout_constraintTop_toBottomOf="@id/categorysetting_line_1">
-
-        <TextView
-            android:id="@+id/categorysetting_date_tv"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/categorysetting_edit_et"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="날짜"
+            android:hint="투두입력"
+            android:textColorHint="@color/black"
+            android:textSize="16dp"
             style="@style/setting_list"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_marginTop="43dp"
+            android:paddingBottom="18dp"
+            android:gravity="top"
+            android:background="@drawable/categorysetting_line" />
 
-        <TextView
-            android:id="@+id/categorysetting_date_btn_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:text="2022년 7월 20일"
-            android:textColor="@color/black"
-            style="@style/main_2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        <LinearLayout
+            android:id="@+id/categorysetting_date_layout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/categorysetting_line">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/categorysetting_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="날짜"
+                style="@style/setting_list"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
-    <View
-        android:id="@+id/categorysetting_line_2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#E1E1E1"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@id/categorysetting_edit_et"
-        app:layout_constraintStart_toStartOf="@id/categorysetting_edit_et"
-        app:layout_constraintTop_toBottomOf="@id/categorysetting_date_layout"/>
+            <TextView
+                android:id="@+id/categorysetting_date_btn_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:text="2022년 7월 20일"
+                android:textColor="@color/black"
+                style="@style/main_2"/>
 
-    <TextView
-        android:id="@+id/categorysetting_alarm_tv"
-        android:layout_width="189dp"
-        android:layout_height="19dp"
-        android:text="알람"
-        style="@style/setting_list"
-        android:layout_marginTop="17dp"
-        app:layout_constraintTop_toBottomOf="@id/categorysetting_line_2"
-        app:layout_constraintStart_toStartOf="@id/categorysetting_edit_et"/>
+        </LinearLayout>
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/alarm_todoary_switch"
-        android:layout_width="52dp"
-        android:layout_height="25dp"
-        android:switchMinWidth="32dp"
-        android:layout_marginStart="50dp"
-        app:layout_constraintEnd_toEndOf="@id/categorysetting_edit_et"
-        app:layout_constraintTop_toTopOf="@id/categorysetting_alarm_tv"
-        app:layout_constraintBottom_toBottomOf="@id/categorysetting_alarm_tv"/>
+        <LinearLayout
+            android:id="@+id/categorysetting_alarm_layout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/categorysetting_line">
 
-    <View
-        android:id="@+id/categorysetting_line_3"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#E1E1E1"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="@id/categorysetting_edit_et"
-        app:layout_constraintStart_toStartOf="@id/categorysetting_edit_et"
-        app:layout_constraintTop_toBottomOf="@id/alarm_todoary_switch"/>
+            <TextView
+                android:id="@+id/categorysetting_alarm_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알람"
+                style="@style/setting_list"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/categorysetting_add_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:paddingVertical="8dp"
-        android:layout_marginHorizontal="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/categorysetting_line_3">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="카테고리"
-            style="@style/setting_list"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/alarm_todoary_switch"
+                android:layout_width="52dp"
+                android:layout_height="25dp"
+                android:switchMinWidth="32dp"/>
 
-        <ImageView
-            android:layout_width="8dp"
-            android:layout_height="15dp"
-            android:src="@drawable/ic_categorynext_vector"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/categorysetting_add_layout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="카테고리"
+                style="@style/setting_list"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_categorynext_vector"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categorysetting_recycler_rv"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="25dp"
+        android:layout_marginHorizontal="23dp"
+        android:layout_marginTop="5dp"
         tools:listitem="@layout/item_category"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/categorysetting_add_layout"/>
+        app:layout_constraintTop_toBottomOf="@+id/categorysetting_menu_layout"/>
 
     <View
         android:id="@+id/categorysetting_line_4"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:background="#E1E1E1"
+        android:layout_marginHorizontal="30dp"
         app:layout_constraintTop_toBottomOf="@id/categorysetting_recycler_rv"
-        app:layout_constraintEnd_toEndOf="@id/categorysetting_edit_et"
-        app:layout_constraintStart_toStartOf="@id/categorysetting_edit_et"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

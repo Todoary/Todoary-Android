@@ -2,11 +2,15 @@ package com.uni.todoary.feature.setting.ui.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
+import com.uni.todoary.R
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.base.BaseDialog
 import com.uni.todoary.databinding.ActivityProfileBinding
@@ -89,6 +93,17 @@ class ProfileActivity : AppCompatActivity(){
             binding.profileNameTv.text = user.nickname
             binding.profileIntroTv.text = user.introduce
             binding.profileIdTv.text = user.email
+            if (user.profileImgUrl == null || user.profileImgUrl == "https://todoarybucket.s3.ap-northeast-2.amazonaws.com/todoary/users/admin/default_profile_img.jpg"){
+//                Glide.with(this)
+//                    .load(R.drawable.bg_profile_default)
+//                    .into(binding.profileImageIv)
+                binding.profileImageIv.setImageResource(R.drawable.bg_profile_default)
+            } else {
+                Glide.with(this)
+                    .load(user.profileImgUrl)
+                    .circleCrop()
+                    .into(binding.profileImageIv)
+            }
         }
         userModel.user.observe(this, userObserver)
 

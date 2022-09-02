@@ -52,9 +52,7 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
             login()
         }
         binding.loginBtnGoogleLayout.setOnClickListener {
-            // TODO : 아래부분은 더미데이터 User 삽입하는 부분 추후 지우고 소셜로그인 구현
-            val userData = User(null, "규규>.<", "귀여운 규규얌 쀼쀼쀼", "hyuns6677@gmail.com", "madpotato0606")
-            saveUser(userData)
+            loginModel.socialLogin()
         }
         binding.loginBtnSignInTv.setOnClickListener {
             val mIntent = Intent(this, TermscheckActivity::class.java)
@@ -70,7 +68,6 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
     }
 
     private fun addObservers(){
-        // 로그인 Response 옵저버
         loginModel.login_resp.observe(this, {
             when (it.status){
                 ApiResult.Status.SUCCESS -> {
@@ -104,7 +101,7 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
                     Log.d("Login_Api_Network_Error", it.message!!)
                 }
             }
-        })
+        })      // 로그인 Response 옵저버
         loginModel.isProfileSuccess.observe(this, {
             if (it){
                 // 자동 로그인 여부 캐싱
@@ -128,26 +125,25 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
             } else {
                 Toast.makeText(this, "제대로된 유저 정보를 불러오지 못하였습니다.", Toast.LENGTH_SHORT).show()
             }
-        })
-    }
-
-    private fun getFCMToken() : String{
-        var token = ""
-        FirebaseMessaging.getInstance().token
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w("TAG", "Fetching FCM registration token failed", task.exception)
-                    return@OnCompleteListener
+        })   // 유저정보 가져오는 API 통신
+        loginModel.socialLogin_resp.observe(this, {
+            when (it.status){
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {
+                    if (it.data!!.isNewUser){
+                        Toast.makeText(this, "무야호~~~~~~~~~~!! 새로운 유저로구만~~", Toast.LENGTH_SHORT).show()
+                        Log.d("usus", it.data.user.toString())
+                    } else {
+                        // 기존유저일 경우 토큰만 받아와서 자동로그인으로 전환
+                        loginModel.saveIsAutoLogin(true)
+                        loginModel.saveTokens(it.data.token)
+                        loginModel.getUserProfile("null")
+                    }
                 }
-
-                // Get new FCM registration token
-                token = task.result
-
-                // Log and toast
-//                Log.d("registration token", token) // 로그에 찍히기에 서버에게 보내줘야됨
-//                Toast.makeText(this@MainActivity, token, Toast.LENGTH_SHORT).show()
-            })
-        return token
+                ApiResult.Status.API_ERROR -> {}
+                ApiResult.Status.NETWORK_ERROR ->{}
+            }
+        })
     }
 
     // 아이디 패스워드 sharedPreferences에서 확인 후 맞으면 로그인, 틀리면 애니메이션 & 안내메시지

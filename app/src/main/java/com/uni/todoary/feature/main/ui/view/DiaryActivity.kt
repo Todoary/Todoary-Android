@@ -36,10 +36,10 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView {
         recyclerView.adapter=adapter
 
 
-        binding.diaryBackIv.setOnClickListener {
+        binding.diaryToolbar.toolbarTextIv.setOnClickListener {
             finish()
         }
-        binding.diaryCompleteTv.setOnClickListener {
+        binding.diaryToolbar.toolbarTextTv.setOnClickListener {
             AddDiary()
         }
 

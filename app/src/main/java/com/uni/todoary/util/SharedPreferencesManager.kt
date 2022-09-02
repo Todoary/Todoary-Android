@@ -37,6 +37,15 @@ fun removeRefToken(){
     editor.commit()
 }
 
+fun saveFCMToken(fcmToken : String){
+    val editor = mSharedPreferences.edit()
+    editor.putString("FcmToken", fcmToken)
+    editor.apply()
+}
+
+fun getFCMToken(): String = mSharedPreferences.getString("FcmToken", "null")!!
+
+
 // ------------------------ User Info ----------------------------- //
 
 fun saveUser(user : User){
