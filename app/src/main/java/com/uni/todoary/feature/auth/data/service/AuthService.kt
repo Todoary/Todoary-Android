@@ -18,6 +18,7 @@ import com.uni.todoary.feature.category.data.view.CategoryDeleteView
 import com.uni.todoary.feature.category.data.view.GetCategoryView
 import com.uni.todoary.feature.main.data.dto.AddDiaryRequest
 import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
+import com.uni.todoary.feature.main.data.dto.SetSticker
 import com.uni.todoary.feature.main.data.view.AddDiaryView
 import com.uni.todoary.feature.main.data.view.CheckBoxView
 import com.uni.todoary.feature.main.data.view.GetDiaryView
@@ -26,6 +27,7 @@ import com.uni.todoary.util.getXcesToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Body
 
 class AuthService {
     private val authService = ApplicationClass.retrofit.create(RetrofitInterface::class.java)
@@ -43,7 +45,6 @@ class AuthService {
     private lateinit var AddDiaryView: AddDiaryView
     private lateinit var AgreeTermsView: AgreeTermsView
     private lateinit var GetDiaryView: GetDiaryView
-
     fun setSignInView(SignInView: SignInView) {
         this.SignInView = SignInView
     }
@@ -443,5 +444,6 @@ class AuthService {
             }
         })
     }
+
 }
 

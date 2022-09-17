@@ -16,9 +16,17 @@ import com.uni.todoary.util.CalendarUtil.currentDate
 import java.time.LocalDate
 
 
-class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val markingList : ArrayList<Int>):
+class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val realMarkingList : ArrayList<Int>):
     RecyclerView.Adapter<CalendarAdapter.ItemViewHolder>(){
+    private var markingList : ArrayList<Int> = arrayListOf()
     lateinit var mItemClickListener: ItemClickListener
+    var previousPosition : Int? = null
+    var currentPosition : Int? = null
+    var isPrevMarked : Boolean? = null
+
+    init {
+        initMarkingList()
+    }
 
     interface ItemClickListener{
         fun onDateSelect(day : LocalDate)
@@ -61,6 +69,7 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val ma
             if(day == currentDate){
                 holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
                 holder.dayText.setTextColor(Color.WHITE)
+                previousPosition = position
             }
         }
 
@@ -68,6 +77,8 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val ma
         holder.itemView.setOnClickListener {
             if(day != null) {
                 mItemClickListener.onDateSelect(day)
+                holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
+                holder.dayText.setTextColor(Color.WHITE)
             }
         }
         //holder.dayText.text=dayList[holder.adapterPosition]
@@ -75,5 +86,10 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val ma
 
     override fun getItemCount(): Int {
         return dayList.size
+    }
+
+    private fun initMarkingList(){
+        this.markingList.clear()
+        this.markingList.addAll(realMarkingList)
     }
 }
