@@ -51,6 +51,7 @@ class LoginViewModel @Inject constructor(
                     if(it.body()!!.code == 1000){
                         // 엑세스 토큰만 저장
                         repository.saveXcesToken(it.body()!!.result!!.token.accessToken)
+                        Log.d("token", it.body()!!.result!!.token.accessToken)
                         _login_resp.value = ApiResult.success(it.body()!!.result)
                     }
                     else _login_resp.value = (ApiResult.error(it.body()!!.code))

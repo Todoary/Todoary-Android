@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/diary_relativewrapper_rl"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/diary_relativewrapper_rl"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".feature.main.ui.view.DiaryActivity"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,6 +60,7 @@
 
                 </LinearLayout>
 
+
                 <EditText
                     android:id="@+id/diary_title_et"
                     android:layout_width="match_parent"
@@ -80,8 +82,23 @@
                     style="@style/todo_setting"
                     android:hint="일기 내용"/>
 
+                <Button
+                    android:id="@+id/temp_btnAddSticker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="스티커 추가"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent" />
+
             </LinearLayout>
+
+
+
         </androidx.core.widget.NestedScrollView>
+
 
         <LinearLayout
             android:id="@+id/diary_keytoolbar_ll"
@@ -122,4 +139,18 @@
                 android:layout_marginStart="40dp"/>
         </LinearLayout>
     </LinearLayout>
+
+    <com.uni.todoary.sticker.StickerView
+        android:id="@+id/stickerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showBorder="true"
+        app:showIcons="true"
+        app:borderColor="@color/todo_list_blue">
+
+    </com.uni.todoary.sticker.StickerView>
 </androidx.constraintlayout.widget.ConstraintLayout>
