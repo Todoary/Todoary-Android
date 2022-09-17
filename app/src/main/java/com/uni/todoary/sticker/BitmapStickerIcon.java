@@ -7,6 +7,7 @@ import androidx.annotation.IntDef;
 import android.view.MotionEvent;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import com.uni.todoary.sticker.DrawableSticker;
 
 /**
  * @author wupanjie

@@ -28,7 +28,7 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
             finish()
         }
 
-        binding.todosettingCompleteTv.setOnClickListener {
+        binding.todosettingToolbarTb.toolbarIconTv.setOnClickListener {
             categoryAdd()
             //startActivity(intent)
             finish()

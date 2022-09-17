@@ -16,6 +16,7 @@
         layout="@layout/toolbar_icon"/>
 
 
+
         <HorizontalScrollView
             android:id="@+id/category_array_sv"
             android:layout_width="match_parent"

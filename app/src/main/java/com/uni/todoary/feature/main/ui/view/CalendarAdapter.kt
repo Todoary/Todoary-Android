@@ -12,6 +12,10 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.R
+import com.uni.todoary.databinding.ActivityMainBinding
+import com.uni.todoary.feature.auth.data.service.AuthService
+import com.uni.todoary.feature.main.data.dto.GetDiaryRequest
+import com.uni.todoary.feature.main.data.view.GetDiaryView
 import com.uni.todoary.util.CalendarUtil.currentDate
 import java.time.LocalDate
 
@@ -20,6 +24,7 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val re
     RecyclerView.Adapter<CalendarAdapter.ItemViewHolder>(){
     private var markingList : ArrayList<Int> = arrayListOf()
     lateinit var mItemClickListener: ItemClickListener
+    val MainActivity=MainActivity()
     var previousPosition : Int? = null
     var currentPosition : Int? = null
     var isPrevMarked : Boolean? = null
@@ -52,7 +57,7 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val re
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        //날자 변수에 담기
+        //날짜 변수에 담기
         var day = dayList[holder.adapterPosition]
 
         if(day==null){
@@ -92,4 +97,5 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val re
         this.markingList.clear()
         this.markingList.addAll(realMarkingList)
     }
+
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.base.ApiResult
+import com.uni.todoary.databinding.ActivityMainBinding
 import com.uni.todoary.databinding.FragmentCalendarBinding
+import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.ui.view.LoginActivity
+import com.uni.todoary.feature.main.data.dto.GetDiaryRequest
+import com.uni.todoary.feature.main.data.view.GetDiaryView
 import com.uni.todoary.feature.main.ui.viewmodel.MainViewModel
 import kotlinx.coroutines.selects.select
 import java.time.LocalDate
@@ -24,8 +29,9 @@ import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
 
-class CalendarFragment : Fragment() {
+class CalendarFragment(binding: ActivityMainBinding) : Fragment(), GetDiaryView {
     val model : MainViewModel by activityViewModels()
+    var main = binding
     companion object{
         var selectedDate: LocalDate = LocalDate.now()
     }
@@ -66,7 +72,7 @@ class CalendarFragment : Fragment() {
     }
 
     private fun initObservers(){
-        model.getCalendarInfoResp.observe(this, {
+        model.getCalendarInfoResp.observe(viewLifecycleOwner, {
             when (it.status){
                 ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS -> {
@@ -104,6 +110,8 @@ class CalendarFragment : Fragment() {
             override fun onDateSelect(day: LocalDate) {
                 model.date.value = day
                 model.getTodoList()
+                GetDiary(day.toString())
+
             }
 
         })
@@ -149,5 +157,29 @@ class CalendarFragment : Fragment() {
         val mIntent = Intent(context, LoginActivity::class.java)
         mIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(mIntent)
+    }
+    private fun GetDiary(createdDate:String){
+        val getDiaryService = AuthService()
+        getDiaryService.setGetDiaryView(this)
+        getDiaryService.GetDiary(createdDate)
+    }
+    override fun GetDiaryLoading() {
+    }
+
+    override fun GetDiarySuccess(code: Int, result: GetDiaryRequest) {
+        main.mainSlideDiaryTitleTv.text=result.title
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            main.mainDiaryTv.text=Html.fromHtml(result.content, Html.FROM_HTML_MODE_LEGACY).toString()
+        } else {
+            main.mainDiaryTv.text=Html.fromHtml(result.content).toString()
+        }
+        //main.mainDiaryTv.text=result.content
+    }
+
+
+    override fun GetDiaryFailure(code: Int) {
+        Log.d("다이어리 조회실패",code.toString())
+        main.mainDiaryTv.text=""
+        main.mainSlideDiaryTitleTv.text="오늘의 일기를 작성해주세요!"
     }
 }

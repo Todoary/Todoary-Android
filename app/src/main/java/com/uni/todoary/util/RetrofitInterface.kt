@@ -11,6 +11,7 @@ import com.uni.todoary.feature.category.data.dto.CategoryChangeRequest
 import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.main.data.dto.AddDiaryRequest
 import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
+import com.uni.todoary.feature.main.data.dto.GetDiaryRequest
 import com.uni.todoary.feature.main.data.dto.GetSticker
 import com.uni.todoary.feature.main.data.dto.SetSticker
 import retrofit2.Call
@@ -81,8 +82,12 @@ interface RetrofitInterface {
     ) : Call<BaseResponse<Any>>
 
     @GET("/diary")
-    fun GetDiary(@Query("createdDate") createdDate : String) : Call<BaseResponse<Any>>
+    fun GetDiary(@Query("createdDate") createdDate : String) : Call<BaseResponse<GetDiaryRequest>>
 
+    @DELETE("/diary/{createdDate}")
+    fun DeleteDiary(
+        @Path("createdDate") createdDate : String
+    ) : Call<BaseResponse<Any>>
     @PUT("/diary/{createdDate}/sticker")
     fun SetSticker(
         @Path("createdDate") date : String,

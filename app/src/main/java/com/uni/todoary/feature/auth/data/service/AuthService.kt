@@ -19,8 +19,10 @@ import com.uni.todoary.feature.category.data.view.GetCategoryView
 import com.uni.todoary.feature.main.data.dto.AddDiaryRequest
 import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
 import com.uni.todoary.feature.main.data.dto.SetSticker
+import com.uni.todoary.feature.main.data.dto.GetDiaryRequest
 import com.uni.todoary.feature.main.data.view.AddDiaryView
 import com.uni.todoary.feature.main.data.view.CheckBoxView
+import com.uni.todoary.feature.main.data.view.DeleteDiaryView
 import com.uni.todoary.feature.main.data.view.GetDiaryView
 import com.uni.todoary.util.RetrofitInterface
 import com.uni.todoary.util.getXcesToken
@@ -45,6 +47,8 @@ class AuthService {
     private lateinit var AddDiaryView: AddDiaryView
     private lateinit var AgreeTermsView: AgreeTermsView
     private lateinit var GetDiaryView: GetDiaryView
+    private lateinit var DeleteDiaryView: DeleteDiaryView
+
     fun setSignInView(SignInView: SignInView) {
         this.SignInView = SignInView
     }
@@ -94,6 +98,10 @@ class AuthService {
 
     fun setGetDiaryView(GetDiaryView: GetDiaryView){
         this.GetDiaryView=GetDiaryView
+    }
+
+    fun setDeleteDiaryView(DeleteDiaryView: DeleteDiaryView){
+        this.DeleteDiaryView=DeleteDiaryView
     }
 
     fun SignIn(request: SignInRequest) {
@@ -403,6 +411,50 @@ class AuthService {
             }
         })
     }
+
+    fun GetDiary(createdDate: String) {
+        GetDiaryView.GetDiaryLoading()
+        authService.GetDiary(createdDate).enqueue(object : Callback<BaseResponse<GetDiaryRequest>> {
+            override fun onResponse(
+                call: Call<BaseResponse<GetDiaryRequest>>,
+                response: Response<BaseResponse<GetDiaryRequest>>
+            ) {
+                val resp = response.body()!!
+                //Log.d("getDiary_rest",res.content)
+                when (resp.code) {
+                    1000 -> GetDiaryView.GetDiarySuccess(resp.code, resp.result!!)
+                    else -> GetDiaryView.GetDiaryFailure(resp.code)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<GetDiaryRequest>>, t: Throwable) {
+                Log.d("GetDiary_API_Failure", t.toString())
+            }
+        })
+    }
+
+
+    fun DeleteDiary(createdDate: String) {
+        DeleteDiaryView.DeleteDiaryLoading()
+        authService.DeleteDiary(createdDate).enqueue(object : Callback<BaseResponse<Any>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+                val resp = response.body()!!
+                //Log.d("getDiary_rest",res.content)
+                when (resp.code) {
+                    1000 -> DeleteDiaryView.DeleteDiarySuccess()
+                    else -> DeleteDiaryView.DeleteDiaryFailure(resp.code)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("DeleteDiary_API_Failure", t.toString())
+            }
+        })
+    }
+
     // TODO : Setting에서 마케팅 동의 체크버튼으로 이동
     fun AgreeTerms(isChecked : Boolean) {
         AgreeTermsView.AgreeTermsLoading()
@@ -421,26 +473,6 @@ class AuthService {
 
             override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
                 Log.d("AgreeTerms_API_Failure", t.toString())
-            }
-        })
-    }
-
-    fun GetDiary(createdDate: String) {
-        GetDiaryView.GetDiaryLoading()
-        authService.GetDiary(createdDate).enqueue(object : Callback<BaseResponse<Any>> {
-            override fun onResponse(
-                call: Call<BaseResponse<Any>>,
-                response: Response<BaseResponse<Any>>
-            ) {
-                val resp = response.body()!!
-                when (resp.code) {
-                    1000 -> GetDiaryView.GetDiarySuccess()
-                    else -> GetDiaryView.GetDiaryFailure(resp.code)
-                }
-            }
-
-            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
-                Log.d("GetDiary_API_Failure", t.toString())
             }
         })
     }
