@@ -28,14 +28,12 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
 
     private fun initView(){
         // 툴바 동작 버튼
-        binding.signUpToolbar.toolbarIconIv.setOnClickListener {
+        binding.signUpToolbar.toolbarIconIv.setOnClickListener{
             finish()
         }
-
         binding.signUpToolbar.toolbarIconTv.setOnClickListener {
-            //ToDo: 삭제 기능 구현
+            // TODO : 삭제기능 구현
         }
-
         // 투두리스트 만들기 버튼
         binding.categoryTodoListsAddIv.setOnClickListener {
             val intent = Intent(this, CategorysettingActivity::class.java)
@@ -92,7 +90,7 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
                             goToReLogin(this)
                         }
                         2302 -> {
-                            Snackbar.make(binding.signUpToolbar.toolbarIconTv, "존재하지 않는 투두리스트 입니다.", Snackbar.LENGTH_SHORT).show()
+                            Snackbar.make(binding.categoryTodoListsAddIv, "존재하지 않는 투두리스트 입니다.", Snackbar.LENGTH_SHORT).show()
                         }
                         else -> Toast.makeText(this, "Database Error!!!", Toast.LENGTH_SHORT).show()
                     }

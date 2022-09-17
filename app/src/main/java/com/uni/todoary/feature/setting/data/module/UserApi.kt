@@ -2,7 +2,9 @@ package com.uni.todoary.feature.setting.data.module
 
 import com.google.gson.annotations.SerializedName
 import com.uni.todoary.base.BaseResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
+import retrofit2.http.*
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
@@ -24,6 +26,11 @@ data class AlarmUpdateRequest(
     @SerializedName("isChecked") val isChecked : Boolean
 )
 
+data class ChangeProfileImgResponse(
+    @SerializedName("user_id") val user_id: Int,
+    @SerializedName("profile_img_url") val profile_img_url: String
+    )
+
 interface UserInterface {
     @PATCH("/users/profile")
     suspend fun changeProfile(@Body ChangeProfileInfo : ProfileChangeRequest) : Response<BaseResponse<ProfileChangeRequest>>
@@ -33,6 +40,16 @@ interface UserInterface {
 
     @POST("/users/signout")
     suspend fun logOut() : Response<BaseResponse<Any>>
+
+    @Multipart
+    @PATCH("/users/profile-img")
+    suspend fun changeProfileImg(
+//        @Header("Authorization") Authorization : String,
+        @Part imgFile : MultipartBody.Part
+    ) : Response<BaseResponse<ChangeProfileImgResponse>>
+
+    @PATCH("/users/profile-img/default")
+    suspend fun deleteProfileImg() : Response<BaseResponse<Any>>
 
     // -------------- alarm update --------------- //
     @GET("/users/alarm")

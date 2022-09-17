@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="invisible"/>
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/item_category_todo_lists_delete_cv"
         android:layout_width="0dp"

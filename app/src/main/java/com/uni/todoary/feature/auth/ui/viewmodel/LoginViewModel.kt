@@ -1,11 +1,12 @@
 package com.uni.todoary.feature.auth.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uni.todoary.base.ApiResult
-import com.uni.todoary.feature.auth.data.module.LoginRequest
-import com.uni.todoary.feature.auth.data.module.LoginResponse
+import com.uni.todoary.config.Tokens
+import com.uni.todoary.feature.auth.data.module.*
 import com.uni.todoary.feature.auth.data.repository.LoginRepository
 import com.uni.todoary.util.getUser
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,6 +26,23 @@ class LoginViewModel @Inject constructor(
     val isProfileSuccess : MutableLiveData<Boolean>
         get() =_isProfileSuccess
 
+    private val _socialLogin_resp = MutableLiveData<ApiResult<SocialLoginResponse>>()
+    val socialLogin_resp : MutableLiveData<ApiResult<SocialLoginResponse>>
+        get() =_socialLogin_resp
+
+    private val _socialSignin_resp = MutableLiveData<ApiResult<Any>>()
+    val socialSignin_resp : MutableLiveData<ApiResult<Any>>
+        get() =_socialSignin_resp
+
+    private val socialSigninRequest = MutableLiveData<SocialSignInRequest>()
+
+    fun setSocialSigninRequest(name : String, email : String, provider : String, providerId : String,
+                               isTermsEnable : Boolean, fcmToken : String){
+        this.socialSigninRequest.value = SocialSignInRequest(
+            name, email, provider, providerId, isTermsEnable, fcmToken
+        )
+    }
+
     fun login(request : LoginRequest) {
         viewModelScope.launch {
             _login_resp.value = ApiResult.loading()
@@ -33,6 +51,7 @@ class LoginViewModel @Inject constructor(
                     if(it.body()!!.code == 1000){
                         // 엑세스 토큰만 저장
                         repository.saveXcesToken(it.body()!!.result!!.token.accessToken)
+                        Log.d("token", it.body()!!.result!!.token.accessToken)
                         _login_resp.value = ApiResult.success(it.body()!!.result)
                     }
                     else _login_resp.value = (ApiResult.error(it.body()!!.code))
@@ -64,6 +83,37 @@ class LoginViewModel @Inject constructor(
         repository.saveIsAutoLogin(status)
     }
 
+    fun saveTokens(tokens : LoginToken){
+        repository.saveXcesToken(tokens.accessToken)
+        repository.saveRefToken(tokens.refreshToken)
+    }
+
+    fun socialLogin(){
+        viewModelScope.launch {
+            _socialLogin_resp.value = ApiResult.loading()
+            repository.socialLogin().let {
+                Log.d("loglog", it.toString())
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _socialLogin_resp.value = ApiResult.success(it.body()!!.result)
+                    } else _socialLogin_resp.value = ApiResult.error(it.body()!!.code)
+                } else _socialLogin_resp.value = ApiResult.networkError(it.code(), it.message())
+            }
+        }
+    }
+
+    fun socialSignin(){
+        viewModelScope.launch {
+            _socialSignin_resp.value = ApiResult.loading()
+            repository.socialSignIn(socialSigninRequest.value!!).let {
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _socialSignin_resp.value = ApiResult.success(it.body()!!.result)
+                    } else _socialSignin_resp.value = ApiResult.error(it.body()!!.code)
+                } else _socialSignin_resp.value = ApiResult.networkError(it.code(), it.message())
+            }
+        }
+    }
 //    fun autoLogin(){
 //        viewModelScope.launch {
 //            _login_resp.value = ApiResult.loading()

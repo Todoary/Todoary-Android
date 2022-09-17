@@ -19,6 +19,7 @@ import com.uni.todoary.feature.auth.data.view.EmailCheckView
 import com.uni.todoary.feature.auth.data.view.ExistenceCheckView
 import com.uni.todoary.feature.auth.data.view.SignInView
 import com.uni.todoary.util.GMailSender
+import com.uni.todoary.util.getFCMToken
 import java.util.*
 
 class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, ExistenceCheckView {
@@ -317,7 +318,7 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
             val nickname = binding.signupNickEt.text.toString()
             val isTermsEnable = intent.getBooleanExtra("termscheck",false)
             Log.d("isTermsEnable",isTermsEnable.toString())
-            val request = SignInRequest(email, name,nickname,password,isTermsEnable)
+            val request = SignInRequest(email, name,nickname,password,isTermsEnable, getFCMToken())
             signinService.SignIn(request)
         }
     }

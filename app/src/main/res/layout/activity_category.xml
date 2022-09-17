@@ -12,8 +12,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/sign_up_toolbar"
-            layout="@layout/toolbar_icon"/>
+        android:id="@+id/sign_up_toolbar"
+        layout="@layout/toolbar_icon"/>
+
 
 
         <HorizontalScrollView
