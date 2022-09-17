@@ -14,7 +14,7 @@ import androidx.viewbinding.ViewBinding
 import com.uni.todoary.feature.auth.ui.view.LoginActivity
 
 abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater) -> T): AppCompatActivity() {
-    protected lateinit var binding: T
+    lateinit var binding: T
 
     private var imm: InputMethodManager? = null
 

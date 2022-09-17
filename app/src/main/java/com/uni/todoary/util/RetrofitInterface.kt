@@ -11,6 +11,7 @@ import com.uni.todoary.feature.category.data.dto.CategoryChangeRequest
 import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.main.data.dto.AddDiaryRequest
 import com.uni.todoary.feature.main.data.dto.CheckBoxRequest
+import com.uni.todoary.feature.main.data.dto.GetDiaryRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -79,6 +80,10 @@ interface RetrofitInterface {
     ) : Call<BaseResponse<Any>>
 
     @GET("/diary")
-    fun GetDiary(@Query("createdDate") createdDate : String) : Call<BaseResponse<Any>>
+    fun GetDiary(@Query("createdDate") createdDate : String) : Call<BaseResponse<GetDiaryRequest>>
 
+    @DELETE("/diary/{createdDate}")
+    fun DeleteDiary(
+        @Path("createdDate") createdDate : String
+    ) : Call<BaseResponse<Any>>
 }

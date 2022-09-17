@@ -12,6 +12,10 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.todoary.R
+import com.uni.todoary.databinding.ActivityMainBinding
+import com.uni.todoary.feature.auth.data.service.AuthService
+import com.uni.todoary.feature.main.data.dto.GetDiaryRequest
+import com.uni.todoary.feature.main.data.view.GetDiaryView
 import com.uni.todoary.util.CalendarUtil.currentDate
 import java.time.LocalDate
 
@@ -19,6 +23,7 @@ import java.time.LocalDate
 class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val markingList : ArrayList<Int>):
     RecyclerView.Adapter<CalendarAdapter.ItemViewHolder>(){
     lateinit var mItemClickListener: ItemClickListener
+    val MainActivity=MainActivity()
 
     interface ItemClickListener{
         fun onDateSelect(day : LocalDate)
@@ -44,7 +49,7 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val ma
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        //날자 변수에 담기
+        //날짜 변수에 담기
         var day = dayList[holder.adapterPosition]
 
         if(day==null){
@@ -58,6 +63,7 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val ma
                 markingList.removeAt(0)
                 holder.dayText.setBackgroundResource(R.drawable.calendar_datepick_stroke)
             }
+
             if(day == currentDate){
                 holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
                 holder.dayText.setTextColor(Color.WHITE)
@@ -68,6 +74,9 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val ma
         holder.itemView.setOnClickListener {
             if(day != null) {
                 mItemClickListener.onDateSelect(day)
+                holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
+                holder.dayText.setTextColor(Color.WHITE)
+                Log.d("클릭 날짜",day.toString())
             }
         }
         //holder.dayText.text=dayList[holder.adapterPosition]
@@ -76,4 +85,5 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val ma
     override fun getItemCount(): Int {
         return dayList.size
     }
+
 }
