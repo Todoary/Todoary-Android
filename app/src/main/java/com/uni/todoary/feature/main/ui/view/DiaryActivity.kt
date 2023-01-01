@@ -71,16 +71,19 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
 
         //sticker
         //BitmapStickerIcon(아이콘이미지 drawable,아이콘 위치)
-        //수정사항 : image 모두 변경
         sticker.clear()
         stickerM.clear()
         stickerD.clear()
 
+        //아래 버튼 3개 이미지 변경 필요 (수정사항)
+        //스티커 삭제 버튼
         val deleteIcon= BitmapStickerIcon(
             ContextCompat.getDrawable(this, R.drawable.ic_diary_delete)
             ,BitmapStickerIcon.RIGHT_TOP)
+        //스티커 뒤집기 버튼
         val flipIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,com.uni.todoary.R.drawable.ic_diary_delete)
             ,BitmapStickerIcon.LEFT_TOP)
+        //스티커 크기 변경 버튼
         val scaleIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,com.uni.todoary.R.drawable.ic_diary_delete)
             ,BitmapStickerIcon.RIGHT_BOTOM)
 
@@ -94,14 +97,11 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
 
         //add new sticker
         //sticker 키보드 제작 후 수정필요
-        //sticker에 따라 16가지 setOnClickListener 작성
+        //sticker에 따라 16가지 setOnClickListener 작성 (아래 버튼은 임시 : 수정필요) : 키보드 만들고 안에 넣어주면될듯
         binding.tempBtnAddSticker.setOnClickListener {
             Log.d("StickerEnter","Ok")
-            ContextCompat.getDrawable(this,R.drawable.ic_diary_delete)?.let { it1 -> addSticker(it1, 0) }
+            ContextCompat.getDrawable(this,R.drawable.ic_diary_delete)?.let { it1 -> addSticker(it1, 1) }
         }
-
-
-
 
         //다이어리 조회
         GetDiary(date.toString())
@@ -355,11 +355,11 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
 
     //add sticker
     private fun addSticker(drawable: Drawable, stickerId: Int) {
-        Log.d("addSticker","ok")
+
         val drawableSticker= DrawableSticker(drawable)
         binding.stickerView.addSticker(drawableSticker, stickerId)
         sticker.add(drawableSticker)
-        Log.d("sticker", sticker.toString())
+        Log.d("addSticker",stickerId.toString())
     }
 
 
@@ -377,17 +377,18 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         //스티커 수정
         var modifiedSticker = ArrayList<ModifiedSticker>()
         for (i in stickerM){
-            modifiedSticker.add(ModifiedSticker(i.id.toInt(), i.mappedBound.left.toDouble(), i.mappedBound.top.toDouble(), i.currentWidth.toDouble(), i.currentHeight.toDouble(), i.currentAngle.toDouble(), i.isFlippedHorizontally))
+            modifiedSticker.add(ModifiedSticker(i.id.toInt(), i.stickerId, i.mappedBound.left.toDouble(), i.mappedBound.top.toDouble(), i.currentWidth.toDouble(), i.currentHeight.toDouble(), i.currentAngle.toDouble(), i.isFlippedHorizontally))
         }
 
         //스티커 삭제
-        var deletedSticker = ArrayList<DeletedSticker>()
+        var deletedSticker = ArrayList<Int>()
         for (i in stickerD){
-            deletedSticker.add(DeletedSticker(i.id.toInt()))
+            deletedSticker.add(i.id.toInt())
         }
 
         //api 연결
-        setStickerService.SetSticker(binding.diaryDateTv.text.toString(), SetSticker(createdSticker, null, null))
+        Log.d("apiSticker", SetSticker(createdSticker, modifiedSticker, deletedSticker).toString())
+        setStickerService.SetSticker(binding.diaryDateTv.text.toString(), SetSticker(createdSticker, modifiedSticker, deletedSticker))
     }
 
 
@@ -411,6 +412,7 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
 
     override fun AddDiarySuccess() {
         Log.d("다이어리 추가","성공")
+
         //sticker
         setSticker()
     }
