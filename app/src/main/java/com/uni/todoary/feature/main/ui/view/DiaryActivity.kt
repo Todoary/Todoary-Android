@@ -436,13 +436,28 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             }
         })
 
+        var hl_flag = 0
+        val trans_color = resources.getColor(R.color.transparent)
+        val trans_bcs = BackgroundColorSpan(trans_color)
+
         binding.keyboardHighlight1Iv.setOnClickListener {
             var text = binding.diaryDetailEt.text
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_01)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            Log.d("hl_flag:",hl_flag.toString())
+
+            //setSpan 적용 됐는지 확인하는 함수 없나...
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag = 1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
@@ -452,28 +467,53 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_02)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag = 1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
-            binding.diaryDetailEt.text = ssb
+            binding.diaryDetailEt.text == ssb
         }
         binding.keyboardHighlight3Iv.setOnClickListener {
             var text = binding.diaryDetailEt.text
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_03)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if (hl_flag == 0) {
+                ssb.apply {
+                    hl_flag = 1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
+
         binding.keyboardHighlight4Iv.setOnClickListener {
             var text = binding.diaryDetailEt.text
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_04)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag =1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
@@ -482,8 +522,16 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_05)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag = 1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
@@ -492,9 +540,17 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_06)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                ssb.setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                //ssb.setSpan(StrikethroughSpan(), sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag=1
+                    ssb.setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    //ssb.setSpan(StrikethroughSpan(), sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
