@@ -92,7 +92,6 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             _socialLogin_resp.value = ApiResult.loading()
             repository.socialLogin().let {
-                Log.d("loglog", it.toString())
                 if(it.isSuccessful){
                     if(it.body()!!.code == 1000){
                         _socialLogin_resp.value = ApiResult.success(it.body()!!.result)

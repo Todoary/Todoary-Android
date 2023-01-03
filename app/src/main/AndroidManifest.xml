@@ -60,7 +60,10 @@
         <activity android:name=".feature.setting.ui.view.SecureKeyActivity"/>
         <activity android:name=".feature.category.ui.view.CategoryActivity"/>
         <activity android:name=".feature.auth.ui.view.LoginActivity"/>
-        <activity android:name=".feature.main.ui.view.MainActivity" />
+        <activity
+            android:name=".feature.main.ui.view.MainActivity"
+            android:exported="true">
+        </activity>
         <activity android:name=".feature.setting.ui.view.AgreementActivity" />
         <activity android:name=".feature.setting.ui.view.DisplayActivity" />
         <activity android:name=".feature.setting.ui.view.FeedbackActivity" />
