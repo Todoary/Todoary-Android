@@ -27,6 +27,8 @@ class DeleteIconEvent() : StickerIconEvent {
             stickerM.remove(stickerView.currentSticker)
             //기존 스티커 삭제 배열에 추가
             stickerView.currentSticker?.let { stickerD.add(it) }
+            Log.d("stickerM", stickerM.toString())
+            Log.d("stickerD", stickerD.toString())
         }
 
         //화면에서 스티커 삭제
