@@ -1,14 +1,14 @@
 package com.uni.todoary.feature.main.ui.view
 
-import android.graphics.drawable.Drawable
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.text.Html
 import android.text.Spannable
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.*
 import android.util.Log
@@ -42,7 +42,6 @@ import com.uni.todoary.util.SoftKeyboardDectectorView.OnHiddenKeyboardListener
 import com.uni.todoary.util.SoftKeyboardDectectorView.OnShownKeyboardListener
 import java.time.LocalDate
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStickerView, GetDiaryView {
@@ -60,6 +59,8 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
     lateinit var keyboardVisibilityUtils: KeyboardVisibilityUtils
     var sposition = 0
     var eposition = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityDiaryBinding.inflate(layoutInflater)
@@ -68,8 +69,21 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         date = intent.getSerializableExtra("date") as LocalDate
 
 
+        ///sticker
+        binding.keyboardSmileIv.setOnClickListener {
+            // 기존 키보드 툴바 없앰
+            //binding.diaryKeytoolbarLl.visibility = View.GONE
+            binding.diaryKeytoolbar2Ll.visibility = View.GONE
+            binding.diaryKeytoolbar3Ll.visibility = View.GONE
+            binding.diaryKeytoolbar4Ll.visibility=View.GONE
+            // 키보드 내리기
+            hideKeyboard()
+            // 스티커 키보드 활성화
+            //binding.diaryStickerkeyboardSv.visibility=View.VISIBLE
+            binding.diaryStickerkeylayoutLl.visibility=View.VISIBLE
+            //binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+        }
 
-        //sticker
         //BitmapStickerIcon(아이콘이미지 drawable,아이콘 위치)
         sticker.clear()
         stickerM.clear()
@@ -95,12 +109,61 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         val iconList=listOf(deleteIcon,flipIcon,scaleIcon)
         binding.stickerView.icons = iconList
 
+        // sticker 키보드 툴바 세부기능 처리
+        // 일단 기본 키보드 다시 올리는 쪽으로 처리
+        binding.stickerkeyboardCameraIv.setOnClickListener {
+            binding.diaryStickerkeylayoutLl.visibility=View.GONE
+            showKeyboard()
+            Handler().postDelayed(Runnable {
+                //딜레이 후 시작할 코드 작성
+                binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+            }, 300) // 0.3초 정도 딜레이를 준 후 시작
+
+        }
+        binding.stickerkeyboardTypeIv.setOnClickListener {
+            binding.diaryStickerkeylayoutLl.visibility=View.GONE
+            showKeyboard()
+            Handler().postDelayed(Runnable {
+                //딜레이 후 시작할 코드 작성
+                binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+                binding.diaryKeytoolbar2Ll.visibility=View.VISIBLE
+            }, 300) // 0.3초 정도 딜레이를 준 후 시작
+        }
+        binding.stickerkeyboardEditIv.setOnClickListener {
+            binding.diaryStickerkeylayoutLl.visibility=View.GONE
+            showKeyboard()
+            Handler().postDelayed(Runnable {
+                //딜레이 후 시작할 코드 작성
+                binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+                binding.diaryKeytoolbar4Ll.visibility=View.VISIBLE
+            }, 300) // 0.3초 정도 딜레이를 준 후 시작
+        }
+        binding.stickerkeyboardXIv.setOnClickListener {
+            binding.diaryStickerkeylayoutLl.visibility=View.GONE
+        }
         //add new sticker
         //sticker 키보드 제작 후 수정필요
         //sticker에 따라 16가지 setOnClickListener 작성 (아래 버튼은 임시 : 수정필요) : 키보드 만들고 안에 넣어주면될듯
-        binding.tempBtnAddSticker.setOnClickListener {
+
+//        binding.tempBtnAddSticker.setOnClickListener {
+//            Log.d("StickerEnter","Ok")
+//            ContextCompat.getDrawable(this,R.drawable.ic_diary_delete)?.let { it1 -> addSticker(it1, 1) }
+//        }
+        binding.diarySticekr1Iv.setOnClickListener {
             Log.d("StickerEnter","Ok")
-            ContextCompat.getDrawable(this,R.drawable.ic_diary_delete)?.let { it1 -> addSticker(it1, 1) }
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker1)?.let { it1 -> addSticker(it1, 1) }
+        }
+        binding.diarySticekr2Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker2)?.let { it1 -> addSticker(it1, 2) }
+        }
+        binding.diarySticekr3Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker3)?.let { it1 -> addSticker(it1, 3) }
+        }
+        binding.diarySticekr4Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker4)?.let { it1 -> addSticker(it1, 4) }
         }
 
         //다이어리 조회
@@ -149,6 +212,7 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
                 binding.diaryKeytoolbar2Ll.visibility = View.GONE
                 binding.diaryKeytoolbar3Ll.visibility = View.GONE
                 binding.diaryKeytoolbar4Ll.visibility=View.GONE
+                binding.diaryStickerkeylayoutLl.visibility=View.GONE
             }
         }
 
@@ -157,6 +221,7 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         softKeyboardDecector.setOnShownKeyboard(object : OnShownKeyboardListener {
             override fun onShowSoftKeyboard() {
                 if(binding.diaryDetailEt.hasFocus()){
+                    binding.diaryStickerkeylayoutLl.visibility=View.GONE
                     binding.diaryKeytoolbarLl.visibility=View.VISIBLE
                 }
                 //binding.diaryKeytoolbarLl.visibility=View.VISIBLE
@@ -168,8 +233,10 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
                 binding.diaryTitleEt.setOnFocusChangeListener { v, hasFocus ->
                     if (hasFocus){
                         binding.diaryKeytoolbarLl.visibility=View.GONE
+                        binding.diaryStickerkeylayoutLl.visibility=View.GONE
                     } else{
                         binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+                        binding.diaryStickerkeylayoutLl.visibility=View.GONE
                     }
                 }
                 binding.keyboardTypeIv.setOnClickListener {
@@ -559,6 +626,10 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
     }
 
 
+    private fun showKeyboard(){
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(binding.diaryDetailEt, 0);
+    }
     override fun onDestroy() {
         keyboardVisibilityUtils.detachKeyboardListeners()
         super.onDestroy()
@@ -651,6 +722,5 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
     override fun GetDiaryFailure(code: Int) {
         Log.d("Getdiary_error",code.toString())
     }
-
 
 }

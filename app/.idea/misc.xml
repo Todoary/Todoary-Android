@@ -41,6 +41,7 @@
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/bg_login_stroke_btn.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/bg_profile_edit_layer.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/bg_profile_stroke_btn.xml" value="0.1" />
+        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/bg_sticker_key_layer.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/bottomsheet_main.xml" value="0.1065" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/categorysetting_line.xml" value="0.1325" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/drawable/dialog_timepicker.xml" value="0.1" />
@@ -74,7 +75,7 @@
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_alarm.xml" value="0.264" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_category.xml" value="0.2159406858202039" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_categorysetting.xml" value="0.264" />
-        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_diary.xml" value="0.16799999999999998" />
+        <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_diary.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_display.xml" value="0.1" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_feedback.xml" value="0.264" />
         <entry key="..\:/Todoary_03/Todoary-Android/app/src/main/res/layout/activity_find_pw.xml" value="0.25364583333333335" />
