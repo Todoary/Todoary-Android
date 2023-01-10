@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <RelativeLayout
@@ -84,7 +85,7 @@
         android:id="@+id/diary_title_et"
         android:layout_width="match_parent"
         android:layout_height="22dp"
-        android:hint = "오늘의 일기"
+        android:hint = "오늘의 일기 제목"
         android:layout_marginTop="23dp"
         android:layout_marginStart="29dp"
         android:background="@null"
@@ -92,14 +93,15 @@
     <EditText
         android:id="@+id/diary_detail_et"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginTop="17dp"
         android:bufferType="spannable"
         android:layout_marginHorizontal="29dp"
         android:layout_gravity="center_horizontal"
+        android:gravity="top"
         android:background="@null"
         style="@style/todo_setting"
-        android:hint="일기 내용"/>
+        android:hint="오늘의 일기를 작성해보세요!"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -498,9 +500,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/diary_title_et"
         app:showBorder="true"
         app:showIcons="true"
-        app:borderColor="@color/todo_list_blue">
+        app:borderColor="@color/todo_list_blue"
+        tools:ignore="NotSibling">
     </com.uni.todoary.sticker.StickerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

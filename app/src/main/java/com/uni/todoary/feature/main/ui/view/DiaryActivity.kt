@@ -17,6 +17,7 @@ import android.view.View
 import android.view.accessibility.AccessibilityEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import android.widget.ScrollView
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -223,6 +224,10 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
                 if(binding.diaryDetailEt.hasFocus()){
                     binding.diaryStickerkeylayoutLl.visibility=View.GONE
                     binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+                    binding.diaryScrollviewSv.post(Runnable {
+                        binding.diaryScrollviewSv.fullScroll(ScrollView.FOCUS_DOWN)
+                        //scrollView.fullScroll(ScrollView.FOCUS_UP);
+                    })
                 }
                 //binding.diaryKeytoolbarLl.visibility=View.VISIBLE
                 Log.d("키보드 활성화","O")
