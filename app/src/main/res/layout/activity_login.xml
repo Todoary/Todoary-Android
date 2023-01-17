@@ -9,7 +9,6 @@
     android:layout_height="match_parent"
     >
 
-
     <ImageView
         android:id="@+id/login_logo_iv"
         android:layout_width="80dp"

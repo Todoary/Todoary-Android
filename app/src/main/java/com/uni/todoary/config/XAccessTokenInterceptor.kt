@@ -45,7 +45,7 @@ class XAccessTokenInterceptor @Inject constructor (
             // RefreshToken이 있는 경우 (자동로그인)
             if (getRefToken() != null){
                 // 새로 AccessToken을 요청하는 API Call 로직 수행
-                val refreshRequest = RefreshToken(getRefToken()!!, getFCMToken())
+                val refreshRequest = RefreshToken(getRefToken()!!)
                 // Interceptor는 동기, Retrofit은 비동기 실행이므로 runBlocking으로 둘다 동기적으로 실행되도록 함
                 runBlocking {
                     tokenRepository.refreshToken(refreshRequest).let {

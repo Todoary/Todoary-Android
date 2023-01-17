@@ -1,5 +1,6 @@
 package com.uni.todoary.feature.auth.data.repository
 
+import android.util.Log
 import com.uni.todoary.base.BaseResponse
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.*
@@ -21,8 +22,8 @@ class LoginRepository @Inject constructor(private val remoteApi : LoginInterface
         return remoteApi.getProfile()
     }
 
-    suspend fun socialLogin() : Response<BaseResponse<SocialLoginResponse>> {
-        return remoteApi.socialLogin()
+    suspend fun socialLogin(request : SocialLoginRequest) : Response<BaseResponse<SocialLoginResponse>> {
+        return remoteApi.socialLogin(request)
     }
 
     suspend fun socialSignIn(request : SocialSignInRequest) : Response<BaseResponse<Any>>{

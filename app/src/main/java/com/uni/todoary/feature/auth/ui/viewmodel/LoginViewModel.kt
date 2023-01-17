@@ -37,9 +37,9 @@ class LoginViewModel @Inject constructor(
     private val socialSigninRequest = MutableLiveData<SocialSignInRequest>()
 
     fun setSocialSigninRequest(name : String, email : String, provider : String, providerId : String,
-                               isTermsEnable : Boolean, fcmToken : String){
+                               isTermsEnable : Boolean){
         this.socialSigninRequest.value = SocialSignInRequest(
-            name, email, provider, providerId, isTermsEnable, fcmToken
+            name, email, provider, providerId, isTermsEnable
         )
     }
 
@@ -88,10 +88,11 @@ class LoginViewModel @Inject constructor(
         repository.saveRefToken(tokens.refreshToken)
     }
 
-    fun socialLogin(){
+    fun socialLogin(socialUserInfo : SocialLoginRequest){
         viewModelScope.launch {
             _socialLogin_resp.value = ApiResult.loading()
-            repository.socialLogin().let {
+            repository.socialLogin(socialUserInfo).let {
+                Log.d("hellohello~", it.toString())
                 if(it.isSuccessful){
                     if(it.body()!!.code == 1000){
                         _socialLogin_resp.value = ApiResult.success(it.body()!!.result)

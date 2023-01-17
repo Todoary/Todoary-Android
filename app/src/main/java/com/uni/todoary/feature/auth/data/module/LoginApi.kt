@@ -13,7 +13,6 @@ import retrofit2.http.POST
 data class LoginRequest(
     @SerializedName("email") val email: String,
     @SerializedName("password") val password : String,
-    @SerializedName("fcm_token") val fcm_token : String
 )
 
 data class LoginResponse(
@@ -30,9 +29,14 @@ data class AccountInfo(
     @SerializedName("newPassword") val newPassword: String
 )
 
+data class SocialLoginRequest(
+    @SerializedName("email") val email: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("providerId") val providerId: String,
+    )
+
 data class SocialLoginResponse(
     @SerializedName("isNewUser") val isNewUser: Boolean,
-    @SerializedName("user") val user: SocialUser,
     @SerializedName("token") val token: LoginToken
     )
 
@@ -48,7 +52,6 @@ data class SocialSignInRequest(
     @SerializedName("provider") val provider: String,
     @SerializedName("providerId") val providerId: String,
     @SerializedName("isTermsEnable") val isTermsEnable: Boolean,
-    @SerializedName("fcm_token") val fcm_token: String
 )
 
 interface LoginInterface{
@@ -62,8 +65,8 @@ interface LoginInterface{
     @PATCH("/auth/password")
     suspend fun findPw(@Body accountInfo : AccountInfo) : Response<BaseResponse<Any>>
 
-    @GET("/oauth2/authorization/google")
-    suspend fun socialLogin() : Response<BaseResponse<SocialLoginResponse>>
+    @POST("/oauth2/authorization/google")
+    suspend fun socialLogin(@Body socialLoginInfo : SocialLoginRequest) : Response<BaseResponse<SocialLoginResponse>>
 
     @POST("/auth/signup/oauth2")
     suspend fun socialSignIn(@Body request : SocialSignInRequest) : Response<BaseResponse<Any>>

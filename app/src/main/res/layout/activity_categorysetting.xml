@@ -118,9 +118,10 @@
                 android:layout_weight="1"/>
 
             <ImageView
-                android:layout_width="6dp"
-                android:layout_height="12dp"
-                android:src="@drawable/ic_categorynext_vector"/>
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_category_add"/>
 
         </LinearLayout>
 

@@ -13,7 +13,7 @@ import android.view.View
 import android.graphics.Rect
 
 class CategoryRVItemDecoration(context : Context) : RecyclerView.ItemDecoration() {
-    private var size40 = dpToPx(context, 35f)
+    private var size10 = dpToPx(context, 10f)
     private var size5 = dpToPx(context,5f)
 
     override fun getItemOffsets(
@@ -29,7 +29,10 @@ class CategoryRVItemDecoration(context : Context) : RecyclerView.ItemDecoration(
         //상하 설정
         if (position == 0) {
             // 첫번 째 아이템
-            outRect.left = size40
+            outRect.left = size5
+        }
+        if (position == itemCount - 1){
+            outRect.right = size5
         }
     }
 }

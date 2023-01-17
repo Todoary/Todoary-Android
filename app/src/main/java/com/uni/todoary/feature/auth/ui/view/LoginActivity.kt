@@ -1,6 +1,7 @@
 package com.uni.todoary.feature.auth.ui.view
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -16,19 +17,31 @@ import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.main.ui.view.MainActivity
 import com.uni.todoary.util.*
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.ui.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.common.api.ApiException
+import com.uni.todoary.feature.auth.data.module.SocialLoginRequest
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity(), GetProfileView {
     lateinit var binding : ActivityLoginBinding
     private val loginModel : LoginViewModel by viewModels()
+    val G_SIGN_IN : Int = 1
+    private var GOOGLE_LOGIN_CODE = 9001
+    val RC_SIGN_IN =2
+    lateinit var mGoogleSignInClient : GoogleSignInClient
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -52,7 +65,21 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
             login()
         }
         binding.loginBtnGoogleLayout.setOnClickListener {
-            loginModel.socialLogin()
+            // loginModel.socialLogin()
+            // 앱에 필요한 사용자 데이터를 요청하도록 로그인 옵션을 설정한다.
+            // DEFAULT_SIGN_IN parameter는 유저의 ID와 기본적인 프로필 정보를 요청하는데 사용된다.
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail() // email addresses도 요청함
+                .requestIdToken("666947728476-hjt48pj7805frhiotfon0mv8u9gs80ca.apps.googleusercontent.com")
+                .build()
+            Log.d("gsgsoo", gso.toString())
+
+            // 위에서 만든 GoogleSignInOptions을 사용해 GoogleSignInClient 객체를 만듬
+            mGoogleSignInClient = GoogleSignIn.getClient(this@LoginActivity, gso)
+
+            val signInIntent: Intent = mGoogleSignInClient.signInIntent
+            // startActivityForResult(signInIntent, RC_SIGN_IN)
+            startForResult.launch(signInIntent)
         }
         binding.loginBtnSignInTv.setOnClickListener {
             val mIntent = Intent(this, TermscheckActivity::class.java)
@@ -66,6 +93,64 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
 
         addObservers()
     }
+
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result : ActivityResult ->
+            if (result.resultCode == RESULT_OK){
+                val data : Intent = result.data!!
+                val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+                try {
+                    val acct: GoogleSignInAccount = task.getResult(ApiException::class.java)
+                    if (task.isSuccessful) {
+                        val personName = acct.displayName.toString()
+                        val personEmail = acct.email.toString()
+                        val personId = acct.id.toString()
+                        val idToken = acct.idToken
+                        val loginRequest = SocialLoginRequest(personEmail, personName, personId)
+                        Log.d("hehelloo", loginRequest.toString())
+                        loginModel.socialLogin(loginRequest)
+                    }
+                } catch (e: ApiException) {
+                    // The ApiException status code indicates the detailed failure reason.
+                    // Please refer to theaut GoogleSignInStatusCodes class reference for more information.
+                    Log.e("Google_Account_Info", "signInResult:failed code=" + e.statusCode)
+                }
+            }
+        }
+
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+//        if (requestCode == RC_SIGN_IN) {
+//            // The Task returned from this call is always completed, no need to attach
+//            // a listener.
+//            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+//            try {
+//                val acct: GoogleSignInAccount = task.getResult(ApiException::class.java)
+//                if (task.isSuccessful) {
+//                    val personName = acct.displayName
+//                    val personGivenName = acct.givenName
+//                    val personFamilyName = acct.familyName
+//                    val personEmail = acct.email
+//                    val personId = acct.id
+//                    val personPhoto: Uri? = acct.photoUrl
+//                    Log.d("Google_Account_Info", "handleSignInResult:personName $personName")
+//                    Log.d("Google_Account_Info", "handleSignInResult:personGivenName $personGivenName")
+//                    Log.d("Google_Account_Info", "handleSignInResult:personEmail $personEmail")
+//                    Log.d("Google_Account_Info", "handleSignInResult:personId $personId")
+//                    Log.d("Google_Account_Info", "handleSignInResult:personFamilyName $personFamilyName")
+//                    Log.d("Google_Account_Info", "handleSignInResult:personPhoto $personPhoto")
+//                }
+//            } catch (e: ApiException) {
+//                // The ApiException status code indicates the detailed failure reason.
+//                // Please refer to the GoogleSignInStatusCodes class reference for more information.
+//                Log.e("Google_Account_Info", "signInResult:failed code=" + e.statusCode)
+//            }
+//        }
+//    }
 
     private fun addObservers(){
         loginModel.login_resp.observe(this, {
@@ -131,10 +216,10 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
                 ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS -> {
                     if (it.data!!.isNewUser){
-                        Toast.makeText(this, "무야호~~~~~~~~~~!! 새로운 유저로구만~~", Toast.LENGTH_SHORT).show()
-                        Log.d("usus", it.data.user.toString())
+                        Toast.makeText(this, "새로운놈", Toast.LENGTH_SHORT).show()
                     } else {
                         // 기존유저일 경우 토큰만 받아와서 자동로그인으로 전환
+                        Toast.makeText(this, it.data!!.token.toString(), Toast.LENGTH_SHORT).show()
                         loginModel.saveIsAutoLogin(true)
                         loginModel.saveTokens(it.data.token)
                         loginModel.getUserProfile("null")
@@ -148,10 +233,9 @@ class LoginActivity : AppCompatActivity(), GetProfileView {
 
     // 아이디 패스워드 sharedPreferences에서 확인 후 맞으면 로그인, 틀리면 애니메이션 & 안내메시지
     private fun login() {
-        val fcmToken = getFCMToken()
         // 로그인 API 호출
         val request =
-            LoginRequest(binding.loginIdEt.text.toString(), binding.loginPwEt.text.toString(), fcmToken)
+            LoginRequest(binding.loginIdEt.text.toString(), binding.loginPwEt.text.toString())
         loginModel.login(request)
     }
 

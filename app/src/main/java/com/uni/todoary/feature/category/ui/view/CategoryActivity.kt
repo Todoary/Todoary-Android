@@ -14,12 +14,15 @@ import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.category.data.module.TodoInfo
 import com.uni.todoary.feature.category.ui.viewmodel.TodoViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Thread.sleep
 import java.time.LocalDate
+import java.util.logging.Handler
 import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryBinding::inflate) {
     val model : TodoViewModel by viewModels()
+    lateinit var categoryAdapter : CategoryRVAdapter
 
     override fun initAfterBinding() {
         initView()
@@ -27,6 +30,21 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
     }
 
     private fun initView(){
+        // 카테고리 리사이클러뷰 초기화
+        categoryAdapter = CategoryRVAdapter(this)
+        categoryAdapter.setItemSelectedListener(object : CategoryRVAdapter.ItemSelectedListener{
+            override fun categorySelectedCallback(categoryIdx: Long) {
+                // 뷰모델에 아이템 인덱스 전달
+                model.setCategoryIdx(categoryIdx)
+            }
+        })
+        val categoryDecoration = CategoryRVItemDecoration(this)
+        binding.categoryArrayRv.apply {
+            adapter = categoryAdapter
+            layoutManager = LinearLayoutManager(this@CategoryActivity, LinearLayoutManager.HORIZONTAL, false)
+            overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            addItemDecoration(categoryDecoration)
+        }
         // 툴바 동작 버튼
         binding.signUpToolbar.toolbarIconIv.setOnClickListener{
             finish()
@@ -34,6 +52,12 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
         binding.signUpToolbar.toolbarIconTv.setOnClickListener {
             // TODO : 삭제기능 구현
         }
+        // 카테고리 만들기 버튼
+//        binding.categoryArrayAddIv.setOnClickListener {
+//            val intent = Intent(this, TodoSettingActivity::class.java)
+//            Log.d("asdfasdfasdf", "아랄ㄹ라")
+//            startActivity(intent)
+//        }
         // 투두리스트 만들기 버튼
         binding.categoryTodoListsAddIv.setOnClickListener {
             val intent = Intent(this, CategorysettingActivity::class.java)
@@ -53,7 +77,7 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
                 ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS -> {
                     model.setCategoryIdx(it.data!![0].id)
-                    initCategoryList(it.data)
+                    categoryAdapter.setList(it.data)
                 }
                 else -> {
                     Toast.makeText(this, "카테고리 목록 조회에 실패하였습니다. 인터넷 연결을 확인해 주세요.", Toast.LENGTH_SHORT).show()
@@ -100,24 +124,6 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
         })  // 체크했을 때 API통신
     }
 
-    private fun initCategoryList(list : ArrayList<CategoryData>){
-        val mAdapter = CategoryRVAdapter(this)
-        mAdapter.setItemSelectedListener(object : CategoryRVAdapter.ItemSelectedListener{
-            override fun categorySelectedCallback(categoryIdx: Long) {
-                // 뷰모델에 아이템 인덱스 전달
-                model.setCategoryIdx(categoryIdx)
-            }
-        })
-        val categoryDecoration = CategoryRVItemDecoration(this)
-        binding.categoryArrayRv.apply {
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(this@CategoryActivity, LinearLayoutManager.HORIZONTAL, false)
-            overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-            addItemDecoration(categoryDecoration)
-        }
-        mAdapter.setList(list)
-    }
-
     private fun initTodoLists(list : ArrayList<TodoInfo>){
         val mAdapter = CategoryTodoListRVAdapter(this@CategoryActivity)
         mAdapter.setItemClickListener(object : CategoryTodoListRVAdapter.ItemClickListener{
@@ -132,5 +138,11 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
             overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         }
         mAdapter.initTodoLists(list)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sleep(500)
+        model.initCategoryList()
     }
 }

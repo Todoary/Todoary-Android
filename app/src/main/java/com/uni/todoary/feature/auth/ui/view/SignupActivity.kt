@@ -318,7 +318,7 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
             val nickname = binding.signupNickEt.text.toString()
             val isTermsEnable = intent.getBooleanExtra("termscheck",false)
             Log.d("isTermsEnable",isTermsEnable.toString())
-            val request = SignInRequest(email, name,nickname,password,isTermsEnable, getFCMToken())
+            val request = SignInRequest(email, name,nickname,password,isTermsEnable)
             signinService.SignIn(request)
         }
     }

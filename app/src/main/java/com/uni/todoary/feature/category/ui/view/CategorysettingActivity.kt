@@ -19,11 +19,13 @@ import com.uni.todoary.feature.auth.ui.view.LoginActivity
 import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.category.ui.viewmodel.TodoViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Thread.sleep
 
 @AndroidEntryPoint
 class CategorysettingActivity : AppCompatActivity() {
     lateinit var binding : ActivityCategorysettingBinding
     val model : TodoViewModel by viewModels()
+    lateinit var categoryAdapter : CategoryRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +48,7 @@ class CategorysettingActivity : AppCompatActivity() {
                 ApiResult.Status.LOADING -> {}
                 ApiResult.Status.SUCCESS -> {
                     model.setCategoryIdx(it.data!![0].id)
-                    makeCategoryList(it.data)
+                    categoryAdapter.setList(it.data)
                 }
                 else -> {
                     Toast.makeText(this, "카테고리 목록 조회에 실패하였습니다. 인터넷 연결을 확인해 주세요.", Toast.LENGTH_SHORT).show()
@@ -91,6 +93,8 @@ class CategorysettingActivity : AppCompatActivity() {
     }
 
     private fun initView(){
+        // 카테고리 리사이클러뷰 초기화
+        makeCategoryList()
         // 툴바 세팅
         binding.categorysettingToolbarTb.toolbarBackMainTv.text = " "
         binding.categorysettingToolbarTb.toolbarBackIv.setOnClickListener {
@@ -131,29 +135,29 @@ class CategorysettingActivity : AppCompatActivity() {
     }
 
     // CategoryList 리사이클러뷰 생성함수 (Flexbox Library 사용)
-    private fun makeCategoryList(list : ArrayList<CategoryData>){
-        val mAdapter=CategoryRVAdapter(this)
+    private fun makeCategoryList(){
+        categoryAdapter=CategoryRVAdapter(this)
         val mLayoutManager = FlexboxLayoutManager(this)
         mLayoutManager.apply {
             flexDirection = FlexDirection.ROW
             justifyContent = JustifyContent.FLEX_START
         }
-        mAdapter.setItemSelectedListener(object : CategoryRVAdapter.ItemSelectedListener{
+        categoryAdapter.setItemSelectedListener(object : CategoryRVAdapter.ItemSelectedListener{
             override fun categorySelectedCallback(categoryIdx: Long) {
                 // 뷰모델에 아이템 인덱스 전달
                 model.setCategoryIdx(categoryIdx)
             }
         })
         binding.categorysettingRecyclerRv.apply {
-            adapter = mAdapter
+            adapter = categoryAdapter
             layoutManager = mLayoutManager
             overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         }
-        mAdapter.setList(list)
     }
 
     override fun onResume() {
         super.onResume()
+        sleep(500)
         model.initCategoryList()
     }
 }

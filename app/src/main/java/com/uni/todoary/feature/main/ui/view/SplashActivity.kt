@@ -30,7 +30,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
             if(getIsAutoLogin()){
                 val loginService = AuthService()
                 loginService.setLoginView(this)
-                val loginRequest = LoginRequest(getUser()!!.email, getUser()!!.password!!, fcmToken)
+                val loginRequest = LoginRequest(getUser()!!.email, getUser()!!.password!!)
                 loginService.autoLogin(loginRequest)
             } else {
                 // 일반 로그인화면으로 이동

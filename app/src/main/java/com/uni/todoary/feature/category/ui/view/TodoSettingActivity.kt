@@ -29,9 +29,9 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
         }
 
         binding.todosettingToolbarTb.toolbarIconTv.setOnClickListener {
-            categoryAdd()
+            //categoryAdd()
             //startActivity(intent)
-            finish()
+            //finish()
         }
 
 
@@ -165,8 +165,13 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
                         .show()
                 }
             }
-        } else checkPallete()
-
+        } else {
+            checkPallete()
+            binding.todosettingCompleteTv.setOnClickListener {
+                categoryAdd()
+                finish()
+            }
+        }
     }
 
 
@@ -193,7 +198,7 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
         binding.todosetting17Iv.isSelected=false
     }
 
-    ////////////카테고리 추가///////////////
+    //////////// 카테고리 추가 ///////////////
     private fun categoryAdd() {
         val categoryAddService = AuthService()
         categoryAddService.setCategoryAddView(this)

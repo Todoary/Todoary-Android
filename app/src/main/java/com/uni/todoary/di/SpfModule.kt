@@ -18,5 +18,4 @@ object SpfModule {
     fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences("todoary_preferences", Context.MODE_PRIVATE)
     }
-
 }
