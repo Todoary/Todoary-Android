@@ -79,7 +79,7 @@
         <activity android:name=".feature.auth.ui.view.FindPwActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".feature.category.ui.view.TodoSettingActivity" />
-        <activity android:name=".feature.category.ui.view.CateCateSettSettActivity" />
+        <activity android:name=".feature.category.ui.view.CategorySettingActivity" />
         <activity android:name=".feature.setting.ui.view.ProfileEditActivity"/>
     </application>
 

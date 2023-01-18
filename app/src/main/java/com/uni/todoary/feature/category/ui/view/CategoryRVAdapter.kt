@@ -82,7 +82,7 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
 
         // 롱터치 리스너
         holder.itemView.setOnLongClickListener {
-            val mIntent = Intent(holder.itemView.context,CateCateSettSettActivity::class.java)
+            val mIntent = Intent(holder.itemView.context,CategorySettingActivity::class.java)
             flag = true
             mIntent.putExtra("flag",flag)
             mIntent.putExtra("cateData",categoryDataset[position])
@@ -92,7 +92,7 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
 
         if (position == itemCount - 1){
             holder.itemView.setOnClickListener {
-                val mIntent = Intent(holder.itemView.context, CateCateSettSettActivity::class.java)
+                val mIntent = Intent(holder.itemView.context, CategorySettingActivity::class.java)
                 ContextCompat.startActivity(holder.itemView.context,mIntent,null)
             }
         }

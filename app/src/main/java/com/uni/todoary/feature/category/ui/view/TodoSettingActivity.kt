@@ -102,7 +102,7 @@ class TodoSettingActivity : AppCompatActivity() {
 
         // 카테고리 새로 추가하는 Activity 실행 -> 되돌아오면 onResume에서 카테고리 목록 refresh
         binding.categorysettingAddLayout.setOnClickListener {
-            val mIntent = Intent(this, CateCateSettSettActivity::class.java)
+            val mIntent = Intent(this, CategorySettingActivity::class.java)
             startActivity(mIntent)
         }
         // 알람 설정

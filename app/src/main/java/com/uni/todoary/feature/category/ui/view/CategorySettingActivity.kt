@@ -13,7 +13,7 @@ import com.uni.todoary.feature.category.data.view.CategoryAddView
 import com.uni.todoary.feature.category.data.view.CategoryChangeView
 import com.uni.todoary.feature.category.data.view.CategoryDeleteView
 
-class CateCateSettSettActivity : AppCompatActivity(), CategoryAddView, CategoryChangeView,CategoryDeleteView {
+class CategorySettingActivity : AppCompatActivity(), CategoryAddView, CategoryChangeView,CategoryDeleteView {
     lateinit var binding : ActivityTodoSettingBinding
     var color:Int = 0 //기본값
 
