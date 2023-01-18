@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uni.todoary.base.ApiResult
+import com.uni.todoary.config.FcmToken
 import com.uni.todoary.config.Tokens
 import com.uni.todoary.feature.auth.data.module.*
 import com.uni.todoary.feature.auth.data.repository.LoginRepository
@@ -35,6 +36,9 @@ class LoginViewModel @Inject constructor(
         get() =_socialSignin_resp
 
     private val socialSigninRequest = MutableLiveData<SocialSignInRequest>()
+    private val _fcmToken_resp = MutableLiveData<ApiResult<Any>>()
+    val fcmToken_resp : MutableLiveData<ApiResult<Any>>
+        get() = _fcmToken_resp
 
     fun setSocialSigninRequest(name : String, email : String, provider : String, providerId : String,
                                isTermsEnable : Boolean){
@@ -51,7 +55,6 @@ class LoginViewModel @Inject constructor(
                     if(it.body()!!.code == 1000){
                         // 엑세스 토큰만 저장
                         repository.saveXcesToken(it.body()!!.result!!.token.accessToken)
-                        Log.d("token", it.body()!!.result!!.token.accessToken)
                         _login_resp.value = ApiResult.success(it.body()!!.result)
                     }
                     else _login_resp.value = (ApiResult.error(it.body()!!.code))
@@ -75,6 +78,21 @@ class LoginViewModel @Inject constructor(
                     else isProfileSuccess.value = false
                 }
                 else isProfileSuccess.value = false
+            }
+        }
+    }
+
+    fun patchFcmToken(fcm_token : FcmToken){
+        viewModelScope.launch {
+            _fcmToken_resp.value = ApiResult.loading()
+            repository.patchFcmToken(fcm_token).let{
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _fcmToken_resp.value = ApiResult.success(it.body()!!.result)
+                    }
+                    else _fcmToken_resp.value = ApiResult.error(it.body()!!.code)
+                }
+                else _fcmToken_resp.value = ApiResult.networkError(it.code(), it.toString())
             }
         }
     }

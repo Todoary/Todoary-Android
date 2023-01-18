@@ -2,6 +2,7 @@ package com.uni.todoary.feature.auth.data.repository
 
 import android.util.Log
 import com.uni.todoary.base.BaseResponse
+import com.uni.todoary.config.FcmToken
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.*
 import retrofit2.Response
@@ -28,6 +29,10 @@ class LoginRepository @Inject constructor(private val remoteApi : LoginInterface
 
     suspend fun socialSignIn(request : SocialSignInRequest) : Response<BaseResponse<Any>>{
         return remoteApi.socialSignIn(request)
+    }
+
+    suspend fun patchFcmToken(token : FcmToken) : Response<BaseResponse<Any>> {
+        return remoteApi.patchFcmToken(token)
     }
 
     // -------------- SharedPreferencesManager --------------- //

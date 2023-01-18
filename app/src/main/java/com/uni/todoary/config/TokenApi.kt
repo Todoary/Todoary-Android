@@ -10,7 +10,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.PATCH
 import retrofit2.http.POST
+import java.util.*
 
 data class RefreshToken(
     @SerializedName("refreshToken") val refreshToken : String,
@@ -35,6 +37,11 @@ interface TokenInterface {
     suspend fun refreshXcesToken(
         @Body request : RefreshToken
     ) : Response<BaseResponse<TokensResponse>>
+
+    @PATCH("/users/fcm_token")
+    suspend fun patchFcmToken(
+        @Body fcm_token : FcmToken
+    ) : Response<BaseResponse<Any>>
 
     companion object {
         private const val BASE_URL: String = ApplicationClass.BASE_URL

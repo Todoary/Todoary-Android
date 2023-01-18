@@ -2,6 +2,7 @@ package com.uni.todoary.feature.auth.data.module
 
 import com.google.gson.annotations.SerializedName
 import com.uni.todoary.base.BaseResponse
+import com.uni.todoary.config.FcmToken
 import com.uni.todoary.feature.auth.data.dto.User
 import retrofit2.Call
 import retrofit2.Response
@@ -70,6 +71,9 @@ interface LoginInterface{
 
     @POST("/auth/signup/oauth2")
     suspend fun socialSignIn(@Body request : SocialSignInRequest) : Response<BaseResponse<Any>>
+
+    @PATCH("/users/fcm_token")
+    suspend fun patchFcmToken(@Body fcm_token : FcmToken) : Response<BaseResponse<Any>>
 
     // ------------ Profile ------------- //
     @GET("/users")
