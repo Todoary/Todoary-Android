@@ -10,13 +10,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.uni.todoary.base.ApiResult
 import com.uni.todoary.base.BaseActivity
 import com.uni.todoary.databinding.ActivityCategoryBinding
-import com.uni.todoary.feature.category.data.dto.CategoryData
 import com.uni.todoary.feature.category.data.module.TodoInfo
 import com.uni.todoary.feature.category.ui.viewmodel.TodoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Thread.sleep
 import java.time.LocalDate
-import java.util.logging.Handler
 import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
@@ -60,7 +58,7 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
 //        }
         // 투두리스트 만들기 버튼
         binding.categoryTodoListsAddIv.setOnClickListener {
-            val intent = Intent(this, CategorysettingActivity::class.java)
+            val intent = Intent(this, TodoSettingActivity::class.java)
             startActivity(intent)
         }
         // 선택된 날짜로 뷰모델에 셋팅

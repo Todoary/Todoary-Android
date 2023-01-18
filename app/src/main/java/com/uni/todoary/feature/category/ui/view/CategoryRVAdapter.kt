@@ -3,7 +3,6 @@ package com.uni.todoary.feature.category.ui.view
 import android.content.Context
 import android.content.Intent
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,7 +82,7 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
 
         // 롱터치 리스너
         holder.itemView.setOnLongClickListener {
-            val mIntent = Intent(holder.itemView.context,TodoSettingActivity::class.java)
+            val mIntent = Intent(holder.itemView.context,CateCateSettSettActivity::class.java)
             flag = true
             mIntent.putExtra("flag",flag)
             mIntent.putExtra("cateData",categoryDataset[position])
@@ -93,7 +92,7 @@ class CategoryRVAdapter(private val context: Context):  RecyclerView.Adapter<Cat
 
         if (position == itemCount - 1){
             holder.itemView.setOnClickListener {
-                val mIntent = Intent(holder.itemView.context, TodoSettingActivity::class.java)
+                val mIntent = Intent(holder.itemView.context, CateCateSettSettActivity::class.java)
                 ContextCompat.startActivity(holder.itemView.context,mIntent,null)
             }
         }

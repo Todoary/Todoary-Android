@@ -9,8 +9,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
-import androidx.core.text.toHtml
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,19 +28,14 @@ import com.uni.todoary.feature.category.ui.view.CategoryActivity
 import com.uni.todoary.feature.category.ui.view.CategoryRVAdapter
 import com.uni.todoary.util.dpToPx
 import kotlin.collections.ArrayList
-import com.uni.todoary.feature.category.ui.view.CategorysettingActivity
+import com.uni.todoary.feature.category.ui.view.TodoSettingActivity
 import com.uni.todoary.feature.category.ui.viewmodel.TodoViewModel
-import com.uni.todoary.feature.main.data.dto.AddDiaryRequest
-import com.uni.todoary.feature.main.data.dto.GetDiaryRequest
 import com.uni.todoary.feature.main.data.module.TodoListResponse
 import com.uni.todoary.feature.main.data.view.DeleteDiaryView
-import com.uni.todoary.feature.main.data.view.GetDiaryView
 import com.uni.todoary.feature.main.ui.viewmodel.MainViewModel
 import com.uni.todoary.feature.setting.ui.view.ProfileActivity
 import com.uni.todoary.util.SoftKeyboardDectectorView
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 
 @AndroidEntryPoint
@@ -90,7 +83,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         // 투두리스트 생성 버튼
         binding.mainSlideMenuAddIv.setOnClickListener {
-            val intent = Intent(this, CategorysettingActivity::class.java)
+            val intent = Intent(this, TodoSettingActivity::class.java)
             startActivity(intent)
         }
 
