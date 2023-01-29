@@ -3,10 +3,7 @@ package com.uni.todoary.feature.main.data.module
 import com.google.gson.annotations.SerializedName
 import com.uni.todoary.base.BaseResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.PATCH
-import retrofit2.http.Path
+import retrofit2.http.*
 
 data class TodoListResponse(
     @SerializedName("todoId") val todoId : Long,
@@ -47,6 +44,11 @@ interface MainApiInterface {
     @PATCH("/todo/pin")
     suspend fun todoPin(
         @Body request : TodoPinRequest
+    ) : Response<BaseResponse<Any>>
+
+    @DELETE("/todo/{todoId}")
+    suspend fun todoDelete(
+        @Path ("todoId") todoId : Long
     ) : Response<BaseResponse<Any>>
 
     @GET("/todo/days/{year-month}")

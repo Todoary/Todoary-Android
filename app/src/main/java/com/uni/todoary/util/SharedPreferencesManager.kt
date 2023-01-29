@@ -20,7 +20,7 @@ fun getXcesToken(): String? = mSharedPreferences.getString("AccessToken", null)
 fun removeXcesToken(){
     val editor = mSharedPreferences.edit()
     editor.remove("AccessToken")
-    editor.commit()
+    editor.apply()
 }
 
 fun saveRefToken(refreshToken : String){
@@ -34,7 +34,7 @@ fun getRefToken(): String? = mSharedPreferences.getString("RefreshToken", null)
 fun removeRefToken(){
     val editor = mSharedPreferences.edit()
     editor.remove("RefreshToken")
-    editor.commit()
+    editor.apply()
 }
 
 fun saveFCMToken(fcmToken : String){

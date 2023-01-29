@@ -1,8 +1,10 @@
 package com.uni.todoary.feature.auth.data.service
 
 import android.util.Log
+import android.widget.Toast
 import com.uni.todoary.ApplicationClass
 import com.uni.todoary.base.BaseResponse
+import com.uni.todoary.config.FcmToken
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.module.LoginResponse
@@ -25,6 +27,7 @@ import com.uni.todoary.feature.main.data.view.CheckBoxView
 import com.uni.todoary.feature.main.data.view.DeleteDiaryView
 import com.uni.todoary.feature.main.data.view.GetDiaryView
 import com.uni.todoary.util.RetrofitInterface
+import com.uni.todoary.util.getFCMToken
 import com.uni.todoary.util.getXcesToken
 import retrofit2.Call
 import retrofit2.Callback
@@ -169,10 +172,15 @@ class AuthService {
     }
 
     private lateinit var loginView: LoginView
+    private lateinit var fcmView : FcmView
     private lateinit var profileView: GetProfileView
 
     fun setLoginView(loginView: LoginView) {
         this.loginView = loginView
+    }
+
+    fun setFcmView(fcmView : FcmView) {
+        this.fcmView = fcmView
     }
 
     fun setProfileView(profileView: GetProfileView) {
@@ -215,6 +223,27 @@ class AuthService {
             }
             override fun onFailure(call: Call<BaseResponse<LoginResponse>>, t: Throwable) {
                 Log.d("autoLogin_API_Failure", t.toString())
+            }
+
+        })
+    }
+
+    fun patchFcmToken(fcmToken : FcmToken){
+        fcmView.fcmLoading()
+        authService.patchFcmToken(fcmToken).enqueue(object : Callback<BaseResponse<Any>>{
+            override fun onResponse(
+                call: Call<BaseResponse<Any>>,
+                response: Response<BaseResponse<Any>>
+            ) {
+                val resp = response.body()!!
+                when(resp.code){
+                    1000 -> fcmView.fcmSuccess()
+                    else -> fcmView.fcmFailure(resp.code, resp.message)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Any>>, t: Throwable) {
+                Log.d("patchFcmToken_API_Failure", t.toString())
             }
 
         })

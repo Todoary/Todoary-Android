@@ -20,6 +20,10 @@ class MainRepository @Inject constructor(private val remoteApi : MainApiInterfac
         return remoteApi.todoCheck(request)
     }
 
+    suspend fun todoDelete(todoId : Long) : Response<BaseResponse<Any>> {
+        return remoteApi.todoDelete(todoId)
+    }
+
     suspend fun getCalendarInfo(yearMonth : String) : Response<BaseResponse<ArrayList<Int>>> {
         return remoteApi.getCalendarInfo(yearMonth)
     }

@@ -36,6 +36,9 @@ class AuthSpfManager @Inject constructor(private val spf : SharedPreferences){
         editor.apply()
     }
 
+    fun getFCMToken(): String = spf.getString("FcmToken", "null")!!
+
+
     fun saveUser(user : User){
         val userGson = Gson().toJson(user)
         val editor = spf.edit()

@@ -1,6 +1,7 @@
 package com.uni.todoary.feature.auth.data.repository
 
 import android.util.Log
+import com.uni.todoary.ApplicationClass
 import com.uni.todoary.base.BaseResponse
 import com.uni.todoary.config.FcmToken
 import com.uni.todoary.feature.auth.data.dto.User
@@ -46,4 +47,5 @@ class LoginRepository @Inject constructor(private val remoteApi : LoginInterface
     fun saveRefToken(refreshToken: String) = spfManager.saveRefToken(refreshToken)
     fun getRefToken(): String? = spfManager.getRefToken()
     fun removeRefToken() = spfManager.removeRefToken()
+    fun getFCMToken(): String = spfManager.getFCMToken()
 }

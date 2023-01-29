@@ -32,6 +32,10 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
     val todoCheckResponse : LiveData<ApiResult<Any>>
         get() = _todoCheckResponse
 
+    var _todoDeleteResponse : MutableLiveData<ApiResult<Any>> = MutableLiveData()
+    val todoDeleteResponse : LiveData<ApiResult<Any>>
+        get() = _todoDeleteResponse
+
     var _getCalendarInfoResp : MutableLiveData<ApiResult<ArrayList<Int>>> = MutableLiveData()
     val getCalendarInfoResp : LiveData<ApiResult<ArrayList<Int>>>
         get() = _getCalendarInfoResp
@@ -75,6 +79,19 @@ class MainViewModel @Inject constructor(private val repository : MainRepository)
                         _todoCheckResponse.value = ApiResult.success(it.body()!!.result)
                     } else _todoCheckResponse.value = ApiResult.error(it.body()!!.code)
                 } else _todoCheckResponse.value = ApiResult.networkError(it.code(), it.message())
+            }
+        }
+    }
+
+    fun todoDelete(todoId : Long){
+        viewModelScope.launch {
+            _todoDeleteResponse.value = ApiResult.loading()
+            repository.todoDelete(todoId).let {
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _todoDeleteResponse.value = ApiResult.success(it.body()!!.result)
+                    } else _todoDeleteResponse.value = ApiResult.error(it.body()!!.code)
+                } else _todoDeleteResponse.value = ApiResult.networkError(it.code(), it.message())
             }
         }
     }

@@ -131,7 +131,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 //        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale("ko", "KR"))
 //        val strDate = dateFormat.format(date)
 //        //다이어리 달력 선택한 날짜 받아오는 거
-
     }
 
     private fun initObserver() {
@@ -233,6 +232,42 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     .into(binding.profileImageIv)
             }
         })                  // 프로필 설정
+        model.todoDeleteResponse.observe(this, {
+            when (it.status) {
+                ApiResult.Status.LOADING -> {}
+                ApiResult.Status.SUCCESS -> {
+                    Snackbar.make(binding.mainSlidingPanelLayout, "할 일이 삭제되었습니다.", Snackbar.LENGTH_SHORT).show()
+
+                }
+                ApiResult.Status.API_ERROR -> {
+                    when (it.code) {
+                        2005, 2010 -> {
+                            Toast.makeText(
+                                this,
+                                "유효하지 않은 회원정보 입니다. 다시 로그인 해주세요.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            goToReLogin(this)
+                        }
+                        2302 -> {
+                            Snackbar.make(
+                                binding.mainSlidingPanelLayout,
+                                "존재하지 않는 투두리스트 입니다.",
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+                        4000 -> {
+                            Toast.makeText(this,
+                                "인터넷연결 확인 후 다시 시도해 주세요.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        else -> Toast.makeText(this, "Database Error!!!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                ApiResult.Status.NETWORK_ERROR -> Log.d("Todo_Delete_Api_Error", it.message!!)
+            }
+        })      // 투두리스트 삭제
     }
 
     private fun setSlidingPanelHeight() {
@@ -268,6 +303,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
                 override fun todoPinListener(todoId: Long, isPinned: Boolean, position: Int) {
                     model.todoPin(todoId, isPinned, position)
+                }
+
+                override fun todoSettingListener(todoInfo: TodoListResponse) {
+                    val mIntent = Intent(this@MainActivity, TodoSettingActivity::class.java)
+                }
+
+                override fun todoDeleteListener(todoId: Long) {
+                    model.todoDelete(todoId)
                 }
             })
         }

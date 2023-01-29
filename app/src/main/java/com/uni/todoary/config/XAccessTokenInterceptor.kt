@@ -62,6 +62,7 @@ class XAccessTokenInterceptor @Inject constructor (
                             }
                         }
                     }
+                    tokenRepository.patchFcmToken(FcmToken(getFCMToken()))
                 }
                 return response
             } else {

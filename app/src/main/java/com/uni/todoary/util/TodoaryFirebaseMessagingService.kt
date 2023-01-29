@@ -15,6 +15,7 @@ import com.google.firebase.messaging.RemoteMessage
 class TodoaryFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) { // 새로운 토큰이 발급되면 로그에 찍힘
         Log.d("FCM Log", "Refreshed token: $token")
+        saveFCMToken(token)
         super.onNewToken(token)
     }
 

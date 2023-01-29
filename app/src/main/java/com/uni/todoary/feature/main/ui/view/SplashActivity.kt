@@ -4,27 +4,28 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
 import com.uni.todoary.R
 import com.uni.todoary.base.BaseActivity
+import com.uni.todoary.config.FcmToken
 import com.uni.todoary.databinding.ActivitySplashBinding
 import com.uni.todoary.feature.auth.data.dto.User
 import com.uni.todoary.feature.auth.data.module.LoginRequest
 import com.uni.todoary.feature.auth.data.module.LoginResponse
 import com.uni.todoary.feature.auth.data.service.AuthService
+import com.uni.todoary.feature.auth.data.view.FcmView
 import com.uni.todoary.feature.auth.data.view.GetProfileView
 import com.uni.todoary.feature.auth.data.view.LoginView
 import com.uni.todoary.feature.auth.ui.view.LoginActivity
 import com.uni.todoary.feature.auth.ui.view.PwLockActivity
 import com.uni.todoary.util.*
 
-class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate), LoginView, GetProfileView {
+class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate), LoginView, GetProfileView, FcmView {
     override fun initAfterBinding() {
         val fcmToken = getNewFCMToken()
-        Log.d("isis", getIsAutoLogin().toString())
-        Log.d("isis", getUser().toString())
         // Splash Activity 에서 자동로그인 체크 후 원래 Theme로 변경
         Handler(Looper.getMainLooper()).postDelayed({
             if(getIsAutoLogin()){
@@ -79,6 +80,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         Log.d("TokenResult", result.toString())
 
         val loginService = AuthService()
+        loginService.setFcmView(this)
+        loginService.patchFcmToken(FcmToken(getFCMToken()))
         loginService.setProfileView(this)
         loginService.GetProfile()
     }
@@ -119,5 +122,18 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 
     override fun getProfileFailure(code: Int) {
 
+    }
+
+    override fun fcmLoading() {
+
+    }
+
+    override fun fcmSuccess() {
+
+    }
+
+    override fun fcmFailure(code: Int, message : String) {
+        Toast.makeText(this, "인증실패 error code : $code", Toast.LENGTH_SHORT).show()
+        Log.d("Auto Login patch Fcmtoken-ERROR", message)
     }
 }

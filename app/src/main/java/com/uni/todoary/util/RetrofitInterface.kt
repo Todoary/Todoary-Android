@@ -1,6 +1,7 @@
 package com.uni.todoary.util
 
 import com.uni.todoary.base.BaseResponse
+import com.uni.todoary.config.FcmToken
 import com.uni.todoary.feature.auth.data.dto.AgreeTermsRequest
 import com.uni.todoary.feature.auth.data.dto.ProfileChangeRequest
 import com.uni.todoary.feature.auth.data.dto.SignInRequest
@@ -15,6 +16,7 @@ import com.uni.todoary.feature.main.data.dto.GetDiaryRequest
 import com.uni.todoary.feature.main.data.dto.GetSticker
 import com.uni.todoary.feature.main.data.dto.SetSticker
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -27,6 +29,9 @@ interface RetrofitInterface {
 
     @POST("/auth/signin/auto")
     fun autoLogin(@Body loginInfo: LoginRequest) : Call<BaseResponse<LoginResponse>>
+
+    @PATCH("/users/fcm_token")
+    fun patchFcmToken(@Body fcm_token : FcmToken) : Call<BaseResponse<Any>>
 
     @POST("/auth/signup")
     fun SignIn(@Body signinInfo : SignInRequest) : Call<BaseResponse<Any>>

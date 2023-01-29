@@ -13,16 +13,18 @@ import androidx.core.view.isVisible
 import com.uni.todoary.R
 import com.uni.todoary.databinding.ActivitySignupBinding
 import com.uni.todoary.ApplicationClass.Companion.mSharedPreferences
+import com.uni.todoary.config.FcmToken
 import com.uni.todoary.feature.auth.data.dto.SignInRequest
 import com.uni.todoary.feature.auth.data.service.AuthService
 import com.uni.todoary.feature.auth.data.view.EmailCheckView
 import com.uni.todoary.feature.auth.data.view.ExistenceCheckView
+import com.uni.todoary.feature.auth.data.view.FcmView
 import com.uni.todoary.feature.auth.data.view.SignInView
 import com.uni.todoary.util.GMailSender
 import com.uni.todoary.util.getFCMToken
 import java.util.*
 
-class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, ExistenceCheckView {
+class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, ExistenceCheckView, FcmView {
     lateinit var binding: ActivitySignupBinding
     var codeflag = false
     var pwflag1 = false
@@ -330,6 +332,9 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
         //조건 충족시 다음 화면으로
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        val loginService = AuthService()
+        loginService.setFcmView(this)
+        loginService.patchFcmToken(FcmToken(getFCMToken()))
     }
 
     override fun SignInFailure(code: Int) {
@@ -382,5 +387,18 @@ class SignupActivity : AppCompatActivity(), SignInView, EmailCheckView, Existenc
         //binding.signupEmailcheckTv.visibility = View.INVISIBLE
         Log.d("이메일 존재여부","없음")
         return
+    }
+
+    override fun fcmLoading() {
+
+    }
+
+    override fun fcmSuccess() {
+
+    }
+
+    override fun fcmFailure(code: Int, message: String) {
+        Toast.makeText(this, "인증실패 error code : $code", Toast.LENGTH_SHORT).show()
+        Log.d("Auto Login patch Fcmtoken-ERROR", message)
     }
 }

@@ -12,7 +12,7 @@ class TokenRepository @Inject constructor(private val tokenApi : TokenInterface)
         return tokenApi.refreshXcesToken(token)
     }
 
-    suspend fun fcmToken(token : FcmToken) : Response<BaseResponse<Any>> {
+    suspend fun patchFcmToken(token : FcmToken) : Response<BaseResponse<Any>> {
         return tokenApi.patchFcmToken(token)
     }
 }

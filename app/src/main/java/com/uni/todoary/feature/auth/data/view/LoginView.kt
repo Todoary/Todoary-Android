@@ -9,6 +9,12 @@ interface LoginView {
     fun loginFailure(code : Int)
 }
 
+interface FcmView{
+    fun fcmLoading()
+    fun fcmSuccess()
+    fun fcmFailure(code : Int, message : String)
+}
+
 interface GetProfileView{
     fun getProfileLoading()
     fun getProfileSuccess(result : User)

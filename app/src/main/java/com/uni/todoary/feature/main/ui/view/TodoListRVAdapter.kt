@@ -21,6 +21,8 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
     interface ItemClickListener {
         fun todoCheckListener(todoId : Long, isChecked : Boolean)
         fun todoPinListener(todoId : Long, isPinned : Boolean, position: Int)
+        fun todoSettingListener(todoInfo : TodoListResponse)
+        fun todoDeleteListener(todoId : Long)
     }
 
     fun setItemClickListener(listener : ItemClickListener){
@@ -60,6 +62,12 @@ class TodoListRVAdapter(context : Context) : RecyclerView.Adapter<TodoListRVAdap
             }
             binding.itemTodolistPinIv.setOnClickListener {
                 mItemClickListener.todoPinListener(todolist.todoId, !todolist.isPinned, position)
+            }
+            binding.itemTodolistSettingIv.setOnClickListener {
+                mItemClickListener.todoSettingListener(todolist)
+            }
+            binding.itemTodolistDeleteIv.setOnClickListener {
+                mItemClickListener.todoDeleteListener(todolist.todoId)
             }
         }
     }

@@ -62,6 +62,16 @@ class LoginViewModel @Inject constructor(
                     _login_resp.value = (ApiResult.networkError(it.code(), it.toString()))
                 }
             }
+            _fcmToken_resp.value = ApiResult.loading()
+            repository.patchFcmToken(FcmToken(repository.getFCMToken())).let{
+                if(it.isSuccessful){
+                    if(it.body()!!.code == 1000){
+                        _fcmToken_resp.value = ApiResult.success(it.body()!!.result)
+                    }
+                    else _fcmToken_resp.value = ApiResult.error(it.body()!!.code)
+                }
+                else _fcmToken_resp.value = ApiResult.networkError(it.code(), it.toString())
+            }
         }
     }
 
