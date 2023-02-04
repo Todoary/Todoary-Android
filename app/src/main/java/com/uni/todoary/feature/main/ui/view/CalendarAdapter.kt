@@ -2,6 +2,7 @@ package com.uni.todoary.feature.main.ui.view
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Build
 import android.text.TextUtils
 import android.util.Log
@@ -40,7 +41,7 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val re
     fun setItemClickListener(listener : ItemClickListener){
         this.mItemClickListener = listener
     }
-        
+
     class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val dayText: TextView = itemView.findViewById(R.id.dayText)
     }
@@ -66,14 +67,15 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val re
             //해당 일자 넣음
             holder.dayText.text = day.dayOfMonth.toString()
 
+            val calendar_color = holder.itemView.context.getColor(R.color.calendar_today_blue)
             //현재 날짜 색상 변경
             if (markingList.isNotEmpty() && day.dayOfMonth == markingList[0]){
                 markingList.removeAt(0)
-                holder.dayText.setBackgroundResource(R.drawable.calendar_datepick_stroke)
+                holder.dayText.setTextColor(calendar_color)
+                holder.dayText.setTypeface(Typeface.DEFAULT_BOLD)
             }
             if(day == currentDate){
-                holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
-                holder.dayText.setTextColor(Color.WHITE)
+                holder.dayText.setTextColor(calendar_color)
                 previousPosition = position
             }
         }
@@ -82,8 +84,8 @@ class CalendarAdapter(private val dayList: ArrayList<LocalDate?>, private val re
         holder.itemView.setOnClickListener {
             if(day != null) {
                 mItemClickListener.onDateSelect(day)
-                holder.dayText.setBackgroundResource(R.drawable.calendar_today_stroke)
-                holder.dayText.setTextColor(Color.WHITE)
+                holder.dayText.setBackgroundResource(R.drawable.calendar_select_icon)
+                holder.dayText.setTextColor(Color.TRANSPARENT)
             }
         }
         //holder.dayText.text=dayList[holder.adapterPosition]

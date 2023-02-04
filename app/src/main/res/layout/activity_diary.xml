@@ -379,113 +379,112 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="102dp"
             android:orientation="horizontal"
             android:gravity="center_horizontal">
             <ImageView
                 android:id="@+id/diary_sticekr5_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker1"/>
+                android:layout_width="79dp"
+                android:layout_height="92dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/ic_sticker5"/>
             <ImageView
                 android:id="@+id/diary_sticekr6_iv"
                 android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker2"/>
+                android:layout_height="96dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/ic_sticker6"/>
             <ImageView
                 android:id="@+id/diary_sticekr7_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker3"/>
+                android:layout_width="83dp"
+                android:layout_height="73dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_sticker7"/>
             <ImageView
                 android:id="@+id/diary_sticekr8_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker4"/>
+                android:layout_width="92dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_sticker8"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="87dp"
             android:orientation="horizontal"
             android:gravity="center_horizontal">
             <ImageView
                 android:id="@+id/diary_sticekr9_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker1"/>
+                android:layout_width="57dp"
+                android:layout_height="78dp"
+                android:layout_marginEnd="11dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_sticker9"/>
             <ImageView
                 android:id="@+id/diary_sticekr10_iv"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="9dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker2"/>
+                android:src="@drawable/ic_sticker10"/>
             <ImageView
                 android:id="@+id/diary_sticekr11_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker3"/>
+                android:layout_marginEnd="9dp"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/ic_sticker11"/>
             <ImageView
                 android:id="@+id/diary_sticekr12_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker4"/>
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/ic_sticker12"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="92dp"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:layout_marginBottom="10dp">
 
             <ImageView
                 android:id="@+id/diary_sticekr13_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="73dp"
+                android:layout_height="73dp"
+                android:layout_marginEnd="4dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker1"/>
+                android:src="@drawable/ic_sticker13"/>
             <ImageView
                 android:id="@+id/diary_sticekr14_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="73dp"
+                android:layout_height="73dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker2"/>
+                android:src="@drawable/ic_sticker14"/>
             <ImageView
                 android:id="@+id/diary_sticekr15_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker3"/>
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_sticker15"/>
             <ImageView
                 android:id="@+id/diary_sticekr16_iv"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_sticker4"/>
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_sticker16"/>
         </LinearLayout>
     </LinearLayout>
     </ScrollView>

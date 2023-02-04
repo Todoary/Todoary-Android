@@ -23,17 +23,29 @@ class TodoSettingActivity : AppCompatActivity(), CategoryAddView, CategoryChange
         binding = ActivityTodoSettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+//        binding.todosettingToolbarTb.toolbarIconIv.setOnClickListener {
+//            //startActivity(intent)
+//            finish()
+//        }
+//
+//        binding.todosettingToolbarTb.toolbarIconTv.setOnClickListener {
+//            categoryAdd()
+//            //startActivity(intent)
+//            finish()
+//        }
+
         binding.todosettingToolbarTb.toolbarIconIv.setOnClickListener {
             //startActivity(intent)
             finish()
         }
 
-        binding.todosettingToolbarTb.toolbarIconTv.setOnClickListener {
+        // 카테고리 추가
+        binding.todosettingCompleteTv.setOnClickListener {
             categoryAdd()
             //startActivity(intent)
             finish()
         }
-
 
         binding.todosettingEditEt.setPadding(40,14,5,20)
 

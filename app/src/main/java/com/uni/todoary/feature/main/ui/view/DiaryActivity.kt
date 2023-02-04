@@ -93,13 +93,13 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         //아래 버튼 3개 이미지 변경 필요 (수정사항)
         //스티커 삭제 버튼
         val deleteIcon= BitmapStickerIcon(
-            ContextCompat.getDrawable(this, R.drawable.ic_diary_delete)
+            ContextCompat.getDrawable(this, R.drawable.ic_sticer_x)
             ,BitmapStickerIcon.RIGHT_TOP)
         //스티커 뒤집기 버튼
-        val flipIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,com.uni.todoary.R.drawable.ic_diary_delete)
+        val flipIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,R.drawable.ic_sticker_flip)
             ,BitmapStickerIcon.LEFT_TOP)
         //스티커 크기 변경 버튼
-        val scaleIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,com.uni.todoary.R.drawable.ic_diary_delete)
+        val scaleIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,R.drawable.ic_sticker_size)
             ,BitmapStickerIcon.RIGHT_BOTOM)
 
         deleteIcon.iconEvent = DeleteIconEvent()
@@ -146,26 +146,8 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         //sticker 키보드 제작 후 수정필요
         //sticker에 따라 16가지 setOnClickListener 작성 (아래 버튼은 임시 : 수정필요) : 키보드 만들고 안에 넣어주면될듯
 
-//        binding.tempBtnAddSticker.setOnClickListener {
-//            Log.d("StickerEnter","Ok")
-//            ContextCompat.getDrawable(this,R.drawable.ic_diary_delete)?.let { it1 -> addSticker(it1, 1) }
-//        }
-        binding.diarySticekr1Iv.setOnClickListener {
-            Log.d("StickerEnter","Ok")
-            ContextCompat.getDrawable(this,R.drawable.ic_sticker1)?.let { it1 -> addSticker(it1, 1) }
-        }
-        binding.diarySticekr2Iv.setOnClickListener {
-            Log.d("StickerEnter","Ok")
-            ContextCompat.getDrawable(this,R.drawable.ic_sticker2)?.let { it1 -> addSticker(it1, 2) }
-        }
-        binding.diarySticekr3Iv.setOnClickListener {
-            Log.d("StickerEnter","Ok")
-            ContextCompat.getDrawable(this,R.drawable.ic_sticker3)?.let { it1 -> addSticker(it1, 3) }
-        }
-        binding.diarySticekr4Iv.setOnClickListener {
-            Log.d("StickerEnter","Ok")
-            ContextCompat.getDrawable(this,R.drawable.ic_sticker4)?.let { it1 -> addSticker(it1, 4) }
-        }
+        makeSticker()
+
 
         //다이어리 조회
         GetDiary(date.toString())
@@ -267,6 +249,73 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             hideKeyboard()
         }
 
+    }
+
+    private fun makeSticker() {
+        binding.diarySticekr1Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker1)?.let { it1 -> addSticker(it1, 1) }
+        }
+        binding.diarySticekr2Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker2)?.let { it1 -> addSticker(it1, 2) }
+        }
+        binding.diarySticekr3Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker3)?.let { it1 -> addSticker(it1, 3) }
+        }
+        binding.diarySticekr4Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker4)?.let { it1 -> addSticker(it1, 4) }
+        }
+        binding.diarySticekr5Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker5)?.let { it1 -> addSticker(it1, 5) }
+        }
+        binding.diarySticekr6Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker6)?.let { it1 -> addSticker(it1, 6) }
+        }
+        binding.diarySticekr7Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker7)?.let { it1 -> addSticker(it1, 7) }
+        }
+        binding.diarySticekr8Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker8)?.let { it1 -> addSticker(it1, 8) }
+        }
+        binding.diarySticekr9Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker9)?.let { it1 -> addSticker(it1, 9) }
+        }
+        binding.diarySticekr10Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker10)?.let { it1 -> addSticker(it1, 10) }
+        }
+        binding.diarySticekr11Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker11)?.let { it1 -> addSticker(it1, 11) }
+        }
+        binding.diarySticekr12Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker12)?.let { it1 -> addSticker(it1, 12) }
+        }
+        binding.diarySticekr13Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker13)?.let { it1 -> addSticker(it1, 13) }
+        }
+        binding.diarySticekr14Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker14)?.let { it1 -> addSticker(it1, 14) }
+        }
+        binding.diarySticekr15Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker15)?.let { it1 -> addSticker(it1, 15) }
+        }
+        binding.diarySticekr16Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker16)?.let { it1 -> addSticker(it1, 16) }
+        }
     }
 
 
