@@ -88,6 +88,7 @@ interface RetrofitInterface {
     fun DeleteDiary(
         @Path("createdDate") createdDate : String
     ) : Call<BaseResponse<Any>>
+
     @PUT("/diary/{createdDate}/sticker")
     fun SetSticker(
         @Path("createdDate") date : String,

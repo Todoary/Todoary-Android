@@ -46,4 +46,6 @@
     <color name="keyboard_gray">#F4F4F4</color>
     <color name="transparent">#00000000</color>
     <color name="nickname_gray">#8D8D8D</color>
+    <color name="sticker_keyboard_gray">#F4F4F4</color>
+    <color name="calendar_today_blue">#3183FF</color>
 </resources>

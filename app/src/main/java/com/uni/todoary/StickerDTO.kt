@@ -6,7 +6,7 @@ import java.io.Serializable
 data class SetSticker(
     @SerializedName("created") val created: List<CreatedSticker>?,
     @SerializedName("modified") val modified: List<ModifiedSticker>?,
-    @SerializedName("deleted") val deleted: List<DeletedSticker>?
+    @SerializedName("deleted") val deleted: List<Int>?
 )
 
 data class CreatedSticker(
@@ -21,16 +21,13 @@ data class CreatedSticker(
 
 data class ModifiedSticker(
     @SerializedName("Id") val Id: Int,
+    @SerializedName("stickerId") val stickerId: Int,
     @SerializedName("locationX") val locationX: Double,
     @SerializedName("locationY") val locationY: Double,
     @SerializedName("width") val width: Double,
     @SerializedName("height") val height: Double,
     @SerializedName("rotation") val rotation: Double,
     @SerializedName("flipped") val flipped: Boolean
-)
-
-data class DeletedSticker(
-    @SerializedName("Id") val Id: Int
 )
 
 data class GetSticker(

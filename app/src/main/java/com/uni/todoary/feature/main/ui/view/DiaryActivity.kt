@@ -1,14 +1,14 @@
 package com.uni.todoary.feature.main.ui.view
 
-import android.graphics.drawable.Drawable
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.text.Html
 import android.text.Spannable
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.*
 import android.util.Log
@@ -17,6 +17,7 @@ import android.view.View
 import android.view.accessibility.AccessibilityEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import android.widget.ScrollView
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -42,7 +43,6 @@ import com.uni.todoary.util.SoftKeyboardDectectorView.OnHiddenKeyboardListener
 import com.uni.todoary.util.SoftKeyboardDectectorView.OnShownKeyboardListener
 import java.time.LocalDate
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStickerView, GetDiaryView {
@@ -60,6 +60,8 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
     lateinit var keyboardVisibilityUtils: KeyboardVisibilityUtils
     var sposition = 0
     var eposition = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityDiaryBinding.inflate(layoutInflater)
@@ -68,20 +70,36 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         date = intent.getSerializableExtra("date") as LocalDate
 
 
+        ///sticker
+        binding.keyboardSmileIv.setOnClickListener {
+            // 기존 키보드 툴바 없앰
+            //binding.diaryKeytoolbarLl.visibility = View.GONE
+            binding.diaryKeytoolbar2Ll.visibility = View.GONE
+            binding.diaryKeytoolbar3Ll.visibility = View.GONE
+            binding.diaryKeytoolbar4Ll.visibility=View.GONE
+            // 키보드 내리기
+            hideKeyboard()
+            // 스티커 키보드 활성화
+            //binding.diaryStickerkeyboardSv.visibility=View.VISIBLE
+            binding.diaryStickerkeylayoutLl.visibility=View.VISIBLE
+            //binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+        }
 
-        //sticker
         //BitmapStickerIcon(아이콘이미지 drawable,아이콘 위치)
-        //수정사항 : image 모두 변경
         sticker.clear()
         stickerM.clear()
         stickerD.clear()
 
+        //아래 버튼 3개 이미지 변경 필요 (수정사항)
+        //스티커 삭제 버튼
         val deleteIcon= BitmapStickerIcon(
-            ContextCompat.getDrawable(this, R.drawable.ic_diary_delete)
+            ContextCompat.getDrawable(this, R.drawable.ic_sticer_x)
             ,BitmapStickerIcon.RIGHT_TOP)
-        val flipIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,com.uni.todoary.R.drawable.ic_diary_delete)
+        //스티커 뒤집기 버튼
+        val flipIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,R.drawable.ic_sticker_flip)
             ,BitmapStickerIcon.LEFT_TOP)
-        val scaleIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,com.uni.todoary.R.drawable.ic_diary_delete)
+        //스티커 크기 변경 버튼
+        val scaleIcon=BitmapStickerIcon(ContextCompat.getDrawable(this,R.drawable.ic_sticker_size)
             ,BitmapStickerIcon.RIGHT_BOTOM)
 
         deleteIcon.iconEvent = DeleteIconEvent()
@@ -92,15 +110,43 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         val iconList=listOf(deleteIcon,flipIcon,scaleIcon)
         binding.stickerView.icons = iconList
 
+        // sticker 키보드 툴바 세부기능 처리
+        // 일단 기본 키보드 다시 올리는 쪽으로 처리
+        binding.stickerkeyboardCameraIv.setOnClickListener {
+            binding.diaryStickerkeylayoutLl.visibility=View.GONE
+            showKeyboard()
+            Handler().postDelayed(Runnable {
+                //딜레이 후 시작할 코드 작성
+                binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+            }, 300) // 0.3초 정도 딜레이를 준 후 시작
+
+        }
+        binding.stickerkeyboardTypeIv.setOnClickListener {
+            binding.diaryStickerkeylayoutLl.visibility=View.GONE
+            showKeyboard()
+            Handler().postDelayed(Runnable {
+                //딜레이 후 시작할 코드 작성
+                binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+                binding.diaryKeytoolbar2Ll.visibility=View.VISIBLE
+            }, 300) // 0.3초 정도 딜레이를 준 후 시작
+        }
+        binding.stickerkeyboardEditIv.setOnClickListener {
+            binding.diaryStickerkeylayoutLl.visibility=View.GONE
+            showKeyboard()
+            Handler().postDelayed(Runnable {
+                //딜레이 후 시작할 코드 작성
+                binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+                binding.diaryKeytoolbar4Ll.visibility=View.VISIBLE
+            }, 300) // 0.3초 정도 딜레이를 준 후 시작
+        }
+        binding.stickerkeyboardXIv.setOnClickListener {
+            binding.diaryStickerkeylayoutLl.visibility=View.GONE
+        }
         //add new sticker
         //sticker 키보드 제작 후 수정필요
-        //sticker에 따라 16가지 setOnClickListener 작성
-        binding.tempBtnAddSticker.setOnClickListener {
-            Log.d("StickerEnter","Ok")
-            ContextCompat.getDrawable(this,R.drawable.ic_diary_delete)?.let { it1 -> addSticker(it1, 0) }
-        }
+        //sticker에 따라 16가지 setOnClickListener 작성 (아래 버튼은 임시 : 수정필요) : 키보드 만들고 안에 넣어주면될듯
 
-
+        makeSticker()
 
 
         //다이어리 조회
@@ -149,6 +195,7 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
                 binding.diaryKeytoolbar2Ll.visibility = View.GONE
                 binding.diaryKeytoolbar3Ll.visibility = View.GONE
                 binding.diaryKeytoolbar4Ll.visibility=View.GONE
+                binding.diaryStickerkeylayoutLl.visibility=View.GONE
             }
         }
 
@@ -157,7 +204,12 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         softKeyboardDecector.setOnShownKeyboard(object : OnShownKeyboardListener {
             override fun onShowSoftKeyboard() {
                 if(binding.diaryDetailEt.hasFocus()){
+                    binding.diaryStickerkeylayoutLl.visibility=View.GONE
                     binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+                    binding.diaryScrollviewSv.post(Runnable {
+                        binding.diaryScrollviewSv.fullScroll(ScrollView.FOCUS_DOWN)
+                        //scrollView.fullScroll(ScrollView.FOCUS_UP);
+                    })
                 }
                 //binding.diaryKeytoolbarLl.visibility=View.VISIBLE
                 Log.d("키보드 활성화","O")
@@ -168,8 +220,10 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
                 binding.diaryTitleEt.setOnFocusChangeListener { v, hasFocus ->
                     if (hasFocus){
                         binding.diaryKeytoolbarLl.visibility=View.GONE
+                        binding.diaryStickerkeylayoutLl.visibility=View.GONE
                     } else{
                         binding.diaryKeytoolbarLl.visibility=View.VISIBLE
+                        binding.diaryStickerkeylayoutLl.visibility=View.GONE
                     }
                 }
                 binding.keyboardTypeIv.setOnClickListener {
@@ -195,6 +249,73 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             hideKeyboard()
         }
 
+    }
+
+    private fun makeSticker() {
+        binding.diarySticekr1Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker1)?.let { it1 -> addSticker(it1, 1) }
+        }
+        binding.diarySticekr2Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker2)?.let { it1 -> addSticker(it1, 2) }
+        }
+        binding.diarySticekr3Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker3)?.let { it1 -> addSticker(it1, 3) }
+        }
+        binding.diarySticekr4Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker4)?.let { it1 -> addSticker(it1, 4) }
+        }
+        binding.diarySticekr5Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker5)?.let { it1 -> addSticker(it1, 5) }
+        }
+        binding.diarySticekr6Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker6)?.let { it1 -> addSticker(it1, 6) }
+        }
+        binding.diarySticekr7Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker7)?.let { it1 -> addSticker(it1, 7) }
+        }
+        binding.diarySticekr8Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker8)?.let { it1 -> addSticker(it1, 8) }
+        }
+        binding.diarySticekr9Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker9)?.let { it1 -> addSticker(it1, 9) }
+        }
+        binding.diarySticekr10Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker10)?.let { it1 -> addSticker(it1, 10) }
+        }
+        binding.diarySticekr11Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker11)?.let { it1 -> addSticker(it1, 11) }
+        }
+        binding.diarySticekr12Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker12)?.let { it1 -> addSticker(it1, 12) }
+        }
+        binding.diarySticekr13Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker13)?.let { it1 -> addSticker(it1, 13) }
+        }
+        binding.diarySticekr14Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker14)?.let { it1 -> addSticker(it1, 14) }
+        }
+        binding.diarySticekr15Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker15)?.let { it1 -> addSticker(it1, 15) }
+        }
+        binding.diarySticekr16Iv.setOnClickListener {
+            Log.d("StickerEnter","Ok")
+            ContextCompat.getDrawable(this,R.drawable.ic_sticker16)?.let { it1 -> addSticker(it1, 16) }
+        }
     }
 
 
@@ -355,11 +476,11 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
 
     //add sticker
     private fun addSticker(drawable: Drawable, stickerId: Int) {
-        Log.d("addSticker","ok")
+
         val drawableSticker= DrawableSticker(drawable)
         binding.stickerView.addSticker(drawableSticker, stickerId)
         sticker.add(drawableSticker)
-        Log.d("sticker", sticker.toString())
+        Log.d("addSticker",stickerId.toString())
     }
 
 
@@ -377,17 +498,18 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
         //스티커 수정
         var modifiedSticker = ArrayList<ModifiedSticker>()
         for (i in stickerM){
-            modifiedSticker.add(ModifiedSticker(i.id.toInt(), i.mappedBound.left.toDouble(), i.mappedBound.top.toDouble(), i.currentWidth.toDouble(), i.currentHeight.toDouble(), i.currentAngle.toDouble(), i.isFlippedHorizontally))
+            modifiedSticker.add(ModifiedSticker(i.id.toInt(), i.stickerId, i.mappedBound.left.toDouble(), i.mappedBound.top.toDouble(), i.currentWidth.toDouble(), i.currentHeight.toDouble(), i.currentAngle.toDouble(), i.isFlippedHorizontally))
         }
 
         //스티커 삭제
-        var deletedSticker = ArrayList<DeletedSticker>()
+        var deletedSticker = ArrayList<Int>()
         for (i in stickerD){
-            deletedSticker.add(DeletedSticker(i.id.toInt()))
+            deletedSticker.add(i.id.toInt())
         }
 
         //api 연결
-        setStickerService.SetSticker(binding.diaryDateTv.text.toString(), SetSticker(createdSticker, null, null))
+        Log.d("apiSticker", SetSticker(createdSticker, modifiedSticker, deletedSticker).toString())
+        setStickerService.SetSticker(binding.diaryDateTv.text.toString(), SetSticker(createdSticker, modifiedSticker, deletedSticker))
     }
 
 
@@ -411,6 +533,7 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
 
     override fun AddDiarySuccess() {
         Log.d("다이어리 추가","성공")
+
         //sticker
         setSticker()
     }
@@ -436,13 +559,28 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             }
         })
 
+        var hl_flag = 0
+        val trans_color = resources.getColor(R.color.transparent)
+        val trans_bcs = BackgroundColorSpan(trans_color)
+
         binding.keyboardHighlight1Iv.setOnClickListener {
             var text = binding.diaryDetailEt.text
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_01)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            Log.d("hl_flag:",hl_flag.toString())
+
+            //setSpan 적용 됐는지 확인하는 함수 없나...
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag = 1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
@@ -452,28 +590,53 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_02)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag = 1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
-            binding.diaryDetailEt.text = ssb
+            binding.diaryDetailEt.text == ssb
         }
         binding.keyboardHighlight3Iv.setOnClickListener {
             var text = binding.diaryDetailEt.text
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_03)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if (hl_flag == 0) {
+                ssb.apply {
+                    hl_flag = 1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
+
         binding.keyboardHighlight4Iv.setOnClickListener {
             var text = binding.diaryDetailEt.text
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_04)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag =1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
@@ -482,8 +645,16 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_05)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag = 1
+                    setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
@@ -492,15 +663,27 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
             val ssb = SpannableStringBuilder(text)
             val color = resources.getColor(R.color.highlight_06)
             val bcs = BackgroundColorSpan(color)
-            ssb.apply {
-                ssb.setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                //ssb.setSpan(StrikethroughSpan(), sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            if(hl_flag==0) {
+                ssb.apply {
+                    hl_flag=1
+                    ssb.setSpan(bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    //ssb.setSpan(StrikethroughSpan(), sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+            }else{
+                ssb.apply{
+                    hl_flag = 0
+                    setSpan(trans_bcs, sposition, eposition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             binding.diaryDetailEt.text = ssb
         }
     }
 
 
+    private fun showKeyboard(){
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(binding.diaryDetailEt, 0);
+    }
     override fun onDestroy() {
         keyboardVisibilityUtils.detachKeyboardListeners()
         super.onDestroy()
@@ -593,6 +776,5 @@ class DiaryActivity : AppCompatActivity(), AddDiaryView, SetStickerView, GetStic
     override fun GetDiaryFailure(code: Int) {
         Log.d("Getdiary_error",code.toString())
     }
-
 
 }

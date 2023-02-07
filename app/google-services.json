@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "666947728476-brdn7dbqr60u68hunohgtoh1afsrmnsc.apps.googleusercontent.com",
+          "client_id": "666947728476-40dfmp62tj34jbk87kcsm3gko1bsqcgt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uni.todoary",
+            "certificate_hash": "27ebb961cbd9ea8587704e81f1d47c6d053f245c"
+          }
+        },
+        {
+          "client_id": "666947728476-g1esv67o99k47uvq3eajnk48akv84ssk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.uni.todoary",
@@ -37,6 +45,13 @@
             {
               "client_id": "666947728476-hjt48pj7805frhiotfon0mv8u9gs80ca.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "666947728476-7d1qb2mlg0f7gnids3ibt211073d4o71.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.todoary.ms.app"
+              }
             }
           ]
         }
