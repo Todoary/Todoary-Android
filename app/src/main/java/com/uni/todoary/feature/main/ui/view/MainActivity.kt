@@ -76,10 +76,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             startActivity(menuIntent)
         }
 
-        // 달력 프래그먼트 달기
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_calendar_fl, CalendarFragment(binding))
-            .commit()
+
 
         // 카테고리 버튼
         binding.mainSlideMenuGridIv.setOnClickListener {
